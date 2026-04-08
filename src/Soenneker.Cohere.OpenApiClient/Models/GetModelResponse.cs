@@ -53,6 +53,14 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Default sampling parameters for this model when omitted from API requests.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse_sampling_defaults? SamplingDefaults { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse_sampling_defaults SamplingDefaults { get; set; }
+#endif
         /// <summary>Public URL to the tokenizer&apos;s configuration file.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -93,6 +101,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
                 { "finetuned", n => { Finetuned = n.GetBoolValue(); } },
                 { "is_deprecated", n => { IsDeprecated = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "sampling_defaults", n => { SamplingDefaults = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse_sampling_defaults>(global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse_sampling_defaults.CreateFromDiscriminatorValue); } },
                 { "tokenizer_url", n => { TokenizerUrl = n.GetStringValue(); } },
             };
         }
@@ -110,6 +119,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteBoolValue("finetuned", Finetuned);
             writer.WriteBoolValue("is_deprecated", IsDeprecated);
             writer.WriteStringValue("name", Name);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse_sampling_defaults>("sampling_defaults", SamplingDefaults);
             writer.WriteStringValue("tokenizer_url", TokenizerUrl);
             writer.WriteAdditionalData(AdditionalData);
         }

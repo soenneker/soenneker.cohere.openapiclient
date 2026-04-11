@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "BDDC3033A8A2C6F35E17FA6C74CEE3F91E6B3E20A7BED7212763279977E08BB091972938EFA4DBB2D08CA7F0460B0AC6ABFAD18D503C7A41D9764F68D1C6ADB7",
+  "descriptionHash": "D235F720D93125D0A201647E45623712B3F41132310E43E694D487E9070E0F885263C1AD38D842877022C6B594776D09A37D05CB9B8BD76D11573F6F4CBA59F7",
   "descriptionLocation": "../../openapi.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.30.0",
+  "kiotaVersion": "1.31.0",
   "clientClassName": "CohereOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.Cohere.OpenApiClient",

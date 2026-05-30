@@ -17,10 +17,10 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>An object with different embedding types. The length of each embedding type array will be the same as the length of the original `texts` array.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponse_embeddings? Embeddings { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponseEmbeddings? Embeddings { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponse_embeddings Embeddings { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponseEmbeddings Embeddings { get; set; }
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -81,7 +81,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "embeddings", n => { Embeddings = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponse_embeddings>(global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponse_embeddings.CreateFromDiscriminatorValue); } },
+                { "embeddings", n => { Embeddings = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponseEmbeddings>(global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponseEmbeddings.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "images", n => { Images = n.GetCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.Image>(global::Soenneker.Cohere.OpenApiClient.Models.Image.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "meta", n => { Meta = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta>(global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta.CreateFromDiscriminatorValue); } },
@@ -96,7 +96,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponse_embeddings>("embeddings", Embeddings);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponseEmbeddings>("embeddings", Embeddings);
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.Image>("images", Images);
             writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta>("meta", Meta);

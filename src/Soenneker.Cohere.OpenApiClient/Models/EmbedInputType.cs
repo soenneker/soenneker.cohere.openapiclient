@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Cohere.OpenApiClient.Models
 {
-    /// <summary>Specifies the type of input passed to the model. Required for embedding models v3 and higher.- `&quot;search_document&quot;`: Used for embeddings stored in a vector database for search use-cases.- `&quot;search_query&quot;`: Used for embeddings of search queries run against a vector DB to find relevant documents.- `&quot;classification&quot;`: Used for embeddings passed through a text classifier.- `&quot;clustering&quot;`: Used for the embeddings run through a clustering algorithm.- `&quot;image&quot;`: Used for embeddings with image input.</summary>
+    /// <summary>&quot;Specifies the type of input passed to the model. Required for embedding models v3 and higher.- `\&quot;search_document\&quot;`: Used for embeddings stored in a vector database for search use-cases.- `\&quot;search_query\&quot;`: Used for embeddings of search queries run against a vector DB to find relevant documents.- `\&quot;classification\&quot;`: Used for embeddings passed through a text classifier.- `\&quot;clustering\&quot;`: Used for the embeddings run through a clustering algorithm.- `\&quot;image\&quot;`: Used for embeddings with image input.&quot;</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum EmbedInputType
     {

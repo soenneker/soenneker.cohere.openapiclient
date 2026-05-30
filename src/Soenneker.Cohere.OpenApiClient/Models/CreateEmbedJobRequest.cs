@@ -22,7 +22,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 #else
         public string DatasetId { get; set; }
 #endif
-        /// <summary>Specifies the types of embeddings you want to get back. Not required and default is None, which returns the Embed Floats response type. Can be one or more of the following types.* `&quot;float&quot;`: Use this when you want to get back the default float embeddings. Valid for all models.* `&quot;int8&quot;`: Use this when you want to get back signed int8 embeddings. Valid for v3 and newer model versions.* `&quot;uint8&quot;`: Use this when you want to get back unsigned int8 embeddings. Valid for v3 and newer model versions.* `&quot;binary&quot;`: Use this when you want to get back signed binary embeddings. Valid for v3 and newer model versions.* `&quot;ubinary&quot;`: Use this when you want to get back unsigned binary embeddings. Valid for v3 and newer model versions.</summary>
+        /// <summary>&quot;Specifies the types of embeddings you want to get back. Not required and default is None, which returns the Embed Floats response type. Can be one or more of the following types.* `\&quot;float\&quot;`: Use this when you want to get back the default float embeddings. Valid for all models.* `\&quot;int8\&quot;`: Use this when you want to get back signed int8 embeddings. Valid for v3 and newer model versions.* `\&quot;uint8\&quot;`: Use this when you want to get back unsigned int8 embeddings. Valid for v3 and newer model versions.* `\&quot;binary\&quot;`: Use this when you want to get back signed binary embeddings. Valid for v3 and newer model versions.* `\&quot;ubinary\&quot;`: Use this when you want to get back unsigned binary embeddings. Valid for v3 and newer model versions.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Cohere.OpenApiClient.Models.EmbeddingType?>? EmbeddingTypes { get; set; }
@@ -30,9 +30,9 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 #else
         public List<global::Soenneker.Cohere.OpenApiClient.Models.EmbeddingType?> EmbeddingTypes { get; set; }
 #endif
-        /// <summary>Specifies the type of input passed to the model. Required for embedding models v3 and higher.- `&quot;search_document&quot;`: Used for embeddings stored in a vector database for search use-cases.- `&quot;search_query&quot;`: Used for embeddings of search queries run against a vector DB to find relevant documents.- `&quot;classification&quot;`: Used for embeddings passed through a text classifier.- `&quot;clustering&quot;`: Used for the embeddings run through a clustering algorithm.- `&quot;image&quot;`: Used for embeddings with image input.</summary>
+        /// <summary>&quot;Specifies the type of input passed to the model. Required for embedding models v3 and higher.- `\&quot;search_document\&quot;`: Used for embeddings stored in a vector database for search use-cases.- `\&quot;search_query\&quot;`: Used for embeddings of search queries run against a vector DB to find relevant documents.- `\&quot;classification\&quot;`: Used for embeddings passed through a text classifier.- `\&quot;clustering\&quot;`: Used for the embeddings run through a clustering algorithm.- `\&quot;image\&quot;`: Used for embeddings with image input.&quot;</summary>
         public global::Soenneker.Cohere.OpenApiClient.Models.EmbedInputType? InputType { get; set; }
-        /// <summary>ID of the embedding model.Available models and corresponding embedding dimensions:- `embed-english-v3.0` : 1024- `embed-multilingual-v3.0` : 1024- `embed-english-light-v3.0` : 384- `embed-multilingual-light-v3.0` : 384</summary>
+        /// <summary>&quot;ID of the embedding model.Available models and corresponding embedding dimensions:- `embed-english-v3.0` : 1024- `embed-multilingual-v3.0` : 1024- `embed-english-light-v3.0` : 384- `embed-multilingual-light-v3.0` : 384&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Model { get; set; }

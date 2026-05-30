@@ -39,11 +39,11 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.Cohere.OpenApiClient.Models.EmbedContent();
-            if("image_url".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("EmbedImage".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.EmbedImage = new global::Soenneker.Cohere.OpenApiClient.Models.EmbedImage();
             }
-            else if("text".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("EmbedText".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.EmbedText = new global::Soenneker.Cohere.OpenApiClient.Models.EmbedText();
             }

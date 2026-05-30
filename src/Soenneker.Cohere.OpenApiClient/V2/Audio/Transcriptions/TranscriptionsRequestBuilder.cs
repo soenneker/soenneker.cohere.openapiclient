@@ -36,49 +36,49 @@ namespace Soenneker.Cohere.OpenApiClient.V2.Audio.Transcriptions
         /// <summary>
         /// Transcribe an audio file.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Cohere.OpenApiClient.V2.Audio.Transcriptions.TranscriptionsPostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions400Error">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions401Error">When receiving a 401 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions403Error">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions404Error">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions422Error">When receiving a 422 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions429Error">When receiving a 429 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions498Error">When receiving a 498 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions499Error">When receiving a 499 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions500Error">When receiving a 500 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions501Error">When receiving a 501 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions503Error">When receiving a 503 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions504Error">When receiving a 504 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200400Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200401Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200403Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200422Error">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200429Error">When receiving a 429 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200498Error">When receiving a 498 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200499Error">When receiving a 499 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200500Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200501Error">When receiving a 501 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200503Error">When receiving a 503 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200504Error">When receiving a 504 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Cohere.OpenApiClient.V2.Audio.Transcriptions.TranscriptionsPostResponse?> PostAsync(MultipartBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200?> PostAsync(MultipartBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Cohere.OpenApiClient.V2.Audio.Transcriptions.TranscriptionsPostResponse> PostAsync(MultipartBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200> PostAsync(MultipartBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions400Error.CreateFromDiscriminatorValue },
-                { "401", global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions401Error.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions403Error.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions404Error.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions422Error.CreateFromDiscriminatorValue },
-                { "429", global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions429Error.CreateFromDiscriminatorValue },
-                { "498", global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions498Error.CreateFromDiscriminatorValue },
-                { "499", global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions499Error.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions500Error.CreateFromDiscriminatorValue },
-                { "501", global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions501Error.CreateFromDiscriminatorValue },
-                { "503", global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions503Error.CreateFromDiscriminatorValue },
-                { "504", global::Soenneker.Cohere.OpenApiClient.Models.Transcriptions504Error.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200400Error.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200401Error.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200403Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200404Error.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200422Error.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200429Error.CreateFromDiscriminatorValue },
+                { "498", global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200498Error.CreateFromDiscriminatorValue },
+                { "499", global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200499Error.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200500Error.CreateFromDiscriminatorValue },
+                { "501", global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200501Error.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200503Error.CreateFromDiscriminatorValue },
+                { "504", global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200504Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Cohere.OpenApiClient.V2.Audio.Transcriptions.TranscriptionsPostResponse>(requestInfo, global::Soenneker.Cohere.OpenApiClient.V2.Audio.Transcriptions.TranscriptionsPostResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200>(requestInfo, global::Soenneker.Cohere.OpenApiClient.Models.CreateTranscription200.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Transcribe an audio file.

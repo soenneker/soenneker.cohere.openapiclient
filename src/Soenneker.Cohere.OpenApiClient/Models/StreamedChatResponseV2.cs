@@ -15,6 +15,50 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The delta property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponseV2_delta? Delta { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponseV2_delta Delta { get; set; }
+#endif
+        /// <summary>The event_type property</summary>
+        public global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponseV2_event_type? EventType { get; set; }
+        /// <summary>Unique identifier for the generated reply.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Id { get; set; }
+#nullable restore
+#else
+        public string Id { get; set; }
+#endif
+        /// <summary>The index property</summary>
+        public int? Index { get; set; }
+        /// <summary>The logprobs property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Cohere.OpenApiClient.Models.LogprobItem? Logprobs { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Cohere.OpenApiClient.Models.LogprobItem Logprobs { get; set; }
+#endif
+        /// <summary>The prompt property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Prompt { get; set; }
+#nullable restore
+#else
+        public string Prompt { get; set; }
+#endif
+        /// <summary>Union discriminator</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponseV2"/> and sets the default values.
         /// </summary>
@@ -40,6 +84,13 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "delta", n => { Delta = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponseV2_delta>(global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponseV2_delta.CreateFromDiscriminatorValue); } },
+                { "event_type", n => { EventType = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponseV2_event_type>(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
+                { "index", n => { Index = n.GetIntValue(); } },
+                { "logprobs", n => { Logprobs = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.LogprobItem>(global::Soenneker.Cohere.OpenApiClient.Models.LogprobItem.CreateFromDiscriminatorValue); } },
+                { "prompt", n => { Prompt = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -49,6 +100,13 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponseV2_delta>("delta", Delta);
+            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponseV2_event_type>("event_type", EventType);
+            writer.WriteStringValue("id", Id);
+            writer.WriteIntValue("index", Index);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.LogprobItem>("logprobs", Logprobs);
+            writer.WriteStringValue("prompt", Prompt);
+            writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

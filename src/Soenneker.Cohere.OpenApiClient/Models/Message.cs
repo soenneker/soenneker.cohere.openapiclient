@@ -43,7 +43,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             {
                 result.ChatMessage = new global::Soenneker.Cohere.OpenApiClient.Models.ChatMessage();
             }
-            else if("TOOL".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ChatToolMessage".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatToolMessage = new global::Soenneker.Cohere.OpenApiClient.Models.ChatToolMessage();
             }

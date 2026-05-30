@@ -17,7 +17,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The maximum number of tokens the model can use for thinking, which must be set to a positive integer.The model will stop thinking if it reaches the thinking token budget and will proceed with the response.</summary>
         public int? TokenBudget { get; set; }
-        /// <summary>Reasoning is enabled by default for models that support it, but can be turned off by setting `&quot;type&quot;: &quot;disabled&quot;`.</summary>
+        /// <summary>&quot;Reasoning is enabled by default for models that support it, but can be turned off by setting `\&quot;type\&quot;: \&quot;disabled\&quot;`.&quot;</summary>
         public global::Soenneker.Cohere.OpenApiClient.Models.Thinking_type? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.Thinking"/> and sets the default values.

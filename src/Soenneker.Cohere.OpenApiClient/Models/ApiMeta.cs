@@ -17,28 +17,28 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The api_version property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta_api_version? ApiVersion { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaApiVersion? ApiVersion { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta_api_version ApiVersion { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaApiVersion ApiVersion { get; set; }
 #endif
         /// <summary>The billed_units property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta_billed_units? BilledUnits { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaBilledUnits? BilledUnits { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta_billed_units BilledUnits { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaBilledUnits BilledUnits { get; set; }
 #endif
         /// <summary>The number of prompt tokens that hit the inference cache.</summary>
         public double? CachedTokens { get; set; }
         /// <summary>The tokens property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta_tokens? Tokens { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaTokens? Tokens { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta_tokens Tokens { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaTokens Tokens { get; set; }
 #endif
         /// <summary>The warnings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -73,10 +73,10 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "api_version", n => { ApiVersion = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta_api_version>(global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta_api_version.CreateFromDiscriminatorValue); } },
-                { "billed_units", n => { BilledUnits = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta_billed_units>(global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta_billed_units.CreateFromDiscriminatorValue); } },
+                { "api_version", n => { ApiVersion = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaApiVersion>(global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaApiVersion.CreateFromDiscriminatorValue); } },
+                { "billed_units", n => { BilledUnits = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaBilledUnits>(global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaBilledUnits.CreateFromDiscriminatorValue); } },
                 { "cached_tokens", n => { CachedTokens = n.GetDoubleValue(); } },
-                { "tokens", n => { Tokens = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta_tokens>(global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta_tokens.CreateFromDiscriminatorValue); } },
+                { "tokens", n => { Tokens = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaTokens>(global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaTokens.CreateFromDiscriminatorValue); } },
                 { "warnings", n => { Warnings = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -87,10 +87,10 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta_api_version>("api_version", ApiVersion);
-            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta_billed_units>("billed_units", BilledUnits);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaApiVersion>("api_version", ApiVersion);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaBilledUnits>("billed_units", BilledUnits);
             writer.WriteDoubleValue("cached_tokens", CachedTokens);
-            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta_tokens>("tokens", Tokens);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaTokens>("tokens", Tokens);
             writer.WriteCollectionOfPrimitiveValues<string>("warnings", Warnings);
             writer.WriteAdditionalData(AdditionalData);
         }

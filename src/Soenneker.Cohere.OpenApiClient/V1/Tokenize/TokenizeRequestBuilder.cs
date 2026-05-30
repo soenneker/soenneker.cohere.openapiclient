@@ -54,11 +54,11 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Tokenize
         /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Tokenize504Error">When receiving a 504 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Cohere.OpenApiClient.V1.Tokenize.TokenizePostResponse?> PostAsync(global::Soenneker.Cohere.OpenApiClient.V1.Tokenize.TokenizePostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Cohere.OpenApiClient.V1.Tokenize.TokenizePostResponse?> PostAsync(global::Soenneker.Cohere.OpenApiClient.Models.Tokenize body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Cohere.OpenApiClient.V1.Tokenize.TokenizePostResponse> PostAsync(global::Soenneker.Cohere.OpenApiClient.V1.Tokenize.TokenizePostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Cohere.OpenApiClient.V1.Tokenize.TokenizePostResponse> PostAsync(global::Soenneker.Cohere.OpenApiClient.Models.Tokenize body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -88,11 +88,11 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Tokenize
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Cohere.OpenApiClient.V1.Tokenize.TokenizePostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Cohere.OpenApiClient.Models.Tokenize body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(global::Soenneker.Cohere.OpenApiClient.V1.Tokenize.TokenizePostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Cohere.OpenApiClient.Models.Tokenize body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

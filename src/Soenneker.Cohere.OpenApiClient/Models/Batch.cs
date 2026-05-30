@@ -95,7 +95,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 #else
         public string OutputTokens { get; private set; }
 #endif
-        /// <summary>read-only. Current stage in the life-cycle of the batch.</summary>
+        /// <summary>&quot;The possible stages of a batch life-cycle. - BATCH_STATUS_UNSPECIFIED: Unspecified status. - BATCH_STATUS_QUEUED: The batch has been queued. - BATCH_STATUS_IN_PROGRESS: The batch is in-progress. - BATCH_STATUS_CANCELING: The batch is being canceled. - BATCH_STATUS_COMPLETED: The batch has been completed. - BATCH_STATUS_FAILED: The batch has failed. - BATCH_STATUS_CANCELED: The batch has been canceled.&quot;</summary>
         public global::Soenneker.Cohere.OpenApiClient.Models.BatchStatus? Status { get; private set; }
         /// <summary>read-only. More details about the reason for the status of a batch job.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

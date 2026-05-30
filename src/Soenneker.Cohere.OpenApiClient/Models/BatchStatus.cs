@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Cohere.OpenApiClient.Models
 {
-    /// <summary>read-only. Current stage in the life-cycle of the batch.</summary>
+    /// <summary>&quot;The possible stages of a batch life-cycle. - BATCH_STATUS_UNSPECIFIED: Unspecified status. - BATCH_STATUS_QUEUED: The batch has been queued. - BATCH_STATUS_IN_PROGRESS: The batch is in-progress. - BATCH_STATUS_CANCELING: The batch is being canceled. - BATCH_STATUS_COMPLETED: The batch has been completed. - BATCH_STATUS_FAILED: The batch has failed. - BATCH_STATUS_CANCELED: The batch has been canceled.&quot;</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum BatchStatus
     {

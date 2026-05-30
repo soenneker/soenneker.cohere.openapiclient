@@ -38,7 +38,7 @@ namespace Soenneker.Cohere.OpenApiClient.V2.Batches.WithIdCancel
         /// <summary>
         /// Cancels an in-progress batch
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Cohere.OpenApiClient.Models.CancelBatchResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Cohere.OpenApiClient.V2.Batches.WithIdCancel.WithIdCancelPostResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.BatchError">When receiving a 400 status code</exception>
@@ -49,11 +49,11 @@ namespace Soenneker.Cohere.OpenApiClient.V2.Batches.WithIdCancel
         /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.BatchError">When receiving a 503 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Cohere.OpenApiClient.Models.CancelBatchResponse?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Cohere.OpenApiClient.V2.Batches.WithIdCancel.WithIdCancelPostResponse?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Cohere.OpenApiClient.Models.CancelBatchResponse> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Cohere.OpenApiClient.V2.Batches.WithIdCancel.WithIdCancelPostResponse> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
@@ -66,7 +66,7 @@ namespace Soenneker.Cohere.OpenApiClient.V2.Batches.WithIdCancel
                 { "500", global::Soenneker.Cohere.OpenApiClient.Models.BatchError.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.Cohere.OpenApiClient.Models.BatchError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Cohere.OpenApiClient.Models.CancelBatchResponse>(requestInfo, global::Soenneker.Cohere.OpenApiClient.Models.CancelBatchResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Cohere.OpenApiClient.V2.Batches.WithIdCancel.WithIdCancelPostResponse>(requestInfo, global::Soenneker.Cohere.OpenApiClient.V2.Batches.WithIdCancel.WithIdCancelPostResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Cancels an in-progress batch

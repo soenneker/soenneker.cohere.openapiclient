@@ -17,10 +17,10 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The function to be executed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ToolV2_function? Function { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ToolV2Function? Function { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ToolV2_function Function { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ToolV2Function Function { get; set; }
 #endif
         /// <summary>The type property</summary>
         public global::Soenneker.Cohere.OpenApiClient.Models.ToolV2_type? Type { get; set; }
@@ -49,7 +49,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "function", n => { Function = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolV2_function>(global::Soenneker.Cohere.OpenApiClient.Models.ToolV2_function.CreateFromDiscriminatorValue); } },
+                { "function", n => { Function = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolV2Function>(global::Soenneker.Cohere.OpenApiClient.Models.ToolV2Function.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolV2_type>(); } },
             };
         }
@@ -60,7 +60,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolV2_function>("function", Function);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolV2Function>("function", Function);
             writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolV2_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

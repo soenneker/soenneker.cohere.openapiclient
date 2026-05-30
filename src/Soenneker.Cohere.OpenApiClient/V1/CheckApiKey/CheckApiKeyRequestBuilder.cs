@@ -36,47 +36,47 @@ namespace Soenneker.Cohere.OpenApiClient.V1.CheckApiKey
         /// <summary>
         /// Checks that the api key in the Authorization header is valid and active
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Cohere.OpenApiClient.V1.CheckApiKey.CheckApiKeyPostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey400Error">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey401Error">When receiving a 401 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey403Error">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey404Error">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey422Error">When receiving a 422 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey429Error">When receiving a 429 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey498Error">When receiving a 498 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey499Error">When receiving a 499 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey500Error">When receiving a 500 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey501Error">When receiving a 501 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey503Error">When receiving a 503 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey504Error">When receiving a 504 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200400Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200401Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200403Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200422Error">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200429Error">When receiving a 429 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200498Error">When receiving a 498 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200499Error">When receiving a 499 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200500Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200501Error">When receiving a 501 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200503Error">When receiving a 503 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200504Error">When receiving a 504 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Cohere.OpenApiClient.V1.CheckApiKey.CheckApiKeyPostResponse?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Cohere.OpenApiClient.V1.CheckApiKey.CheckApiKeyPostResponse> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey400Error.CreateFromDiscriminatorValue },
-                { "401", global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey401Error.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey403Error.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey404Error.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey422Error.CreateFromDiscriminatorValue },
-                { "429", global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey429Error.CreateFromDiscriminatorValue },
-                { "498", global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey498Error.CreateFromDiscriminatorValue },
-                { "499", global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey499Error.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey500Error.CreateFromDiscriminatorValue },
-                { "501", global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey501Error.CreateFromDiscriminatorValue },
-                { "503", global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey503Error.CreateFromDiscriminatorValue },
-                { "504", global::Soenneker.Cohere.OpenApiClient.Models.CheckApiKey504Error.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200400Error.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200401Error.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200403Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200404Error.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200422Error.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200429Error.CreateFromDiscriminatorValue },
+                { "498", global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200498Error.CreateFromDiscriminatorValue },
+                { "499", global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200499Error.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200500Error.CreateFromDiscriminatorValue },
+                { "501", global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200501Error.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200503Error.CreateFromDiscriminatorValue },
+                { "504", global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200504Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Cohere.OpenApiClient.V1.CheckApiKey.CheckApiKeyPostResponse>(requestInfo, global::Soenneker.Cohere.OpenApiClient.V1.CheckApiKey.CheckApiKeyPostResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200>(requestInfo, global::Soenneker.Cohere.OpenApiClient.Models.CheckAPIKey200.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Checks that the api key in the Authorization header is valid and active

@@ -17,20 +17,20 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The billed_units property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.Usage_billed_units? BilledUnits { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.UsageBilledUnits? BilledUnits { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.Usage_billed_units BilledUnits { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.UsageBilledUnits BilledUnits { get; set; }
 #endif
         /// <summary>The number of prompt tokens that hit the inference cache.</summary>
         public double? CachedTokens { get; set; }
         /// <summary>The tokens property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.Usage_tokens? Tokens { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.UsageTokens? Tokens { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.Usage_tokens Tokens { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.UsageTokens Tokens { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.Usage"/> and sets the default values.
@@ -57,9 +57,9 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "billed_units", n => { BilledUnits = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.Usage_billed_units>(global::Soenneker.Cohere.OpenApiClient.Models.Usage_billed_units.CreateFromDiscriminatorValue); } },
+                { "billed_units", n => { BilledUnits = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.UsageBilledUnits>(global::Soenneker.Cohere.OpenApiClient.Models.UsageBilledUnits.CreateFromDiscriminatorValue); } },
                 { "cached_tokens", n => { CachedTokens = n.GetDoubleValue(); } },
-                { "tokens", n => { Tokens = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.Usage_tokens>(global::Soenneker.Cohere.OpenApiClient.Models.Usage_tokens.CreateFromDiscriminatorValue); } },
+                { "tokens", n => { Tokens = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.UsageTokens>(global::Soenneker.Cohere.OpenApiClient.Models.UsageTokens.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -69,9 +69,9 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.Usage_billed_units>("billed_units", BilledUnits);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.UsageBilledUnits>("billed_units", BilledUnits);
             writer.WriteDoubleValue("cached_tokens", CachedTokens);
-            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.Usage_tokens>("tokens", Tokens);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.UsageTokens>("tokens", Tokens);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

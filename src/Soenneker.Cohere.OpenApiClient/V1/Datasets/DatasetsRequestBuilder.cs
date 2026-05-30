@@ -100,49 +100,49 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Datasets
         /// <summary>
         /// Create a dataset by uploading a file. See [&apos;Dataset Creation&apos;](https://docs.cohere.com/docs/datasets#dataset-creation) for more information.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Cohere.OpenApiClient.V1.Datasets.DatasetsPostResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Datasets400Error">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Datasets401Error">When receiving a 401 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Datasets403Error">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Datasets404Error">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Datasets422Error">When receiving a 422 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Datasets429Error">When receiving a 429 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Datasets498Error">When receiving a 498 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Datasets499Error">When receiving a 499 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Datasets500Error">When receiving a 500 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Datasets501Error">When receiving a 501 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Datasets503Error">When receiving a 503 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.Datasets504Error">When receiving a 504 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200400Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200401Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200403Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200422Error">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200429Error">When receiving a 429 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200498Error">When receiving a 498 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200499Error">When receiving a 499 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200500Error">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200501Error">When receiving a 501 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200503Error">When receiving a 503 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200504Error">When receiving a 504 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Cohere.OpenApiClient.V1.Datasets.DatasetsPostResponse?> PostAsync(MultipartBody body, Action<RequestConfiguration<global::Soenneker.Cohere.OpenApiClient.V1.Datasets.DatasetsRequestBuilder.DatasetsRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200?> PostAsync(MultipartBody body, Action<RequestConfiguration<global::Soenneker.Cohere.OpenApiClient.V1.Datasets.DatasetsRequestBuilder.DatasetsRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Cohere.OpenApiClient.V1.Datasets.DatasetsPostResponse> PostAsync(MultipartBody body, Action<RequestConfiguration<global::Soenneker.Cohere.OpenApiClient.V1.Datasets.DatasetsRequestBuilder.DatasetsRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200> PostAsync(MultipartBody body, Action<RequestConfiguration<global::Soenneker.Cohere.OpenApiClient.V1.Datasets.DatasetsRequestBuilder.DatasetsRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Cohere.OpenApiClient.Models.Datasets400Error.CreateFromDiscriminatorValue },
-                { "401", global::Soenneker.Cohere.OpenApiClient.Models.Datasets401Error.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.Cohere.OpenApiClient.Models.Datasets403Error.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.Cohere.OpenApiClient.Models.Datasets404Error.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.Cohere.OpenApiClient.Models.Datasets422Error.CreateFromDiscriminatorValue },
-                { "429", global::Soenneker.Cohere.OpenApiClient.Models.Datasets429Error.CreateFromDiscriminatorValue },
-                { "498", global::Soenneker.Cohere.OpenApiClient.Models.Datasets498Error.CreateFromDiscriminatorValue },
-                { "499", global::Soenneker.Cohere.OpenApiClient.Models.Datasets499Error.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Cohere.OpenApiClient.Models.Datasets500Error.CreateFromDiscriminatorValue },
-                { "501", global::Soenneker.Cohere.OpenApiClient.Models.Datasets501Error.CreateFromDiscriminatorValue },
-                { "503", global::Soenneker.Cohere.OpenApiClient.Models.Datasets503Error.CreateFromDiscriminatorValue },
-                { "504", global::Soenneker.Cohere.OpenApiClient.Models.Datasets504Error.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200400Error.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200401Error.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200403Error.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200404Error.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200422Error.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200429Error.CreateFromDiscriminatorValue },
+                { "498", global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200498Error.CreateFromDiscriminatorValue },
+                { "499", global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200499Error.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200500Error.CreateFromDiscriminatorValue },
+                { "501", global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200501Error.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200503Error.CreateFromDiscriminatorValue },
+                { "504", global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200504Error.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Cohere.OpenApiClient.V1.Datasets.DatasetsPostResponse>(requestInfo, global::Soenneker.Cohere.OpenApiClient.V1.Datasets.DatasetsPostResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200>(requestInfo, global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List datasets that have been created.

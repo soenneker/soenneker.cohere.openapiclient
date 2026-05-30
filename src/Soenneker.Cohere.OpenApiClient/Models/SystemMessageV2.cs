@@ -18,10 +18,10 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.SystemMessageV2.SystemMessageV2_content? Content { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.UnionBranch? Content { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.SystemMessageV2.SystemMessageV2_content Content { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.UnionBranch Content { get; set; }
 #endif
         /// <summary>The role property</summary>
         public global::Soenneker.Cohere.OpenApiClient.Models.SystemMessageV2_role? Role { get; set; }
@@ -50,7 +50,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "content", n => { Content = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.SystemMessageV2.SystemMessageV2_content>(global::Soenneker.Cohere.OpenApiClient.Models.SystemMessageV2.SystemMessageV2_content.CreateFromDiscriminatorValue); } },
+                { "content", n => { Content = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.UnionBranch>(global::Soenneker.Cohere.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue); } },
                 { "role", n => { Role = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.SystemMessageV2_role>(); } },
             };
         }
@@ -61,76 +61,9 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.SystemMessageV2.SystemMessageV2_content>("content", Content);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.UnionBranch>("content", Content);
             writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.SystemMessageV2_role>("role", Role);
             writer.WriteAdditionalData(AdditionalData);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="string"/>, List&lt;global::Soenneker.Cohere.OpenApiClient.Models.ChatTextContent&gt;
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class SystemMessageV2_content : IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type List&lt;global::Soenneker.Cohere.OpenApiClient.Models.ChatTextContent&gt;</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public List<global::Soenneker.Cohere.OpenApiClient.Models.ChatTextContent>? ChatTextContent { get; set; }
-#nullable restore
-#else
-            public List<global::Soenneker.Cohere.OpenApiClient.Models.ChatTextContent> ChatTextContent { get; set; }
-#endif
-            /// <summary>Composed type representation for type <see cref="string"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public string? String { get; set; }
-#nullable restore
-#else
-            public string String { get; set; }
-#endif
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::Soenneker.Cohere.OpenApiClient.Models.SystemMessageV2.SystemMessageV2_content"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::Soenneker.Cohere.OpenApiClient.Models.SystemMessageV2.SystemMessageV2_content CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-                var result = new global::Soenneker.Cohere.OpenApiClient.Models.SystemMessageV2.SystemMessageV2_content();
-                if(parseNode.GetStringValue() is string stringValue)
-                {
-                    result.String = stringValue;
-                }
-                else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.ChatTextContent>(global::Soenneker.Cohere.OpenApiClient.Models.ChatTextContent.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.Cohere.OpenApiClient.Models.ChatTextContent> chatTextContentValue)
-                {
-                    result.ChatTextContent = chatTextContentValue;
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-                if(String != null)
-                {
-                    writer.WriteStringValue(null, String);
-                }
-                else if(ChatTextContent != null)
-                {
-                    writer.WriteCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.ChatTextContent>(null, ChatTextContent);
-                }
-            }
         }
     }
 }

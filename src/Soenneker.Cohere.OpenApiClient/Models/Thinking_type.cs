@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Cohere.OpenApiClient.Models
 {
-    /// <summary>Reasoning is enabled by default for models that support it, but can be turned off by setting `&quot;type&quot;: &quot;disabled&quot;`.</summary>
+    /// <summary>&quot;Reasoning is enabled by default for models that support it, but can be turned off by setting `\&quot;type\&quot;: \&quot;disabled\&quot;`.&quot;</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Thinking_type
     {

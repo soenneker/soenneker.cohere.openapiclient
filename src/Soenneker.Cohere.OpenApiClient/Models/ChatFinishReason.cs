@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Cohere.OpenApiClient.Models
 {
-    /// <summary>The reason a chat request has finished.- **complete**: The model finished sending a complete message.- **max_tokens**: The number of generated tokens exceeded the model&apos;s context length or the value specified via the `max_tokens` parameter.- **stop_sequence**: One of the provided `stop_sequence` entries was reached in the model&apos;s generation.- **tool_call**: The model generated a Tool Call and is expecting a Tool Message in return- **error**: The generation failed due to an internal error- **timeout**: The generation was stopped because it exceeded the allowed time limit.</summary>
+    /// <summary>&quot;The reason a chat request has finished.- **complete**: The model finished sending a complete message.- **max_tokens**: The number of generated tokens exceeded the model&apos;s context length or the value specified via the `max_tokens` parameter.- **stop_sequence**: One of the provided `stop_sequence` entries was reached in the model&apos;s generation.- **tool_call**: The model generated a Tool Call and is expecting a Tool Message in return- **error**: The generation failed due to an internal error- **timeout**: The generation was stopped because it exceeded the allowed time limit.&quot;</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ChatFinishReason
     {

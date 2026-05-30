@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Cohere.OpenApiClient.Models
 {
     /// <summary>
-    /// The input parameters of the tool. Accepts a dictionary where the key is the name of the parameter and the value is the parameter spec. Valid parameter names contain only the characters `a-z`, `A-Z`, `0-9`, `_` and must not begin with a digit.```{  &quot;my_param&quot;: {    &quot;description&quot;: &lt;string&gt;,    &quot;type&quot;: &lt;string&gt;, // any python data type, such as &apos;str&apos;, &apos;bool&apos;    &quot;required&quot;: &lt;boolean&gt;  }}```
+    /// &quot;The input parameters of the tool. Accepts a dictionary where the key is the name of the parameter and the value is the parameter spec. Valid parameter names contain only the characters `a-z`, `A-Z`, `0-9`, `_` and must not begin with a digit.```{  \&quot;my_param\&quot;: {    \&quot;description\&quot;: &lt;string&gt;,    \&quot;type\&quot;: &lt;string&gt;, // any python data type, such as &apos;str&apos;, &apos;bool&apos;    \&quot;required\&quot;: &lt;boolean&gt;  }}```&quot;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Tool_parameter_definitions : IAdditionalDataHolder, IParsable

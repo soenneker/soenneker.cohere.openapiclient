@@ -15,7 +15,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Defaults to `&quot;enabled&quot;`.Citations are enabled by default for models that support it, but can be turned off by setting `&quot;type&quot;: &quot;disabled&quot;`.</summary>
+        /// <summary>&quot;Defaults to `\&quot;enabled\&quot;`.Citations are enabled by default for models that support it, but can be turned off by setting `\&quot;type\&quot;: \&quot;disabled\&quot;`.&quot;</summary>
         public global::Soenneker.Cohere.OpenApiClient.Models.CitationOptions_mode? Mode { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.CitationOptions"/> and sets the default values.

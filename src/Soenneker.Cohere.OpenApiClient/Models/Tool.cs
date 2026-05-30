@@ -30,7 +30,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The input parameters of the tool. Accepts a dictionary where the key is the name of the parameter and the value is the parameter spec. Valid parameter names contain only the characters `a-z`, `A-Z`, `0-9`, `_` and must not begin with a digit.```{  &quot;my_param&quot;: {    &quot;description&quot;: &lt;string&gt;,    &quot;type&quot;: &lt;string&gt;, // any python data type, such as &apos;str&apos;, &apos;bool&apos;    &quot;required&quot;: &lt;boolean&gt;  }}```</summary>
+        /// <summary>&quot;The input parameters of the tool. Accepts a dictionary where the key is the name of the parameter and the value is the parameter spec. Valid parameter names contain only the characters `a-z`, `A-Z`, `0-9`, `_` and must not begin with a digit.```{  \&quot;my_param\&quot;: {    \&quot;description\&quot;: &lt;string&gt;,    \&quot;type\&quot;: &lt;string&gt;, // any python data type, such as &apos;str&apos;, &apos;bool&apos;    \&quot;required\&quot;: &lt;boolean&gt;  }}```&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Cohere.OpenApiClient.Models.Tool_parameter_definitions? ParameterDefinitions { get; set; }

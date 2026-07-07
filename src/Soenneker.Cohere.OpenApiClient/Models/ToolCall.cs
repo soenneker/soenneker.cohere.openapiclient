@@ -26,10 +26,10 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The name and value of the parameters to use when invoking a tool.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ToolCall_parameters? Parameters { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ToolCallParametersProperty? Parameters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ToolCall_parameters Parameters { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ToolCallParametersProperty Parameters { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ToolCall"/> and sets the default values.
@@ -57,7 +57,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolCall_parameters>(global::Soenneker.Cohere.OpenApiClient.Models.ToolCall_parameters.CreateFromDiscriminatorValue); } },
+                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolCallParametersProperty>(global::Soenneker.Cohere.OpenApiClient.Models.ToolCallParametersProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -68,7 +68,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolCall_parameters>("parameters", Parameters);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolCallParametersProperty>("parameters", Parameters);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

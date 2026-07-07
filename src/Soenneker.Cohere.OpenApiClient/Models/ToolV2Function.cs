@@ -34,10 +34,10 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The parameters of the function as a JSON schema.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ToolV2Function_parameters? Parameters { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ToolV2FunctionParametersProperty? Parameters { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ToolV2Function_parameters Parameters { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ToolV2FunctionParametersProperty Parameters { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ToolV2Function"/> and sets the default values.
@@ -66,7 +66,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             {
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolV2Function_parameters>(global::Soenneker.Cohere.OpenApiClient.Models.ToolV2Function_parameters.CreateFromDiscriminatorValue); } },
+                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolV2FunctionParametersProperty>(global::Soenneker.Cohere.OpenApiClient.Models.ToolV2FunctionParametersProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -78,7 +78,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolV2Function_parameters>("parameters", Parameters);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolV2FunctionParametersProperty>("parameters", Parameters);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

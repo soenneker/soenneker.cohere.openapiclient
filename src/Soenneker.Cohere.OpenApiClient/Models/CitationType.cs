@@ -9,15 +9,15 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     {
         [EnumMember(Value = "TEXT_CONTENT")]
         #pragma warning disable CS1591
-        TEXT_CONTENT,
+        TextContent,
         #pragma warning restore CS1591
         [EnumMember(Value = "THINKING_CONTENT")]
         #pragma warning disable CS1591
-        THINKING_CONTENT,
+        ThinkingContent,
         #pragma warning restore CS1591
         [EnumMember(Value = "PLAN")]
         #pragma warning disable CS1591
-        PLAN,
+        Plan,
         #pragma warning restore CS1591
     }
 }

@@ -18,10 +18,10 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>A relevant document that the model can cite to generate a more accurate reply. Each document is a string-any dictionary.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.Document_data? Data { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.DocumentDataProperty? Data { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.Document_data Data { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.DocumentDataProperty Data { get; set; }
 #endif
         /// <summary>Unique identifier for this document which will be referenced in citations. If not provided an ID will be automatically generated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -56,7 +56,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.Document_data>(global::Soenneker.Cohere.OpenApiClient.Models.Document_data.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.DocumentDataProperty>(global::Soenneker.Cohere.OpenApiClient.Models.DocumentDataProperty.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
             };
         }
@@ -67,7 +67,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.Document_data>("data", Data);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.DocumentDataProperty>("data", Data);
             writer.WriteStringValue("id", Id);
             writer.WriteAdditionalData(AdditionalData);
         }

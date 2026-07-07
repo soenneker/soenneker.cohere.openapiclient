@@ -18,13 +18,13 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The delta property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponseV2_delta? Delta { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatMessageStartEventAllOf2Delta? Delta { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponseV2_delta Delta { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatMessageStartEventAllOf2Delta Delta { get; set; }
 #endif
         /// <summary>The event_type property</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponseV2_event_type? EventType { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatStreamEventEventType? EventType { get; set; }
         /// <summary>Unique identifier for the generated reply.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -84,8 +84,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "delta", n => { Delta = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponseV2_delta>(global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponseV2_delta.CreateFromDiscriminatorValue); } },
-                { "event_type", n => { EventType = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponseV2_event_type>(); } },
+                { "delta", n => { Delta = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatMessageStartEventAllOf2Delta>(global::Soenneker.Cohere.OpenApiClient.Models.ChatMessageStartEventAllOf2Delta.CreateFromDiscriminatorValue); } },
+                { "event_type", n => { EventType = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatStreamEventEventType>(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "index", n => { Index = n.GetIntValue(); } },
                 { "logprobs", n => { Logprobs = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.LogprobItem>(global::Soenneker.Cohere.OpenApiClient.Models.LogprobItem.CreateFromDiscriminatorValue); } },
@@ -100,8 +100,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponseV2_delta>("delta", Delta);
-            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponseV2_event_type>("event_type", EventType);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatMessageStartEventAllOf2Delta>("delta", Delta);
+            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatStreamEventEventType>("event_type", EventType);
             writer.WriteStringValue("id", Id);
             writer.WriteIntValue("index", Index);
             writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.LogprobItem>("logprobs", Logprobs);

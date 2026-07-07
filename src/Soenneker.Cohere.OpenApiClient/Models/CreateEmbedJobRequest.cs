@@ -49,14 +49,13 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>One of `START|END` to specify how the API will handle inputs longer than the maximum token length.Passing `START` will discard the start of the input. `END` will discard the end of the input. In both cases, input is discarded until the remaining input is exactly the maximum input token length for the model.</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.CreateEmbedJobRequest_truncate? Truncate { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.CreateEmbedJobRequestTruncate? Truncate { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.CreateEmbedJobRequest"/> and sets the default values.
         /// </summary>
         public CreateEmbedJobRequest()
         {
             AdditionalData = new Dictionary<string, object>();
-            Truncate = global::Soenneker.Cohere.OpenApiClient.Models.CreateEmbedJobRequest_truncate.END;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -81,7 +80,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
                 { "input_type", n => { InputType = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedInputType>(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "truncate", n => { Truncate = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.CreateEmbedJobRequest_truncate>(); } },
+                { "truncate", n => { Truncate = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.CreateEmbedJobRequestTruncate>(); } },
             };
         }
         /// <summary>
@@ -96,7 +95,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedInputType>("input_type", InputType);
             writer.WriteStringValue("model", Model);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.CreateEmbedJobRequest_truncate>("truncate", Truncate);
+            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.CreateEmbedJobRequestTruncate>("truncate", Truncate);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

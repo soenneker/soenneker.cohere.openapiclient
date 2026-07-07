@@ -40,7 +40,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public string EventType { get; set; }
 #endif
         /// <summary>- `COMPLETE` - the model sent back a finished reply- `ERROR_LIMIT` - the reply was cut off because the model reached the maximum number of tokens for its context length- `MAX_TOKENS` - the reply was cut off because the model reached the maximum number of tokens specified by the max_tokens parameter- `ERROR` - something went wrong when generating the reply- `ERROR_TOXIC` - the model generated a reply that was deemed toxic</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponse_finish_reason? FinishReason { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatStreamEndEventFinishReason? FinishReason { get; set; }
         /// <summary>Unique identifier for the generated reply. Useful for submitting feedback.</summary>
         public Guid? GenerationId { get; set; }
         /// <summary>The prompt property</summary>
@@ -127,7 +127,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
                 { "citations", n => { Citations = n.GetCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.ChatCitation>(global::Soenneker.Cohere.OpenApiClient.Models.ChatCitation.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "documents", n => { Documents = n.GetCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.ChatDocument>(global::Soenneker.Cohere.OpenApiClient.Models.ChatDocument.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "event_type", n => { EventType = n.GetStringValue(); } },
-                { "finish_reason", n => { FinishReason = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponse_finish_reason>(); } },
+                { "finish_reason", n => { FinishReason = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatStreamEndEventFinishReason>(); } },
                 { "generation_id", n => { GenerationId = n.GetGuidValue(); } },
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.NonStreamedChatResponse>(global::Soenneker.Cohere.OpenApiClient.Models.NonStreamedChatResponse.CreateFromDiscriminatorValue); } },
@@ -148,7 +148,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.ChatCitation>("citations", Citations);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.ChatDocument>("documents", Documents);
             writer.WriteStringValue("event_type", EventType);
-            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponse_finish_reason>("finish_reason", FinishReason);
+            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatStreamEndEventFinishReason>("finish_reason", FinishReason);
             writer.WriteGuidValue("generation_id", GenerationId);
             writer.WriteStringValue("prompt", Prompt);
             writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.NonStreamedChatResponse>("response", Response);

@@ -10,7 +10,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     {
         [EnumMember(Value = "float")]
         #pragma warning disable CS1591
-        Float,
+        FloatValue,
         #pragma warning restore CS1591
         [EnumMember(Value = "int8")]
         #pragma warning disable CS1591

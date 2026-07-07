@@ -25,10 +25,10 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The tool_output property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatToolSource_tool_output? ToolOutput { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatToolSourceToolOutputProperty? ToolOutput { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatToolSource_tool_output ToolOutput { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatToolSourceToolOutputProperty ToolOutput { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ChatToolSource"/> and sets the default values.
@@ -56,7 +56,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "tool_output", n => { ToolOutput = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatToolSource_tool_output>(global::Soenneker.Cohere.OpenApiClient.Models.ChatToolSource_tool_output.CreateFromDiscriminatorValue); } },
+                { "tool_output", n => { ToolOutput = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatToolSourceToolOutputProperty>(global::Soenneker.Cohere.OpenApiClient.Models.ChatToolSourceToolOutputProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatToolSource_tool_output>("tool_output", ToolOutput);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatToolSourceToolOutputProperty>("tool_output", ToolOutput);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

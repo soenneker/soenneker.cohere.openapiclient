@@ -33,10 +33,10 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>&quot;The input parameters of the tool. Accepts a dictionary where the key is the name of the parameter and the value is the parameter spec. Valid parameter names contain only the characters `a-z`, `A-Z`, `0-9`, `_` and must not begin with a digit.```{  \&quot;my_param\&quot;: {    \&quot;description\&quot;: &lt;string&gt;,    \&quot;type\&quot;: &lt;string&gt;, // any python data type, such as &apos;str&apos;, &apos;bool&apos;    \&quot;required\&quot;: &lt;boolean&gt;  }}```&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.Tool_parameter_definitions? ParameterDefinitions { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ToolParameterDefinitionsProperty? ParameterDefinitions { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.Tool_parameter_definitions ParameterDefinitions { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ToolParameterDefinitionsProperty ParameterDefinitions { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.Tool"/> and sets the default values.
@@ -65,7 +65,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             {
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "parameter_definitions", n => { ParameterDefinitions = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.Tool_parameter_definitions>(global::Soenneker.Cohere.OpenApiClient.Models.Tool_parameter_definitions.CreateFromDiscriminatorValue); } },
+                { "parameter_definitions", n => { ParameterDefinitions = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolParameterDefinitionsProperty>(global::Soenneker.Cohere.OpenApiClient.Models.ToolParameterDefinitionsProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -77,7 +77,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.Tool_parameter_definitions>("parameter_definitions", ParameterDefinitions);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolParameterDefinitionsProperty>("parameter_definitions", ParameterDefinitions);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

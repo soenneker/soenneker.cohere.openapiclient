@@ -16,7 +16,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>&quot;Defaults to `\&quot;enabled\&quot;`.Citations are enabled by default for models that support it, but can be turned off by setting `\&quot;type\&quot;: \&quot;disabled\&quot;`.&quot;</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.CitationOptions_mode? Mode { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.CitationOptionsMode? Mode { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.CitationOptions"/> and sets the default values.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "mode", n => { Mode = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.CitationOptions_mode>(); } },
+                { "mode", n => { Mode = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.CitationOptionsMode>(); } },
             };
         }
         /// <summary>
@@ -52,7 +52,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.CitationOptions_mode>("mode", Mode);
+            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.CitationOptionsMode>("mode", Mode);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -13,7 +13,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "json_object")]
         #pragma warning disable CS1591
-        Json_object,
+        JsonObject,
         #pragma warning restore CS1591
     }
 }

@@ -9,31 +9,31 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     {
         [EnumMember(Value = "BATCH_STATUS_UNSPECIFIED")]
         #pragma warning disable CS1591
-        BATCH_STATUS_UNSPECIFIED,
+        BatchStatusUnspecified,
         #pragma warning restore CS1591
         [EnumMember(Value = "BATCH_STATUS_QUEUED")]
         #pragma warning disable CS1591
-        BATCH_STATUS_QUEUED,
+        BatchStatusQueued,
         #pragma warning restore CS1591
         [EnumMember(Value = "BATCH_STATUS_IN_PROGRESS")]
         #pragma warning disable CS1591
-        BATCH_STATUS_IN_PROGRESS,
+        BatchStatusInProgress,
         #pragma warning restore CS1591
         [EnumMember(Value = "BATCH_STATUS_CANCELING")]
         #pragma warning disable CS1591
-        BATCH_STATUS_CANCELING,
+        BatchStatusCanceling,
         #pragma warning restore CS1591
         [EnumMember(Value = "BATCH_STATUS_COMPLETED")]
         #pragma warning disable CS1591
-        BATCH_STATUS_COMPLETED,
+        BatchStatusCompleted,
         #pragma warning restore CS1591
         [EnumMember(Value = "BATCH_STATUS_FAILED")]
         #pragma warning disable CS1591
-        BATCH_STATUS_FAILED,
+        BatchStatusFailed,
         #pragma warning restore CS1591
         [EnumMember(Value = "BATCH_STATUS_CANCELED")]
         #pragma warning disable CS1591
-        BATCH_STATUS_CANCELED,
+        BatchStatusCanceled,
         #pragma warning restore CS1591
     }
 }

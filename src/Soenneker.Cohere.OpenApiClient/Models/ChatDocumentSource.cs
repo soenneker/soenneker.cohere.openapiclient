@@ -18,10 +18,10 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The document property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatDocumentSource_document? Document { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatDocumentSourceDocumentProperty? Document { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatDocumentSource_document Document { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatDocumentSourceDocumentProperty Document { get; set; }
 #endif
         /// <summary>The unique identifier of the document</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -56,7 +56,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "document", n => { Document = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatDocumentSource_document>(global::Soenneker.Cohere.OpenApiClient.Models.ChatDocumentSource_document.CreateFromDiscriminatorValue); } },
+                { "document", n => { Document = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatDocumentSourceDocumentProperty>(global::Soenneker.Cohere.OpenApiClient.Models.ChatDocumentSourceDocumentProperty.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
             };
         }
@@ -67,7 +67,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatDocumentSource_document>("document", Document);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatDocumentSourceDocumentProperty>("document", Document);
             writer.WriteStringValue("id", Id);
             writer.WriteAdditionalData(AdditionalData);
         }

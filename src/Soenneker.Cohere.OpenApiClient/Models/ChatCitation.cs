@@ -36,7 +36,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public string Text { get; set; }
 #endif
         /// <summary>The type of citation which indicates what part of the response the citation is for.</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatCitation_type? Type { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatCitationType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ChatCitation"/> and sets the default values.
         /// </summary>
@@ -66,7 +66,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
                 { "end", n => { End = n.GetIntValue(); } },
                 { "start", n => { Start = n.GetIntValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatCitation_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatCitationType>(); } },
             };
         }
         /// <summary>
@@ -80,7 +80,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteIntValue("end", End);
             writer.WriteIntValue("start", Start);
             writer.WriteStringValue("text", Text);
-            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatCitation_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatCitationType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

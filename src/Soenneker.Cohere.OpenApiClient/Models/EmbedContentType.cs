@@ -14,7 +14,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         #pragma warning restore CS1591
         [EnumMember(Value = "image_url")]
         #pragma warning disable CS1591
-        Image_url,
+        ImageUrl,
         #pragma warning restore CS1591
     }
 }

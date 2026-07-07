@@ -113,7 +113,6 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public Batch()
         {
             AdditionalData = new Dictionary<string, object>();
-            Status = global::Soenneker.Cohere.OpenApiClient.Models.BatchStatus.BATCH_STATUS_UNSPECIFIED;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

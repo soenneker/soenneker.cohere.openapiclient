@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "24B4ACE401FE1B9D7BEF56F2214C86FA7852D4CF545E002F41E19CB964D3C8C1128204D6A86B9CEF92E71AD5E18104AC00AAEE414C53EF7A05F00105338132AC",
+  "descriptionHash": "6DA00FB1C552B036322AB66F0201C8B3FDB06DFF31C3B9F9798AF4B8D9D2C8F43141A843C28DE9CC4BAE9345F4D481DD0E71B59B0302F4FF1B7D4142BB025436",
   "descriptionLocation": "../../fixed.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.31.1",
+  "kiotaVersion": "1.33.0",
   "clientClassName": "CohereOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.Cohere.OpenApiClient",
@@ -30,5 +30,6 @@
   ],
   "includePatterns": [],
   "excludePatterns": [],
-  "disabledValidationRules": []
+  "disabledValidationRules": [],
+  "allowedExternalOrigins": []
 }

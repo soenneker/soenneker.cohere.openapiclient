@@ -47,7 +47,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta Meta { get; set; }
 #endif
         /// <summary>The response_type property</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponse_response_type? ResponseType { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponseResponseType? ResponseType { get; set; }
         /// <summary>The text entries for which embeddings were returned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -85,7 +85,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "images", n => { Images = n.GetCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.Image>(global::Soenneker.Cohere.OpenApiClient.Models.Image.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "meta", n => { Meta = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta>(global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta.CreateFromDiscriminatorValue); } },
-                { "response_type", n => { ResponseType = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponse_response_type>(); } },
+                { "response_type", n => { ResponseType = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponseResponseType>(); } },
                 { "texts", n => { Texts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -100,7 +100,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.Image>("images", Images);
             writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta>("meta", Meta);
-            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponse_response_type>("response_type", ResponseType);
+            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponseResponseType>("response_type", ResponseType);
             writer.WriteCollectionOfPrimitiveValues<string>("texts", Texts);
             writer.WriteAdditionalData(AdditionalData);
         }

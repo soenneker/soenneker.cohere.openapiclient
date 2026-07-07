@@ -39,18 +39,18 @@ namespace Soenneker.Cohere.OpenApiClient.V1.ModelsRequests.Item
         /// <returns>A <see cref="global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse400Error">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse401Error">When receiving a 401 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse403Error">When receiving a 403 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse404Error">When receiving a 404 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse422Error">When receiving a 422 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse429Error">When receiving a 429 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse498Error">When receiving a 498 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse499Error">When receiving a 499 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse500Error">When receiving a 500 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse501Error">When receiving a 501 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse503Error">When receiving a 503 status code</exception>
-        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse504Error">When receiving a 504 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.BadRequestResponse">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.UnauthorizedResponse">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.ForbiddenResponse">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.NotFoundResponse">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.UnprocessableEntityResponse">When receiving a 422 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.RateLimitResponse">When receiving a 429 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.InvalidTokenResponse">When receiving a 498 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.RequestCancelledResponse">When receiving a 499 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.InternalServerErrorResponse">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.NotImplementedResponse">When receiving a 501 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.ServiceUnavailableResponse">When receiving a 503 status code</exception>
+        /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.GatewayTimeoutResponse">When receiving a 504 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -63,18 +63,18 @@ namespace Soenneker.Cohere.OpenApiClient.V1.ModelsRequests.Item
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse400Error.CreateFromDiscriminatorValue },
-                { "401", global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse401Error.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse403Error.CreateFromDiscriminatorValue },
-                { "404", global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse404Error.CreateFromDiscriminatorValue },
-                { "422", global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse422Error.CreateFromDiscriminatorValue },
-                { "429", global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse429Error.CreateFromDiscriminatorValue },
-                { "498", global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse498Error.CreateFromDiscriminatorValue },
-                { "499", global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse499Error.CreateFromDiscriminatorValue },
-                { "500", global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse500Error.CreateFromDiscriminatorValue },
-                { "501", global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse501Error.CreateFromDiscriminatorValue },
-                { "503", global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse503Error.CreateFromDiscriminatorValue },
-                { "504", global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse504Error.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.Cohere.OpenApiClient.Models.BadRequestResponse.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.Cohere.OpenApiClient.Models.UnauthorizedResponse.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.Cohere.OpenApiClient.Models.ForbiddenResponse.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Cohere.OpenApiClient.Models.NotFoundResponse.CreateFromDiscriminatorValue },
+                { "422", global::Soenneker.Cohere.OpenApiClient.Models.UnprocessableEntityResponse.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Cohere.OpenApiClient.Models.RateLimitResponse.CreateFromDiscriminatorValue },
+                { "498", global::Soenneker.Cohere.OpenApiClient.Models.InvalidTokenResponse.CreateFromDiscriminatorValue },
+                { "499", global::Soenneker.Cohere.OpenApiClient.Models.RequestCancelledResponse.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Cohere.OpenApiClient.Models.InternalServerErrorResponse.CreateFromDiscriminatorValue },
+                { "501", global::Soenneker.Cohere.OpenApiClient.Models.NotImplementedResponse.CreateFromDiscriminatorValue },
+                { "503", global::Soenneker.Cohere.OpenApiClient.Models.ServiceUnavailableResponse.CreateFromDiscriminatorValue },
+                { "504", global::Soenneker.Cohere.OpenApiClient.Models.GatewayTimeoutResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse>(requestInfo, global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

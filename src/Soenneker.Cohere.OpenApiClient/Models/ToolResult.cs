@@ -25,10 +25,10 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The outputs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.ToolResult_outputs>? Outputs { get; set; }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.ToolResultOutputsItemProperty>? Outputs { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.ToolResult_outputs> Outputs { get; set; }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.ToolResultOutputsItemProperty> Outputs { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ToolResult"/> and sets the default values.
@@ -56,7 +56,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "call", n => { Call = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolCall>(global::Soenneker.Cohere.OpenApiClient.Models.ToolCall.CreateFromDiscriminatorValue); } },
-                { "outputs", n => { Outputs = n.GetCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.ToolResult_outputs>(global::Soenneker.Cohere.OpenApiClient.Models.ToolResult_outputs.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "outputs", n => { Outputs = n.GetCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.ToolResultOutputsItemProperty>(global::Soenneker.Cohere.OpenApiClient.Models.ToolResultOutputsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolCall>("call", Call);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.ToolResult_outputs>("outputs", Outputs);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.ToolResultOutputsItemProperty>("outputs", Outputs);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

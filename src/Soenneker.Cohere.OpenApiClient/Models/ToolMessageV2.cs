@@ -18,13 +18,13 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>Outputs from a tool. The content should formatted as a JSON object string, or a list of tool content blocks</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.UnionBranch? Content { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ToolMessageV2Content? Content { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.UnionBranch Content { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ToolMessageV2Content Content { get; set; }
 #endif
         /// <summary>The role property</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.ToolMessageV2_role? Role { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ToolMessageV2Role? Role { get; set; }
         /// <summary>The id of the associated tool call that has provided the given content</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -58,8 +58,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "content", n => { Content = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.UnionBranch>(global::Soenneker.Cohere.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue); } },
-                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolMessageV2_role>(); } },
+                { "content", n => { Content = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolMessageV2Content>(global::Soenneker.Cohere.OpenApiClient.Models.ToolMessageV2Content.CreateFromDiscriminatorValue); } },
+                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolMessageV2Role>(); } },
                 { "tool_call_id", n => { ToolCallId = n.GetStringValue(); } },
             };
         }
@@ -70,8 +70,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.UnionBranch>("content", Content);
-            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolMessageV2_role>("role", Role);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolMessageV2Content>("content", Content);
+            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolMessageV2Role>("role", Role);
             writer.WriteStringValue("tool_call_id", ToolCallId);
             writer.WriteAdditionalData(AdditionalData);
         }

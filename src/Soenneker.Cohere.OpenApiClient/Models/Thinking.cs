@@ -18,7 +18,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The maximum number of tokens the model can use for thinking, which must be set to a positive integer.The model will stop thinking if it reaches the thinking token budget and will proceed with the response.</summary>
         public int? TokenBudget { get; set; }
         /// <summary>&quot;Reasoning is enabled by default for models that support it, but can be turned off by setting `\&quot;type\&quot;: \&quot;disabled\&quot;`.&quot;</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.Thinking_type? Type { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ThinkingType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.Thinking"/> and sets the default values.
         /// </summary>
@@ -45,7 +45,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "token_budget", n => { TokenBudget = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.Thinking_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ThinkingType>(); } },
             };
         }
         /// <summary>
@@ -56,7 +56,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("token_budget", TokenBudget);
-            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.Thinking_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ThinkingType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

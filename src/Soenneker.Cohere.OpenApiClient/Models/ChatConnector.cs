@@ -28,10 +28,10 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>Provides the connector with different settings at request time. The key/value pairs of this object are specific to each connector.For example, the connector `web-search` supports the `site` option, which limits search results to the specified domain.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatConnector_options? Options { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatConnectorOptionsProperty? Options { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatConnector_options Options { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatConnectorOptionsProperty Options { get; set; }
 #endif
         /// <summary>When specified, this user access token will be passed to the connector in the Authorization header instead of the Cohere generated one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -68,7 +68,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             {
                 { "continue_on_failure", n => { ContinueOnFailure = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "options", n => { Options = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatConnector_options>(global::Soenneker.Cohere.OpenApiClient.Models.ChatConnector_options.CreateFromDiscriminatorValue); } },
+                { "options", n => { Options = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatConnectorOptionsProperty>(global::Soenneker.Cohere.OpenApiClient.Models.ChatConnectorOptionsProperty.CreateFromDiscriminatorValue); } },
                 { "user_access_token", n => { UserAccessToken = n.GetStringValue(); } },
             };
         }
@@ -81,7 +81,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("continue_on_failure", ContinueOnFailure);
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatConnector_options>("options", Options);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatConnectorOptionsProperty>("options", Options);
             writer.WriteStringValue("user_access_token", UserAccessToken);
             writer.WriteAdditionalData(AdditionalData);
         }

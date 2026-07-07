@@ -17,10 +17,10 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>&quot;A [JSON schema](https://json-schema.org/overview/what-is-jsonschema) object that the output will adhere to. There are some restrictions we have on the schema, refer to [our guide](https://docs.cohere.com/docs/structured-outputs-json#schema-constraints) for more information.Example (required name and age object):```json{  \&quot;type\&quot;: \&quot;object\&quot;,  \&quot;properties\&quot;: {    \&quot;name\&quot;: {\&quot;type\&quot;: \&quot;string\&quot;},    \&quot;age\&quot;: {\&quot;type\&quot;: \&quot;integer\&quot;}  },  \&quot;required\&quot;: [\&quot;name\&quot;, \&quot;age\&quot;]}```**Note**: This field must not be specified when the `type` is set to `\&quot;text\&quot;`.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.JsonResponseFormatV2_json_schema? JsonSchema { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.JsonResponseFormatV2JsonSchemaProperty? JsonSchema { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.JsonResponseFormatV2_json_schema JsonSchema { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.JsonResponseFormatV2JsonSchemaProperty JsonSchema { get; set; }
 #endif
         /// <summary>Defaults to `&quot;text&quot;`.When set to `&quot;json_object&quot;`, the model&apos;s output will be a valid JSON Object.</summary>
         public global::Soenneker.Cohere.OpenApiClient.Models.ResponseFormatTypeV2? Type { get; set; }
@@ -49,7 +49,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "json_schema", n => { JsonSchema = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.JsonResponseFormatV2_json_schema>(global::Soenneker.Cohere.OpenApiClient.Models.JsonResponseFormatV2_json_schema.CreateFromDiscriminatorValue); } },
+                { "json_schema", n => { JsonSchema = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.JsonResponseFormatV2JsonSchemaProperty>(global::Soenneker.Cohere.OpenApiClient.Models.JsonResponseFormatV2JsonSchemaProperty.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ResponseFormatTypeV2>(); } },
             };
         }
@@ -60,7 +60,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.JsonResponseFormatV2_json_schema>("json_schema", JsonSchema);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.JsonResponseFormatV2JsonSchemaProperty>("json_schema", JsonSchema);
             writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ResponseFormatTypeV2>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

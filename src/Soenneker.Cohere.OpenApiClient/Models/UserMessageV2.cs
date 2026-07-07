@@ -18,13 +18,13 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The content of the message. This can be a string or a list of content blocks.If a string is provided, it will be treated as a text content block.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.UnionBranch? Content { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.UserMessageV2Content? Content { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.UnionBranch Content { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.UserMessageV2Content Content { get; set; }
 #endif
         /// <summary>The role property</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.UserMessageV2_role? Role { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.UserMessageV2Role? Role { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.UserMessageV2"/> and sets the default values.
         /// </summary>
@@ -50,8 +50,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "content", n => { Content = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.UnionBranch>(global::Soenneker.Cohere.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue); } },
-                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.UserMessageV2_role>(); } },
+                { "content", n => { Content = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.UserMessageV2Content>(global::Soenneker.Cohere.OpenApiClient.Models.UserMessageV2Content.CreateFromDiscriminatorValue); } },
+                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.UserMessageV2Role>(); } },
             };
         }
         /// <summary>
@@ -61,8 +61,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.UnionBranch>("content", Content);
-            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.UserMessageV2_role>("role", Role);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.UserMessageV2Content>("content", Content);
+            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.UserMessageV2Role>("role", Role);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

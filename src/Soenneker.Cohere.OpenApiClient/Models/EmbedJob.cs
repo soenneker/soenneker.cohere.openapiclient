@@ -65,9 +65,9 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public string OutputDatasetId { get; set; }
 #endif
         /// <summary>The status of the embed job</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedJob_status? Status { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedJobStatus? Status { get; set; }
         /// <summary>The truncation option used</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedJob_truncate? Truncate { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedJobTruncate? Truncate { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.EmbedJob"/> and sets the default values.
         /// </summary>
@@ -100,8 +100,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "output_dataset_id", n => { OutputDatasetId = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedJob_status>(); } },
-                { "truncate", n => { Truncate = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedJob_truncate>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedJobStatus>(); } },
+                { "truncate", n => { Truncate = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedJobTruncate>(); } },
             };
         }
         /// <summary>
@@ -118,8 +118,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteStringValue("model", Model);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("output_dataset_id", OutputDatasetId);
-            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedJob_status>("status", Status);
-            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedJob_truncate>("truncate", Truncate);
+            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedJobStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedJobTruncate>("truncate", Truncate);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

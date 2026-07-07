@@ -6,6 +6,7 @@ using Soenneker.Cohere.OpenApiClient.V2.Audio;
 using Soenneker.Cohere.OpenApiClient.V2.Batches;
 using Soenneker.Cohere.OpenApiClient.V2.Chat;
 using Soenneker.Cohere.OpenApiClient.V2.Embed;
+using Soenneker.Cohere.OpenApiClient.V2.Prompt;
 using Soenneker.Cohere.OpenApiClient.V2.Rerank;
 using System.Collections.Generic;
 using System.IO;
@@ -38,6 +39,11 @@ namespace Soenneker.Cohere.OpenApiClient.V2
         public global::Soenneker.Cohere.OpenApiClient.V2.Embed.EmbedRequestBuilder Embed
         {
             get => new global::Soenneker.Cohere.OpenApiClient.V2.Embed.EmbedRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The prompt property</summary>
+        public global::Soenneker.Cohere.OpenApiClient.V2.Prompt.PromptRequestBuilder Prompt
+        {
+            get => new global::Soenneker.Cohere.OpenApiClient.V2.Prompt.PromptRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The rerank property</summary>
         public global::Soenneker.Cohere.OpenApiClient.V2.Rerank.RerankRequestBuilder Rerank

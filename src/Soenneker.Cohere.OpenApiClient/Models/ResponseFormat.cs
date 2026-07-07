@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Cohere.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ChatTextResponseFormat"/>, <see cref="global::Soenneker.Cohere.OpenApiClient.Models.JSONResponseFormat"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ChatTextResponseFormat"/>, <see cref="global::Soenneker.Cohere.OpenApiClient.Models.JsonResponseFormat"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ResponseFormat : IComposedTypeWrapper, IParsable
@@ -21,13 +21,13 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 #else
         public global::Soenneker.Cohere.OpenApiClient.Models.ChatTextResponseFormat ChatTextResponseFormat { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Cohere.OpenApiClient.Models.JSONResponseFormat"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Cohere.OpenApiClient.Models.JsonResponseFormat"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.JSONResponseFormat? JSONResponseFormat { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.JsonResponseFormat? JsonResponseFormat { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.JSONResponseFormat JSONResponseFormat { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.JsonResponseFormat JsonResponseFormat { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -43,9 +43,9 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             {
                 result.ChatTextResponseFormat = new global::Soenneker.Cohere.OpenApiClient.Models.ChatTextResponseFormat();
             }
-            else if("JSONResponseFormat".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("JsonResponseFormat".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.JSONResponseFormat = new global::Soenneker.Cohere.OpenApiClient.Models.JSONResponseFormat();
+                result.JsonResponseFormat = new global::Soenneker.Cohere.OpenApiClient.Models.JsonResponseFormat();
             }
             return result;
         }
@@ -59,9 +59,9 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             {
                 return ChatTextResponseFormat.GetFieldDeserializers();
             }
-            else if(JSONResponseFormat != null)
+            else if(JsonResponseFormat != null)
             {
-                return JSONResponseFormat.GetFieldDeserializers();
+                return JsonResponseFormat.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -76,9 +76,9 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             {
                 writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatTextResponseFormat>(null, ChatTextResponseFormat);
             }
-            else if(JSONResponseFormat != null)
+            else if(JsonResponseFormat != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.JSONResponseFormat>(null, JSONResponseFormat);
+                writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.JsonResponseFormat>(null, JsonResponseFormat);
             }
         }
     }

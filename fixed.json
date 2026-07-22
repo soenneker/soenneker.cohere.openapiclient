@@ -169,69 +169,6 @@
         }
       }
     },
-    "/v2/prompt": {
-      "post": {
-        "summary": "Chat prompt (v2)",
-        "description": "Returns the constructed text prompt for a v2 chat request without running model generation.\nThe request body matches [Chat v2](/v2/chat) (the \u0060stream\u0060 field is ignored).\n",
-        "operationId": "Promptv2",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/RequestSource"
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/requestBody"
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PromptResponseV2"
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          },
-          "422": {
-            "$ref": "#/components/responses/UnprocessableEntity"
-          },
-          "429": {
-            "$ref": "#/components/responses/RateLimit"
-          },
-          "498": {
-            "$ref": "#/components/responses/InvalidToken"
-          },
-          "499": {
-            "$ref": "#/components/responses/RequestCancelled"
-          },
-          "500": {
-            "$ref": "#/components/responses/InternalServerError"
-          },
-          "501": {
-            "$ref": "#/components/responses/NotImplemented"
-          },
-          "503": {
-            "$ref": "#/components/responses/ServiceUnavailable"
-          },
-          "504": {
-            "$ref": "#/components/responses/GatewayTimeout"
-          }
-        }
-      }
-    },
     "/v1/embed": {
       "post": {
         "summary": "Embed API (v1)",
@@ -10073,7 +10010,8 @@
               "$ref": "#/components/schemas/AssistantMessageV2ContentOneOf2Item"
             }
           }
-        ]
+        ],
+        "x-fern-type-name": "AssistantMessageV2Content"
       },
       "SystemMessageV2Content": {
         "type": "object",
@@ -10391,7 +10329,8 @@
             "ChatTextContent": "#/components/schemas/ChatTextContent",
             "ChatThinkingContent": "#/components/schemas/ChatThinkingContent"
           }
-        }
+        },
+        "x-fern-type-name": "AssistantMessageV2ContentOneItem"
       },
       "SystemMessageV2ContentOneOf2Item": {
         "required": [
@@ -12558,6 +12497,7 @@
         "type": "string",
         "additionalProperties": false,
         "description": "- \u0060COMPLETE\u0060 - the model sent back a finished reply\n- \u0060ERROR_LIMIT\u0060 - the reply was cut off because the model reached the maximum number of tokens for its context length\n- \u0060MAX_TOKENS\u0060 - the reply was cut off because the model reached the maximum number of tokens specified by the max_tokens parameter\n- \u0060ERROR\u0060 - something went wrong when generating the reply\n- \u0060ERROR_TOXIC\u0060 - the model generated a reply that was deemed toxic\n",
+        "x-fern-type-name": "ChatStreamEndEventFinishReason",
         "x-fern-audiences": [
           "public"
         ],

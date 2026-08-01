@@ -1679,7 +1679,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DeleteDataset200ResponseResponseJson"
+                  "$ref": "#/components/schemas/DeleteDataset200ResponseSchema"
                 }
               }
             }
@@ -12189,7 +12189,7 @@
         ],
         "x-fern-type-name": "DatasetsGetResponse"
       },
-      "DeleteDataset200ResponseResponseJson": {
+      "DeleteDataset200ResponseSchema": {
         "type": "object"
       },
       "Tokenize200Response": {

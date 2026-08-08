@@ -13,7 +13,7 @@
       "name": "proprietary",
       "url": "https://cohere.com/terms-of-use"
     },
-    "version": "1"
+    "version": "1.0"
   },
   "servers": [
     {
@@ -638,8 +638,8 @@
                     "updated_at": "2025-03-05T15:00:26.126572Z",
                     "input_dataset_id": "my-requests-dataset",
                     "output_dataset_id": "my-batch-output-c2waz1",
-                    "input_tokens": 0,
-                    "output_tokens": 0,
+                    "input_tokens": "0",
+                    "output_tokens": "0",
                     "model": "batch-command",
                     "num_records": 5000,
                     "num_successful_records": 8,
@@ -1780,7 +1780,7 @@
                       ],
                       "meta": {
                         "api_version": {
-                          "version": 1
+                          "version": "1"
                         }
                       }
                     }
@@ -5706,7 +5706,7 @@
               ],
               "meta": {
                 "api_version": {
-                  "version": 1
+                  "version": "1"
                 }
               },
               "api_version": "v1"
@@ -6933,7 +6933,7 @@
               },
               "meta": {
                 "api_version": {
-                  "version": 1
+                  "version": "1"
                 }
               }
             }

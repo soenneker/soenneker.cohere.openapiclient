@@ -4222,6 +4222,196 @@
           "public"
         ]
       },
+      "ParseDocument": {
+        "required": [
+          "type",
+          "image_url"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/ParseDocumentType"
+          },
+          "image_url": {
+            "$ref": "#/components/schemas/ParseDocumentImageUrl"
+          }
+        },
+        "description": "Document to parse. Currently only \u0060image_url\u0060 documents are supported.\n",
+        "x-fern-type-name": "ParseDocument"
+      },
+      "ParseBlock": {
+        "required": [
+          "type",
+          "content"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/ParseBlockType"
+          },
+          "content": {
+            "type": "string",
+            "description": "Block content. For text blocks this is the extracted text; for image blocks\nthis is the image annotation; for table blocks this is the table HTML.\n"
+          },
+          "top_left_x": {
+            "type": "integer",
+            "description": "X coordinate of the top-left corner of the block bounding box."
+          },
+          "top_left_y": {
+            "type": "integer",
+            "description": "Y coordinate of the top-left corner of the block bounding box."
+          },
+          "bottom_right_x": {
+            "type": "integer",
+            "description": "X coordinate of the bottom-right corner of the block bounding box."
+          },
+          "bottom_right_y": {
+            "type": "integer",
+            "description": "Y coordinate of the bottom-right corner of the block bounding box."
+          },
+          "image_id": {
+            "type": "string",
+            "description": "ID of the corresponding entry in \u0060page.images\u0060 when \u0060type\u0060 is \u0060image\u0060."
+          },
+          "table_id": {
+            "type": "string",
+            "description": "ID of the corresponding entry in \u0060page.tables\u0060 when \u0060type\u0060 is \u0060table\u0060."
+          }
+        },
+        "description": "A content block on a parsed page. Present when \u0060include_blocks\u0060 is \u0060true\u0060.\n",
+        "x-fern-type-name": "ParseBlock"
+      },
+      "ParseImage": {
+        "required": [
+          "id",
+          "image_annotation"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the image within the page (for example \u0060img-0\u0060)."
+          },
+          "image_annotation": {
+            "type": "string",
+            "description": "Model-generated description / annotation of the image."
+          },
+          "top_left_x": {
+            "type": "integer",
+            "description": "X coordinate of the top-left corner of the image bounding box.",
+            "nullable": true
+          },
+          "top_left_y": {
+            "type": "integer",
+            "description": "Y coordinate of the top-left corner of the image bounding box.",
+            "nullable": true
+          },
+          "bottom_right_x": {
+            "type": "integer",
+            "description": "X coordinate of the bottom-right corner of the image bounding box.",
+            "nullable": true
+          },
+          "bottom_right_y": {
+            "type": "integer",
+            "description": "Y coordinate of the bottom-right corner of the image bounding box.",
+            "nullable": true
+          }
+        },
+        "description": "Extracted image asset from a parsed page.",
+        "x-fern-type-name": "ParseImage"
+      },
+      "ParseTable": {
+        "required": [
+          "id",
+          "format",
+          "content"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the table within the page (for example \u0060tbl-0\u0060)."
+          },
+          "format": {
+            "$ref": "#/components/schemas/ParseTableFormat"
+          },
+          "content": {
+            "type": "string",
+            "description": "Table content in the format specified by \u0060format\u0060."
+          },
+          "title": {
+            "type": "string",
+            "description": "Optional table title when detected."
+          }
+        },
+        "description": "Extracted table asset from a parsed page.",
+        "x-fern-type-name": "ParseTable"
+      },
+      "ParsePage": {
+        "required": [
+          "index",
+          "markdown"
+        ],
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "integer",
+            "description": "Zero-based page index."
+          },
+          "markdown": {
+            "type": "string",
+            "description": "Page content as markdown. Image and table assets are referenced with\nplaceholders such as \u0060![img-0](img-0)\u0060 and \u0060[tbl-0](tbl-0)\u0060.\n"
+          },
+          "blocks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParseBlock"
+            },
+            "description": "Ordered content blocks with optional bounding boxes. Only present when\n\u0060include_blocks\u0060 was \u0060true\u0060 in the request.\n"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParseImage"
+            },
+            "description": "Images extracted from the page."
+          },
+          "tables": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParseTable"
+            },
+            "description": "Tables extracted from the page."
+          }
+        },
+        "description": "A single parsed page.",
+        "x-fern-type-name": "ParsePage"
+      },
+      "ParseResponse": {
+        "required": [
+          "id",
+          "pages"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the parse response."
+          },
+          "pages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParsePage"
+            },
+            "description": "Parsed pages in document order."
+          },
+          "meta": {
+            "$ref": "#/components/schemas/ApiMeta"
+          }
+        },
+        "description": "Response from the v2 parse endpoint.",
+        "x-fern-type-name": "ParseResponse"
+      },
       "SingleGeneration": {
         "required": [
           "text",
@@ -10196,6 +10386,34 @@
         },
         "x-fern-type-name": "ChatMessageEndEvent-u3fzny"
       },
+      "ParseDocumentImageUrl": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ParseDocumentImageUrlBranch1"
+          },
+          {
+            "$ref": "#/components/schemas/ImageUrl"
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "description": "Image to parse. Accepts either a bare URL / data URI string, or an object with\n\u0060url\u0060 and optional \u0060detail\u0060.\n",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "ParseDocumentImageUrl_1": "#/components/schemas/ParseDocumentImageUrlBranch1",
+            "ImageUrl": "#/components/schemas/ImageUrl"
+          }
+        }
+      },
       "GenerateStreamTextAllOf2": {
         "required": [
           "is_finished",
@@ -12053,6 +12271,18 @@
         },
         "x-fern-type-name": "CheckApiKeyResponse"
       },
+      "ParseDocumentImageUrlBranch1": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "Image URL or base64 data URI."
+          }
+        }
+      },
       "RequestBodyRequestDocumentsItemBranch1": {
         "required": [
           "value"
@@ -12853,6 +13083,70 @@
             {
               "value": "message-end",
               "name": "MessageEnd"
+            }
+          ]
+        }
+      },
+      "ParseDocumentType": {
+        "enum": [
+          "image_url"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Discriminator for the document payload.",
+        "x-ms-enum": {
+          "name": "ParseDocumentType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "image_url",
+              "name": "ImageUrl"
+            }
+          ]
+        }
+      },
+      "ParseBlockType": {
+        "enum": [
+          "text",
+          "image",
+          "table"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Block kind.",
+        "x-ms-enum": {
+          "name": "ParseBlockType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "text",
+              "name": "Text"
+            },
+            {
+              "value": "image",
+              "name": "Image"
+            },
+            {
+              "value": "table",
+              "name": "Table"
+            }
+          ]
+        }
+      },
+      "ParseTableFormat": {
+        "enum": [
+          "html"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Serialization format of \u0060content\u0060.",
+        "x-ms-enum": {
+          "name": "ParseTableFormat",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "html",
+              "name": "Html"
             }
           ]
         }

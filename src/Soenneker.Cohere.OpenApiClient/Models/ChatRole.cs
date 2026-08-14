@@ -9,19 +9,19 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     {
         [EnumMember(Value = "CHATBOT")]
         #pragma warning disable CS1591
-        Chatbot,
+        CHATBOT,
         #pragma warning restore CS1591
         [EnumMember(Value = "SYSTEM")]
         #pragma warning disable CS1591
-        System,
+        SYSTEM,
         #pragma warning restore CS1591
         [EnumMember(Value = "USER")]
         #pragma warning disable CS1591
-        User,
+        USER,
         #pragma warning restore CS1591
         [EnumMember(Value = "TOOL")]
         #pragma warning disable CS1591
-        Tool,
+        TOOL,
         #pragma warning restore CS1591
     }
 }

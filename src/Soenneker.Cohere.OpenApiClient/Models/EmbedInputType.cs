@@ -9,11 +9,11 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     {
         [EnumMember(Value = "search_document")]
         #pragma warning disable CS1591
-        SearchDocument,
+        Search_document,
         #pragma warning restore CS1591
         [EnumMember(Value = "search_query")]
         #pragma warning disable CS1591
-        SearchQuery,
+        Search_query,
         #pragma warning restore CS1591
         [EnumMember(Value = "classification")]
         #pragma warning disable CS1591

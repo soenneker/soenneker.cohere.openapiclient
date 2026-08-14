@@ -10,35 +10,35 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     {
         [EnumMember(Value = "COMPLETE")]
         #pragma warning disable CS1591
-        Complete,
+        COMPLETE,
         #pragma warning restore CS1591
         [EnumMember(Value = "STOP_SEQUENCE")]
         #pragma warning disable CS1591
-        StopSequence,
+        STOP_SEQUENCE,
         #pragma warning restore CS1591
         [EnumMember(Value = "ERROR")]
         #pragma warning disable CS1591
-        Error,
+        ERROR,
         #pragma warning restore CS1591
         [EnumMember(Value = "ERROR_TOXIC")]
         #pragma warning disable CS1591
-        ErrorToxic,
+        ERROR_TOXIC,
         #pragma warning restore CS1591
         [EnumMember(Value = "ERROR_LIMIT")]
         #pragma warning disable CS1591
-        ErrorLimit,
+        ERROR_LIMIT,
         #pragma warning restore CS1591
         [EnumMember(Value = "USER_CANCEL")]
         #pragma warning disable CS1591
-        UserCancel,
+        USER_CANCEL,
         #pragma warning restore CS1591
         [EnumMember(Value = "MAX_TOKENS")]
         #pragma warning disable CS1591
-        MaxTokens,
+        MAX_TOKENS,
         #pragma warning restore CS1591
         [EnumMember(Value = "TIMEOUT")]
         #pragma warning disable CS1591
-        Timeout,
+        TIMEOUT,
         #pragma warning restore CS1591
     }
 }

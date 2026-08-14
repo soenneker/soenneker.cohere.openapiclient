@@ -51,7 +51,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 #else
         public string Prompt { get; set; }
 #endif
-        /// <summary>The response property</summary>
+        /// <summary>The consolidated response from the model. Contains the generated reply and all the other information streamed back in the previous events.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Cohere.OpenApiClient.Models.NonStreamedChatResponse? Response { get; set; }

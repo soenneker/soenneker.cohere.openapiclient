@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.4",
+  "openapi": "3.1.2",
   "info": {
     "title": "API Reference",
     "description": "The Cohere API for interacting with Chat, Embed and Rerank models.",
@@ -13,7 +13,8 @@
       "name": "proprietary",
       "url": "https://cohere.com/terms-of-use"
     },
-    "version": "1.0"
+    "version": "1.0",
+    "summary": "Cohere\u0027s API"
   },
   "servers": [
     {
@@ -29,6 +30,7 @@
         "operationId": "Chat",
         "parameters": [
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           },
           {
@@ -62,39 +64,51 @@
             }
           },
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -107,6 +121,7 @@
         "operationId": "Chatv2",
         "parameters": [
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -131,39 +146,51 @@
             }
           },
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -176,6 +203,7 @@
         "operationId": "Embed",
         "parameters": [
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -201,39 +229,51 @@
             }
           },
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -246,6 +286,7 @@
         "operationId": "Embedv2",
         "parameters": [
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -271,39 +312,51 @@
             }
           },
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -338,39 +391,51 @@
             }
           },
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -411,6 +476,7 @@
             }
           },
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -510,6 +576,7 @@
         "operationId": "CreateBatch",
         "parameters": [
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -616,6 +683,7 @@
             }
           },
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -731,6 +799,7 @@
             }
           },
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -818,6 +887,7 @@
         "operationId": "CreateEmbedJob",
         "parameters": [
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -842,39 +912,51 @@
             }
           },
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -888,6 +970,7 @@
         "operationId": "ListEmbedJobs",
         "parameters": [
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -903,39 +986,51 @@
             }
           },
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -963,6 +1058,7 @@
             }
           },
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -978,39 +1074,51 @@
             }
           },
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -1038,44 +1146,57 @@
             }
           },
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
         "responses": {
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -1088,6 +1209,7 @@
         "operationId": "Rerank",
         "parameters": [
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -1113,39 +1235,51 @@
             }
           },
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -1158,6 +1292,7 @@
         "operationId": "Rerankv2",
         "parameters": [
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -1183,39 +1318,51 @@
             }
           },
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -1324,6 +1471,7 @@
             }
           },
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -1348,39 +1496,51 @@
             }
           },
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -1459,6 +1619,7 @@
             }
           },
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -1474,39 +1635,51 @@
             }
           },
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -1522,6 +1695,7 @@
         "operationId": "GetDatasetUsage",
         "parameters": [
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -1537,39 +1711,51 @@
             }
           },
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -1597,6 +1783,7 @@
             }
           },
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -1612,39 +1799,51 @@
             }
           },
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -1670,6 +1869,7 @@
             }
           },
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -1685,39 +1885,51 @@
             }
           },
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -1730,6 +1942,7 @@
         "operationId": "Tokenize",
         "parameters": [
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -1790,39 +2003,51 @@
             }
           },
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -1835,6 +2060,7 @@
         "operationId": "Detokenize",
         "parameters": [
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -1860,39 +2086,51 @@
             }
           },
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -1920,6 +2158,7 @@
             }
           },
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -1935,39 +2174,51 @@
             }
           },
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -2009,6 +2260,9 @@
             "in": "query",
             "description": "When provided, filters the list of models to only those that are compatible with the specified endpoint.",
             "schema": {
+              "x-fern-audiences": [
+                "public"
+              ],
               "$ref": "#/components/schemas/CompatibleEndpoint"
             }
           },
@@ -2036,39 +2290,51 @@
             }
           },
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -2081,6 +2347,7 @@
         "operationId": "CheckApiKey",
         "parameters": [
           {
+            "description": "The name of the project that is making the request.\n",
             "$ref": "#/components/parameters/RequestSource"
           }
         ],
@@ -2096,39 +2363,51 @@
             }
           },
           "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/BadRequest"
           },
           "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Unauthorized"
           },
           "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
             "$ref": "#/components/responses/Forbidden"
           },
           "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
             "$ref": "#/components/responses/NotFound"
           },
           "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
             "$ref": "#/components/responses/UnprocessableEntity"
           },
           "429": {
+            "description": "Too many requests",
             "$ref": "#/components/responses/RateLimit"
           },
           "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
             "$ref": "#/components/responses/InvalidToken"
           },
           "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
             "$ref": "#/components/responses/RequestCancelled"
           },
           "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
             "$ref": "#/components/responses/InternalServerError"
           },
           "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
             "$ref": "#/components/responses/NotImplemented"
           },
           "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
             "$ref": "#/components/responses/ServiceUnavailable"
           },
           "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
             "$ref": "#/components/responses/GatewayTimeout"
           }
         }
@@ -2200,6 +2479,10 @@
         "type": "object",
         "properties": {
           "role": {
+            "description": "One of \u0060CHATBOT\u0060, \u0060SYSTEM\u0060, \u0060TOOL\u0060 or \u0060USER\u0060 to identify who the message is coming from.\n",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ChatRole"
           },
           "message": {
@@ -2231,6 +2514,7 @@
         "type": "object",
         "properties": {
           "call": {
+            "description": "Contains the tool calls generated by the model. Use it to invoke your tools.\n",
             "$ref": "#/components/schemas/ToolCall"
           },
           "outputs": {
@@ -2250,6 +2534,7 @@
         "type": "object",
         "properties": {
           "role": {
+            "description": "One of \u0060CHATBOT\u0060, \u0060SYSTEM\u0060, \u0060TOOL\u0060 or \u0060USER\u0060 to identify who the message is coming from.\n",
             "$ref": "#/components/schemas/ChatRole"
           },
           "tool_results": {
@@ -2407,6 +2692,7 @@
         "type": "object",
         "properties": {
           "type": {
+            "description": "Defaults to \u0060\u0022text\u0022\u0060.\n\nWhen set to \u0060\u0022json_object\u0022\u0060, the model\u0027s output will be a valid JSON Object.\n",
             "$ref": "#/components/schemas/ResponseFormatType"
           }
         },
@@ -2423,6 +2709,7 @@
         "type": "object",
         "properties": {
           "type": {
+            "description": "Defaults to \u0060\u0022text\u0022\u0060.\n\nWhen set to \u0060\u0022json_object\u0022\u0060, the model\u0027s output will be a valid JSON Object.\n",
             "$ref": "#/components/schemas/ResponseFormatType"
           },
           "schema": {
@@ -2570,9 +2857,17 @@
         "type": "object",
         "properties": {
           "search_query": {
+            "description": "The generated search query. Contains the text of the query and a unique identifier for the query.\n",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ChatSearchQuery"
           },
           "connector": {
+            "description": "The connector from which this result comes from.\n",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ChatSearchResultConnector"
           },
           "document_ids": {
@@ -2775,6 +3070,9 @@
             ]
           },
           "finish_reason": {
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/FinishReason"
           },
           "tool_calls": {
@@ -2798,6 +3096,9 @@
             ]
           },
           "meta": {
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ApiMeta"
           }
         },
@@ -2982,6 +3283,10 @@
             "$ref": "#/components/schemas/ChatStreamEndEventFinishReason"
           },
           "response": {
+            "description": "The consolidated response from the model. Contains the generated reply and all the other information streamed back in the previous events.\n",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/NonStreamedChatResponse"
           }
         },
@@ -3033,6 +3338,10 @@
             "$ref": "#/components/schemas/ChatStreamEventEventType"
           },
           "tool_call_delta": {
+            "description": "Contains the chunk of the tool call generation in the stream.\n",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ToolCallDelta"
           },
           "text": {
@@ -3197,6 +3506,7 @@
         "type": "object",
         "properties": {
           "type": {
+            "description": "Type of message content\n",
             "$ref": "#/components/schemas/ContentType"
           },
           "image_url": {
@@ -3407,6 +3717,7 @@
             "description": "Index of the content block in which this citation appears."
           },
           "type": {
+            "description": "The type of citation which indicates what part of the response the citation is for.\n",
             "$ref": "#/components/schemas/CitationType"
           }
         },
@@ -3492,6 +3803,7 @@
             "$ref": "#/components/schemas/DocumentContentType"
           },
           "document": {
+            "description": "Relevant information that could be used by the model to generate a more accurate reply.\nThe content of each document are generally short (should be under 300 words). Metadata should be used to provide additional information, both the key name and the value will be\npassed to the model.\n",
             "$ref": "#/components/schemas/Document"
           }
         },
@@ -3680,6 +3992,7 @@
         "type": "object",
         "properties": {
           "type": {
+            "description": "Defaults to \u0060\u0022text\u0022\u0060.\n\nWhen set to \u0060\u0022json_object\u0022\u0060, the model\u0027s output will be a valid JSON Object.\n",
             "$ref": "#/components/schemas/ResponseFormatTypeV2"
           }
         },
@@ -3695,6 +4008,7 @@
         "type": "object",
         "properties": {
           "type": {
+            "description": "Defaults to \u0060\u0022text\u0022\u0060.\n\nWhen set to \u0060\u0022json_object\u0022\u0060, the model\u0027s output will be a valid JSON Object.\n",
             "$ref": "#/components/schemas/ResponseFormatTypeV2"
           },
           "json_schema": {
@@ -3899,9 +4213,11 @@
             "description": "Unique identifier for the generated reply. Useful for submitting feedback."
           },
           "finish_reason": {
+            "description": "\u0022The reason a chat request has finished.\n\n- **complete**: The model finished sending a complete message.\n- **max_tokens**: The number of generated tokens exceeded the model\u0027s context length or the value specified via the \u0060max_tokens\u0060 parameter.\n- **stop_sequence**: One of the provided \u0060stop_sequence\u0060 entries was reached in the model\u0027s generation.\n- **tool_call**: The model generated a Tool Call and is expecting a Tool Message in return\n- **error**: The generation failed due to an internal error\n- **timeout**: The generation was stopped because it exceeded the allowed time limit.\n\u0022",
             "$ref": "#/components/schemas/ChatFinishReason"
           },
           "message": {
+            "description": "A message from the assistant role can contain text and tool call information.",
             "$ref": "#/components/schemas/AssistantMessageResponse"
           },
           "usage": {
@@ -4233,7 +4549,8 @@
             "$ref": "#/components/schemas/ParseDocumentType"
           },
           "image_url": {
-            "$ref": "#/components/schemas/ParseDocumentImageUrl"
+            "type": "string",
+            "description": "Image URL or base64 data URI to parse."
           }
         },
         "description": "Document to parse. Currently only \u0060image_url\u0060 documents are supported.\n",
@@ -4297,24 +4614,32 @@
             "description": "Model-generated description / annotation of the image."
           },
           "top_left_x": {
-            "type": "integer",
-            "description": "X coordinate of the top-left corner of the image bounding box.",
-            "nullable": true
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "X coordinate of the top-left corner of the image bounding box."
           },
           "top_left_y": {
-            "type": "integer",
-            "description": "Y coordinate of the top-left corner of the image bounding box.",
-            "nullable": true
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Y coordinate of the top-left corner of the image bounding box."
           },
           "bottom_right_x": {
-            "type": "integer",
-            "description": "X coordinate of the bottom-right corner of the image bounding box.",
-            "nullable": true
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "X coordinate of the bottom-right corner of the image bounding box."
           },
           "bottom_right_y": {
-            "type": "integer",
-            "description": "Y coordinate of the bottom-right corner of the image bounding box.",
-            "nullable": true
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Y coordinate of the bottom-right corner of the image bounding box."
           }
         },
         "description": "Extracted image asset from a parsed page.",
@@ -4361,6 +4686,10 @@
           "markdown": {
             "type": "string",
             "description": "Page content as markdown. Image and table assets are referenced with\nplaceholders such as \u0060![img-0](img-0)\u0060 and \u0060[tbl-0](tbl-0)\u0060.\n"
+          },
+          "raw_generation": {
+            "type": "string",
+            "description": "Unparsed model generation for this page. Only present when\n\u0060enable_debugging\u0060 was \u0060true\u0060 in the request.\n"
           },
           "blocks": {
             "type": "array",
@@ -4480,6 +4809,11 @@
           "generations": {
             "type": "array",
             "items": {
+              "type": "object",
+              "x-fern-audiences": [
+                "public"
+              ],
+              "x-fern-type-name": "Generation-9h264n",
               "$ref": "#/components/schemas/SingleGeneration"
             },
             "description": "List of generated results",
@@ -4488,6 +4822,9 @@
             ]
           },
           "meta": {
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ApiMeta"
           }
         },
@@ -4559,6 +4896,9 @@
             ]
           },
           "finish_reason": {
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/FinishReason"
           }
         },
@@ -4583,6 +4923,9 @@
             ]
           },
           "finish_reason": {
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/FinishReason"
           },
           "response": {
@@ -4617,6 +4960,9 @@
             ]
           },
           "finish_reason": {
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/FinishReason"
           },
           "err": {
@@ -4848,6 +5194,9 @@
           "images": {
             "type": "array",
             "items": {
+              "x-fern-audiences": [
+                "public"
+              ],
               "$ref": "#/components/schemas/Image"
             },
             "description": "The image entries for which embeddings were returned.",
@@ -4856,6 +5205,9 @@
             ]
           },
           "meta": {
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ApiMeta"
           }
         },
@@ -5941,6 +6293,9 @@
           "images": {
             "type": "array",
             "items": {
+              "x-fern-audiences": [
+                "public"
+              ],
               "$ref": "#/components/schemas/Image"
             },
             "description": "The image entries for which embeddings were returned.",
@@ -5949,6 +6304,9 @@
             ]
           },
           "meta": {
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ApiMeta"
           }
         },
@@ -7178,6 +7536,7 @@
             "$ref": "#/components/schemas/EmbedContentType"
           },
           "image_url": {
+            "description": "Base64 url of image.",
             "$ref": "#/components/schemas/EmbedImageUrl"
           }
         },
@@ -7339,6 +7698,8 @@
             "readOnly": true
           },
           "status": {
+            "description": "read-only. Current stage in the life-cycle of the batch.",
+            "readOnly": true,
             "$ref": "#/components/schemas/BatchStatus"
           },
           "created_at": {
@@ -7413,6 +7774,7 @@
           "batches": {
             "type": "array",
             "items": {
+              "type": "object",
               "$ref": "#/components/schemas/Batch"
             },
             "description": "The batches that belong to the authenticated user."
@@ -7447,6 +7809,7 @@
         "type": "object",
         "properties": {
           "batch": {
+            "description": "Information about the batch.",
             "$ref": "#/components/schemas/Batch"
           }
         },
@@ -7462,6 +7825,7 @@
         "type": "object",
         "properties": {
           "batch": {
+            "description": "Information about the batch.",
             "$ref": "#/components/schemas/Batch"
           }
         },
@@ -7484,6 +7848,7 @@
         "type": "object",
         "properties": {
           "batch": {
+            "description": "Information about the newly created retry batch.",
             "$ref": "#/components/schemas/Batch"
           }
         },
@@ -7553,6 +7918,9 @@
             "$ref": "#/components/schemas/EmbedJobTruncate"
           },
           "meta": {
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ApiMeta"
           }
         },
@@ -7597,6 +7965,10 @@
             ]
           },
           "input_type": {
+            "description": "\u0022Specifies the type of input passed to the model. Required for embedding models v3 and higher.\n\n- \u0060\\\u0022search_document\\\u0022\u0060: Used for embeddings stored in a vector database for search use-cases.\n- \u0060\\\u0022search_query\\\u0022\u0060: Used for embeddings of search queries run against a vector DB to find relevant documents.\n- \u0060\\\u0022classification\\\u0022\u0060: Used for embeddings passed through a text classifier.\n- \u0060\\\u0022clustering\\\u0022\u0060: Used for the embeddings run through a clustering algorithm.\n- \u0060\\\u0022image\\\u0022\u0060: Used for embeddings with image input.\n\u0022",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/EmbedInputType"
           },
           "name": {
@@ -7635,6 +8007,9 @@
             ]
           },
           "meta": {
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ApiMeta"
           }
         },
@@ -8139,9 +8514,17 @@
             ]
           },
           "dataset_type": {
+            "description": "The type of the dataset",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/DatasetType"
           },
           "validation_status": {
+            "description": "The validation status of the dataset",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/DatasetValidationStatus"
           },
           "validation_error": {
@@ -8341,6 +8724,10 @@
             ]
           },
           "oauth": {
+            "description": "The OAuth 2.0 configuration for the connector.",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ConnectorOAuth"
           },
           "auth_status": {
@@ -8473,6 +8860,10 @@
         "type": "object",
         "properties": {
           "type": {
+            "description": "The token_type specifies the way the token is passed in the Authorization header. Valid values are \u0022bearer\u0022, \u0022basic\u0022, and \u0022noscheme\u0022.",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/AuthTokenType"
           },
           "token": {
@@ -8527,6 +8918,10 @@
             ]
           },
           "oauth": {
+            "description": "The OAuth 2.0 configuration for the connector. Cannot be specified if service_auth is specified.",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/CreateConnectorOAuth"
           },
           "active": {
@@ -8546,6 +8941,10 @@
             ]
           },
           "service_auth": {
+            "description": "The service to service authentication configuration for the connector. Cannot be specified if oauth is specified.",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/CreateConnectorServiceAuth"
           }
         },
@@ -8558,6 +8957,7 @@
         "type": "object",
         "properties": {
           "connector": {
+            "description": "A connector allows you to integrate data sources with the \u0027/chat\u0027 endpoint to create grounded generations with citations to the data source.\ndocuments to help answer users.",
             "$ref": "#/components/schemas/Connector"
           }
         },
@@ -8570,6 +8970,7 @@
         "type": "object",
         "properties": {
           "connector": {
+            "description": "A connector allows you to integrate data sources with the \u0027/chat\u0027 endpoint to create grounded generations with citations to the data source.\ndocuments to help answer users.",
             "$ref": "#/components/schemas/Connector"
           }
         },
@@ -8610,6 +9011,10 @@
             ]
           },
           "oauth": {
+            "description": "The OAuth 2.0 configuration for the connector. Cannot be specified if service_auth is specified.",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/CreateConnectorOAuth"
           },
           "active": {
@@ -8627,6 +9032,10 @@
             ]
           },
           "service_auth": {
+            "description": "The service to service authentication configuration for the connector. Cannot be specified if oauth is specified.",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/CreateConnectorServiceAuth"
           }
         },
@@ -8639,6 +9048,7 @@
         "type": "object",
         "properties": {
           "connector": {
+            "description": "A connector allows you to integrate data sources with the \u0027/chat\u0027 endpoint to create grounded generations with citations to the data source.\ndocuments to help answer users.",
             "$ref": "#/components/schemas/Connector"
           }
         },
@@ -8808,6 +9218,9 @@
             ]
           },
           "meta": {
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ApiMeta"
           }
         },
@@ -8958,6 +9371,9 @@
             ]
           },
           "meta": {
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ApiMeta"
           }
         },
@@ -8986,6 +9402,9 @@
             ]
           },
           "meta": {
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ApiMeta"
           }
         },
@@ -9360,9 +9779,11 @@
             "readOnly": true
           },
           "base_type": {
+            "description": "The type of the base model.",
             "$ref": "#/components/schemas/BaseType"
           },
           "strategy": {
+            "description": "\u0022Deprecated: The fine-tuning strategy.\u0022",
             "$ref": "#/components/schemas/Strategy"
           }
         },
@@ -9450,6 +9871,7 @@
             "format": "int32"
           },
           "lora_target_modules": {
+            "description": "The combination of LoRA modules to target.",
             "$ref": "#/components/schemas/LoraTargetModules"
           }
         },
@@ -9495,6 +9917,7 @@
         "type": "object",
         "properties": {
           "base_model": {
+            "description": "The base model to fine-tune.",
             "$ref": "#/components/schemas/BaseModel"
           },
           "dataset_id": {
@@ -9502,6 +9925,7 @@
             "description": "The data used for training and evaluating the fine-tuned model."
           },
           "hyperparameters": {
+            "description": "Fine-tuning hyper-parameters.",
             "$ref": "#/components/schemas/Hyperparameters"
           },
           "multi_label": {
@@ -9510,6 +9934,7 @@
             "readOnly": true
           },
           "wandb": {
+            "description": "The Weights \u0026 Biases configuration (Chat fine-tuning only).",
             "$ref": "#/components/schemas/WandbConfig"
           }
         },
@@ -9610,9 +10035,12 @@
             "readOnly": true
           },
           "settings": {
+            "description": "FinetunedModel settings such as dataset, hyperparameters...",
             "$ref": "#/components/schemas/Settings"
           },
           "status": {
+            "description": "read-only. Current stage in the life-cycle of the fine-tuned model.",
+            "readOnly": true,
             "$ref": "#/components/schemas/Status"
           },
           "created_at": {
@@ -9727,6 +10155,7 @@
             "description": "ID of the user who initiated the event. Empty if initiated by the system."
           },
           "status": {
+            "description": "Status of the fine-tuned model.",
             "$ref": "#/components/schemas/Status"
           },
           "created_at": {
@@ -9835,9 +10264,17 @@
             ]
           },
           "citation_options": {
+            "description": "Options for controlling citation generation.",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/CitationOptions"
           },
           "response_format": {
+            "description": "\u0022Configuration for forcing the model output to adhere to the specified format. Supported on [Command R](https://docs.cohere.com/v2/docs/command-r), [Command R\u002B](https://docs.cohere.com/v2/docs/command-r-plus) and newer models.\n\nThe model can be forced into outputting JSON objects by setting \u0060{ \\\u0022type\\\u0022: \\\u0022json_object\\\u0022 }\u0060.\n\nA [JSON Schema](https://json-schema.org/) can optionally be provided, to ensure a specific structure.\n\n**Note**: When using  \u0060{ \\\u0022type\\\u0022: \\\u0022json_object\\\u0022 }\u0060 your \u0060message\u0060 should always explicitly instruct the model to generate a JSON (eg: _\\\u0022Generate a JSON ...\\\u0022_) . Otherwise the model may end up getting stuck generating an infinite stream of characters and eventually run out of context length.\n\n**Note**: When \u0060json_schema\u0060 is not specified, the generated object can have up to 5 layers of nesting.\n\n**Limitation**: The parameter is not supported when used in combinations with the \u0060documents\u0060 or \u0060tools\u0060 parameters.\n\u0022",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ResponseFormatV2"
           },
           "safety_mode": {
@@ -9927,6 +10364,10 @@
             "$ref": "#/components/schemas/RequestBodyRequestToolChoice"
           },
           "thinking": {
+            "description": "Configuration for [reasoning features](https://docs.cohere.com/docs/reasoning).\n",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/Thinking"
           },
           "priority": {
@@ -10138,6 +10579,10 @@
             "$ref": "#/components/schemas/ChatStreamEndEventFinishReason"
           },
           "response": {
+            "description": "The consolidated response from the model. Contains the generated reply and all the other information streamed back in the previous events.\n",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/NonStreamedChatResponse"
           }
         },
@@ -10150,6 +10595,10 @@
         "type": "object",
         "properties": {
           "tool_call_delta": {
+            "description": "Contains the chunk of the tool call generation in the stream.\n",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ToolCallDelta"
           },
           "text": {
@@ -10386,34 +10835,6 @@
         },
         "x-fern-type-name": "ChatMessageEndEvent-u3fzny"
       },
-      "ParseDocumentImageUrl": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ParseDocumentImageUrlBranch1"
-          },
-          {
-            "$ref": "#/components/schemas/ImageUrl"
-          }
-        ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "description": "Image to parse. Accepts either a bare URL / data URI string, or an object with\n\u0060url\u0060 and optional \u0060detail\u0060.\n",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "ParseDocumentImageUrl_1": "#/components/schemas/ParseDocumentImageUrlBranch1",
-            "ImageUrl": "#/components/schemas/ImageUrl"
-          }
-        }
-      },
       "GenerateStreamTextAllOf2": {
         "required": [
           "is_finished",
@@ -10450,6 +10871,9 @@
             ]
           },
           "finish_reason": {
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/FinishReason"
           },
           "response": {
@@ -10480,6 +10904,9 @@
             ]
           },
           "finish_reason": {
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/FinishReason"
           },
           "err": {
@@ -11086,9 +11513,16 @@
             ]
           },
           "finish_reason": {
+            "description": "\u0022The reason a chat request has finished.\n\n- **complete**: The model finished sending a complete message.\n- **max_tokens**: The number of generated tokens exceeded the model\u0027s context length or the value specified via the \u0060max_tokens\u0060 parameter.\n- **stop_sequence**: One of the provided \u0060stop_sequence\u0060 entries was reached in the model\u0027s generation.\n- **tool_call**: The model generated a Tool Call and is expecting a Tool Message in return\n- **error**: The generation failed due to an internal error\n- **timeout**: The generation was stopped because it exceeded the allowed time limit.\n\u0022",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ChatFinishReason"
           },
           "usage": {
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/Usage"
           }
         },
@@ -11194,6 +11628,7 @@
         "type": "object",
         "properties": {
           "tool_calls": {
+            "description": "An array of tool calls to be made.",
             "$ref": "#/components/schemas/ToolCallV2"
           }
         },
@@ -11212,6 +11647,7 @@
         "type": "object",
         "properties": {
           "citations": {
+            "description": "Citation information containing sources and the text cited.",
             "$ref": "#/components/schemas/Citation"
           }
         },
@@ -11471,6 +11907,10 @@
             ]
           },
           "response_format": {
+            "description": "\u0022Configuration for forcing the model output to adhere to the specified format. Supported on [Command R 03-2024](https://docs.cohere.com/docs/command-r), [Command R\u002B 04-2024](https://docs.cohere.com/docs/command-r-plus) and newer models.\n\nThe model can be forced into outputting JSON objects (with up to 5 levels of nesting) by setting \u0060{ \\\u0022type\\\u0022: \\\u0022json_object\\\u0022 }\u0060.\n\nA [JSON Schema](https://json-schema.org/) can optionally be provided, to ensure a specific structure.\n\n**Note**: When using  \u0060{ \\\u0022type\\\u0022: \\\u0022json_object\\\u0022 }\u0060 your \u0060message\u0060 should always explicitly instruct the model to generate a JSON (eg: _\\\u0022Generate a JSON ...\\\u0022_) . Otherwise the model may end up getting stuck generating an infinite stream of characters and eventually run out of context length.\n**Limitation**: The parameter is not supported in RAG mode (when any of \u0060connectors\u0060, \u0060documents\u0060, \u0060tools\u0060, \u0060tool_results\u0060 are provided).\n\u0022",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ResponseFormat"
           },
           "safety_mode": {
@@ -11585,9 +12025,17 @@
             ]
           },
           "citation_options": {
+            "description": "Options for controlling citation generation.",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/CitationOptions"
           },
           "response_format": {
+            "description": "\u0022Configuration for forcing the model output to adhere to the specified format. Supported on [Command R](https://docs.cohere.com/v2/docs/command-r), [Command R\u002B](https://docs.cohere.com/v2/docs/command-r-plus) and newer models.\n\nThe model can be forced into outputting JSON objects by setting \u0060{ \\\u0022type\\\u0022: \\\u0022json_object\\\u0022 }\u0060.\n\nA [JSON Schema](https://json-schema.org/) can optionally be provided, to ensure a specific structure.\n\n**Note**: When using  \u0060{ \\\u0022type\\\u0022: \\\u0022json_object\\\u0022 }\u0060 your \u0060message\u0060 should always explicitly instruct the model to generate a JSON (eg: _\\\u0022Generate a JSON ...\\\u0022_) . Otherwise the model may end up getting stuck generating an infinite stream of characters and eventually run out of context length.\n\n**Note**: When \u0060json_schema\u0060 is not specified, the generated object can have up to 5 layers of nesting.\n\n**Limitation**: The parameter is not supported when used in combinations with the \u0060documents\u0060 or \u0060tools\u0060 parameters.\n\u0022",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ResponseFormatV2"
           },
           "safety_mode": {
@@ -11677,6 +12125,10 @@
             "$ref": "#/components/schemas/Chatv2RequestToolChoice"
           },
           "thinking": {
+            "description": "Configuration for [reasoning features](https://docs.cohere.com/docs/reasoning).\n",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/Thinking"
           },
           "priority": {
@@ -11762,6 +12214,10 @@
             ]
           },
           "input_type": {
+            "description": "\u0022Specifies the type of input passed to the model. Required for embedding models v3 and higher.\n\n- \u0060\\\u0022search_document\\\u0022\u0060: Used for embeddings stored in a vector database for search use-cases.\n- \u0060\\\u0022search_query\\\u0022\u0060: Used for embeddings of search queries run against a vector DB to find relevant documents.\n- \u0060\\\u0022classification\\\u0022\u0060: Used for embeddings passed through a text classifier.\n- \u0060\\\u0022clustering\\\u0022\u0060: Used for the embeddings run through a clustering algorithm.\n- \u0060\\\u0022image\\\u0022\u0060: Used for embeddings with image input.\n\u0022",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/EmbedInputType"
           },
           "embedding_types": {
@@ -11862,6 +12318,10 @@
             ]
           },
           "input_type": {
+            "description": "\u0022Specifies the type of input passed to the model. Required for embedding models v3 and higher.\n\n- \u0060\\\u0022search_document\\\u0022\u0060: Used for embeddings stored in a vector database for search use-cases.\n- \u0060\\\u0022search_query\\\u0022\u0060: Used for embeddings of search queries run against a vector DB to find relevant documents.\n- \u0060\\\u0022classification\\\u0022\u0060: Used for embeddings passed through a text classifier.\n- \u0060\\\u0022clustering\\\u0022\u0060: Used for the embeddings run through a clustering algorithm.\n- \u0060\\\u0022image\\\u0022\u0060: Used for embeddings with image input.\n\u0022",
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/EmbedInputType"
           },
           "inputs": {
@@ -12271,18 +12731,6 @@
         },
         "x-fern-type-name": "CheckApiKeyResponse"
       },
-      "ParseDocumentImageUrlBranch1": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string",
-            "description": "Image URL or base64 data URI."
-          }
-        }
-      },
       "RequestBodyRequestDocumentsItemBranch1": {
         "required": [
           "value"
@@ -12347,6 +12795,9 @@
             ]
           },
           "meta": {
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ApiMeta"
           }
         },
@@ -12378,6 +12829,9 @@
             ]
           },
           "meta": {
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ApiMeta"
           }
         },
@@ -12455,6 +12909,9 @@
             ]
           },
           "meta": {
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ApiMeta"
           }
         },
@@ -12477,6 +12934,9 @@
             ]
           },
           "meta": {
+            "x-fern-audiences": [
+              "public"
+            ],
             "$ref": "#/components/schemas/ApiMeta"
           }
         },

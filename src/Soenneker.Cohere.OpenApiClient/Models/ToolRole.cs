@@ -5,12 +5,12 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum AssistantMessageResponseRole
+    public enum ToolRole
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "assistant")]
+        [EnumMember(Value = "tool")]
         #pragma warning disable CS1591
-        Assistant,
+        Tool,
         #pragma warning restore CS1591
     }
 }

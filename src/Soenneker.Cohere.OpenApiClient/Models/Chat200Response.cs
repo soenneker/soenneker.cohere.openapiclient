@@ -37,7 +37,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public static global::Soenneker.Cohere.OpenApiClient.Models.Chat200Response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("event_type")?.GetStringValue();
             var result = new global::Soenneker.Cohere.OpenApiClient.Models.Chat200Response();
             if("NonStreamedChatResponse".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {

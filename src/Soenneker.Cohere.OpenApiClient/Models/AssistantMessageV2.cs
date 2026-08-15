@@ -32,7 +32,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageV2Content Content { get; set; }
 #endif
         /// <summary>The role property</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageV2Role? Role { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.AssistantRole? Role { get; set; }
         /// <summary>The tool_calls property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -76,7 +76,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             {
                 { "citations", n => { Citations = n.GetCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.Citation>(global::Soenneker.Cohere.OpenApiClient.Models.Citation.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageV2Content>(global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageV2Content.CreateFromDiscriminatorValue); } },
-                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageV2Role>(); } },
+                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.AssistantRole>(); } },
                 { "tool_calls", n => { ToolCalls = n.GetCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.ToolCallV2>(global::Soenneker.Cohere.OpenApiClient.Models.ToolCallV2.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "tool_plan", n => { ToolPlan = n.GetStringValue(); } },
             };
@@ -90,7 +90,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.Citation>("citations", Citations);
             writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageV2Content>("content", Content);
-            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageV2Role>("role", Role);
+            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.AssistantRole>("role", Role);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.ToolCallV2>("tool_calls", ToolCalls);
             writer.WriteStringValue("tool_plan", ToolPlan);
             writer.WriteAdditionalData(AdditionalData);

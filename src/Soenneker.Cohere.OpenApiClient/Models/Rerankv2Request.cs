@@ -14,7 +14,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;A list of texts that will be compared to the `query`.For optimal performance we recommend against sending more than 1,000 documents in a single request.**Note**: long documents will automatically be truncated to the value of `max_tokens_per_doc`.**Note**: structured data should be formatted as YAML strings for best performance.&quot;</summary>
+        /// <summary>A list of texts that will be compared to the `query`.For optimal performance we recommend against sending more than 1,000 documents in a single request.**Note**: long documents will automatically be truncated to the value of `max_tokens_per_doc`.**Note**: structured data should be formatted as YAML strings for best performance.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? Documents { get; set; }
@@ -32,7 +32,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>&quot;Controls how early the request is handled. Lower numbers indicate higher priority (default: 0, the highest). When the system is under load, higher-priority requests are processed first and are the least likely to be dropped.&quot;</summary>
+        /// <summary>Controls how early the request is handled. Lower numbers indicate higher priority (default: 0, the highest). When the system is under load, higher-priority requests are processed first and are the least likely to be dropped.</summary>
         public int? Priority { get; set; }
         /// <summary>The search query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

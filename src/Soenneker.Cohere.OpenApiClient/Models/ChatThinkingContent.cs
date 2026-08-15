@@ -24,7 +24,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public string Thinking { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatThinkingContentType? Type { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ThinkingType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ChatThinkingContent"/> and sets the default values.
         /// </summary>
@@ -51,7 +51,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "thinking", n => { Thinking = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatThinkingContentType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ThinkingType>(); } },
             };
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("thinking", Thinking);
-            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatThinkingContentType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ThinkingType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

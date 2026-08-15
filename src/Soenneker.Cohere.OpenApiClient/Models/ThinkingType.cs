@@ -3,17 +3,14 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Cohere.OpenApiClient.Models
 {
-    /// <summary>&quot;Reasoning is enabled by default for models that support it, but can be turned off by setting `\&quot;type\&quot;: \&quot;disabled\&quot;`.&quot;</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+    #pragma warning disable CS1591
     public enum ThinkingType
+    #pragma warning restore CS1591
     {
-        [EnumMember(Value = "enabled")]
+        [EnumMember(Value = "thinking")]
         #pragma warning disable CS1591
-        Enabled,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "disabled")]
-        #pragma warning disable CS1591
-        Disabled,
+        Thinking,
         #pragma warning restore CS1591
     }
 }

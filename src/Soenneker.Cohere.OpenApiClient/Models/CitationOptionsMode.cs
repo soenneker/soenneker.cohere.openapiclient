@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Cohere.OpenApiClient.Models
 {
-    /// <summary>&quot;Defaults to `\&quot;enabled\&quot;`.Citations are enabled by default for models that support it, but can be turned off by setting `\&quot;type\&quot;: \&quot;disabled\&quot;`.&quot;</summary>
+    /// <summary>Defaults to `&quot;enabled&quot;`.Citations are enabled by default for models that support it, but can be turned off by setting `&quot;type&quot;: &quot;disabled&quot;`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum CitationOptionsMode
     {

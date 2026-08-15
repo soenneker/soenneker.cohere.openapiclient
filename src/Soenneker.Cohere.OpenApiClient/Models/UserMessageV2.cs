@@ -24,7 +24,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public global::Soenneker.Cohere.OpenApiClient.Models.UserMessageV2Content Content { get; set; }
 #endif
         /// <summary>The role property</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.UserMessageV2Role? Role { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.UserRole? Role { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.UserMessageV2"/> and sets the default values.
         /// </summary>
@@ -51,7 +51,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.UserMessageV2Content>(global::Soenneker.Cohere.OpenApiClient.Models.UserMessageV2Content.CreateFromDiscriminatorValue); } },
-                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.UserMessageV2Role>(); } },
+                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.UserRole>(); } },
             };
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.UserMessageV2Content>("content", Content);
-            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.UserMessageV2Role>("role", Role);
+            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.UserRole>("role", Role);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

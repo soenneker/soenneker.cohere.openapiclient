@@ -23,7 +23,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public global::Soenneker.Cohere.OpenApiClient.Models.ToolV2Function Function { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.ToolV2Type? Type { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.FunctionType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ToolV2"/> and sets the default values.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "function", n => { Function = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolV2Function>(global::Soenneker.Cohere.OpenApiClient.Models.ToolV2Function.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolV2Type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.FunctionType>(); } },
             };
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolV2Function>("function", Function);
-            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolV2Type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.FunctionType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

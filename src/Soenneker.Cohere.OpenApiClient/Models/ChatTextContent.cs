@@ -24,7 +24,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public string Text { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatTextContentType? Type { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.TextType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ChatTextContent"/> and sets the default values.
         /// </summary>
@@ -51,7 +51,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "text", n => { Text = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatTextContentType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.TextType>(); } },
             };
         }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("text", Text);
-            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatTextContentType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.TextType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

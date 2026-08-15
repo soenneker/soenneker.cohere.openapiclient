@@ -14,7 +14,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>&quot;Specifies the types of embeddings you want to get back. Can be one or more of the following types.* `\&quot;float\&quot;`: Use this when you want to get back the default float embeddings. Supported with all Embed models.* `\&quot;int8\&quot;`: Use this when you want to get back signed int8 embeddings. Supported with Embed v3.0 and newer Embed models.* `\&quot;uint8\&quot;`: Use this when you want to get back unsigned int8 embeddings. Supported with Embed v3.0 and newer Embed models.* `\&quot;binary\&quot;`: Use this when you want to get back signed binary embeddings. Supported with Embed v3.0 and newer Embed models.* `\&quot;ubinary\&quot;`: Use this when you want to get back unsigned binary embeddings. Supported with Embed v3.0 and newer Embed models.* `\&quot;base64\&quot;`: Use this when you want to get back base64 embeddings. Supported with Embed v3.0 and newer Embed models.&quot;</summary>
+        /// <summary>Specifies the types of embeddings you want to get back. Can be one or more of the following types.* `&quot;float&quot;`: Use this when you want to get back the default float embeddings. Supported with all Embed models.* `&quot;int8&quot;`: Use this when you want to get back signed int8 embeddings. Supported with Embed v3.0 and newer Embed models.* `&quot;uint8&quot;`: Use this when you want to get back unsigned int8 embeddings. Supported with Embed v3.0 and newer Embed models.* `&quot;binary&quot;`: Use this when you want to get back signed binary embeddings. Supported with Embed v3.0 and newer Embed models.* `&quot;ubinary&quot;`: Use this when you want to get back unsigned binary embeddings. Supported with Embed v3.0 and newer Embed models.* `&quot;base64&quot;`: Use this when you want to get back base64 embeddings. Supported with Embed v3.0 and newer Embed models.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Cohere.OpenApiClient.Models.EmbeddingType?>? EmbeddingTypes { get; set; }
@@ -38,7 +38,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 #else
         public List<global::Soenneker.Cohere.OpenApiClient.Models.EmbedInput> Inputs { get; set; }
 #endif
-        /// <summary>&quot;Specifies the type of input passed to the model. Required for embedding models v3 and higher.- `\&quot;search_document\&quot;`: Used for embeddings stored in a vector database for search use-cases.- `\&quot;search_query\&quot;`: Used for embeddings of search queries run against a vector DB to find relevant documents.- `\&quot;classification\&quot;`: Used for embeddings passed through a text classifier.- `\&quot;clustering\&quot;`: Used for the embeddings run through a clustering algorithm.- `\&quot;image\&quot;`: Used for embeddings with image input.&quot;</summary>
+        /// <summary>Specifies the type of input passed to the model. Required for embedding models v3 and higher.- `&quot;search_document&quot;`: Used for embeddings stored in a vector database for search use-cases.- `&quot;search_query&quot;`: Used for embeddings of search queries run against a vector DB to find relevant documents.- `&quot;classification&quot;`: Used for embeddings passed through a text classifier.- `&quot;clustering&quot;`: Used for the embeddings run through a clustering algorithm.- `&quot;image&quot;`: Used for embeddings with image input.</summary>
         public global::Soenneker.Cohere.OpenApiClient.Models.EmbedInputType? InputType { get; set; }
         /// <summary>The maximum number of tokens to embed per input. If the input text is longer than this, it will be truncated according to the `truncate` parameter.</summary>
         public int? MaxTokens { get; set; }
@@ -52,7 +52,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 #endif
         /// <summary>The number of dimensions of the output embedding. This is only available for `embed-v4` and newer models.Possible values are `256`, `512`, `1024`, and `1536`. The default is `1536`.</summary>
         public int? OutputDimension { get; set; }
-        /// <summary>&quot;Controls how early the request is handled. Lower numbers indicate higher priority (default: 0, the highest). When the system is under load, higher-priority requests are processed first and are the least likely to be dropped.&quot;</summary>
+        /// <summary>Controls how early the request is handled. Lower numbers indicate higher priority (default: 0, the highest). When the system is under load, higher-priority requests are processed first and are the least likely to be dropped.</summary>
         public int? Priority { get; set; }
         /// <summary>An array of strings for the model to embed. Maximum number of texts per call is `96`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

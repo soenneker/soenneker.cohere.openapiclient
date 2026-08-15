@@ -14,8 +14,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The role of the message.</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatMessageStartEventAllOf2DeltaMessageRole? Role { get; set; }
+        /// <summary>The role property</summary>
+        public global::Soenneker.Cohere.OpenApiClient.Models.AssistantRole? Role { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ChatMessageStartEventAllOf2DeltaMessage"/> and sets the default values.
         /// </summary>
@@ -41,7 +41,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatMessageStartEventAllOf2DeltaMessageRole>(); } },
+                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.AssistantRole>(); } },
             };
         }
         /// <summary>
@@ -51,7 +51,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatMessageStartEventAllOf2DeltaMessageRole>("role", Role);
+            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.AssistantRole>("role", Role);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Cohere.OpenApiClient.Models
 {
-    /// <summary>&quot;Used to control whether or not the model will be forced to use a tool when answering. When `REQUIRED` is specified, the model will be forced to use at least one of the user-defined tools, and the `tools` parameter must be passed in the request.When `NONE` is specified, the model will be forced **not** to use one of the specified tools, and give a direct response.If tool_choice isn&apos;t specified, then the model is free to choose whether to use the specified tools or not.**Note**: This parameter is only compatible with models [Command-r7b](https://docs.cohere.com/v2/docs/command-r7b) and newer.&quot;</summary>
+    /// <summary>Used to control whether or not the model will be forced to use a tool when answering. When `REQUIRED` is specified, the model will be forced to use at least one of the user-defined tools, and the `tools` parameter must be passed in the request.When `NONE` is specified, the model will be forced **not** to use one of the specified tools, and give a direct response.If tool_choice isn&apos;t specified, then the model is free to choose whether to use the specified tools or not.**Note**: This parameter is only compatible with models [Command-r7b](https://docs.cohere.com/v2/docs/command-r7b) and newer.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum Chatv2RequestToolChoice
     {

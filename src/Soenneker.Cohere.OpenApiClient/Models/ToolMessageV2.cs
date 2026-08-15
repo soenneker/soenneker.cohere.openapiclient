@@ -24,7 +24,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public global::Soenneker.Cohere.OpenApiClient.Models.ToolMessageV2Content Content { get; set; }
 #endif
         /// <summary>The role property</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.ToolMessageV2Role? Role { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ToolRole? Role { get; set; }
         /// <summary>The id of the associated tool call that has provided the given content</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -59,7 +59,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolMessageV2Content>(global::Soenneker.Cohere.OpenApiClient.Models.ToolMessageV2Content.CreateFromDiscriminatorValue); } },
-                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolMessageV2Role>(); } },
+                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolRole>(); } },
                 { "tool_call_id", n => { ToolCallId = n.GetStringValue(); } },
             };
         }
@@ -71,7 +71,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolMessageV2Content>("content", Content);
-            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolMessageV2Role>("role", Role);
+            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ToolRole>("role", Role);
             writer.WriteStringValue("tool_call_id", ToolCallId);
             writer.WriteAdditionalData(AdditionalData);
         }

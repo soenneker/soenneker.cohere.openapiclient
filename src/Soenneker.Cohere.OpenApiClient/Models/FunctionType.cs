@@ -3,13 +3,14 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Cohere.OpenApiClient.Models
 {
-    /// <summary>The role of the message.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum ChatMessageStartEventAllOf2DeltaMessageRole
+    #pragma warning disable CS1591
+    public enum FunctionType
+    #pragma warning restore CS1591
     {
-        [EnumMember(Value = "assistant")]
+        [EnumMember(Value = "function")]
         #pragma warning disable CS1591
-        Assistant,
+        Function,
         #pragma warning restore CS1591
     }
 }

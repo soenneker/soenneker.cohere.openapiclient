@@ -6453,7 +6453,7 @@
           },
           "content": {
             "type": "string",
-            "description": "Block content. For text blocks this is the extracted text; for image blocks\nthis is the image annotation; for table blocks this is the table HTML.\n"
+            "description": "Content for this block. For text blocks this is the extracted text (same\nspan as in \u0060page.markdown\u0060); for image blocks this is\n\u0060![\u003Cimage_annotation\u003E](\u003Cimage_id\u003E)\u0060; for table blocks this is the table\nHTML. When \u0060table_format=html\u0060, \u0060page.markdown\u0060 uses a placeholder such as\n\u0060[tbl-0.html](tbl-0.html)\u0060 while this field and \u0060page.tables[].content\u0060\nstill carry the HTML.\n"
           },
           "top_left_x": {
             "type": "integer",
@@ -6477,7 +6477,7 @@
           },
           "table_id": {
             "type": "string",
-            "description": "ID of the corresponding entry in \u0060page.tables\u0060 when \u0060type\u0060 is \u0060table\u0060."
+            "description": "ID of the corresponding entry in \u0060page.tables\u0060 when \u0060type\u0060 is \u0060table\u0060 and\n\u0060table_format\u0060 extracted tables (for example \u0060html\u0060).\n"
           }
         },
         "description": "A content block on a parsed page. Present when \u0060include_blocks\u0060 is \u0060true\u0060.\n",
@@ -6492,7 +6492,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "Unique identifier for the image within the page (for example \u0060img-0\u0060)."
+            "description": "Unique identifier for the image within the page (for example \u0060img-0.jpeg\u0060)."
           },
           "image_annotation": {
             "type": "string",
@@ -6540,7 +6540,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "Unique identifier for the table within the page (for example \u0060tbl-0\u0060)."
+            "description": "Unique identifier for the table within the page (for example \u0060tbl-0.html\u0060)."
           },
           "format": {
             "$ref": "#/components/schemas/HtmlFormat"
@@ -6552,6 +6552,34 @@
           "title": {
             "type": "string",
             "description": "Optional table title when detected."
+          },
+          "top_left_x": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "X coordinate of the top-left corner of the table bounding box."
+          },
+          "top_left_y": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Y coordinate of the top-left corner of the table bounding box."
+          },
+          "bottom_right_x": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "X coordinate of the bottom-right corner of the table bounding box."
+          },
+          "bottom_right_y": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "Y coordinate of the bottom-right corner of the table bounding box."
           }
         },
         "description": "Extracted table asset from a parsed page.",
@@ -6570,18 +6598,14 @@
           },
           "markdown": {
             "type": "string",
-            "description": "Page content as markdown. Image and table assets are referenced with\nplaceholders such as \u0060![img-0](img-0)\u0060 and \u0060[tbl-0](tbl-0)\u0060.\n"
-          },
-          "raw_generation": {
-            "type": "string",
-            "description": "Unparsed model generation for this page. Only present when\n\u0060enable_debugging\u0060 was \u0060true\u0060 in the request.\n"
+            "description": "Page content as markdown. Images are embedded as\n\u0060![\u003Cimage_annotation\u003E](\u003Cimage_id\u003E)\u0060. By default, tables are inlined as HTML.\nWhen \u0060table_format=html\u0060, tables are replaced with placeholders such as\n\u0060[tbl-0.html](tbl-0.html)\u0060 that map to \u0060tables\u0060.\n"
           },
           "blocks": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ParseBlock"
             },
-            "description": "Ordered content blocks with optional bounding boxes. Only present when\n\u0060include_blocks\u0060 was \u0060true\u0060 in the request.\n"
+            "description": "Ordered content blocks with optional bounding boxes. Only present when\n\u0060include_blocks\u0060 was \u0060true\u0060 in the request. Text and image block \u0060content\u0060\nmatch the corresponding span in \u0060markdown\u0060. Table block \u0060content\u0060 is the\ntable HTML (see \u0060ParseBlock\u0060).\n"
           },
           "images": {
             "type": "array",
@@ -6595,7 +6619,7 @@
             "items": {
               "$ref": "#/components/schemas/ParseTable"
             },
-            "description": "Tables extracted from the page."
+            "description": "Tables extracted from the page. Only present when \u0060table_format\u0060 is set\n(for example \u0060html\u0060).\n"
           }
         },
         "description": "A single parsed page.",

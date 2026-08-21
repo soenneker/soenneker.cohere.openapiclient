@@ -6435,159 +6435,382 @@
           },
           "image_url": {
             "type": "string",
-            "description": "Image URL or base64 data URI to parse."
+            "description": "Image URL or base64 data URI to parse.\n\nLimits:\n- Maximum file size: 20 MB (compressed upload, download, or decoded\n  data-URI payload)\n- Maximum decoded size: 50 megapixels or 200 MB decompressed\n  (whichever is exceeded first)\n"
           }
         },
         "description": "Document to parse. Currently only \u0060image_url\u0060 documents are supported.\n",
         "x-fern-type-name": "ParseDocument"
       },
-      "ParseBlock": {
+      "ParseOutputFormat": {
+        "enum": [
+          "blocks",
+          "markdown"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Selects the page payload shape in the response. Defaults to \u0060\u0022markdown\u0022\u0060.\n\n- \u0060\u0022markdown\u0022\u0060: each page includes markdown content. Tables are inlined as\n  HTML, and images are referenced as \u0060![\u003Cdescription\u003E](\u003Cimage_id\u003E)\u0060 with\n  matching entries in \u0060page.markdown.images\u0060.\n- \u0060\u0022blocks\u0022\u0060: each page includes an ordered \u0060blocks\u0060 array of text, image,\n  and table content regions, including bounding boxes where available.\n",
+        "x-fern-type-name": "ParseOutputFormat",
+        "x-ms-enum": {
+          "name": "ParseOutputFormat",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "blocks",
+              "name": "Blocks"
+            },
+            {
+              "value": "markdown",
+              "name": "Markdown"
+            }
+          ]
+        }
+      },
+      "ParseTextBlock": {
+        "required": [
+          "content"
+        ],
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "Extracted text content."
+          }
+        },
+        "description": "Payload for a text block.",
+        "x-fern-type-name": "ParseTextBlock"
+      },
+      "ParseTextContentBlock": {
         "required": [
           "type",
-          "content"
+          "text"
         ],
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/ParseBlockType"
+            "$ref": "#/components/schemas/TextType"
           },
-          "content": {
-            "type": "string",
-            "description": "Content for this block. For text blocks this is the extracted text (same\nspan as in \u0060page.markdown\u0060); for image blocks this is\n\u0060![\u003Cimage_annotation\u003E](\u003Cimage_id\u003E)\u0060; for table blocks this is the table\nHTML. When \u0060table_format=html\u0060, \u0060page.markdown\u0060 uses a placeholder such as\n\u0060[tbl-0.html](tbl-0.html)\u0060 while this field and \u0060page.tables[].content\u0060\nstill carry the HTML.\n"
-          },
+          "text": {
+            "description": "Payload for a text block.",
+            "$ref": "#/components/schemas/ParseTextBlock"
+          }
+        },
+        "description": "A text content block.",
+        "x-fern-type-name": "ParseTextContentBlock"
+      },
+      "ParseImageCategory": {
+        "enum": [
+          "other",
+          "flowchart",
+          "logo",
+          "signature"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Image element category.",
+        "x-fern-type-name": "ParseImageCategory",
+        "x-ms-enum": {
+          "name": "ParseImageCategory",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "other",
+              "name": "Other"
+            },
+            {
+              "value": "flowchart",
+              "name": "Flowchart"
+            },
+            {
+              "value": "logo",
+              "name": "Logo"
+            },
+            {
+              "value": "signature",
+              "name": "Signature"
+            }
+          ]
+        }
+      },
+      "ParseBoundingBox": {
+        "required": [
+          "top_left_x",
+          "top_left_y",
+          "bottom_right_x",
+          "bottom_right_y"
+        ],
+        "type": "object",
+        "properties": {
           "top_left_x": {
             "type": "integer",
-            "description": "X coordinate of the top-left corner of the block bounding box."
+            "description": "X coordinate of the top-left corner."
           },
           "top_left_y": {
             "type": "integer",
-            "description": "Y coordinate of the top-left corner of the block bounding box."
+            "description": "Y coordinate of the top-left corner."
           },
           "bottom_right_x": {
             "type": "integer",
-            "description": "X coordinate of the bottom-right corner of the block bounding box."
+            "description": "X coordinate of the bottom-right corner."
           },
           "bottom_right_y": {
             "type": "integer",
-            "description": "Y coordinate of the bottom-right corner of the block bounding box."
-          },
-          "image_id": {
-            "type": "string",
-            "description": "ID of the corresponding entry in \u0060page.images\u0060 when \u0060type\u0060 is \u0060image\u0060."
-          },
-          "table_id": {
-            "type": "string",
-            "description": "ID of the corresponding entry in \u0060page.tables\u0060 when \u0060type\u0060 is \u0060table\u0060 and\n\u0060table_format\u0060 extracted tables (for example \u0060html\u0060).\n"
+            "description": "Y coordinate of the bottom-right corner."
           }
         },
-        "description": "A content block on a parsed page. Present when \u0060include_blocks\u0060 is \u0060true\u0060.\n",
-        "x-fern-type-name": "ParseBlock"
+        "description": "A bounding box with pixel coordinates on the source document image.",
+        "x-fern-type-name": "ParseBoundingBox"
       },
-      "ParseImage": {
+      "ParseBoundingBoxNormalized": {
+        "required": [
+          "top_left_x",
+          "top_left_y",
+          "bottom_right_x",
+          "bottom_right_y"
+        ],
+        "type": "object",
+        "properties": {
+          "top_left_x": {
+            "type": "number",
+            "description": "Normalized X coordinate of the top-left corner.",
+            "format": "double"
+          },
+          "top_left_y": {
+            "type": "number",
+            "description": "Normalized Y coordinate of the top-left corner.",
+            "format": "double"
+          },
+          "bottom_right_x": {
+            "type": "number",
+            "description": "Normalized X coordinate of the bottom-right corner.",
+            "format": "double"
+          },
+          "bottom_right_y": {
+            "type": "number",
+            "description": "Normalized Y coordinate of the bottom-right corner.",
+            "format": "double"
+          }
+        },
+        "description": "A bounding box with coordinates in [0, 1] relative to the source page (model\ncoordinates are thousandths of page width/height).\n",
+        "x-fern-type-name": "ParseBoundingBoxNormalized"
+      },
+      "ParseImageBlock": {
         "required": [
           "id",
-          "image_annotation"
+          "description",
+          "category",
+          "bounding_box",
+          "bounding_box_normalized"
         ],
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
-            "description": "Unique identifier for the image within the page (for example \u0060img-0.jpeg\u0060)."
+            "description": "Unique identifier for the image within the page (for example \u0060img-0\u0060)."
           },
-          "image_annotation": {
+          "description": {
             "type": "string",
-            "description": "Model-generated description / annotation of the image."
+            "description": "Model-generated description of the image."
           },
-          "top_left_x": {
-            "type": [
-              "null",
-              "integer"
-            ],
-            "description": "X coordinate of the top-left corner of the image bounding box."
+          "category": {
+            "description": "Image element category.",
+            "$ref": "#/components/schemas/ParseImageCategory"
           },
-          "top_left_y": {
-            "type": [
-              "null",
-              "integer"
-            ],
-            "description": "Y coordinate of the top-left corner of the image bounding box."
+          "bounding_box": {
+            "description": "A bounding box with pixel coordinates on the source document image.",
+            "$ref": "#/components/schemas/ParseBoundingBox"
           },
-          "bottom_right_x": {
-            "type": [
-              "null",
-              "integer"
-            ],
-            "description": "X coordinate of the bottom-right corner of the image bounding box."
-          },
-          "bottom_right_y": {
-            "type": [
-              "null",
-              "integer"
-            ],
-            "description": "Y coordinate of the bottom-right corner of the image bounding box."
+          "bounding_box_normalized": {
+            "description": "A bounding box with coordinates in [0, 1] relative to the source page (model\ncoordinates are thousandths of page width/height).\n",
+            "$ref": "#/components/schemas/ParseBoundingBoxNormalized"
           }
         },
-        "description": "Extracted image asset from a parsed page.",
-        "x-fern-type-name": "ParseImage"
+        "description": "Payload for an image block.",
+        "x-fern-type-name": "ParseImageBlock"
       },
-      "ParseTable": {
+      "ParseImageContentBlock": {
         "required": [
-          "id",
-          "format",
-          "content"
+          "type",
+          "image"
         ],
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "description": "Unique identifier for the table within the page (for example \u0060tbl-0.html\u0060)."
+          "type": {
+            "$ref": "#/components/schemas/ImageType"
           },
-          "format": {
-            "$ref": "#/components/schemas/HtmlFormat"
+          "image": {
+            "description": "Payload for an image block.",
+            "$ref": "#/components/schemas/ParseImageBlock"
+          }
+        },
+        "description": "An image content block.",
+        "x-fern-type-name": "ParseImageContentBlock"
+      },
+      "ParseTableContentType": {
+        "enum": [
+          "html"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Table serialization format.",
+        "x-fern-type-name": "ParseTableContentType",
+        "x-ms-enum": {
+          "name": "ParseTableContentType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "html",
+              "name": "Html"
+            }
+          ]
+        }
+      },
+      "ParseTableBlock": {
+        "required": [
+          "type",
+          "html",
+          "bounding_box",
+          "bounding_box_normalized"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Table serialization format.",
+            "$ref": "#/components/schemas/ParseTableContentType"
           },
-          "content": {
+          "html": {
             "type": "string",
-            "description": "Table content in the format specified by \u0060format\u0060."
+            "description": "Table content as HTML."
           },
           "title": {
             "type": "string",
             "description": "Optional table title when detected."
           },
-          "top_left_x": {
-            "type": [
-              "null",
-              "integer"
-            ],
-            "description": "X coordinate of the top-left corner of the table bounding box."
+          "description": {
+            "type": "string",
+            "description": "Optional table description when detected."
           },
-          "top_left_y": {
-            "type": [
-              "null",
-              "integer"
-            ],
-            "description": "Y coordinate of the top-left corner of the table bounding box."
+          "bounding_box": {
+            "description": "A bounding box with pixel coordinates on the source document image.",
+            "$ref": "#/components/schemas/ParseBoundingBox"
           },
-          "bottom_right_x": {
-            "type": [
-              "null",
-              "integer"
-            ],
-            "description": "X coordinate of the bottom-right corner of the table bounding box."
-          },
-          "bottom_right_y": {
-            "type": [
-              "null",
-              "integer"
-            ],
-            "description": "Y coordinate of the bottom-right corner of the table bounding box."
+          "bounding_box_normalized": {
+            "description": "A bounding box with coordinates in [0, 1] relative to the source page (model\ncoordinates are thousandths of page width/height).\n",
+            "$ref": "#/components/schemas/ParseBoundingBoxNormalized"
           }
         },
-        "description": "Extracted table asset from a parsed page.",
-        "x-fern-type-name": "ParseTable"
+        "description": "Payload for a table block.",
+        "x-fern-type-name": "ParseTableBlock"
       },
-      "ParsePage": {
+      "ParseTableContentBlock": {
+        "required": [
+          "type",
+          "table"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/TableType"
+          },
+          "table": {
+            "description": "Payload for a table block.",
+            "$ref": "#/components/schemas/ParseTableBlock"
+          }
+        },
+        "description": "A table content block.",
+        "x-fern-type-name": "ParseTableContentBlock"
+      },
+      "ParseBlock": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ParseTextContentBlock"
+          },
+          {
+            "$ref": "#/components/schemas/ParseImageContentBlock"
+          },
+          {
+            "$ref": "#/components/schemas/ParseTableContentBlock"
+          }
+        ],
+        "properties": {
+          "text": {
+            "description": "Payload for a text block.",
+            "$ref": "#/components/schemas/ParseTextBlock"
+          },
+          "image": {
+            "description": "Payload for an image block.",
+            "$ref": "#/components/schemas/ParseImageBlock"
+          },
+          "table": {
+            "description": "Payload for a table block.",
+            "$ref": "#/components/schemas/ParseTableBlock"
+          }
+        },
+        "description": "A content block on a parsed page.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "text": "#/components/schemas/ParseTextContentBlock",
+            "image": "#/components/schemas/ParseImageContentBlock",
+            "table": "#/components/schemas/ParseTableContentBlock",
+            "ParseTextContentBlock": "#/components/schemas/ParseTextContentBlock",
+            "ParseImageContentBlock": "#/components/schemas/ParseImageContentBlock",
+            "ParseTableContentBlock": "#/components/schemas/ParseTableContentBlock"
+          }
+        },
+        "x-fern-type-name": "ParseBlock"
+      },
+      "ParseBlocksPageVariant": {
         "required": [
           "index",
+          "type",
+          "blocks"
+        ],
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "integer",
+            "description": "Zero-based page index."
+          },
+          "type": {
+            "$ref": "#/components/schemas/BlocksType"
+          },
+          "blocks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParseBlock"
+            },
+            "description": "Ordered content blocks extracted from the page."
+          }
+        },
+        "description": "A parsed page with structured content blocks.",
+        "x-fern-type-name": "ParseBlocksPageVariant"
+      },
+      "ParseMarkdownPage": {
+        "required": [
+          "content"
+        ],
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "Page content as markdown. Images are embedded as\n\u0060![\u003Cdescription\u003E](\u003Cimage_id\u003E)\u0060. Tables are inlined as HTML.\n"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParseImageBlock"
+            },
+            "description": "Image metadata referenced from \u0060content\u0060."
+          }
+        },
+        "description": "Markdown output payload for a parsed page.",
+        "x-fern-type-name": "ParseMarkdownPage"
+      },
+      "ParseMarkdownPageVariant": {
+        "required": [
+          "index",
+          "type",
           "markdown"
         ],
         "type": "object",
@@ -6596,33 +6819,54 @@
             "type": "integer",
             "description": "Zero-based page index."
           },
+          "type": {
+            "$ref": "#/components/schemas/MarkdownType"
+          },
           "markdown": {
-            "type": "string",
-            "description": "Page content as markdown. Images are embedded as\n\u0060![\u003Cimage_annotation\u003E](\u003Cimage_id\u003E)\u0060. By default, tables are inlined as HTML.\nWhen \u0060table_format=html\u0060, tables are replaced with placeholders such as\n\u0060[tbl-0.html](tbl-0.html)\u0060 that map to \u0060tables\u0060.\n"
+            "description": "Markdown output payload for a parsed page.",
+            "$ref": "#/components/schemas/ParseMarkdownPage"
+          }
+        },
+        "description": "A parsed page with markdown content.",
+        "x-fern-type-name": "ParseMarkdownPageVariant"
+      },
+      "ParsePage": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ParseBlocksPageVariant"
+          },
+          {
+            "$ref": "#/components/schemas/ParseMarkdownPageVariant"
+          }
+        ],
+        "properties": {
+          "index": {
+            "type": "integer",
+            "description": "Zero-based page index."
           },
           "blocks": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ParseBlock"
             },
-            "description": "Ordered content blocks with optional bounding boxes. Only present when\n\u0060include_blocks\u0060 was \u0060true\u0060 in the request. Text and image block \u0060content\u0060\nmatch the corresponding span in \u0060markdown\u0060. Table block \u0060content\u0060 is the\ntable HTML (see \u0060ParseBlock\u0060).\n"
+            "description": "Ordered content blocks extracted from the page."
           },
-          "images": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ParseImage"
-            },
-            "description": "Images extracted from the page."
-          },
-          "tables": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ParseTable"
-            },
-            "description": "Tables extracted from the page. Only present when \u0060table_format\u0060 is set\n(for example \u0060html\u0060).\n"
+          "markdown": {
+            "description": "Markdown output payload for a parsed page.",
+            "$ref": "#/components/schemas/ParseMarkdownPage"
           }
         },
-        "description": "A single parsed page.",
+        "description": "A single parsed page. The payload shape depends on \u0060output_format\u0060.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "blocks": "#/components/schemas/ParseBlocksPageVariant",
+            "markdown": "#/components/schemas/ParseMarkdownPageVariant",
+            "ParseBlocksPageVariant": "#/components/schemas/ParseBlocksPageVariant",
+            "ParseMarkdownPageVariant": "#/components/schemas/ParseMarkdownPageVariant"
+          }
+        },
         "x-fern-type-name": "ParsePage"
       },
       "ParseResponse": {
@@ -13183,6 +13427,13 @@
             "x-fern-audiences": [
               "public"
             ]
+          },
+          "pages": {
+            "type": "number",
+            "description": "The number of billed pages parsed.\n",
+            "x-fern-audiences": [
+              "public"
+            ]
           }
         },
         "x-fern-audiences": [
@@ -16285,27 +16536,33 @@
           ]
         }
       },
-      "ParseBlockType": {
+      "ImageType": {
         "enum": [
-          "text",
-          "image",
+          "image"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "ImageType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "image",
+              "name": "Image"
+            }
+          ]
+        }
+      },
+      "TableType": {
+        "enum": [
           "table"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "Block kind.",
         "x-ms-enum": {
-          "name": "ParseBlockType",
+          "name": "TableType",
           "modelAsString": false,
           "values": [
-            {
-              "value": "text",
-              "name": "Text"
-            },
-            {
-              "value": "image",
-              "name": "Image"
-            },
             {
               "value": "table",
               "name": "Table"
@@ -16313,20 +16570,36 @@
           ]
         }
       },
-      "HtmlFormat": {
+      "BlocksType": {
         "enum": [
-          "html"
+          "blocks"
         ],
         "type": "string",
         "additionalProperties": false,
-        "description": "Serialization format of \u0060content\u0060.",
         "x-ms-enum": {
-          "name": "HtmlFormat",
+          "name": "BlocksType",
           "modelAsString": false,
           "values": [
             {
-              "value": "html",
-              "name": "Html"
+              "value": "blocks",
+              "name": "Blocks"
+            }
+          ]
+        }
+      },
+      "MarkdownType": {
+        "enum": [
+          "markdown"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "MarkdownType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "markdown",
+              "name": "Markdown"
             }
           ]
         }

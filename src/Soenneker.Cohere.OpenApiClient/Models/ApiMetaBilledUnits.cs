@@ -24,6 +24,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public double? InputTokens { get; set; }
         /// <summary>The number of billed output tokens.</summary>
         public double? OutputTokens { get; set; }
+        /// <summary>The number of billed pages parsed.</summary>
+        public double? Pages { get; set; }
         /// <summary>The number of billed search units.</summary>
         public double? SearchUnits { get; set; }
         /// <summary>
@@ -56,6 +58,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
                 { "images", n => { Images = n.GetDoubleValue(); } },
                 { "input_tokens", n => { InputTokens = n.GetDoubleValue(); } },
                 { "output_tokens", n => { OutputTokens = n.GetDoubleValue(); } },
+                { "pages", n => { Pages = n.GetDoubleValue(); } },
                 { "search_units", n => { SearchUnits = n.GetDoubleValue(); } },
             };
         }
@@ -71,6 +74,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteDoubleValue("image_tokens", ImageTokens);
             writer.WriteDoubleValue("input_tokens", InputTokens);
             writer.WriteDoubleValue("output_tokens", OutputTokens);
+            writer.WriteDoubleValue("pages", Pages);
             writer.WriteDoubleValue("search_units", SearchUnits);
             writer.WriteAdditionalData(AdditionalData);
         }

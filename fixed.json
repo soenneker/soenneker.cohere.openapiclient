@@ -196,6 +196,89 @@
         }
       }
     },
+    "/v2/parse": {
+      "post": {
+        "summary": "Parse API (v2)",
+        "description": "Parse a document image into structured output. Use \u0060output_format\u0060 to select\nblocks or markdown (default).\n\nCurrently supports \u0060document.type = image_url\u0060 only (data URI or remote http(s)\nimage URL). PDF / file URL inputs are not yet supported.\n\nImage limits: 20 MB file size; 50 megapixels or 200 MB decoded (whichever is\nexceeded first).\n",
+        "operationId": "Parsev2",
+        "parameters": [
+          {
+            "description": "The name of the project that is making the request.\n",
+            "$ref": "#/components/parameters/RequestSource"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parsev2Request"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParseResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "description": "This error indicates that the operation attempted to be performed is not allowed. This could be because:\n  - The api token is invalid\n  - The user does not have the necessary permissions\n",
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "This error is returned when a resource is not found. This could be because:\n  - The endpoint does not exist\n  - The resource does not exist eg model id, dataset id\n",
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "description": "This error is returned when the request is not well formed. This could be because:\n  - JSON is invalid\n  - The request is missing required fields\n  - The request contains an invalid combination of fields\n",
+            "$ref": "#/components/responses/UnprocessableEntity"
+          },
+          "429": {
+            "description": "Too many requests",
+            "$ref": "#/components/responses/RateLimit"
+          },
+          "498": {
+            "description": "This error is returned when a request or response contains a deny-listed token.\n",
+            "$ref": "#/components/responses/InvalidToken"
+          },
+          "499": {
+            "description": "This error is returned when a request is cancelled by the user.\n",
+            "$ref": "#/components/responses/RequestCancelled"
+          },
+          "500": {
+            "description": "This error is returned when an uncategorised internal server error occurs.\n",
+            "$ref": "#/components/responses/InternalServerError"
+          },
+          "501": {
+            "description": "This error is returned when the requested feature is not implemented.\n",
+            "$ref": "#/components/responses/NotImplemented"
+          },
+          "503": {
+            "description": "This error is returned when the service is unavailable. This could be due to:\n  - Too many users trying to access the service at the same time\n",
+            "$ref": "#/components/responses/ServiceUnavailable"
+          },
+          "504": {
+            "description": "This error is returned when a request to the server times out. This could be due to:\n  - An internal services taking too long to respond\n",
+            "$ref": "#/components/responses/GatewayTimeout"
+          }
+        }
+      }
+    },
     "/v1/generate": {
       "post": {
         "summary": "Generate",
@@ -14618,6 +14701,28 @@
             ]
           }
         }
+      },
+      "Parsev2Request": {
+        "required": [
+          "model",
+          "document"
+        ],
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "description": "The name of a compatible Cohere parse model."
+          },
+          "document": {
+            "description": "Document to parse. Currently only \u0060image_url\u0060 documents are supported.\n",
+            "$ref": "#/components/schemas/ParseDocument"
+          },
+          "output_format": {
+            "description": "Selects the page payload shape in the response. Defaults to \u0060\u0022markdown\u0022\u0060.\n\n- \u0060\u0022markdown\u0022\u0060: each page includes markdown content. Tables are inlined as\n  HTML, and images are referenced as \u0060![\u003Cdescription\u003E](\u003Cimage_id\u003E)\u0060 with\n  matching entries in \u0060page.markdown.images\u0060.\n- \u0060\u0022blocks\u0022\u0060: each page includes an ordered \u0060blocks\u0060 array of text, image,\n  and table content regions, including bounding boxes where available.\n",
+            "$ref": "#/components/schemas/ParseOutputFormat"
+          }
+        },
+        "x-fern-type-name": "ParseRequest"
       },
       "GenerateRequest": {
         "required": [

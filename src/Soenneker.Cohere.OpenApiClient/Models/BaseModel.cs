@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Cohere.OpenApiClient.Models
 {
     /// <summary>
-    /// The base model to fine-tune.
+    /// The base model used for fine-tuning.
     /// </summary>
     [Obsolete("")]
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]

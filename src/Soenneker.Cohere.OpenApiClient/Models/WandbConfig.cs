@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Cohere.OpenApiClient.Models
 {
     /// <summary>
-    /// The Weights &amp; Biases configuration (Chat fine-tuning only).
+    /// The Weights &amp; Biases configuration.
     /// </summary>
     [Obsolete("")]
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]

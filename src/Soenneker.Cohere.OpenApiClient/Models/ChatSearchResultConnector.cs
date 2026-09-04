@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Cohere.OpenApiClient.Models
 {
     /// <summary>
-    /// The connector from which this result comes from.
+    /// The connector used for fetching documents.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChatSearchResultConnector : IAdditionalDataHolder, IParsable

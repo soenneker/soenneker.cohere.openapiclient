@@ -4395,6 +4395,9 @@
         "x-fern-type-name": "ChatToolMessage"
       },
       "Message": {
+        "required": [
+          "role"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -4591,6 +4594,9 @@
         "x-fern-type-name": "JSONResponseFormat"
       },
       "ResponseFormat": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -5240,6 +5246,9 @@
         "x-fern-type-name": "ChatDebugEvent"
       },
       "StreamedChatResponse": {
+        "required": [
+          "event_type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -5471,6 +5480,9 @@
         "x-fern-type-name": "ImageContent"
       },
       "Content": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -5486,6 +5498,9 @@
           },
           "image_url": {
             "$ref": "#/components/schemas/ImageUrl"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "A Content block which contains information about the content type and the content itself.",
@@ -5583,6 +5598,9 @@
         "x-fern-type-name": "ChatDocumentSource"
       },
       "Source": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -5602,6 +5620,9 @@
           },
           "document": {
             "$ref": "#/components/schemas/ChatDocumentSourceDocumentProperty"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "A source object containing information about the source of the data cited.",
@@ -5765,6 +5786,9 @@
         "x-fern-type-name": "DocumentContent"
       },
       "ToolContent": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -5781,6 +5805,9 @@
           "document": {
             "description": "Relevant information that could be used by the model to generate a more accurate reply.\nThe content of each document are generally short (should be under 300 words). Metadata should be used to provide additional information, both the key name and the value will be\npassed to the model.\n",
             "$ref": "#/components/schemas/Document"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "A content block which contains information about the content of a tool result",
@@ -5819,6 +5846,9 @@
         "x-fern-type-name": "ToolMessageV2"
       },
       "ChatMessageV2": {
+        "required": [
+          "role"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -5854,6 +5884,9 @@
           "tool_call_id": {
             "type": "string",
             "description": "The id of the associated tool call that has provided the given content"
+          },
+          "role": {
+            "type": "string"
           }
         },
         "description": "Represents a single message in the chat history from a given role.",
@@ -5906,7 +5939,15 @@
         "x-fern-type-name": "CitationOptions"
       },
       "TruncationStrategy": {
+        "required": [
+          "type"
+        ],
         "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
         "description": "Describes the truncation strategy for when the prompt exceeds the context length. Defaults to \u0027none\u0027",
         "discriminator": {
           "propertyName": "type"
@@ -5976,6 +6017,9 @@
         "x-fern-type-name": "JsonResponseFormatV2"
       },
       "ResponseFormatV2": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -6400,6 +6444,9 @@
         "x-fern-type-name": "ChatMessageEndEvent"
       },
       "StreamedChatResponseV2": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -6803,6 +6850,9 @@
         "x-fern-type-name": "ParseTableContentBlock"
       },
       "ParseBlock": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -6827,6 +6877,9 @@
           "table": {
             "description": "Payload for a table block.",
             "$ref": "#/components/schemas/ParseTableBlock"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "A content block on a parsed page.",
@@ -6914,6 +6967,9 @@
         "x-fern-type-name": "ParseMarkdownPageVariant"
       },
       "ParsePage": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -6938,6 +6994,9 @@
           "markdown": {
             "description": "Markdown output payload for a parsed page.",
             "$ref": "#/components/schemas/ParseMarkdownPage"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "description": "A single parsed page. The payload shape depends on \u0060output_format\u0060.",
@@ -7212,6 +7271,9 @@
         "x-fern-type-name": "GenerateStreamError"
       },
       "GenerateStreamedResponse": {
+        "required": [
+          "event_type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -9824,6 +9886,9 @@
         "x-fern-type-name": "EmbedText"
       },
       "EmbedContent": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -13092,6 +13157,9 @@
         "description": "Outputs from a tool. The content should formatted as a JSON object string, or a list of tool content blocks"
       },
       "AssistantMessageResponseContentItem": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -13106,6 +13174,9 @@
             "type": "string"
           },
           "thinking": {
+            "type": "string"
+          },
+          "type": {
             "type": "string"
           }
         },
@@ -13351,6 +13422,9 @@
         }
       },
       "AssistantMessageV2ContentOneOf2Item": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -13366,6 +13440,9 @@
           },
           "thinking": {
             "type": "string"
+          },
+          "type": {
+            "type": "string"
           }
         },
         "discriminator": {
@@ -13380,6 +13457,9 @@
         "x-fern-type-name": "AssistantMessageV2ContentOneItem"
       },
       "SystemMessageV2ContentOneOf2Item": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -14946,6 +15026,9 @@
         "x-fern-type-name": "EmbedRequest"
       },
       "Embed200Response": {
+        "required": [
+          "response_type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -14993,6 +15076,9 @@
               "public"
             ],
             "$ref": "#/components/schemas/ApiMeta"
+          },
+          "response_type": {
+            "type": "string"
           }
         },
         "discriminator": {

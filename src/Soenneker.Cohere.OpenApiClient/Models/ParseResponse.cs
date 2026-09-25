@@ -15,6 +15,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The reason parsing finished. For Parse, this is only ever `COMPLETE` or`MAX_TOKENS`; `MAX_TOKENS` indicates the output was truncated because itexceeded the maximum output token limit.</summary>
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatFinishReason? FinishReason { get; set; }
         /// <summary>Unique identifier for the parse response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,6 +66,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "finish_reason", n => { FinishReason = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatFinishReason>(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "meta", n => { Meta = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta>(global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta.CreateFromDiscriminatorValue); } },
                 { "pages", n => { Pages = n.GetCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.ParsePage>(global::Soenneker.Cohere.OpenApiClient.Models.ParsePage.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -76,6 +79,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatFinishReason>("finish_reason", FinishReason);
             writer.WriteStringValue("id", Id);
             writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta>("meta", Meta);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.ParsePage>("pages", Pages);

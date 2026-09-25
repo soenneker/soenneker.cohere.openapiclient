@@ -19917,6 +19917,10 @@
           },
           "meta": {
             "$ref": "#/components/schemas/ApiMeta"
+          },
+          "finish_reason": {
+            "description": "The reason parsing finished. For Parse, this is only ever \u0060COMPLETE\u0060 or\n\u0060MAX_TOKENS\u0060; \u0060MAX_TOKENS\u0060 indicates the output was truncated because it\nexceeded the maximum output token limit.\n",
+            "$ref": "#/components/schemas/ChatFinishReason"
           }
         },
         "description": "Response from the v2 parse endpoint.",

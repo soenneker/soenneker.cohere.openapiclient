@@ -50,7 +50,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 #else
         public string Model { get; set; }
 #endif
-        /// <summary>The number of dimensions of the output embedding. This is only available for `embed-v4` and newer models.Possible values are `256`, `512`, `1024`, and `1536`. The default is `1536`.</summary>
+        /// <summary>The number of dimensions of the output embedding. This is only available for `embed-v4` and newer models.For supported dimensions, please refer to the [Embed models](https://docs.cohere.com/docs/cohere-embed) page.</summary>
         public int? OutputDimension { get; set; }
         /// <summary>Controls how early the request is handled. Lower numbers indicate higher priority (default: 0, the highest). When the system is under load, higher-priority requests are processed first and are the least likely to be dropped.</summary>
         public int? Priority { get; set; }

@@ -18,6 +18,14 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public int? Index { get; set; }
         /// <summary>Relevance scores are normalized to be in the range `[0, 1]`. Scores close to `1` indicate a high relevance to the query, and scores closer to `0` indicate low relevance. It is not accurate to assume a score of 0.9 means the document is 2x more relevant than a document with a score of 0.45</summary>
         public float? RelevanceScore { get; set; }
+        /// <summary>The spans of this document that are most relevant to the query, ordered from most to least relevant. Only returned when the request enabled `relevant_spans` and the model found at least one span for the document.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.RerankRelevantSpanResponse>? RelevantSpans { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.RerankRelevantSpanResponse> RelevantSpans { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.Rerankv2200ResponseResultsItem"/> and sets the default values.
         /// </summary>
@@ -45,6 +53,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             {
                 { "index", n => { Index = n.GetIntValue(); } },
                 { "relevance_score", n => { RelevanceScore = n.GetFloatValue(); } },
+                { "relevant_spans", n => { RelevantSpans = n.GetCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.RerankRelevantSpanResponse>(global::Soenneker.Cohere.OpenApiClient.Models.RerankRelevantSpanResponse.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -56,6 +65,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("index", Index);
             writer.WriteFloatValue("relevance_score", RelevanceScore);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.RerankRelevantSpanResponse>("relevant_spans", RelevantSpans);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

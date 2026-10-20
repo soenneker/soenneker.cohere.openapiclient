@@ -13234,27 +13234,27 @@
               {
                 "sdk": "typescript",
                 "name": "Cohere TypeScript SDK",
-                "code": "import { CohereClient } from \u0027cohere-ai\u0027;\n\nconst cohere = new CohereClient({});\n\n(async () =\u003E {\n  const rerank = await cohere.v2.rerank({\n    documents: [\n      \u0027Carson City is the capital city of the American state of Nevada.\u0027,\n      \u0027The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean. Its capital is Saipan.\u0027,\n      \u0027Capitalization or capitalisation in English grammar is the use of a capital letter at the start of a word. English usage varies from capitalization in other languages.\u0027,\n      \u0027Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district.\u0027,\n      \u0027Capital punishment has existed in the United States since beforethe United States was a country. As of 2017, capital punishment is legal in 30 of the 50 states.\u0027,\n    ],\n    query: \u0027What is the capital of the United States?\u0027,\n    topN: 3,\n    model: \u0027rerank-v4.0-pro\u0027,\n  });\n\n  console.log(rerank);\n})();\n"
+                "code": "import { CohereClient } from \u0027cohere-ai\u0027;\n\nconst cohere = new CohereClient({});\n\n(async () =\u003E {\n  const rerank = await cohere.v2.rerank({\n    documents: [\n      \u0027Carson City is the capital city of the American state of Nevada.\u0027,\n      \u0027The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean. Its capital is Saipan.\u0027,\n      \u0027Capitalization or capitalisation in English grammar is the use of a capital letter at the start of a word. English usage varies from capitalization in other languages.\u0027,\n      \u0027Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district.\u0027,\n      \u0027Capital gains are profits from the sale of an asset such as stocks or real estate. In the United States, long-term capital gains are taxed at lower rates than ordinary income.\u0027,\n    ],\n    query: \u0027What is the capital of the United States?\u0027,\n    topN: 3,\n    model: \u0027rerank-v5.0-pro\u0027,\n    relevantSpans: { mode: \u0027enabled\u0027, threshold: 0.1, maxSpans: 3 },\n  });\n\n  console.log(rerank);\n})();\n"
               },
               {
                 "sdk": "python",
                 "name": "Sync",
-                "code": "import cohere\n\nco = cohere.ClientV2()\n\ndocs = [\n    \u0022Carson City is the capital city of the American state of Nevada.\u0022,\n    \u0022The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean. Its capital is Saipan.\u0022,\n    \u0022Capitalization or capitalisation in English grammar is the use of a capital letter at the start of a word. English usage varies from capitalization in other languages.\u0022,\n    \u0022Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district.\u0022,\n    \u0022Capital punishment has existed in the United States since beforethe United States was a country. As of 2017, capital punishment is legal in 30 of the 50 states.\u0022,\n]\n\nresponse = co.rerank(\n    model=\u0022rerank-v4.0-pro\u0022,\n    query=\u0022What is the capital of the United States?\u0022,\n    documents=docs,\n    top_n=3,\n)\nprint(response)\n"
+                "code": "import cohere\n\nco = cohere.ClientV2()\n\ndocs = [\n    \u0022Carson City is the capital city of the American state of Nevada.\u0022,\n    \u0022The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean. Its capital is Saipan.\u0022,\n    \u0022Capitalization or capitalisation in English grammar is the use of a capital letter at the start of a word. English usage varies from capitalization in other languages.\u0022,\n    \u0022Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district.\u0022,\n    \u0022Capital gains are profits from the sale of an asset such as stocks or real estate. In the United States, long-term capital gains are taxed at lower rates than ordinary income.\u0022,\n]\n\nresponse = co.rerank(\n    model=\u0022rerank-v5.0-pro\u0022,\n    query=\u0022What is the capital of the United States?\u0022,\n    documents=docs,\n    top_n=3,\n    relevant_spans={\u0022mode\u0022: \u0022enabled\u0022, \u0022threshold\u0022: 0.1, \u0022max_spans\u0022: 3},\n)\nprint(response)\n"
               },
               {
                 "sdk": "python",
                 "name": "Async",
-                "code": "import cohere\nimport asyncio\n\nco = cohere.AsyncClientV2()\n\nasync def main():\n    response = await co.rerank(\n        model=\u0022rerank-v4.0-pro\u0022,\n        query=\u0022What is the capital of the United States?\u0022,\n        documents=[\n            \u0022Carson City is the capital city of the American state of Nevada.\u0022,\n            \u0022The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean. Its capital is Saipan.\u0022,\n            \u0022Capitalization or capitalisation in English grammar is the use of a capital letter at the start of a word. English usage varies from capitalization in other languages.\u0022,\n            \u0022Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district.\u0022,\n            \u0022Capital punishment has existed in the United States since beforethe United States was a country. As of 2017, capital punishment is legal in 30 of the 50 states.\u0022,\n        ],\n        top_n=3\n    )\n    print(response)\n\n\nasyncio.run(main())\n"
+                "code": "import cohere\nimport asyncio\n\nco = cohere.AsyncClientV2()\n\nasync def main():\n    response = await co.rerank(\n        model=\u0022rerank-v5.0-pro\u0022,\n        query=\u0022What is the capital of the United States?\u0022,\n        documents=[\n            \u0022Carson City is the capital city of the American state of Nevada.\u0022,\n            \u0022The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean. Its capital is Saipan.\u0022,\n            \u0022Capitalization or capitalisation in English grammar is the use of a capital letter at the start of a word. English usage varies from capitalization in other languages.\u0022,\n            \u0022Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district.\u0022,\n            \u0022Capital gains are profits from the sale of an asset such as stocks or real estate. In the United States, long-term capital gains are taxed at lower rates than ordinary income.\u0022,\n        ],\n        top_n=3,\n        relevant_spans={\u0022mode\u0022: \u0022enabled\u0022, \u0022threshold\u0022: 0.1, \u0022max_spans\u0022: 3},\n    )\n    print(response)\n\n\nasyncio.run(main())\n"
               },
               {
                 "sdk": "java",
                 "name": "Cohere java SDK",
-                "code": "/* (C)2024 */\nimport com.cohere.api.Cohere;\nimport com.cohere.api.resources.v2.requests.V2RerankRequest;\nimport com.cohere.api.resources.v2.types.V2RerankResponse;\nimport java.util.List;\n\npublic class RerankV2Post {\n  public static void main(String[] args) {\n    Cohere cohere = Cohere.builder().clientName(\u0022snippet\u0022).build();\n\n    V2RerankResponse response =\n        cohere\n            .v2()\n            .rerank(\n                V2RerankRequest.builder()\n                    .model(\u0022rerank-v4.0-pro\u0022)\n                    .query(\u0022What is the capital of the United States?\u0022)\n                    .documents(\n                        List.of(\n                            \u0022Carson City is the capital city of the American state of Nevada.\u0022,\n                            \u0022The Commonwealth of the Northern Mariana Islands is a group of islands\u0022\n                                \u002B \u0022 in the Pacific Ocean. Its capital is Saipan.\u0022,\n                            \u0022Capitalization or capitalisation in English grammar is the use of a\u0022\n                                \u002B \u0022 capital letter at the start of a word. English usage varies\u0022\n                                \u002B \u0022 from capitalization in other languages.\u0022,\n                            \u0022Washington, D.C. (also known as simply Washington or D.C., and\u0022\n                                \u002B \u0022 officially as the District of Columbia) is the capital of the\u0022\n                                \u002B \u0022 United States. It is a federal district.\u0022,\n                            \u0022Capital punishment has existed in the United States since before the\u0022\n                                \u002B \u0022 United States was a country. As of 2017, capital punishment is\u0022\n                                \u002B \u0022 legal in 30 of the 50 states.\u0022))\n                    .topN(3)\n                    .build());\n\n    System.out.println(response);\n  }\n}\n"
+                "code": "/* (C)2024 */\nimport com.cohere.api.Cohere;\nimport com.cohere.api.resources.v2.requests.V2RerankRequest;\nimport com.cohere.api.resources.v2.types.V2RerankResponse;\nimport com.cohere.api.types.RerankRelevantSpans;\nimport com.cohere.api.types.RerankRelevantSpansMode;\nimport java.util.List;\n\npublic class RerankV2Post {\n  public static void main(String[] args) {\n    Cohere cohere = Cohere.builder().clientName(\u0022snippet\u0022).build();\n\n    V2RerankResponse response =\n        cohere\n            .v2()\n            .rerank(\n                V2RerankRequest.builder()\n                    .model(\u0022rerank-v5.0-pro\u0022)\n                    .query(\u0022What is the capital of the United States?\u0022)\n                    .documents(\n                        List.of(\n                            \u0022Carson City is the capital city of the American state of Nevada.\u0022,\n                            \u0022The Commonwealth of the Northern Mariana Islands is a group of islands\u0022\n                                \u002B \u0022 in the Pacific Ocean. Its capital is Saipan.\u0022,\n                            \u0022Capitalization or capitalisation in English grammar is the use of a\u0022\n                                \u002B \u0022 capital letter at the start of a word. English usage varies\u0022\n                                \u002B \u0022 from capitalization in other languages.\u0022,\n                            \u0022Washington, D.C. (also known as simply Washington or D.C., and\u0022\n                                \u002B \u0022 officially as the District of Columbia) is the capital of the\u0022\n                                \u002B \u0022 United States. It is a federal district.\u0022,\n                            \u0022Capital gains are profits from the sale of an asset such as stocks or\u0022\n                                \u002B \u0022 real estate. In the United States, long-term capital gains are\u0022\n                                \u002B \u0022 taxed at lower rates than ordinary income.\u0022))\n                    .topN(3)\n                    .relevantSpans(\n                        RerankRelevantSpans.builder()\n                            .mode(RerankRelevantSpansMode.ENABLED)\n                            .threshold(0.1f)\n                            .maxSpans(3)\n                            .build())\n                    .build());\n\n    System.out.println(response);\n  }\n}\n"
               },
               {
                 "sdk": "curl",
                 "name": "cURL",
-                "code": "curl --request POST \\\n  --url https://api.cohere.com/v2/rerank \\\n  --header \u0027accept: application/json\u0027 \\\n  --header \u0027content-type: application/json\u0027 \\\n  --header \u0022Authorization: bearer $CO_API_KEY\u0022 \\\n  --data \u0027{\n    \u0022model\u0022: \u0022rerank-v4.0-pro\u0022,\n    \u0022query\u0022: \u0022What is the capital of the United States?\u0022,\n    \u0022top_n\u0022: 3,\n    \u0022documents\u0022: [\u0022Carson City is the capital city of the American state of Nevada.\u0022,\n                  \u0022The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean. Its capital is Saipan.\u0022,\n                  \u0022Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district.\u0022,\n                  \u0022Capitalization or capitalisation in English grammar is the use of a capital letter at the start of a word. English usage varies from capitalization in other languages.\u0022,\n                  \u0022Capital punishment has existed in the United States since beforethe United States was a country. As of 2017, capital punishment is legal in 30 of the 50 states.\u0022]\n  }\u0027\n"
+                "code": "curl --request POST \\\n  --url https://api.cohere.com/v2/rerank \\\n  --header \u0027accept: application/json\u0027 \\\n  --header \u0027content-type: application/json\u0027 \\\n  --header \u0022Authorization: bearer $CO_API_KEY\u0022 \\\n  --data \u0027{\n    \u0022model\u0022: \u0022rerank-v5.0-pro\u0022,\n    \u0022query\u0022: \u0022What is the capital of the United States?\u0022,\n    \u0022top_n\u0022: 3,\n    \u0022documents\u0022: [\u0022Carson City is the capital city of the American state of Nevada.\u0022,\n                  \u0022The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean. Its capital is Saipan.\u0022,\n                  \u0022Capitalization or capitalisation in English grammar is the use of a capital letter at the start of a word. English usage varies from capitalization in other languages.\u0022,\n                  \u0022Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district.\u0022,\n                  \u0022Capital gains are profits from the sale of an asset such as stocks or real estate. In the United States, long-term capital gains are taxed at lower rates than ordinary income.\u0022],\n    \u0022relevant_spans\u0022: {\u0022mode\u0022: \u0022enabled\u0022, \u0022threshold\u0022: 0.1, \u0022max_spans\u0022: 3}\n  }\u0027\n"
               }
             ],
             "request": {
@@ -13263,36 +13263,71 @@
                 "The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean. Its capital is Saipan.",
                 "Capitalization or capitalisation in English grammar is the use of a capital letter at the start of a word. English usage varies from capitalization in other languages.",
                 "Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district.",
-                "Capital punishment has existed in the United States since beforethe United States was a country. As of 2017, capital punishment is legal in 30 of the 50 states."
+                "Capital gains are profits from the sale of an asset such as stocks or real estate. In the United States, long-term capital gains are taxed at lower rates than ordinary income."
               ],
               "query": "What is the capital of the United States?",
               "top_n": 3,
-              "model": "rerank-v4.0-pro"
+              "model": "rerank-v5.0-pro",
+              "relevant_spans": {
+                "mode": "enabled",
+                "threshold": 0.1,
+                "max_spans": 3
+              }
             },
             "response": {
               "body": {
-                "id": "07734bd2-2473-4f07-94e1-0d9f0e6843cf",
+                "id": "9f75d94c-5047-4f9f-ad14-4a42ef5d3ff3",
                 "results": [
                   {
-                    "index": 3,
-                    "relevance_score": 0.999071
-                  },
-                  {
-                    "index": 4,
-                    "relevance_score": 0.7867867
+                    "index": 2,
+                    "relevance_score": 0.8428898,
+                    "relevant_spans": [
+                      {
+                        "start": 0,
+                        "end": 139,
+                        "score": 0.9997249
+                      },
+                      {
+                        "start": 139,
+                        "end": 165,
+                        "score": 0.33812714
+                      }
+                    ]
                   },
                   {
                     "index": 0,
-                    "relevance_score": 0.32713068
+                    "relevance_score": 0.085889876,
+                    "relevant_spans": [
+                      {
+                        "start": 0,
+                        "end": 64,
+                        "score": 0.33498195
+                      }
+                    ]
+                  },
+                  {
+                    "index": 4,
+                    "relevance_score": 0.04667134,
+                    "relevant_spans": [
+                      {
+                        "start": 0,
+                        "end": 82,
+                        "score": 0.15934227
+                      },
+                      {
+                        "start": 82,
+                        "end": 175,
+                        "score": 0.118320465
+                      }
+                    ]
                   }
                 ],
                 "meta": {
                   "api_version": {
-                    "version": "2",
-                    "is_experimental": false
+                    "version": "2"
                   },
                   "billed_units": {
-                    "search_units": 1
+                    "input_tokens": 192
                   }
                 }
               }
@@ -23251,6 +23286,80 @@
         "x-fern-type": "map\u003Cstring, string\u003E",
         "x-fern-type-name": "RerankDocument"
       },
+      "RerankRelevantSpans": {
+        "title": "Rerank Relevant Spans",
+        "required": [
+          "mode"
+        ],
+        "type": "object",
+        "properties": {
+          "mode": {
+            "$ref": "#/components/schemas/RerankRelevantSpansMode"
+          },
+          "threshold": {
+            "maximum": 1,
+            "minimum": 0,
+            "type": "number",
+            "description": "The score a span must reach to be considered relevant. A higher value prunes more of each document. Defaults to \u00600.1\u0060. Can only be set when \u0060mode\u0060 is \u0060enabled\u0060.",
+            "format": "float",
+            "default": 0.1,
+            "x-fern-audiences": [
+              "public"
+            ]
+          },
+          "max_spans": {
+            "minimum": 1,
+            "type": "integer",
+            "description": "Optional. The most spans to return per document, out of the spans scoring above \u0060threshold\u0060. Must be greater than \u00600\u0060. If not set, all of them are returned. Can only be set when \u0060mode\u0060 is \u0060enabled\u0060.",
+            "x-fern-audiences": [
+              "public"
+            ]
+          }
+        },
+        "description": "Configures context compression, which reports the spans of each document that are most relevant to the query instead of treating the whole document as relevant. Only supported by Rerank v5 and newer models (for example, \u0060rerank-v5.0-pro\u0060).",
+        "x-fern-audiences": [
+          "public"
+        ],
+        "x-fern-type-name": "RerankRelevantSpans"
+      },
+      "RerankRelevantSpanResponse": {
+        "title": "Rerank Relevant Span Response",
+        "required": [
+          "start",
+          "end",
+          "score"
+        ],
+        "type": "object",
+        "properties": {
+          "start": {
+            "type": "integer",
+            "description": "The position of the span\u0027s first character in the document, counted in Unicode codepoints.",
+            "x-fern-audiences": [
+              "public"
+            ]
+          },
+          "end": {
+            "type": "integer",
+            "description": "The position just past the span\u0027s last character, counted in Unicode codepoints, so the span covers \u0060[start, end)\u0060 of the document.",
+            "x-fern-audiences": [
+              "public"
+            ]
+          },
+          "score": {
+            "type": "number",
+            "description": "How relevant the span is to the query, in the range \u0060[0, 1]\u0060. Only spans reaching the requested \u0060threshold\u0060 are returned.",
+            "format": "float",
+            "x-fern-audiences": [
+              "public"
+            ]
+          }
+        },
+        "description": "A stretch of a document that the model found relevant to the query, returned when context compression is enabled through \u0060relevant_spans\u0060.",
+        "x-fern-audiences": [
+          "public"
+        ],
+        "x-fern-type-name": "RerankRelevantSpanResponse"
+      },
       "ClassifyExample": {
         "type": "object",
         "properties": {
@@ -28238,7 +28347,7 @@
         "properties": {
           "model": {
             "type": "string",
-            "description": "The identifier of the model to use, eg \u0060rerank-v3.5\u0060.",
+            "description": "The identifier of the model to use, eg \u0060rerank-v5.0-pro\u0060.",
             "x-fern-audiences": [
               "public"
             ]
@@ -28274,6 +28383,13 @@
             "x-fern-audiences": [
               "public"
             ]
+          },
+          "relevant_spans": {
+            "description": "Configures context compression, which reports the spans of each document that are most relevant to the query instead of treating the whole document as relevant. Only supported by Rerank v5 and newer models (for example, \u0060rerank-v5.0-pro\u0060).",
+            "x-fern-audiences": [
+              "public"
+            ],
+            "$ref": "#/components/schemas/RerankRelevantSpans"
           },
           "priority": {
             "maximum": 999,
@@ -29053,6 +29169,16 @@
             "type": "number",
             "description": "Relevance scores are normalized to be in the range \u0060[0, 1]\u0060. Scores close to \u00601\u0060 indicate a high relevance to the query, and scores closer to \u00600\u0060 indicate low relevance. It is not accurate to assume a score of 0.9 means the document is 2x more relevant than a document with a score of 0.45",
             "format": "float",
+            "x-fern-audiences": [
+              "public"
+            ]
+          },
+          "relevant_spans": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RerankRelevantSpanResponse"
+            },
+            "description": "The spans of this document that are most relevant to the query, ordered from most to least relevant. Only returned when the request enabled \u0060relevant_spans\u0060 and the model found at least one span for the document.",
             "x-fern-audiences": [
               "public"
             ]
@@ -29851,6 +29977,32 @@
             {
               "value": "END",
               "name": "End"
+            }
+          ]
+        }
+      },
+      "RerankRelevantSpansMode": {
+        "enum": [
+          "enabled",
+          "disabled"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Whether the model prunes each document down to its relevant spans. Pruning is off unless \u0060relevant_spans\u0060 is passed with \u0060\u0022mode\u0022: \u0022enabled\u0022\u0060.",
+        "x-fern-audiences": [
+          "public"
+        ],
+        "x-ms-enum": {
+          "name": "RerankRelevantSpansMode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "enabled",
+              "name": "Enabled"
+            },
+            {
+              "value": "disabled",
+              "name": "Disabled"
             }
           ]
         }

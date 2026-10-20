@@ -24,7 +24,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 #endif
         /// <summary>Defaults to `4096`. Long documents will be automatically truncated to the specified number of tokens.</summary>
         public int? MaxTokensPerDoc { get; set; }
-        /// <summary>The identifier of the model to use, eg `rerank-v3.5`.</summary>
+        /// <summary>The identifier of the model to use, eg `rerank-v5.0-pro`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Model { get; set; }
@@ -41,6 +41,14 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 #nullable restore
 #else
         public string Query { get; set; }
+#endif
+        /// <summary>Configures context compression, which reports the spans of each document that are most relevant to the query instead of treating the whole document as relevant. Only supported by Rerank v5 and newer models (for example, `rerank-v5.0-pro`).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Cohere.OpenApiClient.Models.RerankRelevantSpans? RelevantSpans { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Cohere.OpenApiClient.Models.RerankRelevantSpans RelevantSpans { get; set; }
 #endif
         /// <summary>Limits the number of returned rerank results to the specified value. If not passed, all the rerank results will be returned.</summary>
         public int? TopN { get; set; }
@@ -75,6 +83,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "priority", n => { Priority = n.GetIntValue(); } },
                 { "query", n => { Query = n.GetStringValue(); } },
+                { "relevant_spans", n => { RelevantSpans = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.RerankRelevantSpans>(global::Soenneker.Cohere.OpenApiClient.Models.RerankRelevantSpans.CreateFromDiscriminatorValue); } },
                 { "top_n", n => { TopN = n.GetIntValue(); } },
             };
         }
@@ -90,6 +99,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteStringValue("model", Model);
             writer.WriteIntValue("priority", Priority);
             writer.WriteStringValue("query", Query);
+            writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.RerankRelevantSpans>("relevant_spans", RelevantSpans);
             writer.WriteIntValue("top_n", TopN);
             writer.WriteAdditionalData(AdditionalData);
         }

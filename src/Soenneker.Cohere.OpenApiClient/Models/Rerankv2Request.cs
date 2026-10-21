@@ -42,7 +42,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 #else
         public string Query { get; set; }
 #endif
-        /// <summary>Configures context compression, which reports the spans of each document that are most relevant to the query instead of treating the whole document as relevant. Only supported by Rerank v5 and newer models (for example, `rerank-v5.0-pro`).</summary>
+        /// <summary>When enabled, the API response will include the relevant spans of each document that contributed to its rank. This feature is only supported for Rerank v5 and newer models.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Cohere.OpenApiClient.Models.RerankRelevantSpans? RelevantSpans { get; set; }

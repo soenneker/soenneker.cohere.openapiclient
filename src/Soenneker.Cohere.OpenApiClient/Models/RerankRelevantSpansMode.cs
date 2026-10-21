@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Cohere.OpenApiClient.Models
 {
-    /// <summary>Whether the model prunes each document down to its relevant spans. Pruning is off unless `relevant_spans` is passed with `&quot;mode&quot;: &quot;enabled&quot;`.</summary>
+    /// <summary>One of `&quot;enabled&quot;` or `&quot;disabled&quot;`. Controls whether relevant spans will be returned in the API response.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum RerankRelevantSpansMode
     {

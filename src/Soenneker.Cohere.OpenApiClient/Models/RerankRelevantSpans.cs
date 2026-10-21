@@ -8,18 +8,18 @@ using System;
 namespace Soenneker.Cohere.OpenApiClient.Models
 {
     /// <summary>
-    /// Configures context compression, which reports the spans of each document that are most relevant to the query instead of treating the whole document as relevant. Only supported by Rerank v5 and newer models (for example, `rerank-v5.0-pro`).
+    /// When enabled, the API response will include the relevant spans of each document that contributed to its rank. This feature is only supported for Rerank v5 and newer models.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RerankRelevantSpans : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Optional. The most spans to return per document, out of the spans scoring above `threshold`. Must be greater than `0`. If not set, all of them are returned. Can only be set when `mode` is `enabled`.</summary>
+        /// <summary>The maximum number of relevant spans to include per document. If not set, all relevant spans will be returned.</summary>
         public int? MaxSpans { get; set; }
-        /// <summary>Whether the model prunes each document down to its relevant spans. Pruning is off unless `relevant_spans` is passed with `&quot;mode&quot;: &quot;enabled&quot;`.</summary>
+        /// <summary>One of `&quot;enabled&quot;` or `&quot;disabled&quot;`. Controls whether relevant spans will be returned in the API response.</summary>
         public global::Soenneker.Cohere.OpenApiClient.Models.RerankRelevantSpansMode? Mode { get; set; }
-        /// <summary>The score a span must reach to be considered relevant. A higher value prunes more of each document. Defaults to `0.1`. Can only be set when `mode` is `enabled`.</summary>
+        /// <summary>Only spans with a relevance score higher than the specified threshold value will be included in the response. Defaults to `0.1`.</summary>
         public float? Threshold { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.RerankRelevantSpans"/> and sets the default values.

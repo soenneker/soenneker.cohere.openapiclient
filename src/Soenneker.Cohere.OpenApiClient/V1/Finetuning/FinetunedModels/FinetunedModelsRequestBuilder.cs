@@ -20,15 +20,15 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels
     {
         /// <summary>Gets an item from the Soenneker.Cohere.OpenApiClient.v1.finetuning.finetunedModels.item collection</summary>
         /// <param name="position">FinetunedModel ID.</param>
-        /// <returns>A <see cref="global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.FinetunedModelItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.FinetunedModelsItemRequestBuilder"/></returns>
         [Obsolete("")]
-        public global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.FinetunedModelItemRequestBuilder this[string position]
+        public global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.FinetunedModelsItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("finetunedModel%2Did", position);
-                return new global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.FinetunedModelItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("id", position);
+                return new global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.FinetunedModelsItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

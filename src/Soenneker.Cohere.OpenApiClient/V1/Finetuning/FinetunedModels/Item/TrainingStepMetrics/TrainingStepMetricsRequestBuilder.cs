@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.TrainingStepMetrics
 {
     /// <summary>
-    /// Builds and executes requests for operations under \v1\finetuning\finetuned-models\{finetunedModel-id}\training-step-metrics
+    /// Builds and executes requests for operations under \v1\finetuning\finetuned-models\{id}\training-step-metrics
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TrainingStepMetricsRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.Trai
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TrainingStepMetricsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/finetuning/finetuned-models/{finetunedModel%2Did}/training-step-metrics{?page_size*,page_token*}", pathParameters)
+        public TrainingStepMetricsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/finetuning/finetuned-models/{id}/training-step-metrics{?page_size*,page_token*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.Trai
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TrainingStepMetricsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/finetuning/finetuned-models/{finetunedModel%2Did}/training-step-metrics{?page_size*,page_token*}", rawUrl)
+        public TrainingStepMetricsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/finetuning/finetuned-models/{id}/training-step-metrics{?page_size*,page_token*}", rawUrl)
         {
         }
         /// <summary>

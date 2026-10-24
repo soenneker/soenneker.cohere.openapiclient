@@ -14,10 +14,10 @@ using System;
 namespace Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \v1\finetuning\finetuned-models\{finetunedModel-id}
+    /// Builds and executes requests for operations under \v1\finetuning\finetuned-models\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class FinetunedModelItemRequestBuilder : BaseRequestBuilder
+    public partial class FinetunedModelsItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The events property</summary>
         [Obsolete("")]
@@ -32,19 +32,19 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item
             get => new global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.TrainingStepMetrics.TrainingStepMetricsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.FinetunedModelItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.FinetunedModelsItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public FinetunedModelItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/finetuning/finetuned-models/{finetunedModel%2Did}", pathParameters)
+        public FinetunedModelsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/finetuning/finetuned-models/{id}", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.FinetunedModelItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.FinetunedModelsItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public FinetunedModelItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/finetuning/finetuned-models/{finetunedModel%2Did}", rawUrl)
+        public FinetunedModelsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/finetuning/finetuned-models/{id}", rawUrl)
         {
         }
         /// <summary>
@@ -217,12 +217,12 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.FinetunedModelItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.FinetunedModelsItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         [Obsolete("")]
-        public global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.FinetunedModelItemRequestBuilder WithUrl(string rawUrl)
+        public global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.FinetunedModelsItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.FinetunedModelItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.FinetunedModelsItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

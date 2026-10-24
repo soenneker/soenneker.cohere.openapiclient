@@ -52,7 +52,13 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public string Prompt { get; set; }
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatStreamEventTypeType? Type { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Type { get; set; }
+#nullable restore
+#else
+        public string Type { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponseV2"/> and sets the default values.
         /// </summary>
@@ -84,7 +90,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
                 { "index", n => { Index = n.GetIntValue(); } },
                 { "logprobs", n => { Logprobs = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.LogprobItem>(global::Soenneker.Cohere.OpenApiClient.Models.LogprobItem.CreateFromDiscriminatorValue); } },
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatStreamEventTypeType>(); } },
+                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -100,7 +106,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteIntValue("index", Index);
             writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.LogprobItem>("logprobs", Logprobs);
             writer.WriteStringValue("prompt", Prompt);
-            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatStreamEventTypeType>("type", Type);
+            writer.WriteStringValue("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

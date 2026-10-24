@@ -25,10 +25,10 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>A list of relevant documents that the model can cite to generate a more accurate reply. Each document is either a string or document object with content and metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.Chatv2RequestDocumentsItem>? Documents { get; set; }
+        public List<string>? Documents { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.Chatv2RequestDocumentsItem> Documents { get; set; }
+        public List<string> Documents { get; set; }
 #endif
         /// <summary>Defaults to `0.0`, min value of `0.0`, max value of `1.0`.Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.</summary>
         public float? FrequencyPenalty { get; set; }
@@ -133,7 +133,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "citation_options", n => { CitationOptions = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.CitationOptions>(global::Soenneker.Cohere.OpenApiClient.Models.CitationOptions.CreateFromDiscriminatorValue); } },
-                { "documents", n => { Documents = n.GetCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.Chatv2RequestDocumentsItem>(global::Soenneker.Cohere.OpenApiClient.Models.Chatv2RequestDocumentsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "documents", n => { Documents = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "frequency_penalty", n => { FrequencyPenalty = n.GetFloatValue(); } },
                 { "k", n => { K = n.GetIntValue(); } },
                 { "logprobs", n => { Logprobs = n.GetBoolValue(); } },
@@ -163,7 +163,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.CitationOptions>("citation_options", CitationOptions);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.Chatv2RequestDocumentsItem>("documents", Documents);
+            writer.WriteCollectionOfPrimitiveValues<string>("documents", Documents);
             writer.WriteFloatValue("frequency_penalty", FrequencyPenalty);
             writer.WriteIntValue("k", K);
             writer.WriteBoolValue("logprobs", Logprobs);

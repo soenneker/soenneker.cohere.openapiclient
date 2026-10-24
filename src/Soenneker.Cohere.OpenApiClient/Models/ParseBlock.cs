@@ -51,11 +51,11 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             {
                 result.ParseImageContentBlock = new global::Soenneker.Cohere.OpenApiClient.Models.ParseImageContentBlock();
             }
-            else if("ParseTableContentBlock".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("table".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ParseTableContentBlock = new global::Soenneker.Cohere.OpenApiClient.Models.ParseTableContentBlock();
             }
-            else if("ParseTextContentBlock".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("text".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ParseTextContentBlock = new global::Soenneker.Cohere.OpenApiClient.Models.ParseTextContentBlock();
             }

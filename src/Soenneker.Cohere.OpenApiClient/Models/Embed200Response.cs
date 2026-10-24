@@ -39,7 +39,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("response_type")?.GetStringValue();
             var result = new global::Soenneker.Cohere.OpenApiClient.Models.Embed200Response();
-            if("EmbedByTypeResponse".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("embeddings_by_type".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.EmbedByTypeResponse = new global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponse();
             }

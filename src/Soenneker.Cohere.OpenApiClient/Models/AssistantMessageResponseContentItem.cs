@@ -39,11 +39,11 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             var result = new global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageResponseContentItem();
-            if("ChatTextContent".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("text".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatTextContent = new global::Soenneker.Cohere.OpenApiClient.Models.ChatTextContent();
             }
-            else if("ChatThinkingContent".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("thinking".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ChatThinkingContent = new global::Soenneker.Cohere.OpenApiClient.Models.ChatThinkingContent();
             }

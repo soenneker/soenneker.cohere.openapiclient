@@ -17,10 +17,10 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>A list of document objects or strings to rerank.If a document is provided the text fields is required and all other fields will be preserved in the response.The total max chunks (length of documents * max_chunks_per_doc) must be less than 10000.We recommend a maximum of 1,000 documents for optimal endpoint performance.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.RerankRequestDocumentsItem>? Documents { get; set; }
+        public List<string>? Documents { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.RerankRequestDocumentsItem> Documents { get; set; }
+        public List<string> Documents { get; set; }
 #endif
         /// <summary>The maximum number of chunks to produce internally from a document</summary>
         public int? MaxChunksPerDoc { get; set; }
@@ -79,7 +79,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "documents", n => { Documents = n.GetCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.RerankRequestDocumentsItem>(global::Soenneker.Cohere.OpenApiClient.Models.RerankRequestDocumentsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "documents", n => { Documents = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "max_chunks_per_doc", n => { MaxChunksPerDoc = n.GetIntValue(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "query", n => { Query = n.GetStringValue(); } },
@@ -95,7 +95,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.RerankRequestDocumentsItem>("documents", Documents);
+            writer.WriteCollectionOfPrimitiveValues<string>("documents", Documents);
             writer.WriteIntValue("max_chunks_per_doc", MaxChunksPerDoc);
             writer.WriteStringValue("model", Model);
             writer.WriteStringValue("query", Query);

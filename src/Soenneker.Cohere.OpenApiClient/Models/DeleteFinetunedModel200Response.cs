@@ -10,6 +10,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     /// <summary>
     /// Response to request to delete a fine-tuned model.
     /// </summary>
+    [Obsolete("")]
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeleteFinetunedModel200Response : IAdditionalDataHolder, IParsable
     {

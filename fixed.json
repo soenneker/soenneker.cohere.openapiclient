@@ -22880,7 +22880,6 @@
           "model": {
             "type": "string",
             "description": "ID of the embedding model.\n\nAvailable models and corresponding embedding dimensions:\n\n- \u0060embed-english-v3.0\u0060 : 1024\n- \u0060embed-multilingual-v3.0\u0060 : 1024\n- \u0060embed-english-light-v3.0\u0060 : 384\n- \u0060embed-multilingual-light-v3.0\u0060 : 384\n",
-            "format": "string",
             "x-fern-audiences": [
               "public"
             ]

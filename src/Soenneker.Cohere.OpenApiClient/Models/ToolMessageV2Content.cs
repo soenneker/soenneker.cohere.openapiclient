@@ -43,7 +43,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             {
                 result.String = stringValue;
             }
-            else if(parseNode.GetCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.ToolContent>(global::Soenneker.Cohere.OpenApiClient.Models.ToolContent.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.Cohere.OpenApiClient.Models.ToolContent> toolContentValue)
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && parseNode.GetCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.ToolContent>(global::Soenneker.Cohere.OpenApiClient.Models.ToolContent.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.Cohere.OpenApiClient.Models.ToolContent> toolContentValue)
             {
                 result.ToolContent = toolContentValue;
             }

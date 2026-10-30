@@ -18,13 +18,20 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("err") is { } nullNodeErr && nullNodeErr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Err = null;
-            if (parseNode.GetChildNode("event_type") is { } nullNodeEventType && nullNodeEventType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventType = null;
-            if (parseNode.GetChildNode("finish_reason") is { } nullNodeFinishReason && nullNodeFinishReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FinishReason = null;
-            if (parseNode.GetChildNode("index") is { } nullNodeIndex && nullNodeIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Index = null;
-            if (parseNode.GetChildNode("is_finished") is { } nullNodeIsFinished && nullNodeIsFinished.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsFinished = null;
-            if (parseNode.GetChildNode("response") is { } nullNodeResponse && nullNodeResponse.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Response = null;
-            if (parseNode.GetChildNode("text") is { } nullNodeText && nullNodeText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Text = null;
+            if (parseNode.GetChildNode("err") is null) { _explicitNullValueErr = default!; _explicitNullProperties?.Remove("err"); }
+            else if (parseNode.GetChildNode("err") is { } nullNodeErr && nullNodeErr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Err = null;
+            if (parseNode.GetChildNode("event_type") is null) { _explicitNullValueEventType = default!; _explicitNullProperties?.Remove("event_type"); }
+            else if (parseNode.GetChildNode("event_type") is { } nullNodeEventType && nullNodeEventType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventType = null;
+            if (parseNode.GetChildNode("finish_reason") is null) { _explicitNullValueFinishReason = default!; _explicitNullProperties?.Remove("finish_reason"); }
+            else if (parseNode.GetChildNode("finish_reason") is { } nullNodeFinishReason && nullNodeFinishReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FinishReason = null;
+            if (parseNode.GetChildNode("index") is null) { _explicitNullValueIndex = default!; _explicitNullProperties?.Remove("index"); }
+            else if (parseNode.GetChildNode("index") is { } nullNodeIndex && nullNodeIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Index = null;
+            if (parseNode.GetChildNode("is_finished") is null) { _explicitNullValueIsFinished = default!; _explicitNullProperties?.Remove("is_finished"); }
+            else if (parseNode.GetChildNode("is_finished") is { } nullNodeIsFinished && nullNodeIsFinished.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsFinished = null;
+            if (parseNode.GetChildNode("response") is null) { _explicitNullValueResponse = default!; _explicitNullProperties?.Remove("response"); }
+            else if (parseNode.GetChildNode("response") is { } nullNodeResponse && nullNodeResponse.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Response = null;
+            if (parseNode.GetChildNode("text") is null) { _explicitNullValueText = default!; _explicitNullProperties?.Remove("text"); }
+            else if (parseNode.GetChildNode("text") is { } nullNodeText && nullNodeText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Text = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,43 +39,43 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>Error message</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Err { get => _explicitNullValueErr; set { _explicitNullValueErr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("err"); else _explicitNullProperties?.Remove("err"); } }
+        public string? Err { get => _explicitNullValueErr; set { _explicitNullValueErr = value; AdditionalData?.Remove("err"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("err"); else _explicitNullProperties?.Remove("err"); } }
         private string? _explicitNullValueErr = default!;
 #nullable restore
 #else
-        public string Err { get => _explicitNullValueErr; set { _explicitNullValueErr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("err"); else _explicitNullProperties?.Remove("err"); } }
+        public string Err { get => _explicitNullValueErr; set { _explicitNullValueErr = value; AdditionalData?.Remove("err"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("err"); else _explicitNullProperties?.Remove("err"); } }
         private string _explicitNullValueErr = default!;
 #endif
         /// <summary>The event_type property</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.GenerateStreamEventEventType? EventType { get => _explicitNullValueEventType; set { _explicitNullValueEventType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_type"); else _explicitNullProperties?.Remove("event_type"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.GenerateStreamEventEventType? EventType { get => _explicitNullValueEventType; set { _explicitNullValueEventType = value; AdditionalData?.Remove("event_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_type"); else _explicitNullProperties?.Remove("event_type"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.GenerateStreamEventEventType? _explicitNullValueEventType = default!;
         /// <summary>The finish_reason property</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.FinishReason? FinishReason { get => _explicitNullValueFinishReason; set { _explicitNullValueFinishReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finish_reason"); else _explicitNullProperties?.Remove("finish_reason"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.FinishReason? FinishReason { get => _explicitNullValueFinishReason; set { _explicitNullValueFinishReason = value; AdditionalData?.Remove("finish_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finish_reason"); else _explicitNullProperties?.Remove("finish_reason"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.FinishReason? _explicitNullValueFinishReason = default!;
         /// <summary>Refers to the nth generation. Only present when `num_generations` is greater than zero, and only when text responses are being streamed.</summary>
-        public int? Index { get => _explicitNullValueIndex; set { _explicitNullValueIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("index"); else _explicitNullProperties?.Remove("index"); } }
+        public int? Index { get => _explicitNullValueIndex; set { _explicitNullValueIndex = value; AdditionalData?.Remove("index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("index"); else _explicitNullProperties?.Remove("index"); } }
         private int? _explicitNullValueIndex = default!;
         /// <summary>The is_finished property</summary>
-        public bool? IsFinished { get => _explicitNullValueIsFinished; set { _explicitNullValueIsFinished = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_finished"); else _explicitNullProperties?.Remove("is_finished"); } }
+        public bool? IsFinished { get => _explicitNullValueIsFinished; set { _explicitNullValueIsFinished = value; AdditionalData?.Remove("is_finished"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_finished"); else _explicitNullProperties?.Remove("is_finished"); } }
         private bool? _explicitNullValueIsFinished = default!;
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.GenerateStreamEndAllOf2Response? Response { get => _explicitNullValueResponse; set { _explicitNullValueResponse = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response"); else _explicitNullProperties?.Remove("response"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.GenerateStreamEndAllOf2Response? Response { get => _explicitNullValueResponse; set { _explicitNullValueResponse = value; AdditionalData?.Remove("response"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response"); else _explicitNullProperties?.Remove("response"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.GenerateStreamEndAllOf2Response? _explicitNullValueResponse = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.GenerateStreamEndAllOf2Response Response { get => _explicitNullValueResponse; set { _explicitNullValueResponse = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response"); else _explicitNullProperties?.Remove("response"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.GenerateStreamEndAllOf2Response Response { get => _explicitNullValueResponse; set { _explicitNullValueResponse = value; AdditionalData?.Remove("response"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response"); else _explicitNullProperties?.Remove("response"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.GenerateStreamEndAllOf2Response _explicitNullValueResponse = default!;
 #endif
         /// <summary>A segment of text of the generation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Text { get => _explicitNullValueText; set { _explicitNullValueText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text"); else _explicitNullProperties?.Remove("text"); } }
+        public string? Text { get => _explicitNullValueText; set { _explicitNullValueText = value; AdditionalData?.Remove("text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text"); else _explicitNullProperties?.Remove("text"); } }
         private string? _explicitNullValueText = default!;
 #nullable restore
 #else
-        public string Text { get => _explicitNullValueText; set { _explicitNullValueText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text"); else _explicitNullProperties?.Remove("text"); } }
+        public string Text { get => _explicitNullValueText; set { _explicitNullValueText = value; AdditionalData?.Remove("text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text"); else _explicitNullProperties?.Remove("text"); } }
         private string _explicitNullValueText = default!;
 #endif
         /// <summary>
@@ -97,8 +104,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "err", n => { Err = n.GetStringValue(); } },
-                { "event_type", n => { EventType = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.GenerateStreamEventEventType>(); } },
-                { "finish_reason", n => { FinishReason = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.FinishReason>(); } },
+                { "event_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.GenerateStreamEventEventType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueEventType = default; _explicitNullProperties?.Remove("event_type"); AdditionalData["event_type"] = unknown; } else { EventType = parsed; AdditionalData.Remove("event_type"); } } },
+                { "finish_reason", n => { var parsed = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.FinishReason>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueFinishReason = default; _explicitNullProperties?.Remove("finish_reason"); AdditionalData["finish_reason"] = unknown; } else { FinishReason = parsed; AdditionalData.Remove("finish_reason"); } } },
                 { "index", n => { Index = n.GetIntValue(); } },
                 { "is_finished", n => { IsFinished = n.GetBoolValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.GenerateStreamEndAllOf2Response>(global::Soenneker.Cohere.OpenApiClient.Models.GenerateStreamEndAllOf2Response.CreateFromDiscriminatorValue); } },

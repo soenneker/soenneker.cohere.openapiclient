@@ -17,7 +17,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("embed_jobs") is { } nullNodeEmbedJobs && nullNodeEmbedJobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmbedJobs = null;
+            if (parseNode.GetChildNode("embed_jobs") is null) { _explicitNullValueEmbedJobs = default!; _explicitNullProperties?.Remove("embed_jobs"); }
+            else if (parseNode.GetChildNode("embed_jobs") is { } nullNodeEmbedJobs && nullNodeEmbedJobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmbedJobs = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The embed_jobs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.EmbedJob>? EmbedJobs { get => _explicitNullValueEmbedJobs; set { _explicitNullValueEmbedJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embed_jobs"); else _explicitNullProperties?.Remove("embed_jobs"); } }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.EmbedJob>? EmbedJobs { get => _explicitNullValueEmbedJobs; set { _explicitNullValueEmbedJobs = value; AdditionalData?.Remove("embed_jobs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embed_jobs"); else _explicitNullProperties?.Remove("embed_jobs"); } }
         private List<global::Soenneker.Cohere.OpenApiClient.Models.EmbedJob>? _explicitNullValueEmbedJobs = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.EmbedJob> EmbedJobs { get => _explicitNullValueEmbedJobs; set { _explicitNullValueEmbedJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embed_jobs"); else _explicitNullProperties?.Remove("embed_jobs"); } }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.EmbedJob> EmbedJobs { get => _explicitNullValueEmbedJobs; set { _explicitNullValueEmbedJobs = value; AdditionalData?.Remove("embed_jobs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embed_jobs"); else _explicitNullProperties?.Remove("embed_jobs"); } }
         private List<global::Soenneker.Cohere.OpenApiClient.Models.EmbedJob> _explicitNullValueEmbedJobs = default!;
 #endif
         /// <summary>

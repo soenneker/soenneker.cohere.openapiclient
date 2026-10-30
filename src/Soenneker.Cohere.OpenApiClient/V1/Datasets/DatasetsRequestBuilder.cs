@@ -162,7 +162,7 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Datasets
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Cohere.OpenApiClient.V1.Datasets.DatasetsRequestBuilder.DatasetsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.cohere.com", "/v1/datasets", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -183,7 +183,7 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Datasets
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/v1/datasets?name={name}&type={type}{&csv_delimiter*,keep_fields*,keep_original_file*,optional_fields*,skip_malformed_input*,text_separator*}", PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve("{+baseurl}/v1/datasets?name={name}&type={type}{&csv_delimiter*,keep_fields*,keep_original_file*,optional_fields*,skip_malformed_input*,text_separator*}", RequestAdapter.BaseUrl, "https://api.cohere.com", "/v1/datasets", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "multipart/form-data", body);

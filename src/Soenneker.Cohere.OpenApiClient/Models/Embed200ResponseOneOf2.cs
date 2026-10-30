@@ -17,12 +17,18 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("embeddings") is { } nullNodeEmbeddings && nullNodeEmbeddings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Embeddings = null;
-            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
-            if (parseNode.GetChildNode("images") is { } nullNodeImages && nullNodeImages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Images = null;
-            if (parseNode.GetChildNode("meta") is { } nullNodeMeta && nullNodeMeta.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Meta = null;
-            if (parseNode.GetChildNode("response_type") is { } nullNodeResponseType && nullNodeResponseType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResponseType = null;
-            if (parseNode.GetChildNode("texts") is { } nullNodeTexts && nullNodeTexts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Texts = null;
+            if (parseNode.GetChildNode("embeddings") is null) { _explicitNullValueEmbeddings = default!; _explicitNullProperties?.Remove("embeddings"); }
+            else if (parseNode.GetChildNode("embeddings") is { } nullNodeEmbeddings && nullNodeEmbeddings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Embeddings = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("images") is null) { _explicitNullValueImages = default!; _explicitNullProperties?.Remove("images"); }
+            else if (parseNode.GetChildNode("images") is { } nullNodeImages && nullNodeImages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Images = null;
+            if (parseNode.GetChildNode("meta") is null) { _explicitNullValueMeta = default!; _explicitNullProperties?.Remove("meta"); }
+            else if (parseNode.GetChildNode("meta") is { } nullNodeMeta && nullNodeMeta.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Meta = null;
+            if (parseNode.GetChildNode("response_type") is null) { _explicitNullValueResponseType = default!; _explicitNullProperties?.Remove("response_type"); }
+            else if (parseNode.GetChildNode("response_type") is { } nullNodeResponseType && nullNodeResponseType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResponseType = null;
+            if (parseNode.GetChildNode("texts") is null) { _explicitNullValueTexts = default!; _explicitNullProperties?.Remove("texts"); }
+            else if (parseNode.GetChildNode("texts") is { } nullNodeTexts && nullNodeTexts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Texts = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,54 +36,54 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>An object with different embedding types. The length of each embedding type array will be the same as the length of the original `texts` array.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponseEmbeddings? Embeddings { get => _explicitNullValueEmbeddings; set { _explicitNullValueEmbeddings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embeddings"); else _explicitNullProperties?.Remove("embeddings"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponseEmbeddings? Embeddings { get => _explicitNullValueEmbeddings; set { _explicitNullValueEmbeddings = value; AdditionalData?.Remove("embeddings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embeddings"); else _explicitNullProperties?.Remove("embeddings"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponseEmbeddings? _explicitNullValueEmbeddings = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponseEmbeddings Embeddings { get => _explicitNullValueEmbeddings; set { _explicitNullValueEmbeddings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embeddings"); else _explicitNullProperties?.Remove("embeddings"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponseEmbeddings Embeddings { get => _explicitNullValueEmbeddings; set { _explicitNullValueEmbeddings = value; AdditionalData?.Remove("embeddings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embeddings"); else _explicitNullProperties?.Remove("embeddings"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponseEmbeddings _explicitNullValueEmbeddings = default!;
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
         /// <summary>The image entries for which embeddings were returned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.Image>? Images { get => _explicitNullValueImages; set { _explicitNullValueImages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("images"); else _explicitNullProperties?.Remove("images"); } }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.Image>? Images { get => _explicitNullValueImages; set { _explicitNullValueImages = value; AdditionalData?.Remove("images"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("images"); else _explicitNullProperties?.Remove("images"); } }
         private List<global::Soenneker.Cohere.OpenApiClient.Models.Image>? _explicitNullValueImages = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.Image> Images { get => _explicitNullValueImages; set { _explicitNullValueImages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("images"); else _explicitNullProperties?.Remove("images"); } }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.Image> Images { get => _explicitNullValueImages; set { _explicitNullValueImages = value; AdditionalData?.Remove("images"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("images"); else _explicitNullProperties?.Remove("images"); } }
         private List<global::Soenneker.Cohere.OpenApiClient.Models.Image> _explicitNullValueImages = default!;
 #endif
         /// <summary>The meta property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta? Meta { get => _explicitNullValueMeta; set { _explicitNullValueMeta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meta"); else _explicitNullProperties?.Remove("meta"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta? Meta { get => _explicitNullValueMeta; set { _explicitNullValueMeta = value; AdditionalData?.Remove("meta"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meta"); else _explicitNullProperties?.Remove("meta"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta? _explicitNullValueMeta = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta Meta { get => _explicitNullValueMeta; set { _explicitNullValueMeta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meta"); else _explicitNullProperties?.Remove("meta"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta Meta { get => _explicitNullValueMeta; set { _explicitNullValueMeta = value; AdditionalData?.Remove("meta"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meta"); else _explicitNullProperties?.Remove("meta"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta _explicitNullValueMeta = default!;
 #endif
         /// <summary>The response_type property</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.Embed200ResponseOneOf2_response_type? ResponseType { get => _explicitNullValueResponseType; set { _explicitNullValueResponseType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_type"); else _explicitNullProperties?.Remove("response_type"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.Embed200ResponseOneOf2_response_type? ResponseType { get => _explicitNullValueResponseType; set { _explicitNullValueResponseType = value; AdditionalData?.Remove("response_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_type"); else _explicitNullProperties?.Remove("response_type"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.Embed200ResponseOneOf2_response_type? _explicitNullValueResponseType = default!;
         /// <summary>The text entries for which embeddings were returned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Texts { get => _explicitNullValueTexts; set { _explicitNullValueTexts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("texts"); else _explicitNullProperties?.Remove("texts"); } }
+        public List<string>? Texts { get => _explicitNullValueTexts; set { _explicitNullValueTexts = value; AdditionalData?.Remove("texts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("texts"); else _explicitNullProperties?.Remove("texts"); } }
         private List<string>? _explicitNullValueTexts = default!;
 #nullable restore
 #else
-        public List<string> Texts { get => _explicitNullValueTexts; set { _explicitNullValueTexts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("texts"); else _explicitNullProperties?.Remove("texts"); } }
+        public List<string> Texts { get => _explicitNullValueTexts; set { _explicitNullValueTexts = value; AdditionalData?.Remove("texts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("texts"); else _explicitNullProperties?.Remove("texts"); } }
         private List<string> _explicitNullValueTexts = default!;
 #endif
         /// <summary>
@@ -109,7 +115,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "images", n => { Images = n.GetCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.Image>(global::Soenneker.Cohere.OpenApiClient.Models.Image.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "meta", n => { Meta = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta>(global::Soenneker.Cohere.OpenApiClient.Models.ApiMeta.CreateFromDiscriminatorValue); } },
-                { "response_type", n => { ResponseType = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.Embed200ResponseOneOf2_response_type>(); } },
+                { "response_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.Embed200ResponseOneOf2_response_type>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueResponseType = default; _explicitNullProperties?.Remove("response_type"); AdditionalData["response_type"] = unknown; } else { ResponseType = parsed; AdditionalData.Remove("response_type"); } } },
                 { "texts", n => { Texts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }

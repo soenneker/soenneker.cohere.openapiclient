@@ -18,7 +18,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("batch") is { } nullNodeBatch && nullNodeBatch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Batch = null;
+            if (parseNode.GetChildNode("batch") is null) { _explicitNullValueBatch = default!; _explicitNullProperties?.Remove("batch"); }
+            else if (parseNode.GetChildNode("batch") is { } nullNodeBatch && nullNodeBatch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Batch = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>Information about the batch.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.Batch? Batch { get => _explicitNullValueBatch; set { _explicitNullValueBatch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("batch"); else _explicitNullProperties?.Remove("batch"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.Batch? Batch { get => _explicitNullValueBatch; set { _explicitNullValueBatch = value; AdditionalData?.Remove("batch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("batch"); else _explicitNullProperties?.Remove("batch"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.Batch? _explicitNullValueBatch = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.Batch Batch { get => _explicitNullValueBatch; set { _explicitNullValueBatch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("batch"); else _explicitNullProperties?.Remove("batch"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.Batch Batch { get => _explicitNullValueBatch; set { _explicitNullValueBatch = value; AdditionalData?.Remove("batch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("batch"); else _explicitNullProperties?.Remove("batch"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.Batch _explicitNullValueBatch = default!;
 #endif
         /// <summary>

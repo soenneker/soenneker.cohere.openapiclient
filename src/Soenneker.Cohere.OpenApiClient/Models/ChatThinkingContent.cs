@@ -18,8 +18,10 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("thinking") is { } nullNodeThinking && nullNodeThinking.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Thinking = null;
-            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("thinking") is null) { _explicitNullValueThinking = default!; _explicitNullProperties?.Remove("thinking"); }
+            else if (parseNode.GetChildNode("thinking") is { } nullNodeThinking && nullNodeThinking.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Thinking = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,15 +29,15 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The thinking property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Thinking { get => _explicitNullValueThinking; set { _explicitNullValueThinking = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinking"); else _explicitNullProperties?.Remove("thinking"); } }
+        public string? Thinking { get => _explicitNullValueThinking; set { _explicitNullValueThinking = value; AdditionalData?.Remove("thinking"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinking"); else _explicitNullProperties?.Remove("thinking"); } }
         private string? _explicitNullValueThinking = default!;
 #nullable restore
 #else
-        public string Thinking { get => _explicitNullValueThinking; set { _explicitNullValueThinking = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinking"); else _explicitNullProperties?.Remove("thinking"); } }
+        public string Thinking { get => _explicitNullValueThinking; set { _explicitNullValueThinking = value; AdditionalData?.Remove("thinking"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thinking"); else _explicitNullProperties?.Remove("thinking"); } }
         private string _explicitNullValueThinking = default!;
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.ThinkingType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ThinkingType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ThinkingType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ChatThinkingContent"/> and sets the default values.
@@ -63,7 +65,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "thinking", n => { Thinking = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ThinkingType>(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ThinkingType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
         /// <summary>

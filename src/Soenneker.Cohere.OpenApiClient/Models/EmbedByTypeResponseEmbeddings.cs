@@ -18,12 +18,18 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("base64") is { } nullNodeBase64 && nullNodeBase64.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Base64 = null;
-            if (parseNode.GetChildNode("binary") is { } nullNodeBinary && nullNodeBinary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Binary = null;
-            if (parseNode.GetChildNode("float") is { } nullNodeFloat && nullNodeFloat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Float = null;
-            if (parseNode.GetChildNode("int8") is { } nullNodeInt8 && nullNodeInt8.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Int8 = null;
-            if (parseNode.GetChildNode("ubinary") is { } nullNodeUbinary && nullNodeUbinary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ubinary = null;
-            if (parseNode.GetChildNode("uint8") is { } nullNodeUint8 && nullNodeUint8.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Uint8 = null;
+            if (parseNode.GetChildNode("base64") is null) { _explicitNullValueBase64 = default!; _explicitNullProperties?.Remove("base64"); }
+            else if (parseNode.GetChildNode("base64") is { } nullNodeBase64 && nullNodeBase64.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Base64 = null;
+            if (parseNode.GetChildNode("binary") is null) { _explicitNullValueBinary = default!; _explicitNullProperties?.Remove("binary"); }
+            else if (parseNode.GetChildNode("binary") is { } nullNodeBinary && nullNodeBinary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Binary = null;
+            if (parseNode.GetChildNode("float") is null) { _explicitNullValueFloat = default!; _explicitNullProperties?.Remove("float"); }
+            else if (parseNode.GetChildNode("float") is { } nullNodeFloat && nullNodeFloat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Float = null;
+            if (parseNode.GetChildNode("int8") is null) { _explicitNullValueInt8 = default!; _explicitNullProperties?.Remove("int8"); }
+            else if (parseNode.GetChildNode("int8") is { } nullNodeInt8 && nullNodeInt8.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Int8 = null;
+            if (parseNode.GetChildNode("ubinary") is null) { _explicitNullValueUbinary = default!; _explicitNullProperties?.Remove("ubinary"); }
+            else if (parseNode.GetChildNode("ubinary") is { } nullNodeUbinary && nullNodeUbinary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ubinary = null;
+            if (parseNode.GetChildNode("uint8") is null) { _explicitNullValueUint8 = default!; _explicitNullProperties?.Remove("uint8"); }
+            else if (parseNode.GetChildNode("uint8") is { } nullNodeUint8 && nullNodeUint8.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Uint8 = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,61 +37,61 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>An array of base64 embeddings. Each string is the result of appending the float embedding bytes together and base64 encoding that.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Base64 { get => _explicitNullValueBase64; set { _explicitNullValueBase64 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base64"); else _explicitNullProperties?.Remove("base64"); } }
+        public List<string>? Base64 { get => _explicitNullValueBase64; set { _explicitNullValueBase64 = value; AdditionalData?.Remove("base64"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base64"); else _explicitNullProperties?.Remove("base64"); } }
         private List<string>? _explicitNullValueBase64 = default!;
 #nullable restore
 #else
-        public List<string> Base64 { get => _explicitNullValueBase64; set { _explicitNullValueBase64 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base64"); else _explicitNullProperties?.Remove("base64"); } }
+        public List<string> Base64 { get => _explicitNullValueBase64; set { _explicitNullValueBase64 = value; AdditionalData?.Remove("base64"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base64"); else _explicitNullProperties?.Remove("base64"); } }
         private List<string> _explicitNullValueBase64 = default!;
 #endif
         /// <summary>An array of packed signed binary embeddings. The length of each binary embedding is 1/8 the length of the float embeddings of the provided model. Each value is between -128 and 127.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Binary { get => _explicitNullValueBinary; set { _explicitNullValueBinary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("binary"); else _explicitNullProperties?.Remove("binary"); } }
+        public UntypedNode? Binary { get => _explicitNullValueBinary; set { _explicitNullValueBinary = value; AdditionalData?.Remove("binary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("binary"); else _explicitNullProperties?.Remove("binary"); } }
         private UntypedNode? _explicitNullValueBinary = default!;
 #nullable restore
 #else
-        public UntypedNode Binary { get => _explicitNullValueBinary; set { _explicitNullValueBinary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("binary"); else _explicitNullProperties?.Remove("binary"); } }
+        public UntypedNode Binary { get => _explicitNullValueBinary; set { _explicitNullValueBinary = value; AdditionalData?.Remove("binary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("binary"); else _explicitNullProperties?.Remove("binary"); } }
         private UntypedNode _explicitNullValueBinary = default!;
 #endif
         /// <summary>An array of float embeddings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Float { get => _explicitNullValueFloat; set { _explicitNullValueFloat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("float"); else _explicitNullProperties?.Remove("float"); } }
+        public UntypedNode? Float { get => _explicitNullValueFloat; set { _explicitNullValueFloat = value; AdditionalData?.Remove("float"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("float"); else _explicitNullProperties?.Remove("float"); } }
         private UntypedNode? _explicitNullValueFloat = default!;
 #nullable restore
 #else
-        public UntypedNode Float { get => _explicitNullValueFloat; set { _explicitNullValueFloat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("float"); else _explicitNullProperties?.Remove("float"); } }
+        public UntypedNode Float { get => _explicitNullValueFloat; set { _explicitNullValueFloat = value; AdditionalData?.Remove("float"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("float"); else _explicitNullProperties?.Remove("float"); } }
         private UntypedNode _explicitNullValueFloat = default!;
 #endif
         /// <summary>An array of signed int8 embeddings. Each value is between -128 and 127.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Int8 { get => _explicitNullValueInt8; set { _explicitNullValueInt8 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("int8"); else _explicitNullProperties?.Remove("int8"); } }
+        public UntypedNode? Int8 { get => _explicitNullValueInt8; set { _explicitNullValueInt8 = value; AdditionalData?.Remove("int8"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("int8"); else _explicitNullProperties?.Remove("int8"); } }
         private UntypedNode? _explicitNullValueInt8 = default!;
 #nullable restore
 #else
-        public UntypedNode Int8 { get => _explicitNullValueInt8; set { _explicitNullValueInt8 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("int8"); else _explicitNullProperties?.Remove("int8"); } }
+        public UntypedNode Int8 { get => _explicitNullValueInt8; set { _explicitNullValueInt8 = value; AdditionalData?.Remove("int8"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("int8"); else _explicitNullProperties?.Remove("int8"); } }
         private UntypedNode _explicitNullValueInt8 = default!;
 #endif
         /// <summary>An array of packed unsigned binary embeddings. The length of each binary embedding is 1/8 the length of the float embeddings of the provided model. Each value is between 0 and 255.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Ubinary { get => _explicitNullValueUbinary; set { _explicitNullValueUbinary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ubinary"); else _explicitNullProperties?.Remove("ubinary"); } }
+        public UntypedNode? Ubinary { get => _explicitNullValueUbinary; set { _explicitNullValueUbinary = value; AdditionalData?.Remove("ubinary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ubinary"); else _explicitNullProperties?.Remove("ubinary"); } }
         private UntypedNode? _explicitNullValueUbinary = default!;
 #nullable restore
 #else
-        public UntypedNode Ubinary { get => _explicitNullValueUbinary; set { _explicitNullValueUbinary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ubinary"); else _explicitNullProperties?.Remove("ubinary"); } }
+        public UntypedNode Ubinary { get => _explicitNullValueUbinary; set { _explicitNullValueUbinary = value; AdditionalData?.Remove("ubinary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ubinary"); else _explicitNullProperties?.Remove("ubinary"); } }
         private UntypedNode _explicitNullValueUbinary = default!;
 #endif
         /// <summary>An array of unsigned int8 embeddings. Each value is between 0 and 255.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Uint8 { get => _explicitNullValueUint8; set { _explicitNullValueUint8 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uint8"); else _explicitNullProperties?.Remove("uint8"); } }
+        public UntypedNode? Uint8 { get => _explicitNullValueUint8; set { _explicitNullValueUint8 = value; AdditionalData?.Remove("uint8"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uint8"); else _explicitNullProperties?.Remove("uint8"); } }
         private UntypedNode? _explicitNullValueUint8 = default!;
 #nullable restore
 #else
-        public UntypedNode Uint8 { get => _explicitNullValueUint8; set { _explicitNullValueUint8 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uint8"); else _explicitNullProperties?.Remove("uint8"); } }
+        public UntypedNode Uint8 { get => _explicitNullValueUint8; set { _explicitNullValueUint8 = value; AdditionalData?.Remove("uint8"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uint8"); else _explicitNullProperties?.Remove("uint8"); } }
         private UntypedNode _explicitNullValueUint8 = default!;
 #endif
         /// <summary>

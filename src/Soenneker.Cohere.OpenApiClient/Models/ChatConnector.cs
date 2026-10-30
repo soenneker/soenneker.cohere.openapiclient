@@ -18,45 +18,49 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("continue_on_failure") is { } nullNodeContinueOnFailure && nullNodeContinueOnFailure.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContinueOnFailure = null;
-            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
-            if (parseNode.GetChildNode("options") is { } nullNodeOptions && nullNodeOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Options = null;
-            if (parseNode.GetChildNode("user_access_token") is { } nullNodeUserAccessToken && nullNodeUserAccessToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserAccessToken = null;
+            if (parseNode.GetChildNode("continue_on_failure") is null) { _explicitNullValueContinueOnFailure = default!; _explicitNullProperties?.Remove("continue_on_failure"); }
+            else if (parseNode.GetChildNode("continue_on_failure") is { } nullNodeContinueOnFailure && nullNodeContinueOnFailure.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContinueOnFailure = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("options") is null) { _explicitNullValueOptions = default!; _explicitNullProperties?.Remove("options"); }
+            else if (parseNode.GetChildNode("options") is { } nullNodeOptions && nullNodeOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Options = null;
+            if (parseNode.GetChildNode("user_access_token") is null) { _explicitNullValueUserAccessToken = default!; _explicitNullProperties?.Remove("user_access_token"); }
+            else if (parseNode.GetChildNode("user_access_token") is { } nullNodeUserAccessToken && nullNodeUserAccessToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserAccessToken = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Defaults to `false`.When `true`, the request will continue if this connector returned an error.</summary>
-        public bool? ContinueOnFailure { get => _explicitNullValueContinueOnFailure; set { _explicitNullValueContinueOnFailure = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("continue_on_failure"); else _explicitNullProperties?.Remove("continue_on_failure"); } }
+        public bool? ContinueOnFailure { get => _explicitNullValueContinueOnFailure; set { _explicitNullValueContinueOnFailure = value; AdditionalData?.Remove("continue_on_failure"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("continue_on_failure"); else _explicitNullProperties?.Remove("continue_on_failure"); } }
         private bool? _explicitNullValueContinueOnFailure = default!;
         /// <summary>The identifier of the connector.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
         /// <summary>Provides the connector with different settings at request time. The key/value pairs of this object are specific to each connector.For example, the connector `web-search` supports the `site` option, which limits search results to the specified domain.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatConnectorOptionsProperty? Options { get => _explicitNullValueOptions; set { _explicitNullValueOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("options"); else _explicitNullProperties?.Remove("options"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatConnectorOptionsProperty? Options { get => _explicitNullValueOptions; set { _explicitNullValueOptions = value; AdditionalData?.Remove("options"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("options"); else _explicitNullProperties?.Remove("options"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ChatConnectorOptionsProperty? _explicitNullValueOptions = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatConnectorOptionsProperty Options { get => _explicitNullValueOptions; set { _explicitNullValueOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("options"); else _explicitNullProperties?.Remove("options"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatConnectorOptionsProperty Options { get => _explicitNullValueOptions; set { _explicitNullValueOptions = value; AdditionalData?.Remove("options"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("options"); else _explicitNullProperties?.Remove("options"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ChatConnectorOptionsProperty _explicitNullValueOptions = default!;
 #endif
         /// <summary>When specified, this user access token will be passed to the connector in the Authorization header instead of the Cohere generated one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UserAccessToken { get => _explicitNullValueUserAccessToken; set { _explicitNullValueUserAccessToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_access_token"); else _explicitNullProperties?.Remove("user_access_token"); } }
+        public string? UserAccessToken { get => _explicitNullValueUserAccessToken; set { _explicitNullValueUserAccessToken = value; AdditionalData?.Remove("user_access_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_access_token"); else _explicitNullProperties?.Remove("user_access_token"); } }
         private string? _explicitNullValueUserAccessToken = default!;
 #nullable restore
 #else
-        public string UserAccessToken { get => _explicitNullValueUserAccessToken; set { _explicitNullValueUserAccessToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_access_token"); else _explicitNullProperties?.Remove("user_access_token"); } }
+        public string UserAccessToken { get => _explicitNullValueUserAccessToken; set { _explicitNullValueUserAccessToken = value; AdditionalData?.Remove("user_access_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_access_token"); else _explicitNullProperties?.Remove("user_access_token"); } }
         private string _explicitNullValueUserAccessToken = default!;
 #endif
         /// <summary>

@@ -17,11 +17,16 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("connector") is { } nullNodeConnector && nullNodeConnector.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Connector = null;
-            if (parseNode.GetChildNode("continue_on_failure") is { } nullNodeContinueOnFailure && nullNodeContinueOnFailure.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContinueOnFailure = null;
-            if (parseNode.GetChildNode("document_ids") is { } nullNodeDocumentIds && nullNodeDocumentIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DocumentIds = null;
-            if (parseNode.GetChildNode("error_message") is { } nullNodeErrorMessage && nullNodeErrorMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorMessage = null;
-            if (parseNode.GetChildNode("search_query") is { } nullNodeSearchQuery && nullNodeSearchQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SearchQuery = null;
+            if (parseNode.GetChildNode("connector") is null) { _explicitNullValueConnector = default!; _explicitNullProperties?.Remove("connector"); }
+            else if (parseNode.GetChildNode("connector") is { } nullNodeConnector && nullNodeConnector.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Connector = null;
+            if (parseNode.GetChildNode("continue_on_failure") is null) { _explicitNullValueContinueOnFailure = default!; _explicitNullProperties?.Remove("continue_on_failure"); }
+            else if (parseNode.GetChildNode("continue_on_failure") is { } nullNodeContinueOnFailure && nullNodeContinueOnFailure.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContinueOnFailure = null;
+            if (parseNode.GetChildNode("document_ids") is null) { _explicitNullValueDocumentIds = default!; _explicitNullProperties?.Remove("document_ids"); }
+            else if (parseNode.GetChildNode("document_ids") is { } nullNodeDocumentIds && nullNodeDocumentIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DocumentIds = null;
+            if (parseNode.GetChildNode("error_message") is null) { _explicitNullValueErrorMessage = default!; _explicitNullProperties?.Remove("error_message"); }
+            else if (parseNode.GetChildNode("error_message") is { } nullNodeErrorMessage && nullNodeErrorMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorMessage = null;
+            if (parseNode.GetChildNode("search_query") is null) { _explicitNullValueSearchQuery = default!; _explicitNullProperties?.Remove("search_query"); }
+            else if (parseNode.GetChildNode("search_query") is { } nullNodeSearchQuery && nullNodeSearchQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SearchQuery = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,44 +34,44 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The connector from which this result comes from.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatSearchResultConnector? Connector { get => _explicitNullValueConnector; set { _explicitNullValueConnector = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connector"); else _explicitNullProperties?.Remove("connector"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatSearchResultConnector? Connector { get => _explicitNullValueConnector; set { _explicitNullValueConnector = value; AdditionalData?.Remove("connector"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connector"); else _explicitNullProperties?.Remove("connector"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ChatSearchResultConnector? _explicitNullValueConnector = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatSearchResultConnector Connector { get => _explicitNullValueConnector; set { _explicitNullValueConnector = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connector"); else _explicitNullProperties?.Remove("connector"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatSearchResultConnector Connector { get => _explicitNullValueConnector; set { _explicitNullValueConnector = value; AdditionalData?.Remove("connector"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connector"); else _explicitNullProperties?.Remove("connector"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ChatSearchResultConnector _explicitNullValueConnector = default!;
 #endif
         /// <summary>Whether a chat request should continue or not if the request to this connector fails.</summary>
-        public bool? ContinueOnFailure { get => _explicitNullValueContinueOnFailure; set { _explicitNullValueContinueOnFailure = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("continue_on_failure"); else _explicitNullProperties?.Remove("continue_on_failure"); } }
+        public bool? ContinueOnFailure { get => _explicitNullValueContinueOnFailure; set { _explicitNullValueContinueOnFailure = value; AdditionalData?.Remove("continue_on_failure"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("continue_on_failure"); else _explicitNullProperties?.Remove("continue_on_failure"); } }
         private bool? _explicitNullValueContinueOnFailure = default!;
         /// <summary>Identifiers of documents found by this search query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? DocumentIds { get => _explicitNullValueDocumentIds; set { _explicitNullValueDocumentIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("document_ids"); else _explicitNullProperties?.Remove("document_ids"); } }
+        public List<string>? DocumentIds { get => _explicitNullValueDocumentIds; set { _explicitNullValueDocumentIds = value; AdditionalData?.Remove("document_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("document_ids"); else _explicitNullProperties?.Remove("document_ids"); } }
         private List<string>? _explicitNullValueDocumentIds = default!;
 #nullable restore
 #else
-        public List<string> DocumentIds { get => _explicitNullValueDocumentIds; set { _explicitNullValueDocumentIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("document_ids"); else _explicitNullProperties?.Remove("document_ids"); } }
+        public List<string> DocumentIds { get => _explicitNullValueDocumentIds; set { _explicitNullValueDocumentIds = value; AdditionalData?.Remove("document_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("document_ids"); else _explicitNullProperties?.Remove("document_ids"); } }
         private List<string> _explicitNullValueDocumentIds = default!;
 #endif
         /// <summary>An error message if the search failed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ErrorMessage { get => _explicitNullValueErrorMessage; set { _explicitNullValueErrorMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_message"); else _explicitNullProperties?.Remove("error_message"); } }
+        public string? ErrorMessage { get => _explicitNullValueErrorMessage; set { _explicitNullValueErrorMessage = value; AdditionalData?.Remove("error_message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_message"); else _explicitNullProperties?.Remove("error_message"); } }
         private string? _explicitNullValueErrorMessage = default!;
 #nullable restore
 #else
-        public string ErrorMessage { get => _explicitNullValueErrorMessage; set { _explicitNullValueErrorMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_message"); else _explicitNullProperties?.Remove("error_message"); } }
+        public string ErrorMessage { get => _explicitNullValueErrorMessage; set { _explicitNullValueErrorMessage = value; AdditionalData?.Remove("error_message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_message"); else _explicitNullProperties?.Remove("error_message"); } }
         private string _explicitNullValueErrorMessage = default!;
 #endif
         /// <summary>The generated search query. Contains the text of the query and a unique identifier for the query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatSearchQuery? SearchQuery { get => _explicitNullValueSearchQuery; set { _explicitNullValueSearchQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search_query"); else _explicitNullProperties?.Remove("search_query"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatSearchQuery? SearchQuery { get => _explicitNullValueSearchQuery; set { _explicitNullValueSearchQuery = value; AdditionalData?.Remove("search_query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search_query"); else _explicitNullProperties?.Remove("search_query"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ChatSearchQuery? _explicitNullValueSearchQuery = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatSearchQuery SearchQuery { get => _explicitNullValueSearchQuery; set { _explicitNullValueSearchQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search_query"); else _explicitNullProperties?.Remove("search_query"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatSearchQuery SearchQuery { get => _explicitNullValueSearchQuery; set { _explicitNullValueSearchQuery = value; AdditionalData?.Remove("search_query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search_query"); else _explicitNullProperties?.Remove("search_query"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ChatSearchQuery _explicitNullValueSearchQuery = default!;
 #endif
         /// <summary>

@@ -18,11 +18,16 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("bounding_box") is { } nullNodeBoundingBox && nullNodeBoundingBox.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BoundingBox = null;
-            if (parseNode.GetChildNode("bounding_box_normalized") is { } nullNodeBoundingBoxNormalized && nullNodeBoundingBoxNormalized.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BoundingBoxNormalized = null;
-            if (parseNode.GetChildNode("category") is { } nullNodeCategory && nullNodeCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Category = null;
-            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
-            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("bounding_box") is null) { _explicitNullValueBoundingBox = default!; _explicitNullProperties?.Remove("bounding_box"); }
+            else if (parseNode.GetChildNode("bounding_box") is { } nullNodeBoundingBox && nullNodeBoundingBox.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BoundingBox = null;
+            if (parseNode.GetChildNode("bounding_box_normalized") is null) { _explicitNullValueBoundingBoxNormalized = default!; _explicitNullProperties?.Remove("bounding_box_normalized"); }
+            else if (parseNode.GetChildNode("bounding_box_normalized") is { } nullNodeBoundingBoxNormalized && nullNodeBoundingBoxNormalized.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BoundingBoxNormalized = null;
+            if (parseNode.GetChildNode("category") is null) { _explicitNullValueCategory = default!; _explicitNullProperties?.Remove("category"); }
+            else if (parseNode.GetChildNode("category") is { } nullNodeCategory && nullNodeCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Category = null;
+            if (parseNode.GetChildNode("description") is null) { _explicitNullValueDescription = default!; _explicitNullProperties?.Remove("description"); }
+            else if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,44 +35,44 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>A bounding box with pixel coordinates on the source document image.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBox? BoundingBox { get => _explicitNullValueBoundingBox; set { _explicitNullValueBoundingBox = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounding_box"); else _explicitNullProperties?.Remove("bounding_box"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBox? BoundingBox { get => _explicitNullValueBoundingBox; set { _explicitNullValueBoundingBox = value; AdditionalData?.Remove("bounding_box"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounding_box"); else _explicitNullProperties?.Remove("bounding_box"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBox? _explicitNullValueBoundingBox = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBox BoundingBox { get => _explicitNullValueBoundingBox; set { _explicitNullValueBoundingBox = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounding_box"); else _explicitNullProperties?.Remove("bounding_box"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBox BoundingBox { get => _explicitNullValueBoundingBox; set { _explicitNullValueBoundingBox = value; AdditionalData?.Remove("bounding_box"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounding_box"); else _explicitNullProperties?.Remove("bounding_box"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBox _explicitNullValueBoundingBox = default!;
 #endif
         /// <summary>A bounding box with coordinates in [0, 1] relative to the source page (modelcoordinates are thousandths of page width/height).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBoxNormalized? BoundingBoxNormalized { get => _explicitNullValueBoundingBoxNormalized; set { _explicitNullValueBoundingBoxNormalized = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounding_box_normalized"); else _explicitNullProperties?.Remove("bounding_box_normalized"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBoxNormalized? BoundingBoxNormalized { get => _explicitNullValueBoundingBoxNormalized; set { _explicitNullValueBoundingBoxNormalized = value; AdditionalData?.Remove("bounding_box_normalized"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounding_box_normalized"); else _explicitNullProperties?.Remove("bounding_box_normalized"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBoxNormalized? _explicitNullValueBoundingBoxNormalized = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBoxNormalized BoundingBoxNormalized { get => _explicitNullValueBoundingBoxNormalized; set { _explicitNullValueBoundingBoxNormalized = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounding_box_normalized"); else _explicitNullProperties?.Remove("bounding_box_normalized"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBoxNormalized BoundingBoxNormalized { get => _explicitNullValueBoundingBoxNormalized; set { _explicitNullValueBoundingBoxNormalized = value; AdditionalData?.Remove("bounding_box_normalized"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounding_box_normalized"); else _explicitNullProperties?.Remove("bounding_box_normalized"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBoxNormalized _explicitNullValueBoundingBoxNormalized = default!;
 #endif
         /// <summary>Image element category.</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.ParseImageCategory? Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ParseImageCategory? Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; AdditionalData?.Remove("category"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ParseImageCategory? _explicitNullValueCategory = default!;
         /// <summary>Model-generated description of the image.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Unique identifier for the image within the page (for example `img-0`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
         /// <summary>
@@ -97,7 +102,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             {
                 { "bounding_box", n => { BoundingBox = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBox>(global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBox.CreateFromDiscriminatorValue); } },
                 { "bounding_box_normalized", n => { BoundingBoxNormalized = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBoxNormalized>(global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBoxNormalized.CreateFromDiscriminatorValue); } },
-                { "category", n => { Category = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ParseImageCategory>(); } },
+                { "category", n => { var parsed = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ParseImageCategory>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCategory = default; _explicitNullProperties?.Remove("category"); AdditionalData["category"] = unknown; } else { Category = parsed; AdditionalData.Remove("category"); } } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
             };

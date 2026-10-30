@@ -17,7 +17,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("connector") is { } nullNodeConnector && nullNodeConnector.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Connector = null;
+            if (parseNode.GetChildNode("connector") is null) { _explicitNullValueConnector = default!; _explicitNullProperties?.Remove("connector"); }
+            else if (parseNode.GetChildNode("connector") is { } nullNodeConnector && nullNodeConnector.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Connector = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>A connector allows you to integrate data sources with the &apos;/chat&apos; endpoint to create grounded generations with citations to the data source.documents to help answer users.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.Connector? Connector { get => _explicitNullValueConnector; set { _explicitNullValueConnector = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connector"); else _explicitNullProperties?.Remove("connector"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.Connector? Connector { get => _explicitNullValueConnector; set { _explicitNullValueConnector = value; AdditionalData?.Remove("connector"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connector"); else _explicitNullProperties?.Remove("connector"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.Connector? _explicitNullValueConnector = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.Connector Connector { get => _explicitNullValueConnector; set { _explicitNullValueConnector = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connector"); else _explicitNullProperties?.Remove("connector"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.Connector Connector { get => _explicitNullValueConnector; set { _explicitNullValueConnector = value; AdditionalData?.Remove("connector"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connector"); else _explicitNullProperties?.Remove("connector"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.Connector _explicitNullValueConnector = default!;
 #endif
         /// <summary>

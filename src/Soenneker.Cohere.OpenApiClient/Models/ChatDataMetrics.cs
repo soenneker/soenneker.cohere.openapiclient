@@ -17,27 +17,30 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("num_eval_turns") is { } nullNodeNumEvalTurns && nullNodeNumEvalTurns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumEvalTurns = null;
-            if (parseNode.GetChildNode("num_train_turns") is { } nullNodeNumTrainTurns && nullNodeNumTrainTurns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumTrainTurns = null;
-            if (parseNode.GetChildNode("preamble") is { } nullNodePreamble && nullNodePreamble.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Preamble = null;
+            if (parseNode.GetChildNode("num_eval_turns") is null) { _explicitNullValueNumEvalTurns = default!; _explicitNullProperties?.Remove("num_eval_turns"); }
+            else if (parseNode.GetChildNode("num_eval_turns") is { } nullNodeNumEvalTurns && nullNodeNumEvalTurns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumEvalTurns = null;
+            if (parseNode.GetChildNode("num_train_turns") is null) { _explicitNullValueNumTrainTurns = default!; _explicitNullProperties?.Remove("num_train_turns"); }
+            else if (parseNode.GetChildNode("num_train_turns") is { } nullNodeNumTrainTurns && nullNodeNumTrainTurns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumTrainTurns = null;
+            if (parseNode.GetChildNode("preamble") is null) { _explicitNullValuePreamble = default!; _explicitNullProperties?.Remove("preamble"); }
+            else if (parseNode.GetChildNode("preamble") is { } nullNodePreamble && nullNodePreamble.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Preamble = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The sum of all turns of valid eval examples.</summary>
-        public long? NumEvalTurns { get => _explicitNullValueNumEvalTurns; set { _explicitNullValueNumEvalTurns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_eval_turns"); else _explicitNullProperties?.Remove("num_eval_turns"); } }
+        public long? NumEvalTurns { get => _explicitNullValueNumEvalTurns; set { _explicitNullValueNumEvalTurns = value; AdditionalData?.Remove("num_eval_turns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_eval_turns"); else _explicitNullProperties?.Remove("num_eval_turns"); } }
         private long? _explicitNullValueNumEvalTurns = default!;
         /// <summary>The sum of all turns of valid train examples.</summary>
-        public long? NumTrainTurns { get => _explicitNullValueNumTrainTurns; set { _explicitNullValueNumTrainTurns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_train_turns"); else _explicitNullProperties?.Remove("num_train_turns"); } }
+        public long? NumTrainTurns { get => _explicitNullValueNumTrainTurns; set { _explicitNullValueNumTrainTurns = value; AdditionalData?.Remove("num_train_turns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_train_turns"); else _explicitNullProperties?.Remove("num_train_turns"); } }
         private long? _explicitNullValueNumTrainTurns = default!;
         /// <summary>The preamble of this dataset.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Preamble { get => _explicitNullValuePreamble; set { _explicitNullValuePreamble = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preamble"); else _explicitNullProperties?.Remove("preamble"); } }
+        public string? Preamble { get => _explicitNullValuePreamble; set { _explicitNullValuePreamble = value; AdditionalData?.Remove("preamble"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preamble"); else _explicitNullProperties?.Remove("preamble"); } }
         private string? _explicitNullValuePreamble = default!;
 #nullable restore
 #else
-        public string Preamble { get => _explicitNullValuePreamble; set { _explicitNullValuePreamble = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preamble"); else _explicitNullProperties?.Remove("preamble"); } }
+        public string Preamble { get => _explicitNullValuePreamble; set { _explicitNullValuePreamble = value; AdditionalData?.Remove("preamble"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preamble"); else _explicitNullProperties?.Remove("preamble"); } }
         private string _explicitNullValuePreamble = default!;
 #endif
         /// <summary>

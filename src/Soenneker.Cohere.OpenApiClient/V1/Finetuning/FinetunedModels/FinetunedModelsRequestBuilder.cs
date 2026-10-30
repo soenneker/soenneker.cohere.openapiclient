@@ -136,7 +136,7 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.FinetunedModelsRequestBuilder.FinetunedModelsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.cohere.com", "/v1/finetuning/finetuned-models", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -158,7 +158,7 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.cohere.com", "/v1/finetuning/finetuned-models", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);

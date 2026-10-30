@@ -17,7 +17,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("label_metrics") is { } nullNodeLabelMetrics && nullNodeLabelMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LabelMetrics = null;
+            if (parseNode.GetChildNode("label_metrics") is null) { _explicitNullValueLabelMetrics = default!; _explicitNullProperties?.Remove("label_metrics"); }
+            else if (parseNode.GetChildNode("label_metrics") is { } nullNodeLabelMetrics && nullNodeLabelMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LabelMetrics = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The label_metrics property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.LabelMetric>? LabelMetrics { get => _explicitNullValueLabelMetrics; set { _explicitNullValueLabelMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label_metrics"); else _explicitNullProperties?.Remove("label_metrics"); } }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.LabelMetric>? LabelMetrics { get => _explicitNullValueLabelMetrics; set { _explicitNullValueLabelMetrics = value; AdditionalData?.Remove("label_metrics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label_metrics"); else _explicitNullProperties?.Remove("label_metrics"); } }
         private List<global::Soenneker.Cohere.OpenApiClient.Models.LabelMetric>? _explicitNullValueLabelMetrics = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.LabelMetric> LabelMetrics { get => _explicitNullValueLabelMetrics; set { _explicitNullValueLabelMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label_metrics"); else _explicitNullProperties?.Remove("label_metrics"); } }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.LabelMetric> LabelMetrics { get => _explicitNullValueLabelMetrics; set { _explicitNullValueLabelMetrics = value; AdditionalData?.Remove("label_metrics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label_metrics"); else _explicitNullProperties?.Remove("label_metrics"); } }
         private List<global::Soenneker.Cohere.OpenApiClient.Models.LabelMetric> _explicitNullValueLabelMetrics = default!;
 #endif
         /// <summary>

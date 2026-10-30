@@ -84,7 +84,7 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.Trai
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.TrainingStepMetrics.TrainingStepMetricsRequestBuilder.TrainingStepMetricsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.cohere.com", "/v1/finetuning/finetuned-models/{id}/training-step-metrics", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

@@ -17,12 +17,18 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("embedding_types") is { } nullNodeEmbeddingTypes && nullNodeEmbeddingTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmbeddingTypes = null;
-            if (parseNode.GetChildNode("images") is { } nullNodeImages && nullNodeImages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Images = null;
-            if (parseNode.GetChildNode("input_type") is { } nullNodeInputType && nullNodeInputType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputType = null;
-            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
-            if (parseNode.GetChildNode("texts") is { } nullNodeTexts && nullNodeTexts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Texts = null;
-            if (parseNode.GetChildNode("truncate") is { } nullNodeTruncate && nullNodeTruncate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Truncate = null;
+            if (parseNode.GetChildNode("embedding_types") is null) { _explicitNullValueEmbeddingTypes = default!; _explicitNullProperties?.Remove("embedding_types"); }
+            else if (parseNode.GetChildNode("embedding_types") is { } nullNodeEmbeddingTypes && nullNodeEmbeddingTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmbeddingTypes = null;
+            if (parseNode.GetChildNode("images") is null) { _explicitNullValueImages = default!; _explicitNullProperties?.Remove("images"); }
+            else if (parseNode.GetChildNode("images") is { } nullNodeImages && nullNodeImages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Images = null;
+            if (parseNode.GetChildNode("input_type") is null) { _explicitNullValueInputType = default!; _explicitNullProperties?.Remove("input_type"); }
+            else if (parseNode.GetChildNode("input_type") is { } nullNodeInputType && nullNodeInputType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputType = null;
+            if (parseNode.GetChildNode("model") is null) { _explicitNullValueModel = default!; _explicitNullProperties?.Remove("model"); }
+            else if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("texts") is null) { _explicitNullValueTexts = default!; _explicitNullProperties?.Remove("texts"); }
+            else if (parseNode.GetChildNode("texts") is { } nullNodeTexts && nullNodeTexts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Texts = null;
+            if (parseNode.GetChildNode("truncate") is null) { _explicitNullValueTruncate = default!; _explicitNullProperties?.Remove("truncate"); }
+            else if (parseNode.GetChildNode("truncate") is { } nullNodeTruncate && nullNodeTruncate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Truncate = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,48 +36,48 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>Specifies the types of embeddings you want to get back. Not required and default is None, which returns the Embed Floats response type. Can be one or more of the following types.* `&quot;float&quot;`: Use this when you want to get back the default float embeddings. Supported with all Embed models.* `&quot;int8&quot;`: Use this when you want to get back signed int8 embeddings. Supported with Embed v3.0 and newer Embed models.* `&quot;uint8&quot;`: Use this when you want to get back unsigned int8 embeddings. Supported with Embed v3.0 and newer Embed models.* `&quot;binary&quot;`: Use this when you want to get back signed binary embeddings. Supported with Embed v3.0 and newer Embed models.* `&quot;ubinary&quot;`: Use this when you want to get back unsigned binary embeddings. Supported with Embed v3.0 and newer Embed models.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.EmbeddingType?>? EmbeddingTypes { get => _explicitNullValueEmbeddingTypes; set { _explicitNullValueEmbeddingTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embedding_types"); else _explicitNullProperties?.Remove("embedding_types"); } }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.EmbeddingType?>? EmbeddingTypes { get => _explicitNullValueEmbeddingTypes; set { _explicitNullValueEmbeddingTypes = value; AdditionalData?.Remove("embedding_types"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embedding_types"); else _explicitNullProperties?.Remove("embedding_types"); } }
         private List<global::Soenneker.Cohere.OpenApiClient.Models.EmbeddingType?>? _explicitNullValueEmbeddingTypes = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.EmbeddingType?> EmbeddingTypes { get => _explicitNullValueEmbeddingTypes; set { _explicitNullValueEmbeddingTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embedding_types"); else _explicitNullProperties?.Remove("embedding_types"); } }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.EmbeddingType?> EmbeddingTypes { get => _explicitNullValueEmbeddingTypes; set { _explicitNullValueEmbeddingTypes = value; AdditionalData?.Remove("embedding_types"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embedding_types"); else _explicitNullProperties?.Remove("embedding_types"); } }
         private List<global::Soenneker.Cohere.OpenApiClient.Models.EmbeddingType?> _explicitNullValueEmbeddingTypes = default!;
 #endif
         /// <summary>An array of image data URIs for the model to embed.The image must be a valid [data URI](https://developer.mozilla.org/en-US/docs/Web/URI/Schemes/data). The image must be in either `image/jpeg`, `image/png`, `image/webp`, or `image/gif` format.Image embeddings are supported with Embed v3.0 and newer models.For **Embed v3.x** models, the maximum number of images per call is `1`, and each image has a maximum size of `5MB`.For **Embed v4.0 and newer** models, there is no limit on the number of images per call. The combined size of all images in the request must be at most `20MB`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Images { get => _explicitNullValueImages; set { _explicitNullValueImages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("images"); else _explicitNullProperties?.Remove("images"); } }
+        public List<string>? Images { get => _explicitNullValueImages; set { _explicitNullValueImages = value; AdditionalData?.Remove("images"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("images"); else _explicitNullProperties?.Remove("images"); } }
         private List<string>? _explicitNullValueImages = default!;
 #nullable restore
 #else
-        public List<string> Images { get => _explicitNullValueImages; set { _explicitNullValueImages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("images"); else _explicitNullProperties?.Remove("images"); } }
+        public List<string> Images { get => _explicitNullValueImages; set { _explicitNullValueImages = value; AdditionalData?.Remove("images"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("images"); else _explicitNullProperties?.Remove("images"); } }
         private List<string> _explicitNullValueImages = default!;
 #endif
         /// <summary>Specifies the type of input passed to the model. Required for embedding models v3 and higher.- `&quot;search_document&quot;`: Used for embeddings stored in a vector database for search use-cases.- `&quot;search_query&quot;`: Used for embeddings of search queries run against a vector DB to find relevant documents.- `&quot;classification&quot;`: Used for embeddings passed through a text classifier.- `&quot;clustering&quot;`: Used for the embeddings run through a clustering algorithm.- `&quot;image&quot;`: Used for embeddings with image input.</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedInputType? InputType { get => _explicitNullValueInputType; set { _explicitNullValueInputType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_type"); else _explicitNullProperties?.Remove("input_type"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedInputType? InputType { get => _explicitNullValueInputType; set { _explicitNullValueInputType = value; AdditionalData?.Remove("input_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_type"); else _explicitNullProperties?.Remove("input_type"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.EmbedInputType? _explicitNullValueInputType = default!;
         /// <summary>ID of one of the available [Embedding models](https://docs.cohere.com/docs/cohere-embed).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
         private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
         private string _explicitNullValueModel = default!;
 #endif
         /// <summary>An array of strings for the model to embed. Maximum number of texts per call is `96`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Texts { get => _explicitNullValueTexts; set { _explicitNullValueTexts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("texts"); else _explicitNullProperties?.Remove("texts"); } }
+        public List<string>? Texts { get => _explicitNullValueTexts; set { _explicitNullValueTexts = value; AdditionalData?.Remove("texts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("texts"); else _explicitNullProperties?.Remove("texts"); } }
         private List<string>? _explicitNullValueTexts = default!;
 #nullable restore
 #else
-        public List<string> Texts { get => _explicitNullValueTexts; set { _explicitNullValueTexts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("texts"); else _explicitNullProperties?.Remove("texts"); } }
+        public List<string> Texts { get => _explicitNullValueTexts; set { _explicitNullValueTexts = value; AdditionalData?.Remove("texts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("texts"); else _explicitNullProperties?.Remove("texts"); } }
         private List<string> _explicitNullValueTexts = default!;
 #endif
         /// <summary>One of `NONE|START|END` to specify how the API will handle inputs longer than the maximum token length.Passing `START` will discard the start of the input. `END` will discard the end of the input. In both cases, input is discarded until the remaining input is exactly the maximum input token length for the model.If `NONE` is selected, when the input exceeds the maximum input token length an error will be returned.</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedRequestTruncate? Truncate { get => _explicitNullValueTruncate; set { _explicitNullValueTruncate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncate"); else _explicitNullProperties?.Remove("truncate"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedRequestTruncate? Truncate { get => _explicitNullValueTruncate; set { _explicitNullValueTruncate = value; AdditionalData?.Remove("truncate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncate"); else _explicitNullProperties?.Remove("truncate"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.EmbedRequestTruncate? _explicitNullValueTruncate = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.EmbedRequest"/> and sets the default values.
@@ -100,10 +106,10 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             {
                 { "embedding_types", n => { EmbeddingTypes = n.GetCollectionOfEnumValues<global::Soenneker.Cohere.OpenApiClient.Models.EmbeddingType>()?.AsList(); } },
                 { "images", n => { Images = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "input_type", n => { InputType = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedInputType>(); } },
+                { "input_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedInputType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueInputType = default; _explicitNullProperties?.Remove("input_type"); AdditionalData["input_type"] = unknown; } else { InputType = parsed; AdditionalData.Remove("input_type"); } } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "texts", n => { Texts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "truncate", n => { Truncate = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedRequestTruncate>(); } },
+                { "truncate", n => { var parsed = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedRequestTruncate>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueTruncate = default; _explicitNullProperties?.Remove("truncate"); AdditionalData["truncate"] = unknown; } else { Truncate = parsed; AdditionalData.Remove("truncate"); } } },
             };
         }
         /// <summary>

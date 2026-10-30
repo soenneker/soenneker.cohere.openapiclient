@@ -19,7 +19,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("finetuned_model") is { } nullNodeFinetunedModel && nullNodeFinetunedModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FinetunedModel = null;
+            if (parseNode.GetChildNode("finetuned_model") is null) { _explicitNullValueFinetunedModel = default!; _explicitNullProperties?.Remove("finetuned_model"); }
+            else if (parseNode.GetChildNode("finetuned_model") is { } nullNodeFinetunedModel && nullNodeFinetunedModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FinetunedModel = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,11 +29,11 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.FinetunedModel? FinetunedModel { get => _explicitNullValueFinetunedModel; set { _explicitNullValueFinetunedModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finetuned_model"); else _explicitNullProperties?.Remove("finetuned_model"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.FinetunedModel? FinetunedModel { get => _explicitNullValueFinetunedModel; set { _explicitNullValueFinetunedModel = value; AdditionalData?.Remove("finetuned_model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finetuned_model"); else _explicitNullProperties?.Remove("finetuned_model"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.FinetunedModel? _explicitNullValueFinetunedModel = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.FinetunedModel FinetunedModel { get => _explicitNullValueFinetunedModel; set { _explicitNullValueFinetunedModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finetuned_model"); else _explicitNullProperties?.Remove("finetuned_model"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.FinetunedModel FinetunedModel { get => _explicitNullValueFinetunedModel; set { _explicitNullValueFinetunedModel = value; AdditionalData?.Remove("finetuned_model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finetuned_model"); else _explicitNullProperties?.Remove("finetuned_model"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.FinetunedModel _explicitNullValueFinetunedModel = default!;
 #endif
         /// <summary>

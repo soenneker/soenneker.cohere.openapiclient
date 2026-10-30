@@ -17,25 +17,29 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("classifications") is { } nullNodeClassifications && nullNodeClassifications.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Classifications = null;
-            if (parseNode.GetChildNode("input_tokens") is { } nullNodeInputTokens && nullNodeInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputTokens = null;
-            if (parseNode.GetChildNode("output_tokens") is { } nullNodeOutputTokens && nullNodeOutputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputTokens = null;
-            if (parseNode.GetChildNode("search_units") is { } nullNodeSearchUnits && nullNodeSearchUnits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SearchUnits = null;
+            if (parseNode.GetChildNode("classifications") is null) { _explicitNullValueClassifications = default!; _explicitNullProperties?.Remove("classifications"); }
+            else if (parseNode.GetChildNode("classifications") is { } nullNodeClassifications && nullNodeClassifications.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Classifications = null;
+            if (parseNode.GetChildNode("input_tokens") is null) { _explicitNullValueInputTokens = default!; _explicitNullProperties?.Remove("input_tokens"); }
+            else if (parseNode.GetChildNode("input_tokens") is { } nullNodeInputTokens && nullNodeInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputTokens = null;
+            if (parseNode.GetChildNode("output_tokens") is null) { _explicitNullValueOutputTokens = default!; _explicitNullProperties?.Remove("output_tokens"); }
+            else if (parseNode.GetChildNode("output_tokens") is { } nullNodeOutputTokens && nullNodeOutputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputTokens = null;
+            if (parseNode.GetChildNode("search_units") is null) { _explicitNullValueSearchUnits = default!; _explicitNullProperties?.Remove("search_units"); }
+            else if (parseNode.GetChildNode("search_units") is { } nullNodeSearchUnits && nullNodeSearchUnits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SearchUnits = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The number of billed classifications units.</summary>
-        public double? Classifications { get => _explicitNullValueClassifications; set { _explicitNullValueClassifications = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classifications"); else _explicitNullProperties?.Remove("classifications"); } }
+        public double? Classifications { get => _explicitNullValueClassifications; set { _explicitNullValueClassifications = value; AdditionalData?.Remove("classifications"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classifications"); else _explicitNullProperties?.Remove("classifications"); } }
         private double? _explicitNullValueClassifications = default!;
         /// <summary>The number of billed input tokens.</summary>
-        public double? InputTokens { get => _explicitNullValueInputTokens; set { _explicitNullValueInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_tokens"); else _explicitNullProperties?.Remove("input_tokens"); } }
+        public double? InputTokens { get => _explicitNullValueInputTokens; set { _explicitNullValueInputTokens = value; AdditionalData?.Remove("input_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_tokens"); else _explicitNullProperties?.Remove("input_tokens"); } }
         private double? _explicitNullValueInputTokens = default!;
         /// <summary>The number of billed output tokens.</summary>
-        public double? OutputTokens { get => _explicitNullValueOutputTokens; set { _explicitNullValueOutputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_tokens"); else _explicitNullProperties?.Remove("output_tokens"); } }
+        public double? OutputTokens { get => _explicitNullValueOutputTokens; set { _explicitNullValueOutputTokens = value; AdditionalData?.Remove("output_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_tokens"); else _explicitNullProperties?.Remove("output_tokens"); } }
         private double? _explicitNullValueOutputTokens = default!;
         /// <summary>The number of billed search units.</summary>
-        public double? SearchUnits { get => _explicitNullValueSearchUnits; set { _explicitNullValueSearchUnits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search_units"); else _explicitNullProperties?.Remove("search_units"); } }
+        public double? SearchUnits { get => _explicitNullValueSearchUnits; set { _explicitNullValueSearchUnits = value; AdditionalData?.Remove("search_units"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search_units"); else _explicitNullProperties?.Remove("search_units"); } }
         private double? _explicitNullValueSearchUnits = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.UsageBilledUnits"/> and sets the default values.

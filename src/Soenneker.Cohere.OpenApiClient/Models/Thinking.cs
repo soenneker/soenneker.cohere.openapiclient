@@ -18,17 +18,19 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("token_budget") is { } nullNodeTokenBudget && nullNodeTokenBudget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenBudget = null;
-            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("token_budget") is null) { _explicitNullValueTokenBudget = default!; _explicitNullProperties?.Remove("token_budget"); }
+            else if (parseNode.GetChildNode("token_budget") is { } nullNodeTokenBudget && nullNodeTokenBudget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenBudget = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The maximum number of tokens the model can use for thinking, which must be set to a positive integer.The model will stop thinking if it reaches the thinking token budget and will proceed with the response.</summary>
-        public int? TokenBudget { get => _explicitNullValueTokenBudget; set { _explicitNullValueTokenBudget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_budget"); else _explicitNullProperties?.Remove("token_budget"); } }
+        public int? TokenBudget { get => _explicitNullValueTokenBudget; set { _explicitNullValueTokenBudget = value; AdditionalData?.Remove("token_budget"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_budget"); else _explicitNullProperties?.Remove("token_budget"); } }
         private int? _explicitNullValueTokenBudget = default!;
         /// <summary>Reasoning is enabled by default for models that support it, but can be turned off by setting `&quot;type&quot;: &quot;disabled&quot;`.</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.ThinkingTypeEnum? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ThinkingTypeEnum? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ThinkingTypeEnum? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.Thinking"/> and sets the default values.
@@ -56,7 +58,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "token_budget", n => { TokenBudget = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ThinkingTypeEnum>(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ThinkingTypeEnum>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
         /// <summary>

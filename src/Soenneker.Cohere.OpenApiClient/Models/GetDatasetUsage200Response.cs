@@ -17,13 +17,14 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("organization_usage") is { } nullNodeOrganizationUsage && nullNodeOrganizationUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationUsage = null;
+            if (parseNode.GetChildNode("organization_usage") is null) { _explicitNullValueOrganizationUsage = default!; _explicitNullProperties?.Remove("organization_usage"); }
+            else if (parseNode.GetChildNode("organization_usage") is { } nullNodeOrganizationUsage && nullNodeOrganizationUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationUsage = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The total number of bytes used by the organization.</summary>
-        public long? OrganizationUsage { get => _explicitNullValueOrganizationUsage; set { _explicitNullValueOrganizationUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_usage"); else _explicitNullProperties?.Remove("organization_usage"); } }
+        public long? OrganizationUsage { get => _explicitNullValueOrganizationUsage; set { _explicitNullValueOrganizationUsage = value; AdditionalData?.Remove("organization_usage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_usage"); else _explicitNullProperties?.Remove("organization_usage"); } }
         private long? _explicitNullValueOrganizationUsage = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.GetDatasetUsage200Response"/> and sets the default values.

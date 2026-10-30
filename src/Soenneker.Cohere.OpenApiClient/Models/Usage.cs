@@ -17,9 +17,12 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("billed_units") is { } nullNodeBilledUnits && nullNodeBilledUnits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BilledUnits = null;
-            if (parseNode.GetChildNode("cached_tokens") is { } nullNodeCachedTokens && nullNodeCachedTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CachedTokens = null;
-            if (parseNode.GetChildNode("tokens") is { } nullNodeTokens && nullNodeTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tokens = null;
+            if (parseNode.GetChildNode("billed_units") is null) { _explicitNullValueBilledUnits = default!; _explicitNullProperties?.Remove("billed_units"); }
+            else if (parseNode.GetChildNode("billed_units") is { } nullNodeBilledUnits && nullNodeBilledUnits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BilledUnits = null;
+            if (parseNode.GetChildNode("cached_tokens") is null) { _explicitNullValueCachedTokens = default!; _explicitNullProperties?.Remove("cached_tokens"); }
+            else if (parseNode.GetChildNode("cached_tokens") is { } nullNodeCachedTokens && nullNodeCachedTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CachedTokens = null;
+            if (parseNode.GetChildNode("tokens") is null) { _explicitNullValueTokens = default!; _explicitNullProperties?.Remove("tokens"); }
+            else if (parseNode.GetChildNode("tokens") is { } nullNodeTokens && nullNodeTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tokens = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,24 +30,24 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The billed_units property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.UsageBilledUnits? BilledUnits { get => _explicitNullValueBilledUnits; set { _explicitNullValueBilledUnits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billed_units"); else _explicitNullProperties?.Remove("billed_units"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.UsageBilledUnits? BilledUnits { get => _explicitNullValueBilledUnits; set { _explicitNullValueBilledUnits = value; AdditionalData?.Remove("billed_units"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billed_units"); else _explicitNullProperties?.Remove("billed_units"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.UsageBilledUnits? _explicitNullValueBilledUnits = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.UsageBilledUnits BilledUnits { get => _explicitNullValueBilledUnits; set { _explicitNullValueBilledUnits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billed_units"); else _explicitNullProperties?.Remove("billed_units"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.UsageBilledUnits BilledUnits { get => _explicitNullValueBilledUnits; set { _explicitNullValueBilledUnits = value; AdditionalData?.Remove("billed_units"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billed_units"); else _explicitNullProperties?.Remove("billed_units"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.UsageBilledUnits _explicitNullValueBilledUnits = default!;
 #endif
         /// <summary>The number of prompt tokens that hit the inference cache.</summary>
-        public double? CachedTokens { get => _explicitNullValueCachedTokens; set { _explicitNullValueCachedTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cached_tokens"); else _explicitNullProperties?.Remove("cached_tokens"); } }
+        public double? CachedTokens { get => _explicitNullValueCachedTokens; set { _explicitNullValueCachedTokens = value; AdditionalData?.Remove("cached_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cached_tokens"); else _explicitNullProperties?.Remove("cached_tokens"); } }
         private double? _explicitNullValueCachedTokens = default!;
         /// <summary>The tokens property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.UsageTokens? Tokens { get => _explicitNullValueTokens; set { _explicitNullValueTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens"); else _explicitNullProperties?.Remove("tokens"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.UsageTokens? Tokens { get => _explicitNullValueTokens; set { _explicitNullValueTokens = value; AdditionalData?.Remove("tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens"); else _explicitNullProperties?.Remove("tokens"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.UsageTokens? _explicitNullValueTokens = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.UsageTokens Tokens { get => _explicitNullValueTokens; set { _explicitNullValueTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens"); else _explicitNullProperties?.Remove("tokens"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.UsageTokens Tokens { get => _explicitNullValueTokens; set { _explicitNullValueTokens = value; AdditionalData?.Remove("tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens"); else _explicitNullProperties?.Remove("tokens"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.UsageTokens _explicitNullValueTokens = default!;
 #endif
         /// <summary>

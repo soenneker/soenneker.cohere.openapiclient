@@ -17,8 +17,10 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("delimiter") is { } nullNodeDelimiter && nullNodeDelimiter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Delimiter = null;
-            if (parseNode.GetChildNode("separator") is { } nullNodeSeparator && nullNodeSeparator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Separator = null;
+            if (parseNode.GetChildNode("delimiter") is null) { _explicitNullValueDelimiter = default!; _explicitNullProperties?.Remove("delimiter"); }
+            else if (parseNode.GetChildNode("delimiter") is { } nullNodeDelimiter && nullNodeDelimiter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Delimiter = null;
+            if (parseNode.GetChildNode("separator") is null) { _explicitNullValueSeparator = default!; _explicitNullProperties?.Remove("separator"); }
+            else if (parseNode.GetChildNode("separator") is { } nullNodeSeparator && nullNodeSeparator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Separator = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The delimiter property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Delimiter { get => _explicitNullValueDelimiter; set { _explicitNullValueDelimiter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delimiter"); else _explicitNullProperties?.Remove("delimiter"); } }
+        public string? Delimiter { get => _explicitNullValueDelimiter; set { _explicitNullValueDelimiter = value; AdditionalData?.Remove("delimiter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delimiter"); else _explicitNullProperties?.Remove("delimiter"); } }
         private string? _explicitNullValueDelimiter = default!;
 #nullable restore
 #else
-        public string Delimiter { get => _explicitNullValueDelimiter; set { _explicitNullValueDelimiter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delimiter"); else _explicitNullProperties?.Remove("delimiter"); } }
+        public string Delimiter { get => _explicitNullValueDelimiter; set { _explicitNullValueDelimiter = value; AdditionalData?.Remove("delimiter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delimiter"); else _explicitNullProperties?.Remove("delimiter"); } }
         private string _explicitNullValueDelimiter = default!;
 #endif
         /// <summary>The separator property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Separator { get => _explicitNullValueSeparator; set { _explicitNullValueSeparator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("separator"); else _explicitNullProperties?.Remove("separator"); } }
+        public string? Separator { get => _explicitNullValueSeparator; set { _explicitNullValueSeparator = value; AdditionalData?.Remove("separator"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("separator"); else _explicitNullProperties?.Remove("separator"); } }
         private string? _explicitNullValueSeparator = default!;
 #nullable restore
 #else
-        public string Separator { get => _explicitNullValueSeparator; set { _explicitNullValueSeparator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("separator"); else _explicitNullProperties?.Remove("separator"); } }
+        public string Separator { get => _explicitNullValueSeparator; set { _explicitNullValueSeparator = value; AdditionalData?.Remove("separator"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("separator"); else _explicitNullProperties?.Remove("separator"); } }
         private string _explicitNullValueSeparator = default!;
 #endif
         /// <summary>

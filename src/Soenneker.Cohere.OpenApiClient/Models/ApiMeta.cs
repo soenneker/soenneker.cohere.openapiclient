@@ -17,11 +17,16 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("api_version") is { } nullNodeApiVersion && nullNodeApiVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApiVersion = null;
-            if (parseNode.GetChildNode("billed_units") is { } nullNodeBilledUnits && nullNodeBilledUnits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BilledUnits = null;
-            if (parseNode.GetChildNode("cached_tokens") is { } nullNodeCachedTokens && nullNodeCachedTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CachedTokens = null;
-            if (parseNode.GetChildNode("tokens") is { } nullNodeTokens && nullNodeTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tokens = null;
-            if (parseNode.GetChildNode("warnings") is { } nullNodeWarnings && nullNodeWarnings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Warnings = null;
+            if (parseNode.GetChildNode("api_version") is null) { _explicitNullValueApiVersion = default!; _explicitNullProperties?.Remove("api_version"); }
+            else if (parseNode.GetChildNode("api_version") is { } nullNodeApiVersion && nullNodeApiVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApiVersion = null;
+            if (parseNode.GetChildNode("billed_units") is null) { _explicitNullValueBilledUnits = default!; _explicitNullProperties?.Remove("billed_units"); }
+            else if (parseNode.GetChildNode("billed_units") is { } nullNodeBilledUnits && nullNodeBilledUnits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BilledUnits = null;
+            if (parseNode.GetChildNode("cached_tokens") is null) { _explicitNullValueCachedTokens = default!; _explicitNullProperties?.Remove("cached_tokens"); }
+            else if (parseNode.GetChildNode("cached_tokens") is { } nullNodeCachedTokens && nullNodeCachedTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CachedTokens = null;
+            if (parseNode.GetChildNode("tokens") is null) { _explicitNullValueTokens = default!; _explicitNullProperties?.Remove("tokens"); }
+            else if (parseNode.GetChildNode("tokens") is { } nullNodeTokens && nullNodeTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tokens = null;
+            if (parseNode.GetChildNode("warnings") is null) { _explicitNullValueWarnings = default!; _explicitNullProperties?.Remove("warnings"); }
+            else if (parseNode.GetChildNode("warnings") is { } nullNodeWarnings && nullNodeWarnings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Warnings = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,44 +34,44 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The api_version property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaApiVersion? ApiVersion { get => _explicitNullValueApiVersion; set { _explicitNullValueApiVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_version"); else _explicitNullProperties?.Remove("api_version"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaApiVersion? ApiVersion { get => _explicitNullValueApiVersion; set { _explicitNullValueApiVersion = value; AdditionalData?.Remove("api_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_version"); else _explicitNullProperties?.Remove("api_version"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaApiVersion? _explicitNullValueApiVersion = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaApiVersion ApiVersion { get => _explicitNullValueApiVersion; set { _explicitNullValueApiVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_version"); else _explicitNullProperties?.Remove("api_version"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaApiVersion ApiVersion { get => _explicitNullValueApiVersion; set { _explicitNullValueApiVersion = value; AdditionalData?.Remove("api_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_version"); else _explicitNullProperties?.Remove("api_version"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaApiVersion _explicitNullValueApiVersion = default!;
 #endif
         /// <summary>The billed_units property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaBilledUnits? BilledUnits { get => _explicitNullValueBilledUnits; set { _explicitNullValueBilledUnits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billed_units"); else _explicitNullProperties?.Remove("billed_units"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaBilledUnits? BilledUnits { get => _explicitNullValueBilledUnits; set { _explicitNullValueBilledUnits = value; AdditionalData?.Remove("billed_units"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billed_units"); else _explicitNullProperties?.Remove("billed_units"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaBilledUnits? _explicitNullValueBilledUnits = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaBilledUnits BilledUnits { get => _explicitNullValueBilledUnits; set { _explicitNullValueBilledUnits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billed_units"); else _explicitNullProperties?.Remove("billed_units"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaBilledUnits BilledUnits { get => _explicitNullValueBilledUnits; set { _explicitNullValueBilledUnits = value; AdditionalData?.Remove("billed_units"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billed_units"); else _explicitNullProperties?.Remove("billed_units"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaBilledUnits _explicitNullValueBilledUnits = default!;
 #endif
         /// <summary>The number of prompt tokens that hit the inference cache.</summary>
-        public double? CachedTokens { get => _explicitNullValueCachedTokens; set { _explicitNullValueCachedTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cached_tokens"); else _explicitNullProperties?.Remove("cached_tokens"); } }
+        public double? CachedTokens { get => _explicitNullValueCachedTokens; set { _explicitNullValueCachedTokens = value; AdditionalData?.Remove("cached_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cached_tokens"); else _explicitNullProperties?.Remove("cached_tokens"); } }
         private double? _explicitNullValueCachedTokens = default!;
         /// <summary>The tokens property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaTokens? Tokens { get => _explicitNullValueTokens; set { _explicitNullValueTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens"); else _explicitNullProperties?.Remove("tokens"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaTokens? Tokens { get => _explicitNullValueTokens; set { _explicitNullValueTokens = value; AdditionalData?.Remove("tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens"); else _explicitNullProperties?.Remove("tokens"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaTokens? _explicitNullValueTokens = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaTokens Tokens { get => _explicitNullValueTokens; set { _explicitNullValueTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens"); else _explicitNullProperties?.Remove("tokens"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaTokens Tokens { get => _explicitNullValueTokens; set { _explicitNullValueTokens = value; AdditionalData?.Remove("tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokens"); else _explicitNullProperties?.Remove("tokens"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaTokens _explicitNullValueTokens = default!;
 #endif
         /// <summary>The warnings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        public List<string>? Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; AdditionalData?.Remove("warnings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
         private List<string>? _explicitNullValueWarnings = default!;
 #nullable restore
 #else
-        public List<string> Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        public List<string> Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; AdditionalData?.Remove("warnings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
         private List<string> _explicitNullValueWarnings = default!;
 #endif
         /// <summary>

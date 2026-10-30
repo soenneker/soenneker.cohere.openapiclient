@@ -18,23 +18,25 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("role") is { } nullNodeRole && nullNodeRole.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Role = null;
-            if (parseNode.GetChildNode("tool_results") is { } nullNodeToolResults && nullNodeToolResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolResults = null;
+            if (parseNode.GetChildNode("role") is null) { _explicitNullValueRole = default!; _explicitNullProperties?.Remove("role"); }
+            else if (parseNode.GetChildNode("role") is { } nullNodeRole && nullNodeRole.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Role = null;
+            if (parseNode.GetChildNode("tool_results") is null) { _explicitNullValueToolResults = default!; _explicitNullProperties?.Remove("tool_results"); }
+            else if (parseNode.GetChildNode("tool_results") is { } nullNodeToolResults && nullNodeToolResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolResults = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>One of `CHATBOT`, `SYSTEM`, `TOOL` or `USER` to identify who the message is coming from.</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatRole? Role { get => _explicitNullValueRole; set { _explicitNullValueRole = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role"); else _explicitNullProperties?.Remove("role"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatRole? Role { get => _explicitNullValueRole; set { _explicitNullValueRole = value; AdditionalData?.Remove("role"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role"); else _explicitNullProperties?.Remove("role"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.ChatRole? _explicitNullValueRole = default!;
         /// <summary>The tool_results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.ToolResult>? ToolResults { get => _explicitNullValueToolResults; set { _explicitNullValueToolResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_results"); else _explicitNullProperties?.Remove("tool_results"); } }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.ToolResult>? ToolResults { get => _explicitNullValueToolResults; set { _explicitNullValueToolResults = value; AdditionalData?.Remove("tool_results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_results"); else _explicitNullProperties?.Remove("tool_results"); } }
         private List<global::Soenneker.Cohere.OpenApiClient.Models.ToolResult>? _explicitNullValueToolResults = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.ToolResult> ToolResults { get => _explicitNullValueToolResults; set { _explicitNullValueToolResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_results"); else _explicitNullProperties?.Remove("tool_results"); } }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.ToolResult> ToolResults { get => _explicitNullValueToolResults; set { _explicitNullValueToolResults = value; AdditionalData?.Remove("tool_results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_results"); else _explicitNullProperties?.Remove("tool_results"); } }
         private List<global::Soenneker.Cohere.OpenApiClient.Models.ToolResult> _explicitNullValueToolResults = default!;
 #endif
         /// <summary>
@@ -62,7 +64,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "role", n => { Role = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatRole>(); } },
+                { "role", n => { var parsed = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatRole>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRole = default; _explicitNullProperties?.Remove("role"); AdditionalData["role"] = unknown; } else { Role = parsed; AdditionalData.Remove("role"); } } },
                 { "tool_results", n => { ToolResults = n.GetCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.ToolResult>(global::Soenneker.Cohere.OpenApiClient.Models.ToolResult.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }

@@ -19,30 +19,33 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("base_type") is { } nullNodeBaseType && nullNodeBaseType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseType = null;
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("strategy") is { } nullNodeStrategy && nullNodeStrategy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Strategy = null;
+            if (parseNode.GetChildNode("base_type") is null) { _explicitNullValueBaseType = default!; _explicitNullProperties?.Remove("base_type"); }
+            else if (parseNode.GetChildNode("base_type") is { } nullNodeBaseType && nullNodeBaseType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseType = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("strategy") is null) { _explicitNullValueStrategy = default!; _explicitNullProperties?.Remove("strategy"); }
+            else if (parseNode.GetChildNode("strategy") is { } nullNodeStrategy && nullNodeStrategy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Strategy = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The type of the base model.</summary>
         [Obsolete("")]
-        public global::Soenneker.Cohere.OpenApiClient.Models.BaseType? BaseType { get => _explicitNullValueBaseType; set { _explicitNullValueBaseType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_type"); else _explicitNullProperties?.Remove("base_type"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.BaseType? BaseType { get => _explicitNullValueBaseType; set { _explicitNullValueBaseType = value; AdditionalData?.Remove("base_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_type"); else _explicitNullProperties?.Remove("base_type"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.BaseType? _explicitNullValueBaseType = default!;
         /// <summary>The name of the base model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>Deprecated: The fine-tuning strategy.</summary>
         [Obsolete("")]
-        public global::Soenneker.Cohere.OpenApiClient.Models.Strategy? Strategy { get => _explicitNullValueStrategy; set { _explicitNullValueStrategy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("strategy"); else _explicitNullProperties?.Remove("strategy"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.Strategy? Strategy { get => _explicitNullValueStrategy; set { _explicitNullValueStrategy = value; AdditionalData?.Remove("strategy"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("strategy"); else _explicitNullProperties?.Remove("strategy"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.Strategy? _explicitNullValueStrategy = default!;
         /// <summary>read-only. The version of the base model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -77,9 +80,9 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "base_type", n => { BaseType = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.BaseType>(); } },
+                { "base_type", n => { var parsed = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.BaseType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueBaseType = default; _explicitNullProperties?.Remove("base_type"); AdditionalData["base_type"] = unknown; } else { BaseType = parsed; AdditionalData.Remove("base_type"); } } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "strategy", n => { Strategy = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.Strategy>(); } },
+                { "strategy", n => { var parsed = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.Strategy>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStrategy = default; _explicitNullProperties?.Remove("strategy"); AdditionalData["strategy"] = unknown; } else { Strategy = parsed; AdditionalData.Remove("strategy"); } } },
                 { "version", n => { Version = n.GetStringValue(); } },
             };
         }

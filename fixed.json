@@ -25215,7 +25215,7 @@
           "documents": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/RequestBodyRequestDocumentsItem"
+              "$ref": "#/components/schemas/Chatv2RequestDocumentsItem"
             },
             "description": "A list of relevant documents that the model can cite to generate a more accurate reply. Each document is either a string or document object with content and metadata.\n",
             "x-fern-audiences": [

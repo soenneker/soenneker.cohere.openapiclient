@@ -17,7 +17,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("datasets") is { } nullNodeDatasets && nullNodeDatasets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Datasets = null;
+            if (parseNode.GetChildNode("datasets") is null) { _explicitNullValueDatasets = default!; _explicitNullProperties?.Remove("datasets"); }
+            else if (parseNode.GetChildNode("datasets") is { } nullNodeDatasets && nullNodeDatasets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Datasets = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The datasets property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.Dataset>? Datasets { get => _explicitNullValueDatasets; set { _explicitNullValueDatasets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("datasets"); else _explicitNullProperties?.Remove("datasets"); } }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.Dataset>? Datasets { get => _explicitNullValueDatasets; set { _explicitNullValueDatasets = value; AdditionalData?.Remove("datasets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("datasets"); else _explicitNullProperties?.Remove("datasets"); } }
         private List<global::Soenneker.Cohere.OpenApiClient.Models.Dataset>? _explicitNullValueDatasets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.Dataset> Datasets { get => _explicitNullValueDatasets; set { _explicitNullValueDatasets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("datasets"); else _explicitNullProperties?.Remove("datasets"); } }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.Dataset> Datasets { get => _explicitNullValueDatasets; set { _explicitNullValueDatasets = value; AdditionalData?.Remove("datasets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("datasets"); else _explicitNullProperties?.Remove("datasets"); } }
         private List<global::Soenneker.Cohere.OpenApiClient.Models.Dataset> _explicitNullValueDatasets = default!;
 #endif
         /// <summary>

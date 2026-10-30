@@ -17,7 +17,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("finetune_dataset_metrics") is { } nullNodeFinetuneDatasetMetrics && nullNodeFinetuneDatasetMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FinetuneDatasetMetrics = null;
+            if (parseNode.GetChildNode("finetune_dataset_metrics") is null) { _explicitNullValueFinetuneDatasetMetrics = default!; _explicitNullProperties?.Remove("finetune_dataset_metrics"); }
+            else if (parseNode.GetChildNode("finetune_dataset_metrics") is { } nullNodeFinetuneDatasetMetrics && nullNodeFinetuneDatasetMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FinetuneDatasetMetrics = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The finetune_dataset_metrics property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.FinetuneDatasetMetrics? FinetuneDatasetMetrics { get => _explicitNullValueFinetuneDatasetMetrics; set { _explicitNullValueFinetuneDatasetMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finetune_dataset_metrics"); else _explicitNullProperties?.Remove("finetune_dataset_metrics"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.FinetuneDatasetMetrics? FinetuneDatasetMetrics { get => _explicitNullValueFinetuneDatasetMetrics; set { _explicitNullValueFinetuneDatasetMetrics = value; AdditionalData?.Remove("finetune_dataset_metrics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finetune_dataset_metrics"); else _explicitNullProperties?.Remove("finetune_dataset_metrics"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.FinetuneDatasetMetrics? _explicitNullValueFinetuneDatasetMetrics = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.FinetuneDatasetMetrics FinetuneDatasetMetrics { get => _explicitNullValueFinetuneDatasetMetrics; set { _explicitNullValueFinetuneDatasetMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finetune_dataset_metrics"); else _explicitNullProperties?.Remove("finetune_dataset_metrics"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.FinetuneDatasetMetrics FinetuneDatasetMetrics { get => _explicitNullValueFinetuneDatasetMetrics; set { _explicitNullValueFinetuneDatasetMetrics = value; AdditionalData?.Remove("finetune_dataset_metrics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finetune_dataset_metrics"); else _explicitNullProperties?.Remove("finetune_dataset_metrics"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.FinetuneDatasetMetrics _explicitNullValueFinetuneDatasetMetrics = default!;
 #endif
         /// <summary>

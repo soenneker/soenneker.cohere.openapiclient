@@ -11,21 +11,40 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RerankerDataMetrics : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("num_eval_hard_negatives") is { } nullNodeNumEvalHardNegatives && nullNodeNumEvalHardNegatives.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumEvalHardNegatives = null;
+            if (parseNode.GetChildNode("num_eval_queries") is { } nullNodeNumEvalQueries && nullNodeNumEvalQueries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumEvalQueries = null;
+            if (parseNode.GetChildNode("num_eval_relevant_passages") is { } nullNodeNumEvalRelevantPassages && nullNodeNumEvalRelevantPassages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumEvalRelevantPassages = null;
+            if (parseNode.GetChildNode("num_train_hard_negatives") is { } nullNodeNumTrainHardNegatives && nullNodeNumTrainHardNegatives.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumTrainHardNegatives = null;
+            if (parseNode.GetChildNode("num_train_queries") is { } nullNodeNumTrainQueries && nullNodeNumTrainQueries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumTrainQueries = null;
+            if (parseNode.GetChildNode("num_train_relevant_passages") is { } nullNodeNumTrainRelevantPassages && nullNodeNumTrainRelevantPassages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumTrainRelevantPassages = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The sum of all hard negatives of valid eval examples.</summary>
-        public long? NumEvalHardNegatives { get; set; }
+        public long? NumEvalHardNegatives { get => _explicitNullValueNumEvalHardNegatives; set { _explicitNullValueNumEvalHardNegatives = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_eval_hard_negatives"); else _explicitNullProperties?.Remove("num_eval_hard_negatives"); } }
+        private long? _explicitNullValueNumEvalHardNegatives = default!;
         /// <summary>The number of evaluation queries.</summary>
-        public long? NumEvalQueries { get; set; }
+        public long? NumEvalQueries { get => _explicitNullValueNumEvalQueries; set { _explicitNullValueNumEvalQueries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_eval_queries"); else _explicitNullProperties?.Remove("num_eval_queries"); } }
+        private long? _explicitNullValueNumEvalQueries = default!;
         /// <summary>The sum of all relevant passages of valid eval examples.</summary>
-        public long? NumEvalRelevantPassages { get; set; }
+        public long? NumEvalRelevantPassages { get => _explicitNullValueNumEvalRelevantPassages; set { _explicitNullValueNumEvalRelevantPassages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_eval_relevant_passages"); else _explicitNullProperties?.Remove("num_eval_relevant_passages"); } }
+        private long? _explicitNullValueNumEvalRelevantPassages = default!;
         /// <summary>The sum of all hard negatives of valid training examples.</summary>
-        public long? NumTrainHardNegatives { get; set; }
+        public long? NumTrainHardNegatives { get => _explicitNullValueNumTrainHardNegatives; set { _explicitNullValueNumTrainHardNegatives = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_train_hard_negatives"); else _explicitNullProperties?.Remove("num_train_hard_negatives"); } }
+        private long? _explicitNullValueNumTrainHardNegatives = default!;
         /// <summary>The number of training queries.</summary>
-        public long? NumTrainQueries { get; set; }
+        public long? NumTrainQueries { get => _explicitNullValueNumTrainQueries; set { _explicitNullValueNumTrainQueries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_train_queries"); else _explicitNullProperties?.Remove("num_train_queries"); } }
+        private long? _explicitNullValueNumTrainQueries = default!;
         /// <summary>The sum of all relevant passages of valid training examples.</summary>
-        public long? NumTrainRelevantPassages { get; set; }
+        public long? NumTrainRelevantPassages { get => _explicitNullValueNumTrainRelevantPassages; set { _explicitNullValueNumTrainRelevantPassages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_train_relevant_passages"); else _explicitNullProperties?.Remove("num_train_relevant_passages"); } }
+        private long? _explicitNullValueNumTrainRelevantPassages = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.RerankerDataMetrics"/> and sets the default values.
         /// </summary>
@@ -41,7 +60,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public static global::Soenneker.Cohere.OpenApiClient.Models.RerankerDataMetrics CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Cohere.OpenApiClient.Models.RerankerDataMetrics();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Cohere.OpenApiClient.Models.RerankerDataMetrics(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,6 +91,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteLongValue("num_train_hard_negatives", NumTrainHardNegatives);
             writer.WriteLongValue("num_train_queries", NumTrainQueries);
             writer.WriteLongValue("num_train_relevant_passages", NumTrainRelevantPassages);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

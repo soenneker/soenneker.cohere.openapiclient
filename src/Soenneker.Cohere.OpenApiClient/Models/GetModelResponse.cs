@@ -12,62 +12,93 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GetModelResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("context_length") is { } nullNodeContextLength && nullNodeContextLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContextLength = null;
+            if (parseNode.GetChildNode("default_endpoints") is { } nullNodeDefaultEndpoints && nullNodeDefaultEndpoints.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultEndpoints = null;
+            if (parseNode.GetChildNode("endpoints") is { } nullNodeEndpoints && nullNodeEndpoints.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Endpoints = null;
+            if (parseNode.GetChildNode("features") is { } nullNodeFeatures && nullNodeFeatures.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Features = null;
+            if (parseNode.GetChildNode("finetuned") is { } nullNodeFinetuned && nullNodeFinetuned.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Finetuned = null;
+            if (parseNode.GetChildNode("is_deprecated") is { } nullNodeIsDeprecated && nullNodeIsDeprecated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsDeprecated = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("sampling_defaults") is { } nullNodeSamplingDefaults && nullNodeSamplingDefaults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SamplingDefaults = null;
+            if (parseNode.GetChildNode("tokenizer_url") is { } nullNodeTokenizerUrl && nullNodeTokenizerUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenizerUrl = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The maximum number of tokens that the model can process in a single request. Note that not all of these tokens are always available due to special tokens and preambles that Cohere has added by default.</summary>
-        public double? ContextLength { get; set; }
+        public double? ContextLength { get => _explicitNullValueContextLength; set { _explicitNullValueContextLength = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context_length"); else _explicitNullProperties?.Remove("context_length"); } }
+        private double? _explicitNullValueContextLength = default!;
         /// <summary>The API endpoints that the model is default to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.CompatibleEndpoint?>? DefaultEndpoints { get; set; }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.CompatibleEndpoint?>? DefaultEndpoints { get => _explicitNullValueDefaultEndpoints; set { _explicitNullValueDefaultEndpoints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_endpoints"); else _explicitNullProperties?.Remove("default_endpoints"); } }
+        private List<global::Soenneker.Cohere.OpenApiClient.Models.CompatibleEndpoint?>? _explicitNullValueDefaultEndpoints = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.CompatibleEndpoint?> DefaultEndpoints { get; set; }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.CompatibleEndpoint?> DefaultEndpoints { get => _explicitNullValueDefaultEndpoints; set { _explicitNullValueDefaultEndpoints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_endpoints"); else _explicitNullProperties?.Remove("default_endpoints"); } }
+        private List<global::Soenneker.Cohere.OpenApiClient.Models.CompatibleEndpoint?> _explicitNullValueDefaultEndpoints = default!;
 #endif
         /// <summary>The API endpoints that the model is compatible with.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.CompatibleEndpoint?>? Endpoints { get; set; }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.CompatibleEndpoint?>? Endpoints { get => _explicitNullValueEndpoints; set { _explicitNullValueEndpoints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpoints"); else _explicitNullProperties?.Remove("endpoints"); } }
+        private List<global::Soenneker.Cohere.OpenApiClient.Models.CompatibleEndpoint?>? _explicitNullValueEndpoints = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.CompatibleEndpoint?> Endpoints { get; set; }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.CompatibleEndpoint?> Endpoints { get => _explicitNullValueEndpoints; set { _explicitNullValueEndpoints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpoints"); else _explicitNullProperties?.Remove("endpoints"); } }
+        private List<global::Soenneker.Cohere.OpenApiClient.Models.CompatibleEndpoint?> _explicitNullValueEndpoints = default!;
 #endif
         /// <summary>The features that the model supports.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Features { get; set; }
+        public List<string>? Features { get => _explicitNullValueFeatures; set { _explicitNullValueFeatures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("features"); else _explicitNullProperties?.Remove("features"); } }
+        private List<string>? _explicitNullValueFeatures = default!;
 #nullable restore
 #else
-        public List<string> Features { get; set; }
+        public List<string> Features { get => _explicitNullValueFeatures; set { _explicitNullValueFeatures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("features"); else _explicitNullProperties?.Remove("features"); } }
+        private List<string> _explicitNullValueFeatures = default!;
 #endif
         /// <summary>Whether the model has been fine-tuned or not.</summary>
-        public bool? Finetuned { get; set; }
+        public bool? Finetuned { get => _explicitNullValueFinetuned; set { _explicitNullValueFinetuned = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finetuned"); else _explicitNullProperties?.Remove("finetuned"); } }
+        private bool? _explicitNullValueFinetuned = default!;
         /// <summary>Whether the model is deprecated or not.</summary>
-        public bool? IsDeprecated { get; set; }
+        public bool? IsDeprecated { get => _explicitNullValueIsDeprecated; set { _explicitNullValueIsDeprecated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_deprecated"); else _explicitNullProperties?.Remove("is_deprecated"); } }
+        private bool? _explicitNullValueIsDeprecated = default!;
         /// <summary>Specify this name in the `model` parameter of API requests to use your chosen model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Default sampling parameters for this model when omitted from API requests.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponseSamplingDefaults? SamplingDefaults { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponseSamplingDefaults? SamplingDefaults { get => _explicitNullValueSamplingDefaults; set { _explicitNullValueSamplingDefaults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling_defaults"); else _explicitNullProperties?.Remove("sampling_defaults"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponseSamplingDefaults? _explicitNullValueSamplingDefaults = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponseSamplingDefaults SamplingDefaults { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponseSamplingDefaults SamplingDefaults { get => _explicitNullValueSamplingDefaults; set { _explicitNullValueSamplingDefaults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling_defaults"); else _explicitNullProperties?.Remove("sampling_defaults"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponseSamplingDefaults _explicitNullValueSamplingDefaults = default!;
 #endif
         /// <summary>Public URL to the tokenizer&apos;s configuration file.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TokenizerUrl { get; set; }
+        public string? TokenizerUrl { get => _explicitNullValueTokenizerUrl; set { _explicitNullValueTokenizerUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokenizer_url"); else _explicitNullProperties?.Remove("tokenizer_url"); } }
+        private string? _explicitNullValueTokenizerUrl = default!;
 #nullable restore
 #else
-        public string TokenizerUrl { get; set; }
+        public string TokenizerUrl { get => _explicitNullValueTokenizerUrl; set { _explicitNullValueTokenizerUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tokenizer_url"); else _explicitNullProperties?.Remove("tokenizer_url"); } }
+        private string _explicitNullValueTokenizerUrl = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse"/> and sets the default values.
@@ -84,7 +115,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public static global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -121,6 +152,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.GetModelResponseSamplingDefaults>("sampling_defaults", SamplingDefaults);
             writer.WriteStringValue("tokenizer_url", TokenizerUrl);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

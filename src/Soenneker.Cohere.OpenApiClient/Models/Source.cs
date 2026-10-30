@@ -8,26 +8,31 @@ using System;
 namespace Soenneker.Cohere.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ChatDocumentSource"/>, <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ChatToolSource"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Cohere.OpenApiClient.Models.SourceOneOf1"/>, <see cref="global::Soenneker.Cohere.OpenApiClient.Models.SourceOneOf2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Source : IComposedTypeWrapper, IParsable
-    {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ChatDocumentSource"/></summary>
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Cohere.OpenApiClient.Models.SourceOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatDocumentSource? ChatDocumentSource { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.SourceOneOf1? SourceOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatDocumentSource ChatDocumentSource { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.SourceOneOf1 SourceOneOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ChatToolSource"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Cohere.OpenApiClient.Models.SourceOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatToolSource? ChatToolSource { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.SourceOneOf2? SourceOneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatToolSource ChatToolSource { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.SourceOneOf2 SourceOneOf2 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -37,17 +42,24 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public static global::Soenneker.Cohere.OpenApiClient.Models.Source CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Cohere.OpenApiClient.Models.Source();
-            if("document".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("SourceOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ChatDocumentSource = new global::Soenneker.Cohere.OpenApiClient.Models.ChatDocumentSource();
+                
             }
-            else if("tool".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("SourceOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ChatToolSource = new global::Soenneker.Cohere.OpenApiClient.Models.ChatToolSource();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null))();
+            if (result.SourceOneOf1 == null && result.SourceOneOf2 == null && matchesUnionBranch0 && !matchesUnionBranch1) result.SourceOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Cohere.OpenApiClient.Models.SourceOneOf1(), parseNode);
+            if (result.SourceOneOf1 == null && result.SourceOneOf2 == null && matchesUnionBranch1 && !matchesUnionBranch0) result.SourceOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Cohere.OpenApiClient.Models.SourceOneOf2(), parseNode);
+            if (result.SourceOneOf1 == null && result.SourceOneOf2 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,13 +67,13 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ChatDocumentSource != null)
+            if(SourceOneOf1 != null)
             {
-                return ChatDocumentSource.GetFieldDeserializers();
+                return SourceOneOf1.GetFieldDeserializers();
             }
-            else if(ChatToolSource != null)
+            else if(SourceOneOf2 != null)
             {
-                return ChatToolSource.GetFieldDeserializers();
+                return SourceOneOf2.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -71,14 +83,21 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (SourceOneOf1 == null && SourceOneOf2 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (SourceOneOf1 != null && SourceOneOf2 == null) { if (SourceOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, SourceOneOf1); return; }
+            if (SourceOneOf2 != null && SourceOneOf1 == null) { if (SourceOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, SourceOneOf2); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(ChatDocumentSource != null)
+            if(SourceOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatDocumentSource>(null, ChatDocumentSource);
+                if (SourceOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.SourceOneOf1>(null, SourceOneOf1);
             }
-            else if(ChatToolSource != null)
+            else if(SourceOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatToolSource>(null, ChatToolSource);
+                if (SourceOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.SourceOneOf2>(null, SourceOneOf2);
             }
         }
     }

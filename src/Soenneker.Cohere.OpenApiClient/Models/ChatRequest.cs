@@ -11,128 +11,198 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ChatRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("chat_history") is { } nullNodeChatHistory && nullNodeChatHistory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChatHistory = null;
+            if (parseNode.GetChildNode("citation_quality") is { } nullNodeCitationQuality && nullNodeCitationQuality.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CitationQuality = null;
+            if (parseNode.GetChildNode("connectors") is { } nullNodeConnectors && nullNodeConnectors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Connectors = null;
+            if (parseNode.GetChildNode("conversation_id") is { } nullNodeConversationId && nullNodeConversationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConversationId = null;
+            if (parseNode.GetChildNode("documents") is { } nullNodeDocuments && nullNodeDocuments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Documents = null;
+            if (parseNode.GetChildNode("force_single_step") is { } nullNodeForceSingleStep && nullNodeForceSingleStep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ForceSingleStep = null;
+            if (parseNode.GetChildNode("frequency_penalty") is { } nullNodeFrequencyPenalty && nullNodeFrequencyPenalty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FrequencyPenalty = null;
+            if (parseNode.GetChildNode("k") is { } nullNodeK && nullNodeK.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) K = null;
+            if (parseNode.GetChildNode("max_input_tokens") is { } nullNodeMaxInputTokens && nullNodeMaxInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxInputTokens = null;
+            if (parseNode.GetChildNode("max_tokens") is { } nullNodeMaxTokens && nullNodeMaxTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxTokens = null;
+            if (parseNode.GetChildNode("message") is { } nullNodeMessage && nullNodeMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Message = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("p") is { } nullNodeP && nullNodeP.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P = null;
+            if (parseNode.GetChildNode("preamble") is { } nullNodePreamble && nullNodePreamble.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Preamble = null;
+            if (parseNode.GetChildNode("presence_penalty") is { } nullNodePresencePenalty && nullNodePresencePenalty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PresencePenalty = null;
+            if (parseNode.GetChildNode("prompt_truncation") is { } nullNodePromptTruncation && nullNodePromptTruncation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PromptTruncation = null;
+            if (parseNode.GetChildNode("raw_prompting") is { } nullNodeRawPrompting && nullNodeRawPrompting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawPrompting = null;
+            if (parseNode.GetChildNode("response_format") is { } nullNodeResponseFormat && nullNodeResponseFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResponseFormat = null;
+            if (parseNode.GetChildNode("safety_mode") is { } nullNodeSafetyMode && nullNodeSafetyMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SafetyMode = null;
+            if (parseNode.GetChildNode("search_queries_only") is { } nullNodeSearchQueriesOnly && nullNodeSearchQueriesOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SearchQueriesOnly = null;
+            if (parseNode.GetChildNode("seed") is { } nullNodeSeed && nullNodeSeed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Seed = null;
+            if (parseNode.GetChildNode("stop_sequences") is { } nullNodeStopSequences && nullNodeStopSequences.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StopSequences = null;
+            if (parseNode.GetChildNode("stream") is { } nullNodeStream && nullNodeStream.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stream = null;
+            if (parseNode.GetChildNode("temperature") is { } nullNodeTemperature && nullNodeTemperature.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Temperature = null;
+            if (parseNode.GetChildNode("tool_results") is { } nullNodeToolResults && nullNodeToolResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolResults = null;
+            if (parseNode.GetChildNode("tools") is { } nullNodeTools && nullNodeTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tools = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>A list of previous messages between the user and the model, giving the model conversational context for responding to the user&apos;s `message`.Each item represents a single message in the chat history, excluding the current user turn. It has two properties: `role` and `message`. The `role` identifies the sender (`CHATBOT`, `SYSTEM`, or `USER`), while the `message` contains the text content.The chat_history parameter should not be used for `SYSTEM` messages in most cases. Instead, to add a `SYSTEM` role message at the beginning of a conversation, the `preamble` parameter should be used.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.Message>? ChatHistory { get; set; }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.Message>? ChatHistory { get => _explicitNullValueChatHistory; set { _explicitNullValueChatHistory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_history"); else _explicitNullProperties?.Remove("chat_history"); } }
+        private List<global::Soenneker.Cohere.OpenApiClient.Models.Message>? _explicitNullValueChatHistory = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.Message> ChatHistory { get; set; }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.Message> ChatHistory { get => _explicitNullValueChatHistory; set { _explicitNullValueChatHistory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_history"); else _explicitNullProperties?.Remove("chat_history"); } }
+        private List<global::Soenneker.Cohere.OpenApiClient.Models.Message> _explicitNullValueChatHistory = default!;
 #endif
         /// <summary>Defaults to `&quot;enabled&quot;`.Citations are enabled by default for models that support it, but can be turned off by setting `&quot;type&quot;: &quot;disabled&quot;`.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatRequestCitationQuality? CitationQuality { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatRequestCitationQuality? CitationQuality { get => _explicitNullValueCitationQuality; set { _explicitNullValueCitationQuality = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("citation_quality"); else _explicitNullProperties?.Remove("citation_quality"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.ChatRequestCitationQuality? _explicitNullValueCitationQuality = default!;
         /// <summary>Accepts `{&quot;id&quot;: &quot;web-search&quot;}`, and/or the `&quot;id&quot;` for a custom [connector](https://docs.cohere.com/docs/connectors), if you&apos;ve [created](https://docs.cohere.com/v1/docs/creating-and-deploying-a-connector) one.When specified, the model&apos;s reply will be enriched with information found by querying each of the connectors (RAG).Compatible Deployments: Cohere Platform</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.ChatConnector>? Connectors { get; set; }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.ChatConnector>? Connectors { get => _explicitNullValueConnectors; set { _explicitNullValueConnectors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connectors"); else _explicitNullProperties?.Remove("connectors"); } }
+        private List<global::Soenneker.Cohere.OpenApiClient.Models.ChatConnector>? _explicitNullValueConnectors = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.ChatConnector> Connectors { get; set; }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.ChatConnector> Connectors { get => _explicitNullValueConnectors; set { _explicitNullValueConnectors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connectors"); else _explicitNullProperties?.Remove("connectors"); } }
+        private List<global::Soenneker.Cohere.OpenApiClient.Models.ChatConnector> _explicitNullValueConnectors = default!;
 #endif
         /// <summary>An alternative to `chat_history`.Providing a `conversation_id` creates or resumes a persisted conversation with the specified ID. The ID can be any non empty string.Compatible Deployments: Cohere Platform</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConversationId { get; set; }
+        public string? ConversationId { get => _explicitNullValueConversationId; set { _explicitNullValueConversationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversation_id"); else _explicitNullProperties?.Remove("conversation_id"); } }
+        private string? _explicitNullValueConversationId = default!;
 #nullable restore
 #else
-        public string ConversationId { get; set; }
+        public string ConversationId { get => _explicitNullValueConversationId; set { _explicitNullValueConversationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversation_id"); else _explicitNullProperties?.Remove("conversation_id"); } }
+        private string _explicitNullValueConversationId = default!;
 #endif
         /// <summary>A list of relevant documents that the model can cite to generate a more accurate reply. Each document is a string-string dictionary.Example:```[  { &quot;title&quot;: &quot;Tall penguins&quot;, &quot;text&quot;: &quot;Emperor penguins are the tallest.&quot; },  { &quot;title&quot;: &quot;Penguin habitats&quot;, &quot;text&quot;: &quot;Emperor penguins only live in Antarctica.&quot; },]```Keys and values from each document will be serialized to a string and passed to the model. The resulting generation will include citations that reference some of these documents.Some suggested keys are &quot;text&quot;, &quot;author&quot;, and &quot;date&quot;. For better generation quality, it is recommended to keep the total word count of the strings in the dictionary to under 300 words.An `id` field (string) can be optionally supplied to identify the document in the citations. This field will not be passed to the model.An `_excludes` field (array of strings) can be optionally supplied to omit some key-value pairs from being shown to the model. The omitted fields will still show up in the citation object. The &quot;_excludes&quot; field will not be passed to the model.See [&apos;Document Mode&apos;](https://docs.cohere.com/docs/retrieval-augmented-generation-rag#document-mode) in the guide for more information.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.ChatDocument>? Documents { get; set; }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.ChatDocument>? Documents { get => _explicitNullValueDocuments; set { _explicitNullValueDocuments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("documents"); else _explicitNullProperties?.Remove("documents"); } }
+        private List<global::Soenneker.Cohere.OpenApiClient.Models.ChatDocument>? _explicitNullValueDocuments = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.ChatDocument> Documents { get; set; }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.ChatDocument> Documents { get => _explicitNullValueDocuments; set { _explicitNullValueDocuments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("documents"); else _explicitNullProperties?.Remove("documents"); } }
+        private List<global::Soenneker.Cohere.OpenApiClient.Models.ChatDocument> _explicitNullValueDocuments = default!;
 #endif
         /// <summary>Forces the chat to be single step. Defaults to `false`.</summary>
-        public bool? ForceSingleStep { get; set; }
+        public bool? ForceSingleStep { get => _explicitNullValueForceSingleStep; set { _explicitNullValueForceSingleStep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("force_single_step"); else _explicitNullProperties?.Remove("force_single_step"); } }
+        private bool? _explicitNullValueForceSingleStep = default!;
         /// <summary>Defaults to `0.0`, min value of `0.0`, max value of `1.0`.Used to reduce repetitiveness of generated tokens. The higher the value, the stronger a penalty is applied to previously present tokens, proportional to how many times they have already appeared in the prompt or prior generation.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
-        public double? FrequencyPenalty { get; set; }
+        public double? FrequencyPenalty { get => _explicitNullValueFrequencyPenalty; set { _explicitNullValueFrequencyPenalty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frequency_penalty"); else _explicitNullProperties?.Remove("frequency_penalty"); } }
+        private double? _explicitNullValueFrequencyPenalty = default!;
         /// <summary>Ensures only the top `k` most likely tokens are considered for generation at each step.Defaults to `0`, min value of `0`, max value of `500`.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
-        public int? K { get; set; }
+        public int? K { get => _explicitNullValueK; set { _explicitNullValueK = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("k"); else _explicitNullProperties?.Remove("k"); } }
+        private int? _explicitNullValueK = default!;
         /// <summary>The maximum number of input tokens to send to the model. If not specified, `max_input_tokens` is the model&apos;s context length limit minus a small buffer.Input will be truncated according to the `prompt_truncation` parameter.Compatible Deployments: Cohere Platform</summary>
-        public int? MaxInputTokens { get; set; }
+        public int? MaxInputTokens { get => _explicitNullValueMaxInputTokens; set { _explicitNullValueMaxInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_input_tokens"); else _explicitNullProperties?.Remove("max_input_tokens"); } }
+        private int? _explicitNullValueMaxInputTokens = default!;
         /// <summary>The maximum number of tokens the model will generate as part of the response. Note: Setting a low value may result in incomplete generations.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
-        public int? MaxTokens { get; set; }
+        public int? MaxTokens { get => _explicitNullValueMaxTokens; set { _explicitNullValueMaxTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_tokens"); else _explicitNullProperties?.Remove("max_tokens"); } }
+        private int? _explicitNullValueMaxTokens = default!;
         /// <summary>Text input for the model to respond to.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Message { get; set; }
+        public string? Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        private string? _explicitNullValueMessage = default!;
 #nullable restore
 #else
-        public string Message { get; set; }
+        public string Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        private string _explicitNullValueMessage = default!;
 #endif
         /// <summary>The name of a compatible [Cohere model](https://docs.cohere.com/docs/models) or the ID of a [fine-tuned](https://docs.cohere.com/docs/chat-fine-tuning) model.Compatible Deployments: Cohere Platform, Private Deployments</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>Ensures that only the most likely tokens, with total probability mass of `p`, are considered for generation at each step. If both `k` and `p` are enabled, `p` acts after `k`.Defaults to `0.75`. min value of `0.01`, max value of `0.99`.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
-        public double? P { get; set; }
+        public double? P { get => _explicitNullValueP; set { _explicitNullValueP = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p"); else _explicitNullProperties?.Remove("p"); } }
+        private double? _explicitNullValueP = default!;
         /// <summary>When specified, the default Cohere preamble will be replaced with the provided one. Preambles are a part of the prompt used to adjust the model&apos;s overall behavior and conversation style, and use the `SYSTEM` role.The `SYSTEM` role is also used for the contents of the optional `chat_history=` parameter. When used with the `chat_history=` parameter it adds content throughout a conversation. Conversely, when used with the `preamble=` parameter it adds content at the start of the conversation only.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Preamble { get; set; }
+        public string? Preamble { get => _explicitNullValuePreamble; set { _explicitNullValuePreamble = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preamble"); else _explicitNullProperties?.Remove("preamble"); } }
+        private string? _explicitNullValuePreamble = default!;
 #nullable restore
 #else
-        public string Preamble { get; set; }
+        public string Preamble { get => _explicitNullValuePreamble; set { _explicitNullValuePreamble = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preamble"); else _explicitNullProperties?.Remove("preamble"); } }
+        private string _explicitNullValuePreamble = default!;
 #endif
         /// <summary>Defaults to `0.0`, min value of `0.0`, max value of `1.0`.Used to reduce repetitiveness of generated tokens. Similar to `frequency_penalty`, except that this penalty is applied equally to all tokens that have already appeared, regardless of their exact frequencies.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
-        public double? PresencePenalty { get; set; }
+        public double? PresencePenalty { get => _explicitNullValuePresencePenalty; set { _explicitNullValuePresencePenalty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("presence_penalty"); else _explicitNullProperties?.Remove("presence_penalty"); } }
+        private double? _explicitNullValuePresencePenalty = default!;
         /// <summary>Defaults to `AUTO` when `connectors` are specified and `OFF` in all other cases.Dictates how the prompt will be constructed.With `prompt_truncation` set to &quot;AUTO&quot;, some elements from `chat_history` and `documents` will be dropped in an attempt to construct a prompt that fits within the model&apos;s context length limit. During this process the order of the documents and chat history will be changed and ranked by relevance.With `prompt_truncation` set to &quot;AUTO_PRESERVE_ORDER&quot;, some elements from `chat_history` and `documents` will be dropped in an attempt to construct a prompt that fits within the model&apos;s context length limit. During this process the order of the documents and chat history will be preserved as they are inputted into the API.With `prompt_truncation` set to &quot;OFF&quot;, no elements will be dropped. If the sum of the inputs exceeds the model&apos;s context length limit, a `TooManyTokens` error will be returned.Compatible Deployments: - AUTO: Cohere Platform Only - AUTO_PRESERVE_ORDER: Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatRequestPromptTruncation? PromptTruncation { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatRequestPromptTruncation? PromptTruncation { get => _explicitNullValuePromptTruncation; set { _explicitNullValuePromptTruncation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt_truncation"); else _explicitNullProperties?.Remove("prompt_truncation"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.ChatRequestPromptTruncation? _explicitNullValuePromptTruncation = default!;
         /// <summary>When enabled, the user&apos;s prompt will be sent to the model withoutany pre-processing.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
-        public bool? RawPrompting { get; set; }
+        public bool? RawPrompting { get => _explicitNullValueRawPrompting; set { _explicitNullValueRawPrompting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_prompting"); else _explicitNullProperties?.Remove("raw_prompting"); } }
+        private bool? _explicitNullValueRawPrompting = default!;
         /// <summary>Configuration for forcing the model output to adhere to the specified format. Supported on [Command R 03-2024](https://docs.cohere.com/docs/command-r), [Command R+ 04-2024](https://docs.cohere.com/docs/command-r-plus) and newer models.The model can be forced into outputting JSON objects (with up to 5 levels of nesting) by setting `{ &quot;type&quot;: &quot;json_object&quot; }`.A [JSON Schema](https://json-schema.org/) can optionally be provided, to ensure a specific structure.**Note**: When using  `{ &quot;type&quot;: &quot;json_object&quot; }` your `message` should always explicitly instruct the model to generate a JSON (eg: _&quot;Generate a JSON ...&quot;_) . Otherwise the model may end up getting stuck generating an infinite stream of characters and eventually run out of context length.**Limitation**: The parameter is not supported in RAG mode (when any of `connectors`, `documents`, `tools`, `tool_results` are provided).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ResponseFormat? ResponseFormat { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ResponseFormat? ResponseFormat { get => _explicitNullValueResponseFormat; set { _explicitNullValueResponseFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_format"); else _explicitNullProperties?.Remove("response_format"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.ResponseFormat? _explicitNullValueResponseFormat = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ResponseFormat ResponseFormat { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ResponseFormat ResponseFormat { get => _explicitNullValueResponseFormat; set { _explicitNullValueResponseFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_format"); else _explicitNullProperties?.Remove("response_format"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.ResponseFormat _explicitNullValueResponseFormat = default!;
 #endif
         /// <summary>Used to select the [safety instruction](https://docs.cohere.com/docs/safety-modes) inserted into the prompt. Defaults to `CONTEXTUAL`.When `NONE` is specified, the safety instruction will be omitted.Safety modes are not yet configurable in combination with `tools`, `tool_results` and `documents` parameters.**Note**: This parameter is only compatible newer Cohere models, starting with [Command R 08-2024](https://docs.cohere.com/docs/command-r#august-2024-release) and [Command R+ 08-2024](https://docs.cohere.com/docs/command-r-plus#august-2024-release).**Note**: `command-r7b-12-2024` and newer models only support `&quot;CONTEXTUAL&quot;` and `&quot;STRICT&quot;` modes.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatRequestSafetyMode? SafetyMode { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatRequestSafetyMode? SafetyMode { get => _explicitNullValueSafetyMode; set { _explicitNullValueSafetyMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("safety_mode"); else _explicitNullProperties?.Remove("safety_mode"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.ChatRequestSafetyMode? _explicitNullValueSafetyMode = default!;
         /// <summary>Defaults to `false`.When `true`, the response will only contain a list of generated search queries, but no search will take place, and no reply from the model to the user&apos;s `message` will be generated.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
         [Obsolete("")]
-        public bool? SearchQueriesOnly { get; set; }
+        public bool? SearchQueriesOnly { get => _explicitNullValueSearchQueriesOnly; set { _explicitNullValueSearchQueriesOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search_queries_only"); else _explicitNullProperties?.Remove("search_queries_only"); } }
+        private bool? _explicitNullValueSearchQueriesOnly = default!;
         /// <summary>If specified, the backend will make a best effort to sample tokensdeterministically, such that repeated requests with the sameseed and parameters should return the same result. However,determinism cannot be totally guaranteed.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
-        public int? Seed { get; set; }
+        public int? Seed { get => _explicitNullValueSeed; set { _explicitNullValueSeed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seed"); else _explicitNullProperties?.Remove("seed"); } }
+        private int? _explicitNullValueSeed = default!;
         /// <summary>A list of up to 5 strings that the model will use to stop generation. If the model generates a string that matches any of the strings in the list, it will stop generating tokens and return the generated text up to that point not including the stop sequence.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? StopSequences { get; set; }
+        public List<string>? StopSequences { get => _explicitNullValueStopSequences; set { _explicitNullValueStopSequences = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stop_sequences"); else _explicitNullProperties?.Remove("stop_sequences"); } }
+        private List<string>? _explicitNullValueStopSequences = default!;
 #nullable restore
 #else
-        public List<string> StopSequences { get; set; }
+        public List<string> StopSequences { get => _explicitNullValueStopSequences; set { _explicitNullValueStopSequences = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stop_sequences"); else _explicitNullProperties?.Remove("stop_sequences"); } }
+        private List<string> _explicitNullValueStopSequences = default!;
 #endif
         /// <summary>Defaults to `false`.When `true`, the response will be a JSON stream of events. The final event will contain the complete response, and will have an `event_type` of `&quot;stream-end&quot;`.Streaming is beneficial for user interfaces that render the contents of the response piece by piece, as it gets generated.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
-        public bool? Stream { get; set; }
+        public bool? Stream { get => _explicitNullValueStream; set { _explicitNullValueStream = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stream"); else _explicitNullProperties?.Remove("stream"); } }
+        private bool? _explicitNullValueStream = default!;
         /// <summary>Defaults to `0.3`.A non-negative float that tunes the degree of randomness in generation. Lower temperatures mean less random generations, and higher temperatures mean more random generations.Randomness can be further maximized by increasing the  value of the `p` parameter.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
-        public float? Temperature { get; set; }
+        public float? Temperature { get => _explicitNullValueTemperature; set { _explicitNullValueTemperature = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("temperature"); else _explicitNullProperties?.Remove("temperature"); } }
+        private float? _explicitNullValueTemperature = default!;
         /// <summary>A list of results from invoking tools recommended by the model in the previous chat turn. Results are used to produce a text response and will be referenced in citations. When using `tool_results`, `tools` must be passed as well.Each tool_result contains information about how it was invoked, as well as a list of outputs in the form of dictionaries.**Note**: `outputs` must be a list of objects. If your tool returns a single object (eg `{&quot;status&quot;: 200}`), make sure to wrap it in a list.```tool_results = [  {    &quot;call&quot;: {      &quot;name&quot;: &lt;tool name&gt;,      &quot;parameters&quot;: {        &lt;param name&gt;: &lt;param value&gt;      }    },    &quot;outputs&quot;: [{      &lt;key&gt;: &lt;value&gt;    }]  },  ...]```**Note**: Chat calls with `tool_results` should not be included in the Chat history to avoid duplication of the message text.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.ToolResult>? ToolResults { get; set; }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.ToolResult>? ToolResults { get => _explicitNullValueToolResults; set { _explicitNullValueToolResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_results"); else _explicitNullProperties?.Remove("tool_results"); } }
+        private List<global::Soenneker.Cohere.OpenApiClient.Models.ToolResult>? _explicitNullValueToolResults = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.ToolResult> ToolResults { get; set; }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.ToolResult> ToolResults { get => _explicitNullValueToolResults; set { _explicitNullValueToolResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_results"); else _explicitNullProperties?.Remove("tool_results"); } }
+        private List<global::Soenneker.Cohere.OpenApiClient.Models.ToolResult> _explicitNullValueToolResults = default!;
 #endif
         /// <summary>A list of available tools (functions) that the model may suggest invoking before producing a text response.When `tools` is passed (without `tool_results`), the `text` field in the response will be `&quot;&quot;` and the `tool_calls` field in the response will be populated with a list of tool calls that need to be made. If no calls need to be made, the `tool_calls` array will be empty.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.Tool>? Tools { get; set; }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.Tool>? Tools { get => _explicitNullValueTools; set { _explicitNullValueTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools"); else _explicitNullProperties?.Remove("tools"); } }
+        private List<global::Soenneker.Cohere.OpenApiClient.Models.Tool>? _explicitNullValueTools = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.Tool> Tools { get; set; }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.Tool> Tools { get => _explicitNullValueTools; set { _explicitNullValueTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools"); else _explicitNullProperties?.Remove("tools"); } }
+        private List<global::Soenneker.Cohere.OpenApiClient.Models.Tool> _explicitNullValueTools = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ChatRequest"/> and sets the default values.
@@ -151,7 +221,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public static global::Soenneker.Cohere.OpenApiClient.Models.ChatRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Cohere.OpenApiClient.Models.ChatRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Cohere.OpenApiClient.Models.ChatRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -222,6 +292,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteFloatValue("temperature", Temperature);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.ToolResult>("tool_results", ToolResults);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.Tool>("tools", Tools);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

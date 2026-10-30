@@ -5,16 +5,20 @@ namespace Soenneker.Cohere.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum EmbedContentType
+    public enum GenerateStreamEventEventType
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "text")]
+        [EnumMember(Value = "text-generation")]
         #pragma warning disable CS1591
-        Text,
+        TextGeneration,
         #pragma warning restore CS1591
-        [EnumMember(Value = "image_url")]
+        [EnumMember(Value = "stream-end")]
         #pragma warning disable CS1591
-        ImageUrl,
+        StreamEnd,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "stream-error")]
+        #pragma warning disable CS1591
+        StreamError,
         #pragma warning restore CS1591
     }
 }

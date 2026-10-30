@@ -78,6 +78,8 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item
                 { "404", global::Soenneker.Cohere.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Cohere.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.Cohere.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Cohere.OpenApiClient.Models.DeleteFinetunedModel200Response>(requestInfo, global::Soenneker.Cohere.OpenApiClient.Models.DeleteFinetunedModel200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -112,6 +114,8 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item
                 { "404", global::Soenneker.Cohere.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Cohere.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.Cohere.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Cohere.OpenApiClient.Models.GetFinetunedModelResponse>(requestInfo, global::Soenneker.Cohere.OpenApiClient.Models.GetFinetunedModelResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -148,6 +152,8 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item
                 { "404", global::Soenneker.Cohere.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Cohere.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.Cohere.OpenApiClient.Models.Error.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Cohere.OpenApiClient.Models.UpdateFinetunedModelResponse>(requestInfo, global::Soenneker.Cohere.OpenApiClient.Models.UpdateFinetunedModelResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

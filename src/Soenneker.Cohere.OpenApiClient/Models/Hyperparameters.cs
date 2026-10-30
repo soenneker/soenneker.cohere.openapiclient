@@ -13,26 +13,49 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     [Obsolete("")]
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Hyperparameters : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("early_stopping_patience") is { } nullNodeEarlyStoppingPatience && nullNodeEarlyStoppingPatience.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EarlyStoppingPatience = null;
+            if (parseNode.GetChildNode("early_stopping_threshold") is { } nullNodeEarlyStoppingThreshold && nullNodeEarlyStoppingThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EarlyStoppingThreshold = null;
+            if (parseNode.GetChildNode("learning_rate") is { } nullNodeLearningRate && nullNodeLearningRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LearningRate = null;
+            if (parseNode.GetChildNode("lora_alpha") is { } nullNodeLoraAlpha && nullNodeLoraAlpha.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoraAlpha = null;
+            if (parseNode.GetChildNode("lora_rank") is { } nullNodeLoraRank && nullNodeLoraRank.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoraRank = null;
+            if (parseNode.GetChildNode("lora_target_modules") is { } nullNodeLoraTargetModules && nullNodeLoraTargetModules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoraTargetModules = null;
+            if (parseNode.GetChildNode("train_batch_size") is { } nullNodeTrainBatchSize && nullNodeTrainBatchSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainBatchSize = null;
+            if (parseNode.GetChildNode("train_epochs") is { } nullNodeTrainEpochs && nullNodeTrainEpochs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainEpochs = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Stops training if the loss metric does not improve beyond the value of`early_stopping_threshold` after this many times of evaluation.</summary>
-        public int? EarlyStoppingPatience { get; set; }
+        public int? EarlyStoppingPatience { get => _explicitNullValueEarlyStoppingPatience; set { _explicitNullValueEarlyStoppingPatience = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("early_stopping_patience"); else _explicitNullProperties?.Remove("early_stopping_patience"); } }
+        private int? _explicitNullValueEarlyStoppingPatience = default!;
         /// <summary>How much the loss must improve to prevent early stopping.</summary>
-        public double? EarlyStoppingThreshold { get; set; }
+        public double? EarlyStoppingThreshold { get => _explicitNullValueEarlyStoppingThreshold; set { _explicitNullValueEarlyStoppingThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("early_stopping_threshold"); else _explicitNullProperties?.Remove("early_stopping_threshold"); } }
+        private double? _explicitNullValueEarlyStoppingThreshold = default!;
         /// <summary>The learning rate to be used during training.</summary>
-        public double? LearningRate { get; set; }
+        public double? LearningRate { get => _explicitNullValueLearningRate; set { _explicitNullValueLearningRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("learning_rate"); else _explicitNullProperties?.Remove("learning_rate"); } }
+        private double? _explicitNullValueLearningRate = default!;
         /// <summary>Controls the scaling factor for LoRA updates. Higher values make theupdates more impactful.</summary>
-        public int? LoraAlpha { get; set; }
+        public int? LoraAlpha { get => _explicitNullValueLoraAlpha; set { _explicitNullValueLoraAlpha = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_alpha"); else _explicitNullProperties?.Remove("lora_alpha"); } }
+        private int? _explicitNullValueLoraAlpha = default!;
         /// <summary>Specifies the rank for low-rank matrices. Lower ranks reduce parametersbut may limit model flexibility.</summary>
-        public int? LoraRank { get; set; }
+        public int? LoraRank { get => _explicitNullValueLoraRank; set { _explicitNullValueLoraRank = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_rank"); else _explicitNullProperties?.Remove("lora_rank"); } }
+        private int? _explicitNullValueLoraRank = default!;
         /// <summary>The combination of LoRA modules to target.</summary>
         [Obsolete("")]
-        public global::Soenneker.Cohere.OpenApiClient.Models.LoraTargetModules? LoraTargetModules { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.LoraTargetModules? LoraTargetModules { get => _explicitNullValueLoraTargetModules; set { _explicitNullValueLoraTargetModules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lora_target_modules"); else _explicitNullProperties?.Remove("lora_target_modules"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.LoraTargetModules? _explicitNullValueLoraTargetModules = default!;
         /// <summary>The batch size is the number of training examples included in a singletraining pass.</summary>
-        public int? TrainBatchSize { get; set; }
+        public int? TrainBatchSize { get => _explicitNullValueTrainBatchSize; set { _explicitNullValueTrainBatchSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("train_batch_size"); else _explicitNullProperties?.Remove("train_batch_size"); } }
+        private int? _explicitNullValueTrainBatchSize = default!;
         /// <summary>The number of epochs to train for.</summary>
-        public int? TrainEpochs { get; set; }
+        public int? TrainEpochs { get => _explicitNullValueTrainEpochs; set { _explicitNullValueTrainEpochs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("train_epochs"); else _explicitNullProperties?.Remove("train_epochs"); } }
+        private int? _explicitNullValueTrainEpochs = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.Hyperparameters"/> and sets the default values.
         /// </summary>
@@ -48,7 +71,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public static global::Soenneker.Cohere.OpenApiClient.Models.Hyperparameters CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Cohere.OpenApiClient.Models.Hyperparameters();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Cohere.OpenApiClient.Models.Hyperparameters(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -83,6 +106,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.LoraTargetModules>("lora_target_modules", LoraTargetModules);
             writer.WriteIntValue("train_batch_size", TrainBatchSize);
             writer.WriteIntValue("train_epochs", TrainEpochs);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

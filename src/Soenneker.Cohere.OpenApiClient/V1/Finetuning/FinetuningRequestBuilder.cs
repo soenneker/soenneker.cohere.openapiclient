@@ -16,6 +16,7 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Finetuning
     public partial class FinetuningRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The finetunedModels property</summary>
+        [Obsolete("")]
         public global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.FinetunedModelsRequestBuilder FinetunedModels
         {
             get => new global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.FinetunedModelsRequestBuilder(PathParameters, RequestAdapter);

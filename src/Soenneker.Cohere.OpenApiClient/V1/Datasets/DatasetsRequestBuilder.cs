@@ -94,6 +94,8 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Datasets
                 { "501", global::Soenneker.Cohere.OpenApiClient.Models.NotImplementedResponse.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.Cohere.OpenApiClient.Models.ServiceUnavailableResponse.CreateFromDiscriminatorValue },
                 { "504", global::Soenneker.Cohere.OpenApiClient.Models.GatewayTimeoutResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Cohere.OpenApiClient.Models.ListDatasets200Response>(requestInfo, global::Soenneker.Cohere.OpenApiClient.Models.ListDatasets200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -118,11 +120,11 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Datasets
         /// <exception cref="global::Soenneker.Cohere.OpenApiClient.Models.GatewayTimeoutResponse">When receiving a 504 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200Response?> PostAsync(MultipartBody body, Action<RequestConfiguration<global::Soenneker.Cohere.OpenApiClient.V1.Datasets.DatasetsRequestBuilder.DatasetsRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200Response?> PostAsync(global::Microsoft.Kiota.Abstractions.MultipartBody body, Action<RequestConfiguration<global::Soenneker.Cohere.OpenApiClient.V1.Datasets.DatasetsRequestBuilder.DatasetsRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200Response> PostAsync(MultipartBody body, Action<RequestConfiguration<global::Soenneker.Cohere.OpenApiClient.V1.Datasets.DatasetsRequestBuilder.DatasetsRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200Response> PostAsync(global::Microsoft.Kiota.Abstractions.MultipartBody body, Action<RequestConfiguration<global::Soenneker.Cohere.OpenApiClient.V1.Datasets.DatasetsRequestBuilder.DatasetsRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -141,6 +143,8 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Datasets
                 { "501", global::Soenneker.Cohere.OpenApiClient.Models.NotImplementedResponse.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.Cohere.OpenApiClient.Models.ServiceUnavailableResponse.CreateFromDiscriminatorValue },
                 { "504", global::Soenneker.Cohere.OpenApiClient.Models.GatewayTimeoutResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200Response>(requestInfo, global::Soenneker.Cohere.OpenApiClient.Models.CreateDataset200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -171,11 +175,11 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Datasets
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(MultipartBody body, Action<RequestConfiguration<global::Soenneker.Cohere.OpenApiClient.V1.Datasets.DatasetsRequestBuilder.DatasetsRequestBuilderPostQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Microsoft.Kiota.Abstractions.MultipartBody body, Action<RequestConfiguration<global::Soenneker.Cohere.OpenApiClient.V1.Datasets.DatasetsRequestBuilder.DatasetsRequestBuilderPostQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(MultipartBody body, Action<RequestConfiguration<global::Soenneker.Cohere.OpenApiClient.V1.Datasets.DatasetsRequestBuilder.DatasetsRequestBuilderPostQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Microsoft.Kiota.Abstractions.MultipartBody body, Action<RequestConfiguration<global::Soenneker.Cohere.OpenApiClient.V1.Datasets.DatasetsRequestBuilder.DatasetsRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));

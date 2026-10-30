@@ -11,62 +11,91 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class Classify200ResponseClassificationsItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("classification_type") is { } nullNodeClassificationType && nullNodeClassificationType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClassificationType = null;
+            if (parseNode.GetChildNode("confidence") is { } nullNodeConfidence && nullNodeConfidence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Confidence = null;
+            if (parseNode.GetChildNode("confidences") is { } nullNodeConfidences && nullNodeConfidences.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Confidences = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("input") is { } nullNodeInput && nullNodeInput.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Input = null;
+            if (parseNode.GetChildNode("labels") is { } nullNodeLabels && nullNodeLabels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Labels = null;
+            if (parseNode.GetChildNode("prediction") is { } nullNodePrediction && nullNodePrediction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Prediction = null;
+            if (parseNode.GetChildNode("predictions") is { } nullNodePredictions && nullNodePredictions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Predictions = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The type of classification performed</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.Classify200ResponseClassificationsItemClassificationType? ClassificationType { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.Classify200ResponseClassificationsItemClassificationType? ClassificationType { get => _explicitNullValueClassificationType; set { _explicitNullValueClassificationType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classification_type"); else _explicitNullProperties?.Remove("classification_type"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.Classify200ResponseClassificationsItemClassificationType? _explicitNullValueClassificationType = default!;
         /// <summary>The confidence score for the top predicted class (only filled for single-label classification)</summary>
         [Obsolete("")]
-        public float? Confidence { get; set; }
+        public float? Confidence { get => _explicitNullValueConfidence; set { _explicitNullValueConfidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confidence"); else _explicitNullProperties?.Remove("confidence"); } }
+        private float? _explicitNullValueConfidence = default!;
         /// <summary>An array containing the confidence scores of all the predictions in the same order</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<float?>? Confidences { get; set; }
+        public List<float?>? Confidences { get => _explicitNullValueConfidences; set { _explicitNullValueConfidences = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confidences"); else _explicitNullProperties?.Remove("confidences"); } }
+        private List<float?>? _explicitNullValueConfidences = default!;
 #nullable restore
 #else
-        public List<float?> Confidences { get; set; }
+        public List<float?> Confidences { get => _explicitNullValueConfidences; set { _explicitNullValueConfidences = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confidences"); else _explicitNullProperties?.Remove("confidences"); } }
+        private List<float?> _explicitNullValueConfidences = default!;
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>The input text that was classified</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Input { get; set; }
+        public string? Input { get => _explicitNullValueInput; set { _explicitNullValueInput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input"); else _explicitNullProperties?.Remove("input"); } }
+        private string? _explicitNullValueInput = default!;
 #nullable restore
 #else
-        public string Input { get; set; }
+        public string Input { get => _explicitNullValueInput; set { _explicitNullValueInput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input"); else _explicitNullProperties?.Remove("input"); } }
+        private string _explicitNullValueInput = default!;
 #endif
         /// <summary>A map containing each label and its confidence score according to the classifier. All the confidence scores add up to 1 for single-label classification. For multi-label classification the label confidences are independent of each other, so they don&apos;t have to sum up to 1.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.Classify200ResponseClassificationsItemLabels? Labels { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.Classify200ResponseClassificationsItemLabels? Labels { get => _explicitNullValueLabels; set { _explicitNullValueLabels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("labels"); else _explicitNullProperties?.Remove("labels"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.Classify200ResponseClassificationsItemLabels? _explicitNullValueLabels = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.Classify200ResponseClassificationsItemLabels Labels { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.Classify200ResponseClassificationsItemLabels Labels { get => _explicitNullValueLabels; set { _explicitNullValueLabels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("labels"); else _explicitNullProperties?.Remove("labels"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.Classify200ResponseClassificationsItemLabels _explicitNullValueLabels = default!;
 #endif
         /// <summary>The predicted label for the associated query (only filled for single-label models)</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Prediction { get; set; }
+        public string? Prediction { get => _explicitNullValuePrediction; set { _explicitNullValuePrediction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prediction"); else _explicitNullProperties?.Remove("prediction"); } }
+        private string? _explicitNullValuePrediction = default!;
 #nullable restore
 #else
-        public string Prediction { get; set; }
+        public string Prediction { get => _explicitNullValuePrediction; set { _explicitNullValuePrediction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prediction"); else _explicitNullProperties?.Remove("prediction"); } }
+        private string _explicitNullValuePrediction = default!;
 #endif
         /// <summary>An array containing the predicted labels for the associated query (only filled for single-label classification)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Predictions { get; set; }
+        public List<string>? Predictions { get => _explicitNullValuePredictions; set { _explicitNullValuePredictions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("predictions"); else _explicitNullProperties?.Remove("predictions"); } }
+        private List<string>? _explicitNullValuePredictions = default!;
 #nullable restore
 #else
-        public List<string> Predictions { get; set; }
+        public List<string> Predictions { get => _explicitNullValuePredictions; set { _explicitNullValuePredictions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("predictions"); else _explicitNullProperties?.Remove("predictions"); } }
+        private List<string> _explicitNullValuePredictions = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.Classify200ResponseClassificationsItem"/> and sets the default values.
@@ -83,7 +112,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public static global::Soenneker.Cohere.OpenApiClient.Models.Classify200ResponseClassificationsItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Cohere.OpenApiClient.Models.Classify200ResponseClassificationsItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Cohere.OpenApiClient.Models.Classify200ResponseClassificationsItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -118,6 +147,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.Classify200ResponseClassificationsItemLabels>("labels", Labels);
             writer.WriteStringValue("prediction", Prediction);
             writer.WriteCollectionOfPrimitiveValues<string>("predictions", Predictions);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

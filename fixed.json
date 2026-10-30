@@ -4949,11 +4949,17 @@
             "content": {
               "application/json": {
                 "schema": {
+                  "$ref": "#/components/schemas/GenerateSuccessResponse"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/Generation"
                 }
               },
               "application/stream\u002Bjson": {
                 "schema": {
+                  "$ref": "#/components/schemas/GenerateSuccessResponse"
+                },
+                "x-client-original-success-schema": {
                   "$ref": "#/components/schemas/GenerateStreamedResponse"
                 }
               }
@@ -17315,9 +17321,6 @@
         "x-fern-type-name": "ChatToolMessage"
       },
       "Message": {
-        "required": [
-          "role"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/ChatMessage"
@@ -17326,12 +17329,8 @@
             "$ref": "#/components/schemas/ChatToolMessage"
           }
         ],
-        "properties": {
-          "role": {
-            "type": "string"
-          }
-        },
-        "discriminator": {
+        "x-fern-type-name": "Message",
+        "x-client-original-discriminator": {
           "propertyName": "role",
           "mapping": {
             "CHATBOT": "#/components/schemas/ChatMessage",
@@ -17339,8 +17338,7 @@
             "USER": "#/components/schemas/ChatMessage",
             "TOOL": "#/components/schemas/ChatToolMessage"
           }
-        },
-        "x-fern-type-name": "Message"
+        }
       },
       "ChatConnector": {
         "required": [
@@ -17483,9 +17481,6 @@
         "x-fern-type-name": "JSONResponseFormat"
       },
       "ResponseFormat": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/ChatTextResponseFormat"
@@ -17494,20 +17489,15 @@
             "$ref": "#/components/schemas/JsonResponseFormat"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "Configuration for forcing the model output to adhere to the specified format. Supported on [Command R 03-2024](https://docs.cohere.com/docs/command-r), [Command R\u002B 04-2024](https://docs.cohere.com/docs/command-r-plus) and newer models.\n\nThe model can be forced into outputting JSON objects (with up to 5 levels of nesting) by setting \u0060{ \u0022type\u0022: \u0022json_object\u0022 }\u0060.\n\nA [JSON Schema](https://json-schema.org/) can optionally be provided, to ensure a specific structure.\n\n**Note**: When using  \u0060{ \u0022type\u0022: \u0022json_object\u0022 }\u0060 your \u0060message\u0060 should always explicitly instruct the model to generate a JSON (eg: _\u0022Generate a JSON ...\u0022_) . Otherwise the model may end up getting stuck generating an infinite stream of characters and eventually run out of context length.\n**Limitation**: The parameter is not supported in RAG mode (when any of \u0060connectors\u0060, \u0060documents\u0060, \u0060tools\u0060, \u0060tool_results\u0060 are provided).\n",
-        "discriminator": {
+        "x-fern-type-name": "ResponseFormat",
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "text": "#/components/schemas/ChatTextResponseFormat",
             "json_object": "#/components/schemas/JsonResponseFormat"
           }
-        },
-        "x-fern-type-name": "ResponseFormat"
+        }
       },
       "ChatCitation": {
         "required": [
@@ -18127,9 +18117,6 @@
         "x-fern-type-name": "ChatDebugEvent"
       },
       "StreamedChatResponse": {
-        "required": [
-          "event_type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/ChatStreamStartEvent"
@@ -18159,13 +18146,9 @@
             "$ref": "#/components/schemas/ChatDebugEvent"
           }
         ],
-        "properties": {
-          "event_type": {
-            "type": "string"
-          }
-        },
         "description": "StreamedChatResponse is returned in streaming mode (specified with \u0060stream=True\u0060 in the request).",
-        "discriminator": {
+        "x-fern-type-name": "StreamedChatResponse",
+        "x-client-original-discriminator": {
           "propertyName": "event_type",
           "mapping": {
             "stream-start": "#/components/schemas/ChatStreamStartEvent",
@@ -18178,8 +18161,7 @@
             "tool-calls-chunk": "#/components/schemas/ChatToolCallsChunkEvent",
             "debug": "#/components/schemas/ChatDebugEvent"
           }
-        },
-        "x-fern-type-name": "StreamedChatResponse"
+        }
       },
       "ChatTextContent": {
         "required": [
@@ -18259,9 +18241,6 @@
         "x-fern-type-name": "ImageContent"
       },
       "Content": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/ChatTextContent"
@@ -18270,20 +18249,15 @@
             "$ref": "#/components/schemas/ImageContent"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "A Content block which contains information about the content type and the content itself.",
-        "discriminator": {
+        "x-fern-type-name": "Content",
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "text": "#/components/schemas/ChatTextContent",
             "image_url": "#/components/schemas/ImageContent"
           }
-        },
-        "x-fern-type-name": "Content"
+        }
       },
       "UserMessageV2": {
         "title": "User Message",
@@ -18368,31 +18342,23 @@
         "x-fern-type-name": "ChatDocumentSource"
       },
       "Source": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
-            "$ref": "#/components/schemas/ChatToolSource"
+            "$ref": "#/components/schemas/SourceOneOf1"
           },
           {
-            "$ref": "#/components/schemas/ChatDocumentSource"
+            "$ref": "#/components/schemas/SourceOneOf2"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "A source object containing information about the source of the data cited.",
-        "discriminator": {
+        "x-fern-type-name": "Source",
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "tool": "#/components/schemas/ChatToolSource",
             "document": "#/components/schemas/ChatDocumentSource"
           }
-        },
-        "x-fern-type-name": "Source"
+        }
       },
       "CitationType": {
         "enum": [
@@ -18542,9 +18508,6 @@
         "x-fern-type-name": "DocumentContent"
       },
       "ToolContent": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/ChatTextContent"
@@ -18553,20 +18516,15 @@
             "$ref": "#/components/schemas/DocumentContent"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "A content block which contains information about the content of a tool result",
-        "discriminator": {
+        "x-fern-type-name": "ToolContent",
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "text": "#/components/schemas/ChatTextContent",
             "document": "#/components/schemas/DocumentContent"
           }
-        },
-        "x-fern-type-name": "ToolContent"
+        }
       },
       "ToolMessageV2": {
         "title": "Tool Message",
@@ -18592,9 +18550,6 @@
         "x-fern-type-name": "ToolMessageV2"
       },
       "ChatMessageV2": {
-        "required": [
-          "role"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/UserMessageV2"
@@ -18609,13 +18564,9 @@
             "$ref": "#/components/schemas/ToolMessageV2"
           }
         ],
-        "properties": {
-          "role": {
-            "type": "string"
-          }
-        },
         "description": "Represents a single message in the chat history from a given role.",
-        "discriminator": {
+        "x-fern-type-name": "ChatMessageV2",
+        "x-client-original-discriminator": {
           "propertyName": "role",
           "mapping": {
             "user": "#/components/schemas/UserMessageV2",
@@ -18623,8 +18574,7 @@
             "system": "#/components/schemas/SystemMessageV2",
             "tool": "#/components/schemas/ToolMessageV2"
           }
-        },
-        "x-fern-type-name": "ChatMessageV2"
+        }
       },
       "ChatMessages": {
         "type": "array",
@@ -18736,9 +18686,6 @@
         "x-fern-type-name": "JsonResponseFormatV2"
       },
       "ResponseFormatV2": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/ChatTextResponseFormatV2"
@@ -18747,20 +18694,15 @@
             "$ref": "#/components/schemas/JsonResponseFormatV2"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "Configuration for forcing the model output to adhere to the specified format. Supported on [Command R](https://docs.cohere.com/v2/docs/command-r), [Command R\u002B](https://docs.cohere.com/v2/docs/command-r-plus) and newer models.\n\nThe model can be forced into outputting JSON objects by setting \u0060{ \u0022type\u0022: \u0022json_object\u0022 }\u0060.\n\nA [JSON Schema](https://json-schema.org/) can optionally be provided, to ensure a specific structure.\n\n**Note**: When using  \u0060{ \u0022type\u0022: \u0022json_object\u0022 }\u0060 your \u0060message\u0060 should always explicitly instruct the model to generate a JSON (eg: _\u0022Generate a JSON ...\u0022_) . Otherwise the model may end up getting stuck generating an infinite stream of characters and eventually run out of context length.\n\n**Note**: When \u0060json_schema\u0060 is not specified, the generated object can have up to 5 layers of nesting.\n\n**Limitation**: The parameter is not supported when used in combinations with the \u0060documents\u0060 or \u0060tools\u0060 parameters.\n",
-        "discriminator": {
+        "x-fern-type-name": "ResponseFormatV2",
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "text": "#/components/schemas/ChatTextResponseFormatV2",
             "json_object": "#/components/schemas/JsonResponseFormatV2"
           }
-        },
-        "x-fern-type-name": "ResponseFormatV2"
+        }
       },
       "Thinking": {
         "required": [
@@ -19155,9 +19097,6 @@
         "x-fern-type-name": "ChatMessageEndEvent"
       },
       "StreamedChatResponseV2": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/ChatMessageStartEvent"
@@ -19187,16 +19126,11 @@
             "$ref": "#/components/schemas/ChatMessageEndEvent"
           },
           {
-            "$ref": "#/components/schemas/ChatDebugEvent"
+            "$ref": "#/components/schemas/StreamedChatResponseV2OneOf10"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "StreamedChatResponse is returned in streaming mode (specified with \u0060stream=True\u0060 in the request).",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "message-start": "#/components/schemas/ChatMessageStartEvent",
@@ -19528,9 +19462,6 @@
         "x-fern-type-name": "ParseTableContentBlock"
       },
       "ParseBlock": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/ParseTextContentBlock"
@@ -19542,21 +19473,16 @@
             "$ref": "#/components/schemas/ParseTableContentBlock"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "A content block on a parsed page.",
-        "discriminator": {
+        "x-fern-type-name": "ParseBlock",
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "text": "#/components/schemas/ParseTextContentBlock",
             "image": "#/components/schemas/ParseImageContentBlock",
             "table": "#/components/schemas/ParseTableContentBlock"
           }
-        },
-        "x-fern-type-name": "ParseBlock"
+        }
       },
       "ParseBlocksPageVariant": {
         "required": [
@@ -19629,9 +19555,6 @@
         "x-fern-type-name": "ParseMarkdownPageVariant"
       },
       "ParsePage": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/ParseBlocksPageVariant"
@@ -19640,20 +19563,15 @@
             "$ref": "#/components/schemas/ParseMarkdownPageVariant"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
         "description": "A single parsed page. The payload shape depends on \u0060output_format\u0060.",
-        "discriminator": {
+        "x-fern-type-name": "ParsePage",
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "blocks": "#/components/schemas/ParseBlocksPageVariant",
             "markdown": "#/components/schemas/ParseMarkdownPageVariant"
           }
-        },
-        "x-fern-type-name": "ParsePage"
+        }
       },
       "ParseResponse": {
         "required": [
@@ -19919,9 +19837,6 @@
         "x-fern-type-name": "GenerateStreamError"
       },
       "GenerateStreamedResponse": {
-        "required": [
-          "event_type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/GenerateStreamText"
@@ -19933,21 +19848,16 @@
             "$ref": "#/components/schemas/GenerateStreamError"
           }
         ],
-        "properties": {
-          "event_type": {
-            "type": "string"
-          }
-        },
         "description": "Response in content type stream when \u0060stream\u0060 is \u0060true\u0060 in the request parameters. Generation tokens are streamed with the GenerationStream response. The final response is of type GenerationFinalResponse.",
-        "discriminator": {
+        "x-fern-type-name": "GenerateStreamedResponse",
+        "x-client-original-discriminator": {
           "propertyName": "event_type",
           "mapping": {
             "text-generation": "#/components/schemas/GenerateStreamText",
             "stream-end": "#/components/schemas/GenerateStreamEnd",
             "stream-error": "#/components/schemas/GenerateStreamError"
           }
-        },
-        "x-fern-type-name": "GenerateStreamedResponse"
+        }
       },
       "EmbedInputType": {
         "enum": [
@@ -22500,30 +22410,22 @@
         "x-fern-type-name": "EmbedText"
       },
       "EmbedContent": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
-            "$ref": "#/components/schemas/EmbedImage"
+            "$ref": "#/components/schemas/EmbedContentOneOf1"
           },
           {
-            "$ref": "#/components/schemas/EmbedText"
+            "$ref": "#/components/schemas/EmbedContentOneOf2"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
-        "discriminator": {
+        "x-fern-type-name": "EmbedContent",
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "image_url": "#/components/schemas/EmbedImage",
             "text": "#/components/schemas/EmbedText"
           }
-        },
-        "x-fern-type-name": "EmbedContent"
+        }
       },
       "EmbedInput": {
         "required": [
@@ -25819,9 +25721,6 @@
         "description": "Outputs from a tool. The content should formatted as a JSON object string, or a list of tool content blocks"
       },
       "AssistantMessageResponseContentItem": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/ChatTextContent"
@@ -25830,12 +25729,7 @@
             "$ref": "#/components/schemas/ChatThinkingContent"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "text": "#/components/schemas/ChatTextContent",
@@ -26062,9 +25956,6 @@
         ]
       },
       "AssistantMessageV2ContentOneOf2Item": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/ChatTextContent"
@@ -26073,35 +25964,32 @@
             "$ref": "#/components/schemas/ChatThinkingContent"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
-        "discriminator": {
+        "x-fern-type-name": "AssistantMessageV2ContentOneItem",
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "text": "#/components/schemas/ChatTextContent",
             "thinking": "#/components/schemas/ChatThinkingContent"
           }
-        },
-        "x-fern-type-name": "AssistantMessageV2ContentOneItem"
+        }
       },
       "SystemMessageV2ContentOneOf2Item": {
         "required": [
-          "type"
+          "type",
+          "text"
         ],
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ChatTextContent"
-          }
-        ],
+        "type": "object",
         "properties": {
           "type": {
+            "$ref": "#/components/schemas/TextType"
+          },
+          "text": {
             "type": "string"
           }
         },
-        "discriminator": {
+        "description": "Text content of the message.",
+        "x-fern-type-name": "ChatTextContent",
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "text": "#/components/schemas/ChatTextContent"
@@ -27494,23 +27382,15 @@
         "x-fern-type-name": "EmbedRequest"
       },
       "Embed200Response": {
-        "required": [
-          "response_type"
-        ],
         "oneOf": [
           {
-            "$ref": "#/components/schemas/EmbedFloatsResponse"
+            "$ref": "#/components/schemas/Embed200ResponseOneOf1"
           },
           {
-            "$ref": "#/components/schemas/EmbedByTypeResponse"
+            "$ref": "#/components/schemas/Embed200ResponseOneOf2"
           }
         ],
-        "properties": {
-          "response_type": {
-            "type": "string"
-          }
-        },
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "response_type",
           "mapping": {
             "embeddings_floats": "#/components/schemas/EmbedFloatsResponse",
@@ -30004,6 +29884,320 @@
             }
           ]
         }
+      },
+      "SourceOneOf1": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique identifier of the document"
+          },
+          "tool_output": {
+            "$ref": "#/components/schemas/ChatToolSourceToolOutputProperty"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "SourceOneOf2": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique identifier of the document"
+          },
+          "document": {
+            "$ref": "#/components/schemas/ChatDocumentSourceDocumentProperty"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "StreamedChatResponseV2OneOf10": {
+        "type": "object",
+        "properties": {
+          "event_type": {
+            "$ref": "#/components/schemas/ChatStreamEventEventType"
+          },
+          "prompt": {
+            "type": "string",
+            "x-fern-audiences": [
+              "public"
+            ]
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "event_type",
+          "type"
+        ]
+      },
+      "EmbedContentOneOf1": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "enum": [
+              "text",
+              "image_url"
+            ],
+            "type": "string",
+            "writeOnly": true,
+            "x-fern-audiences": [
+              "public"
+            ],
+            "x-fern-type-name": "EmbedContentType",
+            "x-ms-enum": {
+              "name": "Type",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "text",
+                  "name": "Text"
+                },
+                {
+                  "value": "image_url",
+                  "name": "ImageUrl"
+                }
+              ]
+            }
+          },
+          "image_url": {
+            "description": "Base64 url of image.",
+            "$ref": "#/components/schemas/EmbedImageUrl"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "EmbedContentOneOf2": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "enum": [
+              "text",
+              "image_url"
+            ],
+            "type": "string",
+            "writeOnly": true,
+            "x-fern-audiences": [
+              "public"
+            ],
+            "x-fern-type-name": "EmbedContentType",
+            "x-ms-enum": {
+              "name": "Type",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "text",
+                  "name": "Text"
+                },
+                {
+                  "value": "image_url",
+                  "name": "ImageUrl"
+                }
+              ]
+            }
+          },
+          "text": {
+            "type": "string",
+            "x-fern-audiences": [
+              "public"
+            ]
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "Embed200ResponseOneOf1": {
+        "type": "object",
+        "properties": {
+          "response_type": {
+            "enum": [
+              "embeddings_floats",
+              "embeddings_by_type"
+            ],
+            "type": "string",
+            "x-fern-audiences": [
+              "public"
+            ],
+            "x-ms-enum": {
+              "name": "ResponseType",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "embeddings_floats",
+                  "name": "EmbeddingsFloats"
+                },
+                {
+                  "value": "embeddings_by_type",
+                  "name": "EmbeddingsByType"
+                }
+              ]
+            }
+          },
+          "id": {
+            "type": "string",
+            "x-fern-audiences": [
+              "public"
+            ]
+          },
+          "embeddings": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "x-fern-audiences": [
+                  "public"
+                ]
+              },
+              "x-fern-audiences": [
+                "public"
+              ]
+            },
+            "description": "An array of embeddings, where each embedding is an array of floats. The length of the \u0060embeddings\u0060 array will be the same as the length of the original \u0060texts\u0060 array.",
+            "x-fern-audiences": [
+              "public"
+            ]
+          },
+          "texts": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "x-fern-audiences": [
+                "public"
+              ]
+            },
+            "description": "The text entries for which embeddings were returned.",
+            "x-fern-audiences": [
+              "public"
+            ]
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "x-fern-audiences": [
+                "public"
+              ],
+              "$ref": "#/components/schemas/Image"
+            },
+            "description": "The image entries for which embeddings were returned.",
+            "x-fern-audiences": [
+              "public"
+            ]
+          },
+          "meta": {
+            "x-fern-audiences": [
+              "public"
+            ],
+            "$ref": "#/components/schemas/ApiMeta"
+          }
+        },
+        "required": [
+          "id",
+          "embeddings",
+          "texts",
+          "api_version",
+          "response_type"
+        ]
+      },
+      "Embed200ResponseOneOf2": {
+        "type": "object",
+        "properties": {
+          "response_type": {
+            "enum": [
+              "embeddings_floats",
+              "embeddings_by_type"
+            ],
+            "type": "string",
+            "x-fern-audiences": [
+              "public"
+            ],
+            "x-ms-enum": {
+              "name": "ResponseType",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "embeddings_floats",
+                  "name": "EmbeddingsFloats"
+                },
+                {
+                  "value": "embeddings_by_type",
+                  "name": "EmbeddingsByType"
+                }
+              ]
+            }
+          },
+          "id": {
+            "type": "string",
+            "x-fern-audiences": [
+              "public"
+            ]
+          },
+          "embeddings": {
+            "$ref": "#/components/schemas/EmbedByTypeResponseEmbeddings"
+          },
+          "texts": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "x-fern-audiences": [
+                "public"
+              ]
+            },
+            "description": "The text entries for which embeddings were returned.",
+            "x-fern-audiences": [
+              "public"
+            ]
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "x-fern-audiences": [
+                "public"
+              ],
+              "$ref": "#/components/schemas/Image"
+            },
+            "description": "The image entries for which embeddings were returned.",
+            "x-fern-audiences": [
+              "public"
+            ]
+          },
+          "meta": {
+            "x-fern-audiences": [
+              "public"
+            ],
+            "$ref": "#/components/schemas/ApiMeta"
+          }
+        },
+        "required": [
+          "id",
+          "embeddings",
+          "api_version",
+          "response_type"
+        ]
+      },
+      "GenerateSuccessResponse": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/Generation"
+          },
+          {
+            "$ref": "#/components/schemas/GenerateStreamedResponse"
+          }
+        ]
       }
     },
     "responses": {

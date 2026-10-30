@@ -12,7 +12,12 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Chatv2200Response : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ChatResponseV2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -37,13 +42,19 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public static global::Soenneker.Cohere.OpenApiClient.Models.Chatv2200Response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Cohere.OpenApiClient.Models.Chatv2200Response();
             if("ChatResponseV2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ChatResponseV2 = new global::Soenneker.Cohere.OpenApiClient.Models.ChatResponseV2();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("finish_reason") != null && (parseNode.GetChildNode("finish_reason")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("COMPLETE".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "STOP_SEQUENCE".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "MAX_TOKENS".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "TOOL_CALL".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "ERROR".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "TIMEOUT".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("message") != null))();
+            if (result.ChatResponseV2 == null && result.StreamedChatResponseV2 == null && matchesUnionBranch0) result.ChatResponseV2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Cohere.OpenApiClient.Models.ChatResponseV2(), parseNode);
+            if (result.ChatResponseV2 == null && result.StreamedChatResponseV2 == null && unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject) result.ChatResponseV2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Cohere.OpenApiClient.Models.ChatResponseV2(), parseNode);
+            if (result.ChatResponseV2 == null && result.StreamedChatResponseV2 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,13 +78,19 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (ChatResponseV2 == null && StreamedChatResponseV2 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (ChatResponseV2 != null && StreamedChatResponseV2 == null) { if (ChatResponseV2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ChatResponseV2); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(ChatResponseV2 != null)
             {
+                if (ChatResponseV2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatResponseV2>(null, ChatResponseV2);
             }
             else if(StreamedChatResponseV2 != null)
             {
+                if (StreamedChatResponseV2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponseV2>(null, StreamedChatResponseV2);
             }
         }

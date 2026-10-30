@@ -16,6 +16,7 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Connectors.Item.Oauth
     public partial class OauthRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The authorize property</summary>
+        [Obsolete("")]
         public global::Soenneker.Cohere.OpenApiClient.V1.Connectors.Item.Oauth.Authorize.AuthorizeRequestBuilder Authorize
         {
             get => new global::Soenneker.Cohere.OpenApiClient.V1.Connectors.Item.Oauth.Authorize.AuthorizeRequestBuilder(PathParameters, RequestAdapter);

@@ -8,26 +8,31 @@ using System;
 namespace Soenneker.Cohere.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponse"/>, <see cref="global::Soenneker.Cohere.OpenApiClient.Models.EmbedFloatsResponse"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Cohere.OpenApiClient.Models.Embed200ResponseOneOf1"/>, <see cref="global::Soenneker.Cohere.OpenApiClient.Models.Embed200ResponseOneOf2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Embed200Response : IComposedTypeWrapper, IParsable
-    {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponse"/></summary>
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Cohere.OpenApiClient.Models.Embed200ResponseOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponse? EmbedByTypeResponse { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.Embed200ResponseOneOf1? Embed200ResponseOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponse EmbedByTypeResponse { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.Embed200ResponseOneOf1 Embed200ResponseOneOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Cohere.OpenApiClient.Models.EmbedFloatsResponse"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Cohere.OpenApiClient.Models.Embed200ResponseOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedFloatsResponse? EmbedFloatsResponse { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.Embed200ResponseOneOf2? Embed200ResponseOneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.EmbedFloatsResponse EmbedFloatsResponse { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.Embed200ResponseOneOf2 Embed200ResponseOneOf2 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -37,17 +42,24 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public static global::Soenneker.Cohere.OpenApiClient.Models.Embed200Response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("response_type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Cohere.OpenApiClient.Models.Embed200Response();
-            if("embeddings_by_type".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("Embed200ResponseOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.EmbedByTypeResponse = new global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponse();
+                
             }
-            else if("embeddings_floats".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("Embed200ResponseOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.EmbedFloatsResponse = new global::Soenneker.Cohere.OpenApiClient.Models.EmbedFloatsResponse();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("embeddings") != null && parseNode.GetChildNode("texts") != null && parseNode.GetChildNode("api_version") != null && parseNode.GetChildNode("response_type") != null && (parseNode.GetChildNode("response_type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag5 && ("embeddings_floats".Equals(tag5.GetValue(), global::System.StringComparison.Ordinal) || "embeddings_by_type".Equals(tag5.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("embeddings") != null && parseNode.GetChildNode("api_version") != null && parseNode.GetChildNode("response_type") != null && (parseNode.GetChildNode("response_type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag4 && ("embeddings_floats".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "embeddings_by_type".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal)))))();
+            if (result.Embed200ResponseOneOf1 == null && result.Embed200ResponseOneOf2 == null && matchesUnionBranch0 && !matchesUnionBranch1) result.Embed200ResponseOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Cohere.OpenApiClient.Models.Embed200ResponseOneOf1(), parseNode);
+            if (result.Embed200ResponseOneOf1 == null && result.Embed200ResponseOneOf2 == null && matchesUnionBranch1 && !matchesUnionBranch0) result.Embed200ResponseOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Cohere.OpenApiClient.Models.Embed200ResponseOneOf2(), parseNode);
+            if (result.Embed200ResponseOneOf1 == null && result.Embed200ResponseOneOf2 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,13 +67,13 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(EmbedByTypeResponse != null)
+            if(Embed200ResponseOneOf1 != null)
             {
-                return EmbedByTypeResponse.GetFieldDeserializers();
+                return Embed200ResponseOneOf1.GetFieldDeserializers();
             }
-            else if(EmbedFloatsResponse != null)
+            else if(Embed200ResponseOneOf2 != null)
             {
-                return EmbedFloatsResponse.GetFieldDeserializers();
+                return Embed200ResponseOneOf2.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -71,14 +83,21 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (Embed200ResponseOneOf1 == null && Embed200ResponseOneOf2 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (Embed200ResponseOneOf1 != null && Embed200ResponseOneOf2 == null) { if (Embed200ResponseOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, Embed200ResponseOneOf1); return; }
+            if (Embed200ResponseOneOf2 != null && Embed200ResponseOneOf1 == null) { if (Embed200ResponseOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, Embed200ResponseOneOf2); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(EmbedByTypeResponse != null)
+            if(Embed200ResponseOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedByTypeResponse>(null, EmbedByTypeResponse);
+                if (Embed200ResponseOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.Embed200ResponseOneOf1>(null, Embed200ResponseOneOf1);
             }
-            else if(EmbedFloatsResponse != null)
+            else if(Embed200ResponseOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.EmbedFloatsResponse>(null, EmbedFloatsResponse);
+                if (Embed200ResponseOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.Embed200ResponseOneOf2>(null, Embed200ResponseOneOf2);
             }
         }
     }

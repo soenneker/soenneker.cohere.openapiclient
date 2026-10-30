@@ -11,20 +11,34 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ChatDataMetrics : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("num_eval_turns") is { } nullNodeNumEvalTurns && nullNodeNumEvalTurns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumEvalTurns = null;
+            if (parseNode.GetChildNode("num_train_turns") is { } nullNodeNumTrainTurns && nullNodeNumTrainTurns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumTrainTurns = null;
+            if (parseNode.GetChildNode("preamble") is { } nullNodePreamble && nullNodePreamble.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Preamble = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The sum of all turns of valid eval examples.</summary>
-        public long? NumEvalTurns { get; set; }
+        public long? NumEvalTurns { get => _explicitNullValueNumEvalTurns; set { _explicitNullValueNumEvalTurns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_eval_turns"); else _explicitNullProperties?.Remove("num_eval_turns"); } }
+        private long? _explicitNullValueNumEvalTurns = default!;
         /// <summary>The sum of all turns of valid train examples.</summary>
-        public long? NumTrainTurns { get; set; }
+        public long? NumTrainTurns { get => _explicitNullValueNumTrainTurns; set { _explicitNullValueNumTrainTurns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("num_train_turns"); else _explicitNullProperties?.Remove("num_train_turns"); } }
+        private long? _explicitNullValueNumTrainTurns = default!;
         /// <summary>The preamble of this dataset.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Preamble { get; set; }
+        public string? Preamble { get => _explicitNullValuePreamble; set { _explicitNullValuePreamble = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preamble"); else _explicitNullProperties?.Remove("preamble"); } }
+        private string? _explicitNullValuePreamble = default!;
 #nullable restore
 #else
-        public string Preamble { get; set; }
+        public string Preamble { get => _explicitNullValuePreamble; set { _explicitNullValuePreamble = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preamble"); else _explicitNullProperties?.Remove("preamble"); } }
+        private string _explicitNullValuePreamble = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ChatDataMetrics"/> and sets the default values.
@@ -41,7 +55,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public static global::Soenneker.Cohere.OpenApiClient.Models.ChatDataMetrics CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Cohere.OpenApiClient.Models.ChatDataMetrics();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Cohere.OpenApiClient.Models.ChatDataMetrics(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,6 +80,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteLongValue("num_eval_turns", NumEvalTurns);
             writer.WriteLongValue("num_train_turns", NumTrainTurns);
             writer.WriteStringValue("preamble", Preamble);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

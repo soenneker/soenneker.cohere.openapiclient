@@ -39,11 +39,13 @@ namespace Soenneker.Cohere.OpenApiClient.V1
             get => new global::Soenneker.Cohere.OpenApiClient.V1.CheckApiKey.CheckApiKeyRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The classify property</summary>
+        [Obsolete("")]
         public global::Soenneker.Cohere.OpenApiClient.V1.Classify.ClassifyRequestBuilder Classify
         {
             get => new global::Soenneker.Cohere.OpenApiClient.V1.Classify.ClassifyRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The connectors property</summary>
+        [Obsolete("")]
         public global::Soenneker.Cohere.OpenApiClient.V1.Connectors.ConnectorsRequestBuilder Connectors
         {
             get => new global::Soenneker.Cohere.OpenApiClient.V1.Connectors.ConnectorsRequestBuilder(PathParameters, RequestAdapter);
@@ -74,6 +76,7 @@ namespace Soenneker.Cohere.OpenApiClient.V1
             get => new global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetuningRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The generate property</summary>
+        [Obsolete("")]
         public global::Soenneker.Cohere.OpenApiClient.V1.Generate.GenerateRequestBuilder Generate
         {
             get => new global::Soenneker.Cohere.OpenApiClient.V1.Generate.GenerateRequestBuilder(PathParameters, RequestAdapter);
@@ -89,6 +92,7 @@ namespace Soenneker.Cohere.OpenApiClient.V1
             get => new global::Soenneker.Cohere.OpenApiClient.V1.Rerank.RerankRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The summarize property</summary>
+        [Obsolete("")]
         public global::Soenneker.Cohere.OpenApiClient.V1.Summarize.SummarizeRequestBuilder Summarize
         {
             get => new global::Soenneker.Cohere.OpenApiClient.V1.Summarize.SummarizeRequestBuilder(PathParameters, RequestAdapter);

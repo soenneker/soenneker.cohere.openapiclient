@@ -12,17 +12,32 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ParseBoundingBox : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("bottom_right_x") is { } nullNodeBottomRightX && nullNodeBottomRightX.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BottomRightX = null;
+            if (parseNode.GetChildNode("bottom_right_y") is { } nullNodeBottomRightY && nullNodeBottomRightY.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BottomRightY = null;
+            if (parseNode.GetChildNode("top_left_x") is { } nullNodeTopLeftX && nullNodeTopLeftX.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopLeftX = null;
+            if (parseNode.GetChildNode("top_left_y") is { } nullNodeTopLeftY && nullNodeTopLeftY.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopLeftY = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>X coordinate of the bottom-right corner.</summary>
-        public int? BottomRightX { get; set; }
+        public int? BottomRightX { get => _explicitNullValueBottomRightX; set { _explicitNullValueBottomRightX = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bottom_right_x"); else _explicitNullProperties?.Remove("bottom_right_x"); } }
+        private int? _explicitNullValueBottomRightX = default!;
         /// <summary>Y coordinate of the bottom-right corner.</summary>
-        public int? BottomRightY { get; set; }
+        public int? BottomRightY { get => _explicitNullValueBottomRightY; set { _explicitNullValueBottomRightY = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bottom_right_y"); else _explicitNullProperties?.Remove("bottom_right_y"); } }
+        private int? _explicitNullValueBottomRightY = default!;
         /// <summary>X coordinate of the top-left corner.</summary>
-        public int? TopLeftX { get; set; }
+        public int? TopLeftX { get => _explicitNullValueTopLeftX; set { _explicitNullValueTopLeftX = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_left_x"); else _explicitNullProperties?.Remove("top_left_x"); } }
+        private int? _explicitNullValueTopLeftX = default!;
         /// <summary>Y coordinate of the top-left corner.</summary>
-        public int? TopLeftY { get; set; }
+        public int? TopLeftY { get => _explicitNullValueTopLeftY; set { _explicitNullValueTopLeftY = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_left_y"); else _explicitNullProperties?.Remove("top_left_y"); } }
+        private int? _explicitNullValueTopLeftY = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBox"/> and sets the default values.
         /// </summary>
@@ -38,7 +53,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public static global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBox CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBox();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBox(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,6 +80,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteIntValue("bottom_right_y", BottomRightY);
             writer.WriteIntValue("top_left_x", TopLeftX);
             writer.WriteIntValue("top_left_y", TopLeftY);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -65,6 +65,8 @@ namespace Soenneker.Cohere.OpenApiClient.V2.Batches.WithIdCancel
                 { "404", global::Soenneker.Cohere.OpenApiClient.Models.BatchError.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.Cohere.OpenApiClient.Models.BatchError.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.Cohere.OpenApiClient.Models.BatchError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Cohere.OpenApiClient.Models.CancelBatch200Response>(requestInfo, global::Soenneker.Cohere.OpenApiClient.Models.CancelBatch200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

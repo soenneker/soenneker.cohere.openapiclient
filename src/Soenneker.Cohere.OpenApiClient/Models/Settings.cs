@@ -13,34 +13,51 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     [Obsolete("")]
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Settings : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("base_model") is { } nullNodeBaseModel && nullNodeBaseModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseModel = null;
+            if (parseNode.GetChildNode("dataset_id") is { } nullNodeDatasetId && nullNodeDatasetId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DatasetId = null;
+            if (parseNode.GetChildNode("hyperparameters") is { } nullNodeHyperparameters && nullNodeHyperparameters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hyperparameters = null;
+            if (parseNode.GetChildNode("wandb") is { } nullNodeWandb && nullNodeWandb.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Wandb = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The base model to fine-tune.</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.BaseModel? BaseModel { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.BaseModel? BaseModel { get => _explicitNullValueBaseModel; set { _explicitNullValueBaseModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_model"); else _explicitNullProperties?.Remove("base_model"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.BaseModel? _explicitNullValueBaseModel = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.BaseModel BaseModel { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.BaseModel BaseModel { get => _explicitNullValueBaseModel; set { _explicitNullValueBaseModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_model"); else _explicitNullProperties?.Remove("base_model"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.BaseModel _explicitNullValueBaseModel = default!;
 #endif
         /// <summary>The data used for training and evaluating the fine-tuned model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DatasetId { get; set; }
+        public string? DatasetId { get => _explicitNullValueDatasetId; set { _explicitNullValueDatasetId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset_id"); else _explicitNullProperties?.Remove("dataset_id"); } }
+        private string? _explicitNullValueDatasetId = default!;
 #nullable restore
 #else
-        public string DatasetId { get; set; }
+        public string DatasetId { get => _explicitNullValueDatasetId; set { _explicitNullValueDatasetId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset_id"); else _explicitNullProperties?.Remove("dataset_id"); } }
+        private string _explicitNullValueDatasetId = default!;
 #endif
         /// <summary>Fine-tuning hyper-parameters.</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.Hyperparameters? Hyperparameters { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.Hyperparameters? Hyperparameters { get => _explicitNullValueHyperparameters; set { _explicitNullValueHyperparameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hyperparameters"); else _explicitNullProperties?.Remove("hyperparameters"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.Hyperparameters? _explicitNullValueHyperparameters = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.Hyperparameters Hyperparameters { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.Hyperparameters Hyperparameters { get => _explicitNullValueHyperparameters; set { _explicitNullValueHyperparameters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hyperparameters"); else _explicitNullProperties?.Remove("hyperparameters"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.Hyperparameters _explicitNullValueHyperparameters = default!;
 #endif
         /// <summary>read-only. Whether the model is single-label or multi-label (only for classification).</summary>
         public bool? MultiLabel { get; private set; }
@@ -48,10 +65,12 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.WandbConfig? Wandb { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.WandbConfig? Wandb { get => _explicitNullValueWandb; set { _explicitNullValueWandb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wandb"); else _explicitNullProperties?.Remove("wandb"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.WandbConfig? _explicitNullValueWandb = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.WandbConfig Wandb { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.WandbConfig Wandb { get => _explicitNullValueWandb; set { _explicitNullValueWandb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wandb"); else _explicitNullProperties?.Remove("wandb"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.WandbConfig _explicitNullValueWandb = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.Settings"/> and sets the default values.
@@ -68,7 +87,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public static global::Soenneker.Cohere.OpenApiClient.Models.Settings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Cohere.OpenApiClient.Models.Settings();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Cohere.OpenApiClient.Models.Settings(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -96,6 +115,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteStringValue("dataset_id", DatasetId);
             writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.Hyperparameters>("hyperparameters", Hyperparameters);
             writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.WandbConfig>("wandb", Wandb);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

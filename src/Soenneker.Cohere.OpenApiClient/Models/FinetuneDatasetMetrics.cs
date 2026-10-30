@@ -11,45 +11,73 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class FinetuneDatasetMetrics : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("chat_data_metrics") is { } nullNodeChatDataMetrics && nullNodeChatDataMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChatDataMetrics = null;
+            if (parseNode.GetChildNode("classify_data_metrics") is { } nullNodeClassifyDataMetrics && nullNodeClassifyDataMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClassifyDataMetrics = null;
+            if (parseNode.GetChildNode("eval_examples") is { } nullNodeEvalExamples && nullNodeEvalExamples.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvalExamples = null;
+            if (parseNode.GetChildNode("eval_size_bytes") is { } nullNodeEvalSizeBytes && nullNodeEvalSizeBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvalSizeBytes = null;
+            if (parseNode.GetChildNode("reranker_data_metrics") is { } nullNodeRerankerDataMetrics && nullNodeRerankerDataMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RerankerDataMetrics = null;
+            if (parseNode.GetChildNode("total_examples") is { } nullNodeTotalExamples && nullNodeTotalExamples.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalExamples = null;
+            if (parseNode.GetChildNode("trainable_token_count") is { } nullNodeTrainableTokenCount && nullNodeTrainableTokenCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainableTokenCount = null;
+            if (parseNode.GetChildNode("train_examples") is { } nullNodeTrainExamples && nullNodeTrainExamples.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainExamples = null;
+            if (parseNode.GetChildNode("train_size_bytes") is { } nullNodeTrainSizeBytes && nullNodeTrainSizeBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainSizeBytes = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The chat_data_metrics property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatDataMetrics? ChatDataMetrics { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatDataMetrics? ChatDataMetrics { get => _explicitNullValueChatDataMetrics; set { _explicitNullValueChatDataMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_data_metrics"); else _explicitNullProperties?.Remove("chat_data_metrics"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.ChatDataMetrics? _explicitNullValueChatDataMetrics = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ChatDataMetrics ChatDataMetrics { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ChatDataMetrics ChatDataMetrics { get => _explicitNullValueChatDataMetrics; set { _explicitNullValueChatDataMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_data_metrics"); else _explicitNullProperties?.Remove("chat_data_metrics"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.ChatDataMetrics _explicitNullValueChatDataMetrics = default!;
 #endif
         /// <summary>The classify_data_metrics property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.ClassifyDataMetrics? ClassifyDataMetrics { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ClassifyDataMetrics? ClassifyDataMetrics { get => _explicitNullValueClassifyDataMetrics; set { _explicitNullValueClassifyDataMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classify_data_metrics"); else _explicitNullProperties?.Remove("classify_data_metrics"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.ClassifyDataMetrics? _explicitNullValueClassifyDataMetrics = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.ClassifyDataMetrics ClassifyDataMetrics { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.ClassifyDataMetrics ClassifyDataMetrics { get => _explicitNullValueClassifyDataMetrics; set { _explicitNullValueClassifyDataMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classify_data_metrics"); else _explicitNullProperties?.Remove("classify_data_metrics"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.ClassifyDataMetrics _explicitNullValueClassifyDataMetrics = default!;
 #endif
         /// <summary>Number of evaluation examples.</summary>
-        public long? EvalExamples { get; set; }
+        public long? EvalExamples { get => _explicitNullValueEvalExamples; set { _explicitNullValueEvalExamples = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eval_examples"); else _explicitNullProperties?.Remove("eval_examples"); } }
+        private long? _explicitNullValueEvalExamples = default!;
         /// <summary>The size in bytes of all eval examples.</summary>
-        public long? EvalSizeBytes { get; set; }
+        public long? EvalSizeBytes { get => _explicitNullValueEvalSizeBytes; set { _explicitNullValueEvalSizeBytes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eval_size_bytes"); else _explicitNullProperties?.Remove("eval_size_bytes"); } }
+        private long? _explicitNullValueEvalSizeBytes = default!;
         /// <summary>The reranker_data_metrics property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.RerankerDataMetrics? RerankerDataMetrics { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.RerankerDataMetrics? RerankerDataMetrics { get => _explicitNullValueRerankerDataMetrics; set { _explicitNullValueRerankerDataMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reranker_data_metrics"); else _explicitNullProperties?.Remove("reranker_data_metrics"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.RerankerDataMetrics? _explicitNullValueRerankerDataMetrics = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.RerankerDataMetrics RerankerDataMetrics { get; set; }
+        public global::Soenneker.Cohere.OpenApiClient.Models.RerankerDataMetrics RerankerDataMetrics { get => _explicitNullValueRerankerDataMetrics; set { _explicitNullValueRerankerDataMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reranker_data_metrics"); else _explicitNullProperties?.Remove("reranker_data_metrics"); } }
+        private global::Soenneker.Cohere.OpenApiClient.Models.RerankerDataMetrics _explicitNullValueRerankerDataMetrics = default!;
 #endif
         /// <summary>The overall number of examples.</summary>
-        public long? TotalExamples { get; set; }
+        public long? TotalExamples { get => _explicitNullValueTotalExamples; set { _explicitNullValueTotalExamples = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_examples"); else _explicitNullProperties?.Remove("total_examples"); } }
+        private long? _explicitNullValueTotalExamples = default!;
         /// <summary>The number of tokens of valid examples that can be used for training.</summary>
-        public long? TrainableTokenCount { get; set; }
+        public long? TrainableTokenCount { get => _explicitNullValueTrainableTokenCount; set { _explicitNullValueTrainableTokenCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trainable_token_count"); else _explicitNullProperties?.Remove("trainable_token_count"); } }
+        private long? _explicitNullValueTrainableTokenCount = default!;
         /// <summary>The number of training examples.</summary>
-        public long? TrainExamples { get; set; }
+        public long? TrainExamples { get => _explicitNullValueTrainExamples; set { _explicitNullValueTrainExamples = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("train_examples"); else _explicitNullProperties?.Remove("train_examples"); } }
+        private long? _explicitNullValueTrainExamples = default!;
         /// <summary>The size in bytes of all training examples.</summary>
-        public long? TrainSizeBytes { get; set; }
+        public long? TrainSizeBytes { get => _explicitNullValueTrainSizeBytes; set { _explicitNullValueTrainSizeBytes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("train_size_bytes"); else _explicitNullProperties?.Remove("train_size_bytes"); } }
+        private long? _explicitNullValueTrainSizeBytes = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.FinetuneDatasetMetrics"/> and sets the default values.
         /// </summary>
@@ -65,7 +93,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public static global::Soenneker.Cohere.OpenApiClient.Models.FinetuneDatasetMetrics CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Cohere.OpenApiClient.Models.FinetuneDatasetMetrics();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Cohere.OpenApiClient.Models.FinetuneDatasetMetrics(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -102,6 +130,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteLongValue("trainable_token_count", TrainableTokenCount);
             writer.WriteLongValue("train_examples", TrainExamples);
             writer.WriteLongValue("train_size_bytes", TrainSizeBytes);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,7 +12,12 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Chat200Response : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Cohere.OpenApiClient.Models.NonStreamedChatResponse"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -37,13 +42,19 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public static global::Soenneker.Cohere.OpenApiClient.Models.Chat200Response CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("event_type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Cohere.OpenApiClient.Models.Chat200Response();
             if("NonStreamedChatResponse".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.NonStreamedChatResponse = new global::Soenneker.Cohere.OpenApiClient.Models.NonStreamedChatResponse();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("text") != null && (parseNode.GetChildNode("finish_reason") == null || (parseNode.GetChildNode("finish_reason")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag1 && ("COMPLETE".Equals(optionalTag1.GetValue(), global::System.StringComparison.Ordinal) || "STOP_SEQUENCE".Equals(optionalTag1.GetValue(), global::System.StringComparison.Ordinal) || "ERROR".Equals(optionalTag1.GetValue(), global::System.StringComparison.Ordinal) || "ERROR_TOXIC".Equals(optionalTag1.GetValue(), global::System.StringComparison.Ordinal) || "ERROR_LIMIT".Equals(optionalTag1.GetValue(), global::System.StringComparison.Ordinal) || "USER_CANCEL".Equals(optionalTag1.GetValue(), global::System.StringComparison.Ordinal) || "MAX_TOKENS".Equals(optionalTag1.GetValue(), global::System.StringComparison.Ordinal) || "TIMEOUT".Equals(optionalTag1.GetValue(), global::System.StringComparison.Ordinal))))))();
+            if (result.NonStreamedChatResponse == null && result.StreamedChatResponse == null && matchesUnionBranch0) result.NonStreamedChatResponse = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Cohere.OpenApiClient.Models.NonStreamedChatResponse(), parseNode);
+            if (result.NonStreamedChatResponse == null && result.StreamedChatResponse == null && unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject) result.NonStreamedChatResponse = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Cohere.OpenApiClient.Models.NonStreamedChatResponse(), parseNode);
+            if (result.NonStreamedChatResponse == null && result.StreamedChatResponse == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,13 +78,19 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (NonStreamedChatResponse == null && StreamedChatResponse == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (NonStreamedChatResponse != null && StreamedChatResponse == null) { if (NonStreamedChatResponse is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, NonStreamedChatResponse); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(NonStreamedChatResponse != null)
             {
+                if (NonStreamedChatResponse is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.NonStreamedChatResponse>(null, NonStreamedChatResponse);
             }
             else if(StreamedChatResponse != null)
             {
+                if (StreamedChatResponse is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.StreamedChatResponse>(null, StreamedChatResponse);
             }
         }

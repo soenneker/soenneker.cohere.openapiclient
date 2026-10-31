@@ -60,6 +60,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             {
                 { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.TextType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
                 { "text", n => { Text = n.GetStringValue(); } },
+
             };
         }
         /// <summary>

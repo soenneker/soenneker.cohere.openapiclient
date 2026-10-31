@@ -84,7 +84,7 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.Even
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Cohere.OpenApiClient.V1.Finetuning.FinetunedModels.Item.Events.EventsRequestBuilder.EventsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.cohere.com", "/v1/finetuning/finetuned-models/{id}/events", PathParameters.ContainsKey("request-raw-url")), PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

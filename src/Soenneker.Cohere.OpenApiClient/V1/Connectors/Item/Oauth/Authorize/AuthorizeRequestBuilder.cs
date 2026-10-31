@@ -96,7 +96,7 @@ namespace Soenneker.Cohere.OpenApiClient.V1.Connectors.Item.Oauth.Authorize
         public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<global::Soenneker.Cohere.OpenApiClient.V1.Connectors.Item.Oauth.Authorize.AuthorizeRequestBuilder.AuthorizeRequestBuilderPostQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.POST, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.cohere.com", "/v1/connectors/{id}/oauth/authorize", PathParameters.ContainsKey("request-raw-url")), PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

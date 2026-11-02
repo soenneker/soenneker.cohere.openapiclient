@@ -11,98 +11,84 @@ namespace Soenneker.Cohere.OpenApiClient.Models
     /// A message from the assistant role can contain text and tool call information.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class AssistantMessageV2 : IAdditionalDataHolder, IParsable
-    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+    public partial class ChatMessageV2AssistantMessageV2 : global::Soenneker.Cohere.OpenApiClient.Models.ChatMessageV2, IParsable
+    {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
 
-        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        public override void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            base.CaptureExplicitNulls(parseNode);
             if (parseNode.GetChildNode("citations") is null) { _explicitNullValueCitations = default!; _explicitNullProperties?.Remove("citations"); }
             else if (parseNode.GetChildNode("citations") is { } nullNodeCitations && nullNodeCitations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Citations = null;
             if (parseNode.GetChildNode("content") is null) { _explicitNullValueContent = default!; _explicitNullProperties?.Remove("content"); }
             else if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
-            if (parseNode.GetChildNode("role") is null) { _explicitNullValueRole = default!; _explicitNullProperties?.Remove("role"); }
-            else if (parseNode.GetChildNode("role") is { } nullNodeRole && nullNodeRole.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Role = null;
             if (parseNode.GetChildNode("tool_calls") is null) { _explicitNullValueToolCalls = default!; _explicitNullProperties?.Remove("tool_calls"); }
             else if (parseNode.GetChildNode("tool_calls") is { } nullNodeToolCalls && nullNodeToolCalls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolCalls = null;
             if (parseNode.GetChildNode("tool_plan") is null) { _explicitNullValueToolPlan = default!; _explicitNullProperties?.Remove("tool_plan"); }
             else if (parseNode.GetChildNode("tool_plan") is { } nullNodeToolPlan && nullNodeToolPlan.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolPlan = null;
         }
 
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The citations property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.Citation>? Citations { get => _explicitNullValueCitations; set { _explicitNullValueCitations = value; AdditionalData?.Remove("citations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("citations"); else _explicitNullProperties?.Remove("citations"); } }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.Citation>? Citations { get => _explicitNullValueCitations; set { _explicitNullValueCitations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("citations"); else _explicitNullProperties?.Remove("citations"); } }
         private List<global::Soenneker.Cohere.OpenApiClient.Models.Citation>? _explicitNullValueCitations = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.Citation> Citations { get => _explicitNullValueCitations; set { _explicitNullValueCitations = value; AdditionalData?.Remove("citations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("citations"); else _explicitNullProperties?.Remove("citations"); } }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.Citation> Citations { get => _explicitNullValueCitations; set { _explicitNullValueCitations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("citations"); else _explicitNullProperties?.Remove("citations"); } }
         private List<global::Soenneker.Cohere.OpenApiClient.Models.Citation> _explicitNullValueCitations = default!;
 #endif
         /// <summary>The content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageV2Content? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; AdditionalData?.Remove("content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageV2Content? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageV2Content? _explicitNullValueContent = default!;
 #nullable restore
 #else
-        public global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageV2Content Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; AdditionalData?.Remove("content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        public global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageV2Content Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageV2Content _explicitNullValueContent = default!;
 #endif
-        /// <summary>The role property</summary>
-        public global::Soenneker.Cohere.OpenApiClient.Models.AssistantRole? Role { get => _explicitNullValueRole; set { _explicitNullValueRole = value; AdditionalData?.Remove("role"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role"); else _explicitNullProperties?.Remove("role"); } }
-        private global::Soenneker.Cohere.OpenApiClient.Models.AssistantRole? _explicitNullValueRole = default!;
         /// <summary>The tool_calls property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.ToolCallV2>? ToolCalls { get => _explicitNullValueToolCalls; set { _explicitNullValueToolCalls = value; AdditionalData?.Remove("tool_calls"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_calls"); else _explicitNullProperties?.Remove("tool_calls"); } }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.ToolCallV2>? ToolCalls { get => _explicitNullValueToolCalls; set { _explicitNullValueToolCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_calls"); else _explicitNullProperties?.Remove("tool_calls"); } }
         private List<global::Soenneker.Cohere.OpenApiClient.Models.ToolCallV2>? _explicitNullValueToolCalls = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Cohere.OpenApiClient.Models.ToolCallV2> ToolCalls { get => _explicitNullValueToolCalls; set { _explicitNullValueToolCalls = value; AdditionalData?.Remove("tool_calls"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_calls"); else _explicitNullProperties?.Remove("tool_calls"); } }
+        public List<global::Soenneker.Cohere.OpenApiClient.Models.ToolCallV2> ToolCalls { get => _explicitNullValueToolCalls; set { _explicitNullValueToolCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_calls"); else _explicitNullProperties?.Remove("tool_calls"); } }
         private List<global::Soenneker.Cohere.OpenApiClient.Models.ToolCallV2> _explicitNullValueToolCalls = default!;
 #endif
         /// <summary>A chain-of-thought style reflection and plan that the model generates when working with Tools.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ToolPlan { get => _explicitNullValueToolPlan; set { _explicitNullValueToolPlan = value; AdditionalData?.Remove("tool_plan"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_plan"); else _explicitNullProperties?.Remove("tool_plan"); } }
+        public string? ToolPlan { get => _explicitNullValueToolPlan; set { _explicitNullValueToolPlan = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_plan"); else _explicitNullProperties?.Remove("tool_plan"); } }
         private string? _explicitNullValueToolPlan = default!;
 #nullable restore
 #else
-        public string ToolPlan { get => _explicitNullValueToolPlan; set { _explicitNullValueToolPlan = value; AdditionalData?.Remove("tool_plan"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_plan"); else _explicitNullProperties?.Remove("tool_plan"); } }
+        public string ToolPlan { get => _explicitNullValueToolPlan; set { _explicitNullValueToolPlan = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_plan"); else _explicitNullProperties?.Remove("tool_plan"); } }
         private string _explicitNullValueToolPlan = default!;
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageV2"/> and sets the default values.
-        /// </summary>
-        public AssistantMessageV2()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
-        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageV2"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ChatMessageV2AssistantMessageV2"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageV2 CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Soenneker.Cohere.OpenApiClient.Models.ChatMessageV2AssistantMessageV2 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageV2(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Cohere.OpenApiClient.Models.ChatMessageV2AssistantMessageV2(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        public override IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
                 { "citations", n => { Citations = n.GetCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.Citation>(global::Soenneker.Cohere.OpenApiClient.Models.Citation.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "content", n => { Content = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageV2Content>(global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageV2Content.CreateFromDiscriminatorValue); } },
-                { "role", n => { var parsed = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.AssistantRole>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRole = default; _explicitNullProperties?.Remove("role"); AdditionalData["role"] = unknown; } else { Role = parsed; AdditionalData.Remove("role"); } } },
                 { "tool_calls", n => { ToolCalls = n.GetCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.ToolCallV2>(global::Soenneker.Cohere.OpenApiClient.Models.ToolCallV2.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "tool_plan", n => { ToolPlan = n.GetStringValue(); } },
             };
@@ -111,16 +97,15 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public virtual void Serialize(ISerializationWriter writer)
+        public override void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            base.Serialize(writer);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.Citation>("citations", Citations);
             writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.AssistantMessageV2Content>("content", Content);
-            writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.AssistantRole>("role", Role);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Cohere.OpenApiClient.Models.ToolCallV2>("tool_calls", ToolCalls);
-            writer.WriteStringValue("tool_plan", ToolPlan);
-            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
-            writer.WriteAdditionalData(AdditionalData);
+            writer.WriteStringValue("tool_plan", ToolPlan);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

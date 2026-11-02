@@ -17849,18 +17849,6 @@
         },
         "x-fern-type-name": "NonStreamedChatResponse"
       },
-      "ChatStreamEvent": {
-        "required": [
-          "event_type"
-        ],
-        "type": "object",
-        "properties": {
-          "event_type": {
-            "$ref": "#/components/schemas/ChatStreamEventEventType"
-          }
-        },
-        "x-fern-type-name": "ChatStreamEvent"
-      },
       "ChatStreamStartEvent": {
         "required": [
           "event_type",
@@ -18259,24 +18247,6 @@
           }
         }
       },
-      "UserMessageV2": {
-        "title": "User Message",
-        "required": [
-          "role",
-          "content"
-        ],
-        "type": "object",
-        "properties": {
-          "role": {
-            "$ref": "#/components/schemas/UserRole"
-          },
-          "content": {
-            "$ref": "#/components/schemas/UserMessageV2Content"
-          }
-        },
-        "description": "A message from the user.",
-        "x-fern-type-name": "UserMessageV2"
-      },
       "ToolCallV2": {
         "required": [
           "id",
@@ -18312,34 +18282,6 @@
           }
         },
         "description": "Thinking content of the message. This will be present when \u0060thinking\u0060 is enabled, and will contain the models internal reasoning."
-      },
-      "ChatToolSource": {
-        "title": "Tool Output",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The unique identifier of the document"
-          },
-          "tool_output": {
-            "$ref": "#/components/schemas/ChatToolSourceToolOutputProperty"
-          }
-        },
-        "x-fern-type-name": "ChatToolSource"
-      },
-      "ChatDocumentSource": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The unique identifier of the document"
-          },
-          "document": {
-            "$ref": "#/components/schemas/ChatDocumentSourceDocumentProperty"
-          }
-        },
-        "description": "A document source object containing the unique identifier of the document and the document itself.",
-        "x-fern-type-name": "ChatDocumentSource"
       },
       "Source": {
         "oneOf": [
@@ -18421,57 +18363,6 @@
         "description": "Citation information containing sources and the text cited.",
         "x-fern-type-name": "Citation"
       },
-      "AssistantMessageV2": {
-        "title": "Assistant Message",
-        "required": [
-          "role"
-        ],
-        "type": "object",
-        "properties": {
-          "role": {
-            "$ref": "#/components/schemas/AssistantRole"
-          },
-          "tool_calls": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ToolCallV2"
-            }
-          },
-          "tool_plan": {
-            "type": "string",
-            "description": "A chain-of-thought style reflection and plan that the model generates when working with Tools."
-          },
-          "content": {
-            "$ref": "#/components/schemas/AssistantMessageV2Content"
-          },
-          "citations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Citation"
-            }
-          }
-        },
-        "description": "A message from the assistant role can contain text and tool call information.",
-        "x-fern-type-name": "AssistantMessage"
-      },
-      "SystemMessageV2": {
-        "title": "System Message",
-        "required": [
-          "role",
-          "content"
-        ],
-        "type": "object",
-        "properties": {
-          "role": {
-            "$ref": "#/components/schemas/SystemRole"
-          },
-          "content": {
-            "$ref": "#/components/schemas/SystemMessageV2Content"
-          }
-        },
-        "description": "A message from the system.",
-        "x-fern-type-name": "SystemMessageV2"
-      },
       "Document": {
         "required": [
           "data"
@@ -18489,33 +18380,7 @@
         "description": "Relevant information that could be used by the model to generate a more accurate reply.\nThe content of each document are generally short (should be under 300 words). Metadata should be used to provide additional information, both the key name and the value will be\npassed to the model.\n",
         "x-fern-type-name": "Document"
       },
-      "DocumentContent": {
-        "required": [
-          "type",
-          "document"
-        ],
-        "type": "object",
-        "properties": {
-          "type": {
-            "$ref": "#/components/schemas/DocumentType"
-          },
-          "document": {
-            "description": "Relevant information that could be used by the model to generate a more accurate reply.\nThe content of each document are generally short (should be under 300 words). Metadata should be used to provide additional information, both the key name and the value will be\npassed to the model.\n",
-            "$ref": "#/components/schemas/Document"
-          }
-        },
-        "description": "Document content.",
-        "x-fern-type-name": "DocumentContent"
-      },
       "ToolContent": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ChatTextContent"
-          },
-          {
-            "$ref": "#/components/schemas/DocumentContent"
-          }
-        ],
         "description": "A content block which contains information about the content of a tool result",
         "x-fern-type-name": "ToolContent",
         "x-client-original-discriminator": {
@@ -18524,46 +18389,51 @@
             "text": "#/components/schemas/ChatTextContent",
             "document": "#/components/schemas/DocumentContent"
           }
-        }
-      },
-      "ToolMessageV2": {
-        "title": "Tool Message",
-        "required": [
-          "role",
-          "tool_call_id",
-          "content"
-        ],
-        "type": "object",
-        "properties": {
-          "role": {
-            "$ref": "#/components/schemas/ToolRole"
-          },
-          "tool_call_id": {
-            "type": "string",
-            "description": "The id of the associated tool call that has provided the given content"
-          },
-          "content": {
-            "$ref": "#/components/schemas/ToolMessageV2Content"
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "text": "#/components/schemas/ToolContentChatTextContent",
+            "document": "#/components/schemas/ToolContentDocumentContent"
           }
         },
-        "description": "A message with Tool outputs.",
-        "x-fern-type-name": "ToolMessageV2"
+        "x-client-original-tagged-union": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/ChatTextContent"
+            },
+            {
+              "$ref": "#/components/schemas/DocumentContent"
+            }
+          ],
+          "description": "A content block which contains information about the content of a tool result",
+          "x-fern-type-name": "ToolContent",
+          "x-client-original-discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "text": "#/components/schemas/ChatTextContent",
+              "document": "#/components/schemas/DocumentContent"
+            }
+          },
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "text": "#/components/schemas/ChatTextContent",
+              "document": "#/components/schemas/DocumentContent"
+            }
+          }
+        },
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
       },
       "ChatMessageV2": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/UserMessageV2"
-          },
-          {
-            "$ref": "#/components/schemas/AssistantMessageV2"
-          },
-          {
-            "$ref": "#/components/schemas/SystemMessageV2"
-          },
-          {
-            "$ref": "#/components/schemas/ToolMessageV2"
-          }
-        ],
         "description": "Represents a single message in the chat history from a given role.",
         "x-fern-type-name": "ChatMessageV2",
         "x-client-original-discriminator": {
@@ -18574,15 +18444,61 @@
             "system": "#/components/schemas/SystemMessageV2",
             "tool": "#/components/schemas/ToolMessageV2"
           }
-        }
-      },
-      "ChatMessages": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/ChatMessageV2"
         },
-        "description": "A list of chat messages in chronological order, representing a conversation between the user and the model.\n\nMessages can be from \u0060User\u0060, \u0060Assistant\u0060, \u0060Tool\u0060 and \u0060System\u0060 roles. Learn more about messages and roles in [the Chat API guide](https://docs.cohere.com/v2/docs/chat-api).\n",
-        "x-fern-type-name": "ChatMessages"
+        "discriminator": {
+          "propertyName": "role",
+          "mapping": {
+            "user": "#/components/schemas/ChatMessageV2UserMessageV2",
+            "assistant": "#/components/schemas/ChatMessageV2AssistantMessageV2",
+            "system": "#/components/schemas/ChatMessageV2SystemMessageV2",
+            "tool": "#/components/schemas/ChatMessageV2ToolMessageV2"
+          }
+        },
+        "x-client-original-tagged-union": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/UserMessageV2"
+            },
+            {
+              "$ref": "#/components/schemas/AssistantMessageV2"
+            },
+            {
+              "$ref": "#/components/schemas/SystemMessageV2"
+            },
+            {
+              "$ref": "#/components/schemas/ToolMessageV2"
+            }
+          ],
+          "description": "Represents a single message in the chat history from a given role.",
+          "x-fern-type-name": "ChatMessageV2",
+          "x-client-original-discriminator": {
+            "propertyName": "role",
+            "mapping": {
+              "user": "#/components/schemas/UserMessageV2",
+              "assistant": "#/components/schemas/AssistantMessageV2",
+              "system": "#/components/schemas/SystemMessageV2",
+              "tool": "#/components/schemas/ToolMessageV2"
+            }
+          },
+          "discriminator": {
+            "propertyName": "role",
+            "mapping": {
+              "user": "#/components/schemas/UserMessageV2",
+              "assistant": "#/components/schemas/AssistantMessageV2",
+              "system": "#/components/schemas/SystemMessageV2",
+              "tool": "#/components/schemas/ToolMessageV2"
+            }
+          }
+        },
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "role"
+        ]
       },
       "ToolV2": {
         "required": [
@@ -18608,21 +18524,6 @@
         },
         "description": "Options for controlling citation generation.",
         "x-fern-type-name": "CitationOptions"
-      },
-      "TruncationStrategy": {
-        "required": [
-          "type"
-        ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
-        "description": "Describes the truncation strategy for when the prompt exceeds the context length. Defaults to \u0027none\u0027",
-        "discriminator": {
-          "propertyName": "type"
-        },
-        "x-fern-type-name": "TruncationStrategy"
       },
       "ResponseFormatTypeV2": {
         "enum": [
@@ -18882,19 +18783,6 @@
           }
         }
       },
-      "ChatStreamEventType": {
-        "required": [
-          "type"
-        ],
-        "type": "object",
-        "properties": {
-          "type": {
-            "$ref": "#/components/schemas/ChatStreamEventTypeType"
-          }
-        },
-        "description": "The streamed event types",
-        "x-fern-type-name": "ChatStreamEventType"
-      },
       "ChatMessageStartEvent": {
         "required": [
           "type"
@@ -19148,26 +19036,6 @@
           }
         }
       },
-      "PromptResponseV2": {
-        "title": "PromptResponseV2",
-        "required": [
-          "prompt"
-        ],
-        "type": "object",
-        "properties": {
-          "prompt": {
-            "type": "string",
-            "description": "The constructed text prompt that would be sent to the model for this chat request.",
-            "x-fern-audiences": [
-              "public"
-            ]
-          }
-        },
-        "description": "Response from the v2 prompt endpoint \u2014 the constructed text prompt without generation.",
-        "x-fern-audiences": [
-          "public"
-        ]
-      },
       "ParseDocument": {
         "required": [
           "type",
@@ -19222,24 +19090,6 @@
         },
         "description": "Payload for a text block.",
         "x-fern-type-name": "ParseTextBlock"
-      },
-      "ParseTextContentBlock": {
-        "required": [
-          "type",
-          "text"
-        ],
-        "type": "object",
-        "properties": {
-          "type": {
-            "$ref": "#/components/schemas/TextType"
-          },
-          "text": {
-            "description": "Payload for a text block.",
-            "$ref": "#/components/schemas/ParseTextBlock"
-          }
-        },
-        "description": "A text content block.",
-        "x-fern-type-name": "ParseTextContentBlock"
       },
       "ParseImageCategory": {
         "enum": [
@@ -19370,24 +19220,6 @@
         "description": "Payload for an image block.",
         "x-fern-type-name": "ParseImageBlock"
       },
-      "ParseImageContentBlock": {
-        "required": [
-          "type",
-          "image"
-        ],
-        "type": "object",
-        "properties": {
-          "type": {
-            "$ref": "#/components/schemas/ImageType"
-          },
-          "image": {
-            "description": "Payload for an image block.",
-            "$ref": "#/components/schemas/ParseImageBlock"
-          }
-        },
-        "description": "An image content block.",
-        "x-fern-type-name": "ParseImageContentBlock"
-      },
       "ParseTableContentType": {
         "enum": [
           "html"
@@ -19443,36 +19275,7 @@
         "description": "Payload for a table block.",
         "x-fern-type-name": "ParseTableBlock"
       },
-      "ParseTableContentBlock": {
-        "required": [
-          "type",
-          "table"
-        ],
-        "type": "object",
-        "properties": {
-          "type": {
-            "$ref": "#/components/schemas/TableType"
-          },
-          "table": {
-            "description": "Payload for a table block.",
-            "$ref": "#/components/schemas/ParseTableBlock"
-          }
-        },
-        "description": "A table content block.",
-        "x-fern-type-name": "ParseTableContentBlock"
-      },
       "ParseBlock": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ParseTextContentBlock"
-          },
-          {
-            "$ref": "#/components/schemas/ParseImageContentBlock"
-          },
-          {
-            "$ref": "#/components/schemas/ParseTableContentBlock"
-          }
-        ],
         "description": "A content block on a parsed page.",
         "x-fern-type-name": "ParseBlock",
         "x-client-original-discriminator": {
@@ -19482,33 +19285,55 @@
             "image": "#/components/schemas/ParseImageContentBlock",
             "table": "#/components/schemas/ParseTableContentBlock"
           }
-        }
-      },
-      "ParseBlocksPageVariant": {
-        "required": [
-          "index",
-          "type",
-          "blocks"
-        ],
-        "type": "object",
-        "properties": {
-          "index": {
-            "type": "integer",
-            "description": "Zero-based page index."
-          },
-          "type": {
-            "$ref": "#/components/schemas/BlocksType"
-          },
-          "blocks": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ParseBlock"
-            },
-            "description": "Ordered content blocks extracted from the page."
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "text": "#/components/schemas/ParseBlockParseTextContentBlock",
+            "image": "#/components/schemas/ParseBlockParseImageContentBlock",
+            "table": "#/components/schemas/ParseBlockParseTableContentBlock"
           }
         },
-        "description": "A parsed page with structured content blocks.",
-        "x-fern-type-name": "ParseBlocksPageVariant"
+        "x-client-original-tagged-union": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/ParseTextContentBlock"
+            },
+            {
+              "$ref": "#/components/schemas/ParseImageContentBlock"
+            },
+            {
+              "$ref": "#/components/schemas/ParseTableContentBlock"
+            }
+          ],
+          "description": "A content block on a parsed page.",
+          "x-fern-type-name": "ParseBlock",
+          "x-client-original-discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "text": "#/components/schemas/ParseTextContentBlock",
+              "image": "#/components/schemas/ParseImageContentBlock",
+              "table": "#/components/schemas/ParseTableContentBlock"
+            }
+          },
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "text": "#/components/schemas/ParseTextContentBlock",
+              "image": "#/components/schemas/ParseImageContentBlock",
+              "table": "#/components/schemas/ParseTableContentBlock"
+            }
+          }
+        },
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
       },
       "ParseMarkdownPage": {
         "required": [
@@ -19531,38 +19356,7 @@
         "description": "Markdown output payload for a parsed page.",
         "x-fern-type-name": "ParseMarkdownPage"
       },
-      "ParseMarkdownPageVariant": {
-        "required": [
-          "index",
-          "type",
-          "markdown"
-        ],
-        "type": "object",
-        "properties": {
-          "index": {
-            "type": "integer",
-            "description": "Zero-based page index."
-          },
-          "type": {
-            "$ref": "#/components/schemas/MarkdownType"
-          },
-          "markdown": {
-            "description": "Markdown output payload for a parsed page.",
-            "$ref": "#/components/schemas/ParseMarkdownPage"
-          }
-        },
-        "description": "A parsed page with markdown content.",
-        "x-fern-type-name": "ParseMarkdownPageVariant"
-      },
       "ParsePage": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/ParseBlocksPageVariant"
-          },
-          {
-            "$ref": "#/components/schemas/ParseMarkdownPageVariant"
-          }
-        ],
         "description": "A single parsed page. The payload shape depends on \u0060output_format\u0060.",
         "x-fern-type-name": "ParsePage",
         "x-client-original-discriminator": {
@@ -19571,7 +19365,49 @@
             "blocks": "#/components/schemas/ParseBlocksPageVariant",
             "markdown": "#/components/schemas/ParseMarkdownPageVariant"
           }
-        }
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "blocks": "#/components/schemas/ParsePageParseBlocksPageVariant",
+            "markdown": "#/components/schemas/ParsePageParseMarkdownPageVariant"
+          }
+        },
+        "x-client-original-tagged-union": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/ParseBlocksPageVariant"
+            },
+            {
+              "$ref": "#/components/schemas/ParseMarkdownPageVariant"
+            }
+          ],
+          "description": "A single parsed page. The payload shape depends on \u0060output_format\u0060.",
+          "x-fern-type-name": "ParsePage",
+          "x-client-original-discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "blocks": "#/components/schemas/ParseBlocksPageVariant",
+              "markdown": "#/components/schemas/ParseMarkdownPageVariant"
+            }
+          },
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "blocks": "#/components/schemas/ParseBlocksPageVariant",
+              "markdown": "#/components/schemas/ParseMarkdownPageVariant"
+            }
+          }
+        },
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
       },
       "ParseResponse": {
         "required": [
@@ -19690,18 +19526,6 @@
           }
         },
         "x-fern-type-name": "Generation"
-      },
-      "GenerateStreamEvent": {
-        "required": [
-          "event_type"
-        ],
-        "type": "object",
-        "properties": {
-          "event_type": {
-            "$ref": "#/components/schemas/GenerateStreamEventEventType"
-          }
-        },
-        "x-fern-type-name": "GenerateStreamEvent"
       },
       "GenerateStreamText": {
         "required": [
@@ -19985,1122 +19809,6 @@
           }
         },
         "x-fern-type-name": "Image"
-      },
-      "EmbedFloatsResponse": {
-        "required": [
-          "id",
-          "embeddings",
-          "texts",
-          "api_version"
-        ],
-        "type": "object",
-        "properties": {
-          "response_type": {
-            "$ref": "#/components/schemas/EmbedFloatsResponseResponseType"
-          },
-          "id": {
-            "type": "string",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "embeddings": {
-            "type": "array",
-            "items": {
-              "type": "array",
-              "items": {
-                "type": "number",
-                "x-fern-audiences": [
-                  "public"
-                ]
-              },
-              "x-fern-audiences": [
-                "public"
-              ]
-            },
-            "description": "An array of embeddings, where each embedding is an array of floats. The length of the \u0060embeddings\u0060 array will be the same as the length of the original \u0060texts\u0060 array.",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "texts": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "x-fern-audiences": [
-                "public"
-              ]
-            },
-            "description": "The text entries for which embeddings were returned.",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "images": {
-            "type": "array",
-            "items": {
-              "x-fern-audiences": [
-                "public"
-              ],
-              "$ref": "#/components/schemas/Image"
-            },
-            "description": "The image entries for which embeddings were returned.",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "meta": {
-            "x-fern-audiences": [
-              "public"
-            ],
-            "$ref": "#/components/schemas/ApiMeta"
-          }
-        },
-        "x-examples": {
-          "Example": {
-            "value": {
-              "id": "bc57846a-3e56-4327-8acc-588ca1a37b8a",
-              "texts": [
-                "hello world"
-              ],
-              "embeddings": [
-                [
-                  -0.039520264,
-                  -0.04574585,
-                  -0.08807373,
-                  -0.084106445,
-                  -0.009742737,
-                  -0.0090408325,
-                  -0.048187256,
-                  0.07128906,
-                  0.010688782,
-                  0.016067505,
-                  -0.02822876,
-                  0.036224365,
-                  0.037994385,
-                  -0.041992188,
-                  0.052124023,
-                  -0.027297974,
-                  0.048309326,
-                  0.017410278,
-                  0.004283905,
-                  -0.0058555603,
-                  -0.012992859,
-                  0.023040771,
-                  0.00121212,
-                  0.02078247,
-                  0.04827881,
-                  -0.021530151,
-                  0.017807007,
-                  0.0075531006,
-                  -0.047912598,
-                  -0.042633057,
-                  0.0016927719,
-                  0.04547119,
-                  0.0143585205,
-                  0.022354126,
-                  0.0017910004,
-                  0.048614502,
-                  -0.02609253,
-                  0.007850647,
-                  0.00907135,
-                  0.0035381317,
-                  0.015289307,
-                  -0.008132935,
-                  0.016296387,
-                  -0.02859497,
-                  -0.023712158,
-                  0.008857727,
-                  -0.04309082,
-                  -0.025115967,
-                  0.032928467,
-                  -0.029663086,
-                  0.00434494,
-                  -0.022338867,
-                  -0.004371643,
-                  -0.0075035095,
-                  -0.009529114,
-                  0.0038223267,
-                  -0.06048584,
-                  -0.018127441,
-                  0.010131836,
-                  0.08380127,
-                  0.03652954,
-                  0.0030384064,
-                  0.006034851,
-                  -0.006286621,
-                  0.016784668,
-                  -0.00308609,
-                  0.01612854,
-                  0.011413574,
-                  0.022491455,
-                  0.02482605,
-                  0.0047683716,
-                  0.012245178,
-                  -0.017593384,
-                  -0.023254395,
-                  -0.012641907,
-                  0.030181885,
-                  -0.015365601,
-                  0.031021118,
-                  0.015144348,
-                  0.016708374,
-                  0.02180481,
-                  0.010765076,
-                  -0.015586853,
-                  -0.05819702,
-                  0.02128601,
-                  -0.021713257,
-                  -0.013320923,
-                  -0.0064849854,
-                  -0.001657486,
-                  -0.030715942,
-                  -0.008666992,
-                  0.060668945,
-                  -0.0011959076,
-                  -0.032104492,
-                  -0.057006836,
-                  -0.015655518,
-                  -0.014015198,
-                  0.036987305,
-                  0.011016846,
-                  0.037475586,
-                  -0.015319824,
-                  -0.016479492,
-                  0.0030403137,
-                  -0.028167725,
-                  -0.0067825317,
-                  -0.00894928,
-                  -0.026107788,
-                  0.010231018,
-                  0.031707764,
-                  0.050354004,
-                  -0.016220093,
-                  0.04345703,
-                  -0.008888245,
-                  -0.0037784576,
-                  -0.034576416,
-                  0.002565384,
-                  -0.0018634796,
-                  0.013954163,
-                  0.012062073,
-                  0.046813965,
-                  0.033081055,
-                  0.028778076,
-                  0.0051231384,
-                  0.022094727,
-                  -0.021881104,
-                  -0.009788513,
-                  -0.04647827,
-                  -0.025482178,
-                  0.066833496,
-                  -0.040863037,
-                  -0.019714355,
-                  0.06866455,
-                  -0.07519531,
-                  -0.045532227,
-                  -0.020507812,
-                  0.021331787,
-                  0.036376953,
-                  -0.034210205,
-                  0.017669678,
-                  0.0155181885,
-                  0.047698975,
-                  -0.010368347,
-                  0.010879517,
-                  0.016555786,
-                  -0.028076172,
-                  0.03225708,
-                  -0.0056152344,
-                  -0.020690918,
-                  0.00011438131,
-                  -0.021011353,
-                  -0.04425049,
-                  -0.029922485,
-                  -0.0014362335,
-                  0.013618469,
-                  0.011260986,
-                  0.017532349,
-                  -0.043426514,
-                  0.012557983,
-                  0.026748657,
-                  0.039154053,
-                  -0.030944824,
-                  0.024169922,
-                  0.06573486,
-                  -0.03817749,
-                  -0.025314331,
-                  -0.039794922,
-                  -0.050445557,
-                  -0.0020828247,
-                  -0.0010194778,
-                  0.01725769,
-                  0.0017976761,
-                  0.029067993,
-                  0.0115356445,
-                  0.005214691,
-                  0.0066604614,
-                  -0.014801025,
-                  -0.033172607,
-                  0.023956299,
-                  0.008865356,
-                  0.09539795,
-                  0.062286377,
-                  -0.0076408386,
-                  -0.035125732,
-                  0.09082031,
-                  -0.015350342,
-                  -0.015625,
-                  -0.0090789795,
-                  -0.01876831,
-                  0.05239868,
-                  -0.010406494,
-                  0.05078125,
-                  -0.013694763,
-                  -0.07244873,
-                  0.018539429,
-                  -0.016983032,
-                  -0.03353882,
-                  0.01739502,
-                  0.004055023,
-                  -0.010147095,
-                  -0.0027599335,
-                  -0.002714157,
-                  -0.0107040405,
-                  0.021438599,
-                  -0.029525757,
-                  0.01902771,
-                  -0.025909424,
-                  0.0008072853,
-                  0.026672363,
-                  0.0019044876,
-                  0.016937256,
-                  -0.018814087,
-                  -0.03668213,
-                  0.03338623,
-                  -0.09240723,
-                  -0.024765015,
-                  -0.019378662,
-                  -0.051757812,
-                  0.050109863,
-                  0.018859863,
-                  0.01687622,
-                  0.020111084,
-                  -0.041534424,
-                  0.009559631,
-                  -0.018859863,
-                  0.00005853176,
-                  0.032684326,
-                  -0.04058838,
-                  0.015823364,
-                  -0.038635254,
-                  0.0055656433,
-                  -0.021560669,
-                  0.012481689,
-                  -0.050872803,
-                  -0.036071777,
-                  -0.046844482,
-                  -0.041900635,
-                  -0.06561279,
-                  0.014785767,
-                  0.010124207,
-                  0.030426025,
-                  0.024261475,
-                  0.0057411194,
-                  -0.026275635,
-                  -0.006919861,
-                  0.022750854,
-                  -0.015167236,
-                  0.022964478,
-                  -0.0033664703,
-                  0.02734375,
-                  0.03201294,
-                  0.025939941,
-                  0.019104004,
-                  0.028030396,
-                  -0.014328003,
-                  -0.01574707,
-                  0.06982422,
-                  -0.008026123,
-                  0.006816864,
-                  -0.0019035339,
-                  0.026245117,
-                  -0.028945923,
-                  0.014968872,
-                  0.0054244995,
-                  -0.00028896332,
-                  -0.02243042,
-                  -0.0030822754,
-                  -0.02558899,
-                  -0.022918701,
-                  -0.017089844,
-                  -0.0035190582,
-                  0.029953003,
-                  -0.037078857,
-                  -0.02507019,
-                  -0.017303467,
-                  0.064331055,
-                  -0.028533936,
-                  -0.07287598,
-                  0.028839111,
-                  -0.0029792786,
-                  -0.02104187,
-                  -0.01663208,
-                  -0.016571045,
-                  -0.015106201,
-                  0.0027313232,
-                  0.031051636,
-                  -0.025680542,
-                  0.004722595,
-                  0.032348633,
-                  0.020019531,
-                  0.056365967,
-                  0.07208252,
-                  0.01235199,
-                  0.00084495544,
-                  0.035369873,
-                  -0.018569946,
-                  -0.0063552856,
-                  0.03161621,
-                  0.064575195,
-                  -0.02557373,
-                  -0.007232666,
-                  -0.017700195,
-                  -0.003835678,
-                  0.007381439,
-                  -0.0385437,
-                  -0.0019102097,
-                  -0.023223877,
-                  -0.0124435425,
-                  0.013343811,
-                  0.020996094,
-                  -0.014022827,
-                  -0.01939392,
-                  0.044128418,
-                  0.0052757263,
-                  -0.00068950653,
-                  -0.04876709,
-                  -0.05609131,
-                  -0.020874023,
-                  -0.00806427,
-                  -0.13391113,
-                  -0.06323242,
-                  -0.021865845,
-                  -0.021072388,
-                  0.005832672,
-                  -0.015701294,
-                  -0.006286621,
-                  -0.012954712,
-                  -0.017288208,
-                  0.0036773682,
-                  -0.0084991455,
-                  -0.03213501,
-                  0.021987915,
-                  -0.010322571,
-                  -0.029144287,
-                  0.003824234,
-                  0.02708435,
-                  0.0026187897,
-                  0.05496216,
-                  -0.04916382,
-                  0.005466461,
-                  -0.0070648193,
-                  0.0793457,
-                  -0.040863037,
-                  0.012641907,
-                  0.016448975,
-                  0.02041626,
-                  -0.029006958,
-                  -0.008491516,
-                  0.0023422241,
-                  0.043640137,
-                  0.0121536255,
-                  -0.0043525696,
-                  -0.030899048,
-                  0.0062332153,
-                  -0.013038635,
-                  0.007904053,
-                  -0.03390503,
-                  -0.034729004,
-                  -0.0647583,
-                  -0.0052375793,
-                  -0.08154297,
-                  0.015960693,
-                  0.016235352,
-                  -0.012130737,
-                  -0.021469116,
-                  -0.03253174,
-                  -0.014465332,
-                  0.016448975,
-                  0.004589081,
-                  -0.05291748,
-                  0.018005371,
-                  -0.002981186,
-                  -0.01247406,
-                  0.023147583,
-                  -0.055419922,
-                  -0.08526611,
-                  0.016723633,
-                  0.012939453,
-                  -0.039031982,
-                  0.016677856,
-                  0.016937256,
-                  0.023147583,
-                  0.034576416,
-                  -0.010635376,
-                  0.03466797,
-                  0.037750244,
-                  0.020141602,
-                  -0.0046539307,
-                  0.0059432983,
-                  0.05609131,
-                  0.027709961,
-                  0.01838684,
-                  0.015022278,
-                  -0.039215088,
-                  -0.0048828125,
-                  0.047546387,
-                  0.0138549805,
-                  -0.046203613,
-                  0.036193848,
-                  -0.109680176,
-                  0.0019550323,
-                  -0.03125,
-                  0.0084991455,
-                  -0.0020256042,
-                  -0.001739502,
-                  -0.06756592,
-                  0.03491211,
-                  -0.05633545,
-                  -0.008491516,
-                  0.0048446655,
-                  0.042663574,
-                  0.025054932,
-                  -0.022247314,
-                  -0.0044555664,
-                  0.0022335052,
-                  -0.0071907043,
-                  -0.003982544,
-                  -0.073913574,
-                  -0.011253357,
-                  0.029220581,
-                  -0.0047073364,
-                  -0.04626465,
-                  0.05670166,
-                  -0.041503906,
-                  0.014579773,
-                  -0.016174316,
-                  0.021560669,
-                  -0.019332886,
-                  0.01550293,
-                  0.02709961,
-                  0.010528564,
-                  0.012786865,
-                  -0.023849487,
-                  -0.016937256,
-                  -0.04626465,
-                  -0.04397583,
-                  0.026245117,
-                  -0.017868042,
-                  0.021072388,
-                  -0.02128601,
-                  -0.012161255,
-                  -0.004776001,
-                  -0.0088272095,
-                  0.009246826,
-                  -0.012313843,
-                  0.0096206665,
-                  -0.0047950745,
-                  -0.0079956055,
-                  0.052520752,
-                  -0.06616211,
-                  0.0014686584,
-                  -0.046081543,
-                  0.03289795,
-                  -0.03656006,
-                  0.055389404,
-                  0.009773254,
-                  0.0013818741,
-                  0.043823242,
-                  0.034942627,
-                  0.055236816,
-                  -0.011833191,
-                  -0.024353027,
-                  0.011398315,
-                  -0.051574707,
-                  -0.019882202,
-                  0.0018358231,
-                  -0.005859375,
-                  0.06677246,
-                  -0.0009851456,
-                  -0.026809692,
-                  0.0075798035,
-                  -0.021347046,
-                  -0.01146698,
-                  0.03262329,
-                  0.031585693,
-                  -0.006729126,
-                  0.008659363,
-                  -0.025665283,
-                  0.02947998,
-                  -0.03744507,
-                  0.02027893,
-                  -0.026062012,
-                  0.018585205,
-                  -0.004463196,
-                  -0.036865234,
-                  -0.043670654,
-                  0.021392822,
-                  -0.062561035,
-                  -0.080078125,
-                  0.011451721,
-                  0.06762695,
-                  0.039001465,
-                  -0.016799927,
-                  0.049072266,
-                  0.041412354,
-                  -0.03062439,
-                  0.011795044,
-                  -0.016555786,
-                  0.046569824,
-                  0.010688782,
-                  -0.01902771,
-                  -0.031097412,
-                  -0.023391724,
-                  -0.01651001,
-                  0.009399414,
-                  0.049041748,
-                  -0.025817871,
-                  -0.018356323,
-                  0.02154541,
-                  -0.0029411316,
-                  0.074157715,
-                  0.017059326,
-                  -0.0017595291,
-                  0.00390625,
-                  0.02645874,
-                  -0.0010709763,
-                  0.040222168,
-                  -0.034423828,
-                  0.0231781,
-                  -0.016693115,
-                  -0.022094727,
-                  0.004383087,
-                  0.007331848,
-                  0.018676758,
-                  0.023773193,
-                  -0.0069770813,
-                  0.0029773712,
-                  -0.023712158,
-                  -0.0051956177,
-                  -0.011810303,
-                  -0.0519104,
-                  0.07244873,
-                  0.032409668,
-                  0.016662598,
-                  0.015716553,
-                  -0.03640747,
-                  0.03918457,
-                  -0.046722412,
-                  -0.0046081543,
-                  0.006061554,
-                  -0.011940002,
-                  -0.0004878044,
-                  0.01260376,
-                  0.0073280334,
-                  0.0015096664,
-                  0.005844116,
-                  0.029129028,
-                  0.047668457,
-                  0.05960083,
-                  -0.0647583,
-                  0.064697266,
-                  -0.017440796,
-                  -0.01889038,
-                  0.037628174,
-                  0.0048065186,
-                  -0.023101807,
-                  -0.048675537,
-                  -0.02508545,
-                  -0.007965088,
-                  0.0015897751,
-                  0.06866455,
-                  -0.0099487305,
-                  -0.0022964478,
-                  -0.030014038,
-                  -0.007713318,
-                  -0.034362793,
-                  0.013931274,
-                  0.0026836395,
-                  -0.0014476776,
-                  0.02532959,
-                  -0.020584106,
-                  -0.039001465,
-                  -0.062347412,
-                  -0.04736328,
-                  -0.024368286,
-                  -0.045776367,
-                  0.03149414,
-                  -0.012825012,
-                  0.028076172,
-                  0.0058784485,
-                  0.08062744,
-                  0.0104599,
-                  0.014579773,
-                  -0.041137695,
-                  0.04244995,
-                  -0.021011353,
-                  0.06390381,
-                  0.0010871887,
-                  0.04147339,
-                  -0.0053138733,
-                  0.02268982,
-                  -0.028182983,
-                  -0.022628784,
-                  -0.021408081,
-                  -0.006088257,
-                  0.028030396,
-                  0.025146484,
-                  0.00881958,
-                  -0.04244995,
-                  0.027938843,
-                  0.013916016,
-                  -0.04647827,
-                  0.0072288513,
-                  0.017745972,
-                  -0.02381897,
-                  -0.010147095,
-                  0.0096588135,
-                  -0.04586792,
-                  -0.014480591,
-                  -0.0027217865,
-                  -0.03111267,
-                  0.04522705,
-                  -0.02772522,
-                  -0.0013189316,
-                  0.017807007,
-                  -0.0135269165,
-                  -0.014175415,
-                  -0.00019681454,
-                  0.03161621,
-                  0.0041007996,
-                  -0.024871826,
-                  0.0039367676,
-                  -0.026916504,
-                  0.03237915,
-                  0.007068634,
-                  0.029647827,
-                  -0.0102005005,
-                  0.0076675415,
-                  0.0051078796,
-                  -0.008041382,
-                  -0.0062942505,
-                  0.0010309219,
-                  0.010543823,
-                  -0.010101318,
-                  -0.013496399,
-                  0.00920105,
-                  0.0546875,
-                  -0.02784729,
-                  -0.0056762695,
-                  -0.08679199,
-                  -0.050048828,
-                  0.03378296,
-                  0.010124207,
-                  0.019058228,
-                  -0.037872314,
-                  -0.0063323975,
-                  0.0014324188,
-                  -0.010002136,
-                  -0.015731812,
-                  -0.036071777,
-                  -0.0028915405,
-                  -0.0082092285,
-                  0.0037841797,
-                  -0.020629883,
-                  0.01725769,
-                  -0.026000977,
-                  0.00012862682,
-                  0.021621704,
-                  0.07086182,
-                  -0.008049011,
-                  -0.012634277,
-                  -0.064941406,
-                  -0.0073013306,
-                  -0.02760315,
-                  -0.040649414,
-                  0.02809143,
-                  0.009849548,
-                  0.0011720657,
-                  0.059936523,
-                  -0.032806396,
-                  0.06311035,
-                  0.009536743,
-                  0.014801025,
-                  0.03390503,
-                  -0.002620697,
-                  -0.04650879,
-                  -0.015365601,
-                  0.03741455,
-                  -0.0067443848,
-                  -0.008888245,
-                  -0.0013017654,
-                  -0.010154724,
-                  0.0027217865,
-                  0.016052246,
-                  0.025100708,
-                  -0.030532837,
-                  0.032318115,
-                  0.014564514,
-                  -0.009109497,
-                  0.009628296,
-                  -0.021438599,
-                  -0.049926758,
-                  -0.00088214874,
-                  -0.019638062,
-                  -0.020126343,
-                  0.055847168,
-                  -0.006729126,
-                  -0.044921875,
-                  -0.01890564,
-                  -0.0026683807,
-                  0.0038547516,
-                  0.004600525,
-                  -0.013977051,
-                  0.018341064,
-                  -0.05178833,
-                  0.011054993,
-                  0.019927979,
-                  0.011436462,
-                  0.010391235,
-                  -0.012680054,
-                  -0.017669678,
-                  0.01928711,
-                  0.025115967,
-                  -0.07757568,
-                  -0.030960083,
-                  0.013137817,
-                  -0.066467285,
-                  -0.054473877,
-                  -0.04244995,
-                  -0.027526855,
-                  0.02973938,
-                  -0.024017334,
-                  -0.03918457,
-                  0.0154800415,
-                  -0.036315918,
-                  0.015510559,
-                  -0.020385742,
-                  -0.0390625,
-                  -0.00137043,
-                  0.0016002655,
-                  -0.010238647,
-                  0.014656067,
-                  0.029373169,
-                  -0.027023315,
-                  0.0076141357,
-                  -0.001917839,
-                  0.03451538,
-                  0.004814148,
-                  0.024887085,
-                  0.036315918,
-                  -0.006500244,
-                  -0.070495605,
-                  -0.0071754456,
-                  0.025863647,
-                  0.022994995,
-                  0.007217407,
-                  0.032165527,
-                  0.016830444,
-                  0.02859497,
-                  -0.011123657,
-                  0.020126343,
-                  -0.0014410019,
-                  0.0021781921,
-                  0.053619385,
-                  0.015625,
-                  0.017150879,
-                  -0.03326416,
-                  -0.04626465,
-                  0.034332275,
-                  0.07165527,
-                  -0.040740967,
-                  -0.06628418,
-                  -0.024291992,
-                  -0.0066871643,
-                  0.065979004,
-                  0.034851074,
-                  0.07678223,
-                  0.053009033,
-                  0.0317688,
-                  -0.04019165,
-                  0.030288696,
-                  0.062347412,
-                  -0.011734009,
-                  0.0024604797,
-                  0.006095886,
-                  -0.0152282715,
-                  0.056762695,
-                  0.021270752,
-                  -0.011154175,
-                  -0.0143966675,
-                  0.0057754517,
-                  -0.0003619194,
-                  0.0053367615,
-                  -0.030639648,
-                  0.0024776459,
-                  -0.031799316,
-                  -0.012710571,
-                  0.048828125,
-                  0.029632568,
-                  0.013244629,
-                  0.087890625,
-                  -0.01134491,
-                  0.028656006,
-                  -0.014778137,
-                  0.06695557,
-                  0.026275635,
-                  -0.016113281,
-                  0.018859863,
-                  -0.008239746,
-                  0.024383545,
-                  -0.039154053,
-                  -0.006252289,
-                  0.049224854,
-                  -0.04638672,
-                  0.0031967163,
-                  -0.04849243,
-                  -0.04058838,
-                  0.038757324,
-                  0.00730896,
-                  -0.04345703,
-                  0.04296875,
-                  -0.0024299622,
-                  -0.05670166,
-                  0.019119263,
-                  -0.011802673,
-                  0.038970947,
-                  -0.03366089,
-                  0.03591919,
-                  -0.0009088516,
-                  0.013259888,
-                  -0.07342529,
-                  0.004299164,
-                  0.0395813,
-                  0.013420105,
-                  -0.004459381,
-                  -0.0084991455,
-                  0.031982422,
-                  0.018249512,
-                  -0.0038604736,
-                  -0.022323608,
-                  -0.013031006,
-                  0.0513916,
-                  -0.007068634,
-                  -0.003545761,
-                  0.010292053,
-                  -0.010322571,
-                  -0.0037841797,
-                  0.043701172,
-                  -0.012672424,
-                  0.013725281,
-                  0.021575928,
-                  -0.03942871,
-                  -0.0105896,
-                  -0.01878357,
-                  -0.017623901,
-                  -0.03414917,
-                  0.02142334,
-                  0.026550293,
-                  -0.022903442,
-                  0.008598328,
-                  0.03100586,
-                  0.049957275,
-                  0.021438599,
-                  0.016204834,
-                  -0.014129639,
-                  0.0079193115,
-                  -0.004535675,
-                  0.0010051727,
-                  -0.038208008,
-                  -0.014923096,
-                  -0.01436615,
-                  -0.009666443,
-                  0.0006933212,
-                  0.0132369995,
-                  0.01486969,
-                  0.028762817,
-                  0.011329651,
-                  -0.042663574,
-                  0.014961243,
-                  -0.018127441,
-                  -0.007232666,
-                  0.008369446,
-                  0.027557373,
-                  0.006706238,
-                  -0.05038452,
-                  -0.023666382,
-                  -0.0072898865,
-                  -0.007865906,
-                  -0.008926392,
-                  -0.013137817,
-                  0.08886719,
-                  0.030929565,
-                  0.021255493,
-                  -0.0020389557,
-                  -0.08337402,
-                  -0.020385742,
-                  0.03866577,
-                  -0.020523071,
-                  0.021881104,
-                  0.005756378,
-                  0.022003174,
-                  0.021209717,
-                  -0.06161499,
-                  -0.020309448,
-                  -0.0057258606,
-                  -0.033813477,
-                  0.0017337799,
-                  -0.052612305,
-                  0.01461792,
-                  -0.017944336,
-                  0.042816162,
-                  -0.053710938,
-                  -0.041259766,
-                  -0.014549255,
-                  0.020843506,
-                  -0.019760132,
-                  0.004890442,
-                  -0.0007162094,
-                  -0.009429932,
-                  -0.01966858,
-                  -0.014320374,
-                  0.041259766,
-                  0.00075244904,
-                  -0.0064430237,
-                  0.028961182,
-                  -0.01876831,
-                  0.0027942657,
-                  -0.051116943,
-                  0.00093746185,
-                  0.0037384033,
-                  -0.06982422,
-                  -0.0107040405,
-                  0.030090332,
-                  -0.019104004,
-                  -0.016647339,
-                  -0.037475586,
-                  0.0140686035,
-                  -0.051086426,
-                  -0.032409668,
-                  -0.011131287,
-                  -0.023620605,
-                  -0.04159546,
-                  -0.034851074,
-                  -0.064941406,
-                  -0.03451538,
-                  0.0047416687,
-                  -0.04510498,
-                  0.020477295,
-                  -0.03024292,
-                  -0.034179688,
-                  0.058410645,
-                  0.008514404,
-                  0.0049858093,
-                  0.02331543,
-                  0.03704834,
-                  -0.017333984,
-                  0.014389038,
-                  0.013786316,
-                  0.008583069,
-                  -0.009643555,
-                  0.020095825,
-                  0.013496399,
-                  -0.01991272,
-                  -0.0446167,
-                  0.0075149536,
-                  0.0071029663,
-                  0.0446167,
-                  -0.03933716,
-                  0.009902954,
-                  0.011077881,
-                  0.008781433,
-                  -0.001701355,
-                  0.016235352,
-                  0.01802063,
-                  -0.010765076,
-                  -0.03427124,
-                  0.0112838745,
-                  -0.023208618,
-                  -0.009979248,
-                  -0.010696411,
-                  -0.023208618,
-                  -0.026748657,
-                  -0.02923584,
-                  0.013801575,
-                  -0.050323486,
-                  -0.0059661865,
-                  -0.004837036,
-                  0.01940918,
-                  0.00018620491,
-                  0.0016450882,
-                  0.019012451,
-                  -0.048034668,
-                  0.034423828,
-                  -0.033599854,
-                  0.020126343,
-                  -0.04949951,
-                  0.071899414,
-                  -0.06060791,
-                  -0.043395996,
-                  0.012138367,
-                  0.022476196,
-                  0.029006958,
-                  0.04550171,
-                  -0.03564453,
-                  -0.015090942,
-                  0.055541992,
-                  0.014884949,
-                  0.020767212,
-                  -0.01071167,
-                  0.046905518,
-                  0.033813477,
-                  -0.04260254,
-                  -0.00094127655,
-                  0.016708374,
-                  -0.0011367798,
-                  -0.030426025,
-                  -0.03427124,
-                  0.01763916,
-                  -0.012634277,
-                  0.030517578,
-                  -0.055480957,
-                  -0.054992676,
-                  0.056274414,
-                  -0.0007033348,
-                  -0.058624268,
-                  0.0061531067,
-                  -0.008613586,
-                  0.016067505,
-                  0.003376007,
-                  -0.01586914,
-                  -0.025146484,
-                  0.008491516,
-                  0.053222656,
-                  -0.02923584,
-                  0.021408081
-                ]
-              ],
-              "meta": {
-                "api_version": {
-                  "version": "1"
-                }
-              },
-              "api_version": "v1"
-            }
-          }
-        },
-        "x-fern-type-name": "EmbedFloatsResponse"
       },
       "EmbedByTypeResponse": {
         "required": [
@@ -22334,32 +21042,6 @@
         },
         "x-fern-type-name": "EmbedByTypeResponse"
       },
-      "EmbedContentType": {
-        "enum": [
-          "text",
-          "image_url"
-        ],
-        "type": "string",
-        "writeOnly": true,
-        "x-fern-audiences": [
-          "public"
-        ],
-        "x-fern-type-name": "EmbedContentType",
-        "x-ms-enum": {
-          "name": "EmbedContentType",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "text",
-              "name": "Text"
-            },
-            {
-              "value": "image_url",
-              "name": "ImageUrl"
-            }
-          ]
-        }
-      },
       "EmbedImageUrl": {
         "required": [
           "url"
@@ -22372,42 +21054,6 @@
         },
         "description": "Base64 url of image.",
         "x-fern-type-name": "EmbedImageUrl"
-      },
-      "EmbedImage": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "$ref": "#/components/schemas/EmbedContentType"
-          },
-          "image_url": {
-            "description": "Base64 url of image.",
-            "$ref": "#/components/schemas/EmbedImageUrl"
-          }
-        },
-        "description": "Image content of the input. Supported with Embed v3.0 and newer models.",
-        "x-fern-audiences": [
-          "public"
-        ],
-        "x-fern-type-name": "EmbedImage"
-      },
-      "EmbedText": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "$ref": "#/components/schemas/EmbedContentType"
-          },
-          "text": {
-            "type": "string",
-            "x-fern-audiences": [
-              "public"
-            ]
-          }
-        },
-        "description": "Text content of the input.",
-        "x-fern-audiences": [
-          "public"
-        ],
-        "x-fern-type-name": "EmbedText"
       },
       "EmbedContent": {
         "oneOf": [
@@ -22556,14 +21202,14 @@
           "input_tokens": {
             "type": "string",
             "description": "read-only. The total number of input tokens in the batch.",
-            "format": "int64",
-            "readOnly": true
+            "readOnly": true,
+            "x-client-original-format": "int64"
           },
           "output_tokens": {
             "type": "string",
             "description": "read-only. The total number of output tokens in the batch.",
-            "format": "int64",
-            "readOnly": true
+            "readOnly": true,
+            "x-client-original-format": "int64"
           },
           "model": {
             "type": "string",
@@ -22660,29 +21306,6 @@
           }
         },
         "description": "Response to a request to get a batch.",
-        "x-fern-sdk-group-name": [
-          "batches"
-        ]
-      },
-      "CancelBatchResponse": {
-        "type": "object",
-        "description": "Response to a request to cancel a batch.",
-        "x-fern-sdk-group-name": [
-          "batches"
-        ]
-      },
-      "RetryBatchResponse": {
-        "required": [
-          "batch"
-        ],
-        "type": "object",
-        "properties": {
-          "batch": {
-            "description": "Information about the newly created retry batch.",
-            "$ref": "#/components/schemas/Batch"
-          }
-        },
-        "description": "Response to a request to retry a batch.",
         "x-fern-sdk-group-name": [
           "batches"
         ]
@@ -23619,10 +22242,10 @@
           "auth_type": {
             "type": "string",
             "description": "The type of authentication/authorization used by the connector. Possible values: [oauth, service_auth]",
-            "format": "enum",
             "x-fern-audiences": [
               "public"
-            ]
+            ],
+            "x-client-original-format": "enum"
           },
           "oauth": {
             "description": "The OAuth 2.0 configuration for the connector.",
@@ -23876,10 +22499,6 @@
         },
         "x-fern-type-name": "GetConnectorResponse"
       },
-      "DeleteConnectorResponse": {
-        "type": "object",
-        "x-fern-type-name": "DeleteConnectorResponse"
-      },
       "UpdateConnectorRequest": {
         "type": "object",
         "properties": {
@@ -23966,477 +22585,6 @@
           }
         },
         "x-fern-type-name": "OAuthAuthorizeResponse"
-      },
-      "ConnectorLog": {
-        "required": [
-          "id",
-          "connector_id",
-          "request_id",
-          "user_id",
-          "organization_id",
-          "created_at",
-          "status_code",
-          "duration_millis"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Unique identifier for the connector log"
-          },
-          "connector_id": {
-            "type": "string",
-            "description": "Unique identifier for the connector"
-          },
-          "request_id": {
-            "type": "string",
-            "description": "Unique identifier for the request"
-          },
-          "user_id": {
-            "type": "string",
-            "description": "Unique identifier for the user"
-          },
-          "organization_id": {
-            "type": "string",
-            "description": "Unique identifier for the organization"
-          },
-          "created_at": {
-            "type": "string",
-            "description": "Time of connector log creation in RFC3339 format",
-            "format": "date-time",
-            "example": "2023-04-28T21:00:56.646257Z"
-          },
-          "status_code": {
-            "type": "integer",
-            "description": "HTTP status code of the request"
-          },
-          "duration_millis": {
-            "type": "integer",
-            "description": "Duration of the request in milliseconds"
-          },
-          "error_message": {
-            "type": "string",
-            "description": "Error message of the request"
-          }
-        },
-        "x-fern-type-name": "ConnectorLog"
-      },
-      "GetConnectorsLogsResponse": {
-        "required": [
-          "connector_logs",
-          "total"
-        ],
-        "type": "object",
-        "properties": {
-          "connector_logs": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ConnectorLog"
-            }
-          },
-          "total": {
-            "type": "number",
-            "description": "Total number of connector logs"
-          }
-        },
-        "x-fern-type-name": "GetConnectorsLogsResponse"
-      },
-      "FeedbackResponse": {
-        "type": "object",
-        "x-fern-type-name": "FeedbackResponse"
-      },
-      "TokenLikelihood": {
-        "type": "object",
-        "properties": {
-          "encoded": {
-            "type": "integer",
-            "description": "Tokenized text",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "decoded": {
-            "type": "string",
-            "description": "Detokenized text",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "log_likelihood": {
-            "type": "number",
-            "description": "Non normalized probability of the token",
-            "x-fern-audiences": [
-              "public"
-            ]
-          }
-        },
-        "x-fern-type-name": "TokenLikelihood"
-      },
-      "LogLikelihoodResponse": {
-        "required": [
-          "id",
-          "prompt_tokens",
-          "completion_tokens",
-          "raw_prompt_tokens"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "prompt_tokens": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TokenLikelihood"
-            },
-            "description": "Probabilities for tokens in the request prompt",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "completion_tokens": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TokenLikelihood"
-            },
-            "description": "Probabilities for tokens in the request completion",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "raw_prompt_tokens": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TokenLikelihood"
-            },
-            "description": "Probabilities for tokens in the request raw_prompt",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "meta": {
-            "x-fern-audiences": [
-              "public"
-            ],
-            "$ref": "#/components/schemas/ApiMeta"
-          }
-        },
-        "x-fern-type-name": "LogLikelihoodResponse"
-      },
-      "Cluster": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "keywords": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "x-fern-audiences": [
-                "public"
-              ]
-            },
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "description": {
-            "type": "string",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "size": {
-            "type": "integer",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "sample_elements": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "x-fern-audiences": [
-                "public"
-              ]
-            },
-            "x-fern-audiences": [
-              "public"
-            ]
-          }
-        },
-        "x-fern-type-name": "Cluster"
-      },
-      "GetClusterJobResponse": {
-        "required": [
-          "job_id"
-        ],
-        "type": "object",
-        "properties": {
-          "job_id": {
-            "type": "string",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "created_at": {
-            "type": "string",
-            "description": "Time of job creation in RFC3339 format",
-            "format": "date-time",
-            "example": "2023-04-28T21:00:56.646257Z",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "embeddings_url": {
-            "type": "string",
-            "description": "The input file URL used for the job",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "input_dataset_id": {
-            "type": "string",
-            "description": "The input dataset ID used for the job",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "min_cluster_size": {
-            "type": "integer",
-            "description": "The parameter used in the job creation. Please refer to the job creation endpoint for more details",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "n_neighbors": {
-            "type": "integer",
-            "description": "The parameter used in the job creation. Please refer to the job creation endpoint for more details",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "is_deterministic": {
-            "type": "boolean",
-            "description": "The parameter used in the job creation. Please refer to the job creation endpoint for more details",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "status": {
-            "$ref": "#/components/schemas/GetClusterJobResponseStatus"
-          },
-          "is_final_state": {
-            "type": "boolean",
-            "description": "A boolean indicating whether the job is in a final state, whether completed or failed",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "output_clusters_url": {
-            "type": "string",
-            "description": "The output file URL for the clusters (signed url that expires)",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "output_outliers_url": {
-            "type": "string",
-            "description": "The output file URL for the outliers (signed url that expires)",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "clusters": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Cluster"
-            },
-            "description": "The list of cluster summaries for the job",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "error": {
-            "type": "string",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "meta": {
-            "x-fern-audiences": [
-              "public"
-            ],
-            "$ref": "#/components/schemas/ApiMeta"
-          }
-        },
-        "description": "Response for getting a cluster job.",
-        "x-fern-type-name": "GetClusterJobResponse"
-      },
-      "ListClusterJobsResponse": {
-        "required": [
-          "jobs"
-        ],
-        "type": "object",
-        "properties": {
-          "jobs": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/GetClusterJobResponse"
-            },
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "total_count": {
-            "type": "integer",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "meta": {
-            "x-fern-audiences": [
-              "public"
-            ],
-            "$ref": "#/components/schemas/ApiMeta"
-          }
-        },
-        "x-fern-type-name": "ListClusterJobsResponse"
-      },
-      "CreateClusterJobRequest": {
-        "required": [
-          "embeddings_url"
-        ],
-        "type": "object",
-        "properties": {
-          "embeddings_url": {
-            "type": "string",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "input_dataset_id": {
-            "type": "string",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "min_cluster_size": {
-            "minimum": 1,
-            "type": "integer",
-            "description": "Defaults to \u006010\u0060. Parameter for HDBSCAN. Only clusters with this number of elements will be returned with a positive cluster number.",
-            "default": 10,
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "n_neighbors": {
-            "maximum": 100,
-            "minimum": 2,
-            "type": "integer",
-            "description": "Parameter for UMAP. A scalar governing how to balance global vs local structure in the data.",
-            "default": 15,
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "is_deterministic": {
-            "type": "boolean",
-            "description": "Parameter for UMAP. A boolean governing whether the embeddings from UMAP (that will be clustered with HDBSCAN) are deterministic.",
-            "default": true,
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "generate_descriptions": {
-            "type": "boolean",
-            "x-fern-audiences": [
-              "public"
-            ]
-          }
-        },
-        "x-fern-type-name": "CreateClusterJobRequest"
-      },
-      "CreateClusterJobResponse": {
-        "required": [
-          "job_id"
-        ],
-        "type": "object",
-        "properties": {
-          "job_id": {
-            "type": "string",
-            "x-fern-audiences": [
-              "public"
-            ]
-          }
-        },
-        "description": "Response for creating a cluster job.",
-        "x-fern-type-name": "CreateClusterJobResponse"
-      },
-      "UpdateClusterJobRequest": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "$ref": "#/components/schemas/UpdateClusterJobRequestStatus"
-          },
-          "clusters": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Cluster"
-            },
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "output_clusters_gs_path": {
-            "type": "string",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "output_outliers_gs_path": {
-            "type": "string",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "error": {
-            "type": "string",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "input_tracking_metrics": {
-            "$ref": "#/components/schemas/UpdateClusterJobRequestInputTrackingMetricsProperty"
-          },
-          "output_tracking_metrics": {
-            "$ref": "#/components/schemas/UpdateClusterJobRequestOutputTrackingMetricsProperty"
-          }
-        },
-        "x-fern-type-name": "UpdateClusterJobRequest"
-      },
-      "UpdateClusterJobResponse": {
-        "required": [
-          "job_id"
-        ],
-        "type": "object",
-        "properties": {
-          "job_id": {
-            "type": "string",
-            "x-fern-audiences": [
-              "public"
-            ]
-          }
-        },
-        "description": "Response for updating a cluster job.",
-        "x-fern-type-name": "UpdateClusterJobResponse"
       },
       "CompatibleEndpoint": {
         "enum": [
@@ -25043,15 +23191,6 @@
           "finetuning"
         ]
       },
-      "DeleteFinetunedModelResponse": {
-        "type": "object",
-        "description": "Response to request to delete a fine-tuned model.",
-        "deprecated": true,
-        "x-fern-sdk-group-name": [
-          "finetuning",
-          "finetuning"
-        ]
-      },
       "UpdateFinetunedModelResponse": {
         "type": "object",
         "properties": {
@@ -25269,11 +23408,14 @@
           "seed": {
             "maximum": 1.8446744E+19,
             "minimum": 0,
-            "type": "integer",
+            "type": "number",
             "description": "If specified, the backend will make a best effort to sample tokens\ndeterministically, such that repeated requests with the same\nseed and parameters should return the same result. However,\ndeterminism cannot be totally guaranteed.\n",
             "x-fern-audiences": [
               "public"
-            ]
+            ],
+            "x-client-original-type": "integer",
+            "format": "decimal",
+            "multipleOf": 1
           },
           "frequency_penalty": {
             "type": "number",
@@ -25485,186 +23627,6 @@
         },
         "x-fern-type-name": "InvalidTokenErrorBody"
       },
-      "ChatStreamStartEventAllOf2": {
-        "required": [
-          "generation_id"
-        ],
-        "type": "object",
-        "properties": {
-          "generation_id": {
-            "minLength": 1,
-            "type": "string",
-            "description": "Unique identifier for the generated reply. Useful for submitting feedback.\n",
-            "format": "uuid",
-            "x-fern-audiences": [
-              "public"
-            ]
-          }
-        },
-        "x-fern-type-name": "ChatStreamStartEvent-5v9jyv"
-      },
-      "ChatSearchQueriesGenerationEventAllOf2": {
-        "required": [
-          "search_queries"
-        ],
-        "type": "object",
-        "properties": {
-          "search_queries": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ChatSearchQuery"
-            },
-            "description": "Generated search queries, meant to be used as part of the RAG flow.",
-            "x-fern-audiences": [
-              "public"
-            ]
-          }
-        },
-        "x-fern-type-name": "ChatSearchQueriesGenerationEvent-6evypd"
-      },
-      "ChatSearchResultsEventAllOf2": {
-        "type": "object",
-        "properties": {
-          "search_results": {
-            "minItems": 0,
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ChatSearchResult"
-            },
-            "description": "Conducted searches and the ids of documents retrieved from each of them.\n",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "documents": {
-            "minItems": 0,
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ChatDocument"
-            },
-            "description": "Documents fetched from searches or provided by the user.\n",
-            "x-fern-audiences": [
-              "public"
-            ]
-          }
-        },
-        "x-fern-type-name": "ChatSearchResultsEvent-44axt5"
-      },
-      "ChatTextGenerationEventAllOf2": {
-        "required": [
-          "text"
-        ],
-        "type": "object",
-        "properties": {
-          "text": {
-            "minLength": 1,
-            "type": "string",
-            "description": "The next batch of text generated by the model.\n",
-            "x-fern-audiences": [
-              "public"
-            ]
-          }
-        },
-        "x-fern-type-name": "ChatTextGenerationEvent-8yyj22"
-      },
-      "ChatCitationGenerationEventAllOf2": {
-        "required": [
-          "citations"
-        ],
-        "type": "object",
-        "properties": {
-          "citations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ChatCitation"
-            },
-            "description": "Citations for the generated reply.\n",
-            "x-fern-audiences": [
-              "public"
-            ]
-          }
-        },
-        "x-fern-type-name": "ChatCitationGenerationEvent-lg3v2o"
-      },
-      "ChatToolCallsGenerationEventAllOf2": {
-        "required": [
-          "tool_calls"
-        ],
-        "type": "object",
-        "properties": {
-          "text": {
-            "type": "string",
-            "description": "The text generated related to the tool calls generated\n",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "tool_calls": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ToolCall"
-            },
-            "x-fern-audiences": [
-              "public"
-            ]
-          }
-        },
-        "x-fern-type-name": "ChatToolCallsGenerationEvent-nykiww"
-      },
-      "ChatStreamEndEventAllOf2": {
-        "required": [
-          "finish_reason",
-          "response"
-        ],
-        "type": "object",
-        "properties": {
-          "finish_reason": {
-            "$ref": "#/components/schemas/ChatStreamEndEventFinishReason"
-          },
-          "response": {
-            "description": "The consolidated response from the model. Contains the generated reply and all the other information streamed back in the previous events.\n",
-            "x-fern-audiences": [
-              "public"
-            ],
-            "$ref": "#/components/schemas/NonStreamedChatResponse"
-          }
-        },
-        "x-fern-type-name": "ChatStreamEndEvent-y8gq2x"
-      },
-      "ChatToolCallsChunkEventAllOf2": {
-        "required": [
-          "tool_call_delta"
-        ],
-        "type": "object",
-        "properties": {
-          "tool_call_delta": {
-            "description": "Contains the chunk of the tool call generation in the stream.\n",
-            "x-fern-audiences": [
-              "public"
-            ],
-            "$ref": "#/components/schemas/ToolCallDelta"
-          },
-          "text": {
-            "type": "string",
-            "x-fern-audiences": [
-              "public"
-            ]
-          }
-        },
-        "x-fern-type-name": "ChatToolCallsChunkEvent-t7lliu"
-      },
-      "ChatDebugEventAllOf2": {
-        "type": "object",
-        "properties": {
-          "prompt": {
-            "type": "string",
-            "x-fern-audiences": [
-              "public"
-            ]
-          }
-        },
-        "x-fern-type-name": "ChatDebugEvent-352j0t"
-      },
       "UserMessageV2Content": {
         "oneOf": [
           {
@@ -25715,7 +23677,23 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ToolContent"
-            }
+            },
+            "properties": {
+              "type": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "discriminator": {
+              "propertyName": "type",
+              "mapping": {
+                "text": "#/components/schemas/ToolContentChatTextContent",
+                "document": "#/components/schemas/ToolContentDocumentContent"
+              }
+            },
+            "x-client-array-item-dispatch": true
           }
         ],
         "description": "Outputs from a tool. The content should formatted as a JSON object string, or a list of tool content blocks"
@@ -25735,225 +23713,14 @@
             "text": "#/components/schemas/ChatTextContent",
             "thinking": "#/components/schemas/ChatThinkingContent"
           }
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "text": "#/components/schemas/ChatTextContent",
+            "thinking": "#/components/schemas/ChatThinkingContent"
+          }
         }
-      },
-      "ChatMessageStartEventAllOf2": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Unique identifier for the generated reply."
-          },
-          "delta": {
-            "$ref": "#/components/schemas/ChatMessageStartEventAllOf2Delta"
-          }
-        },
-        "x-fern-type-name": "ChatMessageStartEvent-lsegeq"
-      },
-      "ChatContentStartEventAllOf2": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "type": "integer"
-          },
-          "delta": {
-            "$ref": "#/components/schemas/ChatContentStartEventAllOf2Delta"
-          }
-        },
-        "x-fern-type-name": "ChatContentStartEvent-6xvlq1"
-      },
-      "ChatContentDeltaEventAllOf2": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "type": "integer"
-          },
-          "delta": {
-            "$ref": "#/components/schemas/ChatContentDeltaEventAllOf2Delta"
-          },
-          "logprobs": {
-            "$ref": "#/components/schemas/LogprobItem"
-          }
-        },
-        "x-fern-type-name": "ChatContentDeltaEvent-3m0vqs"
-      },
-      "ChatContentEndEventAllOf2": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "type": "integer"
-          }
-        },
-        "x-fern-type-name": "ChatContentEndEvent-ma278i"
-      },
-      "ChatToolPlanDeltaEventAllOf2": {
-        "type": "object",
-        "properties": {
-          "delta": {
-            "$ref": "#/components/schemas/ChatToolPlanDeltaEventAllOf2Delta"
-          }
-        },
-        "x-fern-type-name": "ChatToolPlanDeltaEvent-2obfex"
-      },
-      "ChatToolCallStartEventAllOf2": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "type": "integer"
-          },
-          "delta": {
-            "$ref": "#/components/schemas/ChatToolCallStartEventAllOf2Delta"
-          }
-        },
-        "x-fern-type-name": "ChatToolCallStartEvent-lv559x"
-      },
-      "ChatToolCallDeltaEventAllOf2": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "type": "integer"
-          },
-          "delta": {
-            "$ref": "#/components/schemas/ChatToolCallDeltaEventAllOf2Delta"
-          }
-        },
-        "x-fern-type-name": "ChatToolCallDeltaEvent-2bxzoc"
-      },
-      "ChatToolCallEndEventAllOf2": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "type": "integer"
-          }
-        },
-        "x-fern-type-name": "ChatToolCallEndEvent-t6ph9s"
-      },
-      "CitationStartEventAllOf2": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "type": "integer"
-          },
-          "delta": {
-            "$ref": "#/components/schemas/CitationStartEventAllOf2Delta"
-          }
-        },
-        "x-fern-type-name": "CitationStartEvent-t3df62"
-      },
-      "CitationEndEventAllOf2": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "type": "integer"
-          }
-        },
-        "x-fern-type-name": "CitationEndEvent-fs3igt"
-      },
-      "ChatMessageEndEventAllOf2": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "delta": {
-            "$ref": "#/components/schemas/ChatMessageEndEventAllOf2Delta"
-          }
-        },
-        "x-fern-type-name": "ChatMessageEndEvent-u3fzny"
-      },
-      "GenerateStreamTextAllOf2": {
-        "required": [
-          "is_finished",
-          "text"
-        ],
-        "type": "object",
-        "properties": {
-          "text": {
-            "type": "string",
-            "description": "A segment of text of the generation."
-          },
-          "index": {
-            "type": "integer",
-            "description": "Refers to the nth generation. Only present when \u0060num_generations\u0060 is greater than zero, and only when text responses are being streamed."
-          },
-          "is_finished": {
-            "type": "boolean"
-          }
-        },
-        "x-fern-type-name": "GenerateStreamText-yai5v6"
-      },
-      "GenerateStreamEndAllOf2": {
-        "required": [
-          "is_finished",
-          "finish_response",
-          "response"
-        ],
-        "type": "object",
-        "properties": {
-          "is_finished": {
-            "type": "boolean",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "finish_reason": {
-            "x-fern-audiences": [
-              "public"
-            ],
-            "$ref": "#/components/schemas/FinishReason"
-          },
-          "response": {
-            "$ref": "#/components/schemas/GenerateStreamEndAllOf2Response"
-          }
-        },
-        "x-fern-type-name": "GenerateStreamEnd-ubzr0t"
-      },
-      "GenerateStreamErrorAllOf2": {
-        "required": [
-          "is_finished",
-          "finish_reason",
-          "err"
-        ],
-        "type": "object",
-        "properties": {
-          "index": {
-            "type": "integer",
-            "description": "Refers to the nth generation. Only present when \u0060num_generations\u0060 is greater than zero.",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "is_finished": {
-            "type": "boolean",
-            "x-fern-audiences": [
-              "public"
-            ]
-          },
-          "finish_reason": {
-            "x-fern-audiences": [
-              "public"
-            ],
-            "$ref": "#/components/schemas/FinishReason"
-          },
-          "err": {
-            "type": "string",
-            "description": "Error message",
-            "x-fern-audiences": [
-              "public"
-            ]
-          }
-        },
-        "x-fern-type-name": "GenerateStreamError-49d5xw"
-      },
-      "RequestBodyRequestDocumentsItem": {
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "$ref": "#/components/schemas/Document"
-          }
-        ]
       },
       "AssistantMessageV2ContentOneOf2Item": {
         "oneOf": [
@@ -25966,6 +23733,13 @@
         ],
         "x-fern-type-name": "AssistantMessageV2ContentOneItem",
         "x-client-original-discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "text": "#/components/schemas/ChatTextContent",
+            "thinking": "#/components/schemas/ChatThinkingContent"
+          }
+        },
+        "discriminator": {
           "propertyName": "type",
           "mapping": {
             "text": "#/components/schemas/ChatTextContent",
@@ -25995,40 +23769,6 @@
             "text": "#/components/schemas/ChatTextContent"
           }
         }
-      },
-      "ToolCallParameters": {
-        "type": "object",
-        "description": "The name and value of the parameters to use when invoking a tool.",
-        "x-fern-audiences": [
-          "public"
-        ],
-        "x-fern-type-name": "ToolCall-iovxf2"
-      },
-      "ToolResultOutputsItem": {
-        "type": "object",
-        "x-fern-type-name": "ToolResult-68w0tx"
-      },
-      "ChatConnectorOptions": {
-        "type": "object",
-        "description": "Provides the connector with different settings at request time. The key/value pairs of this object are specific to each connector.\n\nFor example, the connector \u0060web-search\u0060 supports the \u0060site\u0060 option, which limits search results to the specified domain.\n",
-        "x-fern-audiences": [
-          "public"
-        ],
-        "x-fern-type-name": "ChatConnector-7ur0eu"
-      },
-      "ToolParameterDefinitions": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/ToolParameterDefinitionsAdditionalProperties"
-        },
-        "description": "The input parameters of the tool. Accepts a dictionary where the key is the name of the parameter and the value is the parameter spec. Valid parameter names contain only the characters \u0060a-z\u0060, \u0060A-Z\u0060, \u00600-9\u0060, \u0060_\u0060 and must not begin with a digit.\n\u0060\u0060\u0060\n{\n  \u0022my_param\u0022: {\n    \u0022description\u0022: \u003Cstring\u003E,\n    \u0022type\u0022: \u003Cstring\u003E, // any python data type, such as \u0027str\u0027, \u0027bool\u0027\n    \u0022required\u0022: \u003Cboolean\u003E\n  }\n}\n\u0060\u0060\u0060\n",
-        "x-fern-type-name": "Tool-luhdwe"
-      },
-      "JsonResponseFormatSchema": {
-        "type": "object",
-        "description": "A JSON schema object that the output will adhere to. There are some restrictions we have on the schema, refer to [our guide](https://docs.cohere.com/docs/structured-outputs-json#schema-constraints) for more information.\nExample (required name and age object):\n\u0060\u0060\u0060json\n{\n  \u0022type\u0022: \u0022object\u0022,\n  \u0022properties\u0022: {\n    \u0022name\u0022: {\u0022type\u0022: \u0022string\u0022},\n    \u0022age\u0022: {\u0022type\u0022: \u0022integer\u0022}\n  },\n  \u0022required\u0022: [\u0022name\u0022, \u0022age\u0022]\n}\n\u0060\u0060\u0060\n\n**Note**: This field must not be specified when the \u0060type\u0060 is set to \u0060\u0022text\u0022\u0060.\n",
-        "x-fern-availability": "beta",
-        "x-fern-type-name": "JSONResponseFormat-g7xopi"
       },
       "ApiMetaApiVersion": {
         "required": [
@@ -26153,19 +23893,6 @@
         },
         "x-fern-type-name": "ToolCallV2Function"
       },
-      "ChatToolSourceToolOutput": {
-        "type": "object",
-        "x-fern-type-name": "ChatToolSource-z53ra6"
-      },
-      "ChatDocumentSourceDocument": {
-        "type": "object",
-        "x-fern-type-name": "ChatDocumentSource-w70a62"
-      },
-      "DocumentData": {
-        "type": "object",
-        "description": "A relevant document that the model can cite to generate a more accurate reply. Each document is a string-any dictionary.\n",
-        "x-fern-type-name": "Document-qmvpd9"
-      },
       "ToolV2Function": {
         "required": [
           "name",
@@ -26187,11 +23914,6 @@
         },
         "description": "The function to be executed.",
         "x-fern-type-name": "ToolV2Function"
-      },
-      "JsonResponseFormatV2JsonSchema": {
-        "type": "object",
-        "description": "A [JSON schema](https://json-schema.org/overview/what-is-jsonschema) object that the output will adhere to. There are some restrictions we have on the schema, refer to [our guide](https://docs.cohere.com/docs/structured-outputs-json#schema-constraints) for more information.\nExample (required name and age object):\n\u0060\u0060\u0060json\n{\n  \u0022type\u0022: \u0022object\u0022,\n  \u0022properties\u0022: {\n    \u0022name\u0022: {\u0022type\u0022: \u0022string\u0022},\n    \u0022age\u0022: {\u0022type\u0022: \u0022integer\u0022}\n  },\n  \u0022required\u0022: [\u0022name\u0022, \u0022age\u0022]\n}\n\u0060\u0060\u0060\n\n**Note**: This field must not be specified when the \u0060type\u0060 is set to \u0060\u0022text\u0022\u0060.\n",
-        "x-fern-type-name": "JsonResponseFormatV2-uu9wid"
       },
       "UsageBilledUnits": {
         "type": "object",
@@ -26385,20 +24107,6 @@
         ],
         "x-fern-type-name": "EmbedByTypeResponseEmbeddings"
       },
-      "UpdateClusterJobRequestInputTrackingMetrics": {
-        "type": "object",
-        "x-fern-audiences": [
-          "public"
-        ],
-        "x-fern-type-name": "UpdateClusterJobRequest-yyd5g8"
-      },
-      "UpdateClusterJobRequestOutputTrackingMetrics": {
-        "type": "object",
-        "x-fern-audiences": [
-          "public"
-        ],
-        "x-fern-type-name": "UpdateClusterJobRequest-6wlqkj"
-      },
       "GetModelResponseSamplingDefaults": {
         "type": "object",
         "properties": {
@@ -26431,14 +24139,6 @@
         "x-fern-audiences": [
           "public"
         ]
-      },
-      "TrainingStepMetricsMetrics": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "number",
-          "format": "double"
-        },
-        "description": "Map of names and values for each evaluation metrics."
       },
       "ChatMessageStartEventAllOf2Delta": {
         "type": "object",
@@ -26583,11 +24283,6 @@
           }
         },
         "x-fern-type-name": "ToolParameterDefinitionsValue"
-      },
-      "ToolV2FunctionParameters": {
-        "type": "object",
-        "description": "The parameters of the function as a JSON schema.",
-        "x-fern-type-name": "ToolV2-6eoehf"
       },
       "ChatMessageStartEventAllOf2DeltaMessage": {
         "type": "object",
@@ -26838,11 +24533,14 @@
           "seed": {
             "maximum": 1.8446744E+19,
             "minimum": 0,
-            "type": "integer",
+            "type": "number",
             "description": "If specified, the backend will make a best effort to sample tokens\ndeterministically, such that repeated requests with the same\nseed and parameters should return the same result. However,\ndeterminism cannot be totally guaranteed.\n\nCompatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments\n",
             "x-fern-audiences": [
               "public"
-            ]
+            ],
+            "x-client-original-type": "integer",
+            "format": "decimal",
+            "multipleOf": 1
           },
           "stop_sequences": {
             "type": "array",
@@ -27056,11 +24754,14 @@
           "seed": {
             "maximum": 1.8446744E+19,
             "minimum": 0,
-            "type": "integer",
+            "type": "number",
             "description": "If specified, the backend will make a best effort to sample tokens\ndeterministically, such that repeated requests with the same\nseed and parameters should return the same result. However,\ndeterminism cannot be totally guaranteed.\n",
             "x-fern-audiences": [
               "public"
-            ]
+            ],
+            "x-client-original-type": "integer",
+            "format": "decimal",
+            "multipleOf": 1
           },
           "frequency_penalty": {
             "type": "number",
@@ -27220,11 +24921,14 @@
           "seed": {
             "maximum": 1.8446744E+19,
             "minimum": 0,
-            "type": "integer",
+            "type": "number",
             "description": "If specified, the backend will make a best effort to sample tokens\ndeterministically, such that repeated requests with the same\nseed and parameters should return the same result. However,\ndeterminism cannot be totally guaranteed.\nCompatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments\n",
             "x-fern-audiences": [
               "public"
-            ]
+            ],
+            "x-client-original-type": "integer",
+            "format": "decimal",
+            "multipleOf": 1
           },
           "preset": {
             "type": "string",
@@ -27839,13 +25543,6 @@
         ],
         "x-fern-type-name": "DatasetsGetUsageResponse"
       },
-      "DeleteDataset200Response": {
-        "type": "object",
-        "x-fern-audiences": [
-          "public"
-        ],
-        "x-fern-type-name": "dataset-id-g4eh6t"
-      },
       "SummarizeRequest": {
         "required": [
           "text"
@@ -28044,10 +25741,6 @@
             "readOnly": true
           }
         }
-      },
-      "ExamplePayload": {
-        "type": "object",
-        "description": "Placeholder schema for path example refs"
       },
       "CancelBatch200Response": {
         "type": "object",
@@ -28379,20 +26072,6 @@
         "type": "object",
         "description": "A [JSON schema](https://json-schema.org/overview/what-is-jsonschema) object that the output will adhere to. There are some restrictions we have on the schema, refer to [our guide](https://docs.cohere.com/docs/structured-outputs-json#schema-constraints) for more information.\nExample (required name and age object):\n\u0060\u0060\u0060json\n{\n  \u0022type\u0022: \u0022object\u0022,\n  \u0022properties\u0022: {\n    \u0022name\u0022: {\u0022type\u0022: \u0022string\u0022},\n    \u0022age\u0022: {\u0022type\u0022: \u0022integer\u0022}\n  },\n  \u0022required\u0022: [\u0022name\u0022, \u0022age\u0022]\n}\n\u0060\u0060\u0060\n\n**Note**: This field must not be specified when the \u0060type\u0060 is set to \u0060\u0022text\u0022\u0060.\n",
         "x-fern-type-name": "JsonResponseFormatV2-uu9wid"
-      },
-      "UpdateClusterJobRequestInputTrackingMetricsProperty": {
-        "type": "object",
-        "x-fern-audiences": [
-          "public"
-        ],
-        "x-fern-type-name": "UpdateClusterJobRequest-yyd5g8"
-      },
-      "UpdateClusterJobRequestOutputTrackingMetricsProperty": {
-        "type": "object",
-        "x-fern-audiences": [
-          "public"
-        ],
-        "x-fern-type-name": "UpdateClusterJobRequest-6wlqkj"
       },
       "TrainingStepMetricsMetricsProperty": {
         "type": "object",
@@ -29104,30 +26783,6 @@
           ]
         }
       },
-      "EmbedFloatsResponseResponseType": {
-        "enum": [
-          "embeddings_floats",
-          "embeddings_by_type"
-        ],
-        "type": "string",
-        "x-fern-audiences": [
-          "public"
-        ],
-        "x-ms-enum": {
-          "name": "EmbedFloatsResponseResponseType",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "embeddings_floats",
-              "name": "EmbeddingsFloats"
-            },
-            {
-              "value": "embeddings_by_type",
-              "name": "EmbeddingsByType"
-            }
-          ]
-        }
-      },
       "EmbedByTypeResponseResponseType": {
         "enum": [
           "embeddings_floats",
@@ -29288,84 +26943,6 @@
             {
               "value": "expired",
               "name": "Expired"
-            }
-          ]
-        }
-      },
-      "GetClusterJobResponseStatus": {
-        "enum": [
-          "unknown",
-          "processing",
-          "failed",
-          "complete",
-          "queued"
-        ],
-        "type": "string",
-        "x-fern-audiences": [
-          "public"
-        ],
-        "x-ms-enum": {
-          "name": "GetClusterJobResponseStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "unknown",
-              "name": "Unknown"
-            },
-            {
-              "value": "processing",
-              "name": "Processing"
-            },
-            {
-              "value": "failed",
-              "name": "Failed"
-            },
-            {
-              "value": "complete",
-              "name": "Complete"
-            },
-            {
-              "value": "queued",
-              "name": "Queued"
-            }
-          ]
-        }
-      },
-      "UpdateClusterJobRequestStatus": {
-        "enum": [
-          "unknown",
-          "processing",
-          "failed",
-          "complete",
-          "queued"
-        ],
-        "type": "string",
-        "x-fern-audiences": [
-          "public"
-        ],
-        "x-ms-enum": {
-          "name": "UpdateClusterJobRequestStatus",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "unknown",
-              "name": "Unknown"
-            },
-            {
-              "value": "processing",
-              "name": "Processing"
-            },
-            {
-              "value": "failed",
-              "name": "Failed"
-            },
-            {
-              "value": "complete",
-              "name": "Complete"
-            },
-            {
-              "value": "queued",
-              "name": "Queued"
             }
           ]
         }
@@ -30198,6 +27775,313 @@
             "$ref": "#/components/schemas/GenerateStreamedResponse"
           }
         ]
+      },
+      "ToolContentChatTextContent": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ToolContent"
+          },
+          {
+            "required": [
+              "type",
+              "text"
+            ],
+            "type": "object",
+            "properties": {
+              "type": {
+                "$ref": "#/components/schemas/TextType"
+              },
+              "text": {
+                "type": "string"
+              }
+            },
+            "description": "Text content of the message.",
+            "x-fern-type-name": "ChatTextContent"
+          }
+        ]
+      },
+      "ToolContentDocumentContent": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ToolContent"
+          },
+          {
+            "required": [
+              "type",
+              "document"
+            ],
+            "type": "object",
+            "properties": {
+              "type": {
+                "$ref": "#/components/schemas/DocumentType"
+              },
+              "document": {
+                "description": "Relevant information that could be used by the model to generate a more accurate reply.\nThe content of each document are generally short (should be under 300 words). Metadata should be used to provide additional information, both the key name and the value will be\npassed to the model.\n",
+                "$ref": "#/components/schemas/Document"
+              }
+            },
+            "description": "Document content.",
+            "x-fern-type-name": "DocumentContent"
+          }
+        ]
+      },
+      "ChatMessageV2UserMessageV2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ChatMessageV2"
+          },
+          {
+            "title": "User Message",
+            "required": [
+              "role",
+              "content"
+            ],
+            "type": "object",
+            "properties": {
+              "role": {
+                "$ref": "#/components/schemas/UserRole"
+              },
+              "content": {
+                "$ref": "#/components/schemas/UserMessageV2Content"
+              }
+            },
+            "description": "A message from the user.",
+            "x-fern-type-name": "UserMessageV2"
+          }
+        ]
+      },
+      "ChatMessageV2AssistantMessageV2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ChatMessageV2"
+          },
+          {
+            "title": "Assistant Message",
+            "required": [
+              "role"
+            ],
+            "type": "object",
+            "properties": {
+              "role": {
+                "$ref": "#/components/schemas/AssistantRole"
+              },
+              "tool_calls": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ToolCallV2"
+                }
+              },
+              "tool_plan": {
+                "type": "string",
+                "description": "A chain-of-thought style reflection and plan that the model generates when working with Tools."
+              },
+              "content": {
+                "$ref": "#/components/schemas/AssistantMessageV2Content"
+              },
+              "citations": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Citation"
+                }
+              }
+            },
+            "description": "A message from the assistant role can contain text and tool call information.",
+            "x-fern-type-name": "AssistantMessage"
+          }
+        ]
+      },
+      "ChatMessageV2SystemMessageV2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ChatMessageV2"
+          },
+          {
+            "title": "System Message",
+            "required": [
+              "role",
+              "content"
+            ],
+            "type": "object",
+            "properties": {
+              "role": {
+                "$ref": "#/components/schemas/SystemRole"
+              },
+              "content": {
+                "$ref": "#/components/schemas/SystemMessageV2Content"
+              }
+            },
+            "description": "A message from the system.",
+            "x-fern-type-name": "SystemMessageV2"
+          }
+        ]
+      },
+      "ChatMessageV2ToolMessageV2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ChatMessageV2"
+          },
+          {
+            "title": "Tool Message",
+            "required": [
+              "role",
+              "tool_call_id",
+              "content"
+            ],
+            "type": "object",
+            "properties": {
+              "role": {
+                "$ref": "#/components/schemas/ToolRole"
+              },
+              "tool_call_id": {
+                "type": "string",
+                "description": "The id of the associated tool call that has provided the given content"
+              },
+              "content": {
+                "$ref": "#/components/schemas/ToolMessageV2Content"
+              }
+            },
+            "description": "A message with Tool outputs.",
+            "x-fern-type-name": "ToolMessageV2"
+          }
+        ]
+      },
+      "ParseBlockParseTextContentBlock": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ParseBlock"
+          },
+          {
+            "required": [
+              "type",
+              "text"
+            ],
+            "type": "object",
+            "properties": {
+              "type": {
+                "$ref": "#/components/schemas/TextType"
+              },
+              "text": {
+                "description": "Payload for a text block.",
+                "$ref": "#/components/schemas/ParseTextBlock"
+              }
+            },
+            "description": "A text content block.",
+            "x-fern-type-name": "ParseTextContentBlock"
+          }
+        ]
+      },
+      "ParseBlockParseImageContentBlock": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ParseBlock"
+          },
+          {
+            "required": [
+              "type",
+              "image"
+            ],
+            "type": "object",
+            "properties": {
+              "type": {
+                "$ref": "#/components/schemas/ImageType"
+              },
+              "image": {
+                "description": "Payload for an image block.",
+                "$ref": "#/components/schemas/ParseImageBlock"
+              }
+            },
+            "description": "An image content block.",
+            "x-fern-type-name": "ParseImageContentBlock"
+          }
+        ]
+      },
+      "ParseBlockParseTableContentBlock": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ParseBlock"
+          },
+          {
+            "required": [
+              "type",
+              "table"
+            ],
+            "type": "object",
+            "properties": {
+              "type": {
+                "$ref": "#/components/schemas/TableType"
+              },
+              "table": {
+                "description": "Payload for a table block.",
+                "$ref": "#/components/schemas/ParseTableBlock"
+              }
+            },
+            "description": "A table content block.",
+            "x-fern-type-name": "ParseTableContentBlock"
+          }
+        ]
+      },
+      "ParsePageParseBlocksPageVariant": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ParsePage"
+          },
+          {
+            "required": [
+              "index",
+              "type",
+              "blocks"
+            ],
+            "type": "object",
+            "properties": {
+              "index": {
+                "type": "integer",
+                "description": "Zero-based page index."
+              },
+              "type": {
+                "$ref": "#/components/schemas/BlocksType"
+              },
+              "blocks": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ParseBlock"
+                },
+                "description": "Ordered content blocks extracted from the page."
+              }
+            },
+            "description": "A parsed page with structured content blocks.",
+            "x-fern-type-name": "ParseBlocksPageVariant"
+          }
+        ]
+      },
+      "ParsePageParseMarkdownPageVariant": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ParsePage"
+          },
+          {
+            "required": [
+              "index",
+              "type",
+              "markdown"
+            ],
+            "type": "object",
+            "properties": {
+              "index": {
+                "type": "integer",
+                "description": "Zero-based page index."
+              },
+              "type": {
+                "$ref": "#/components/schemas/MarkdownType"
+              },
+              "markdown": {
+                "description": "Markdown output payload for a parsed page.",
+                "$ref": "#/components/schemas/ParseMarkdownPage"
+              }
+            },
+            "description": "A parsed page with markdown content.",
+            "x-fern-type-name": "ParseMarkdownPageVariant"
+          }
+        ]
       }
     },
     "responses": {
@@ -30408,5 +28292,2617 @@
       "name": "/finetuning",
       "description": "Finetuning API (Beta)"
     }
-  ]
+  ],
+  "x-client-unused-schemas": {
+    "ChatStreamEvent": {
+      "required": [
+        "event_type"
+      ],
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "$ref": "#/components/schemas/ChatStreamEventEventType"
+        }
+      },
+      "x-fern-type-name": "ChatStreamEvent"
+    },
+    "UserMessageV2": {
+      "title": "User Message",
+      "required": [
+        "role",
+        "content"
+      ],
+      "type": "object",
+      "properties": {
+        "role": {
+          "$ref": "#/components/schemas/UserRole"
+        },
+        "content": {
+          "$ref": "#/components/schemas/UserMessageV2Content"
+        }
+      },
+      "description": "A message from the user.",
+      "x-fern-type-name": "UserMessageV2"
+    },
+    "ChatToolSource": {
+      "title": "Tool Output",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier of the document"
+        },
+        "tool_output": {
+          "$ref": "#/components/schemas/ChatToolSourceToolOutputProperty"
+        }
+      },
+      "x-fern-type-name": "ChatToolSource"
+    },
+    "ChatDocumentSource": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique identifier of the document"
+        },
+        "document": {
+          "$ref": "#/components/schemas/ChatDocumentSourceDocumentProperty"
+        }
+      },
+      "description": "A document source object containing the unique identifier of the document and the document itself.",
+      "x-fern-type-name": "ChatDocumentSource"
+    },
+    "AssistantMessageV2": {
+      "title": "Assistant Message",
+      "required": [
+        "role"
+      ],
+      "type": "object",
+      "properties": {
+        "role": {
+          "$ref": "#/components/schemas/AssistantRole"
+        },
+        "tool_calls": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ToolCallV2"
+          }
+        },
+        "tool_plan": {
+          "type": "string",
+          "description": "A chain-of-thought style reflection and plan that the model generates when working with Tools."
+        },
+        "content": {
+          "$ref": "#/components/schemas/AssistantMessageV2Content"
+        },
+        "citations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Citation"
+          }
+        }
+      },
+      "description": "A message from the assistant role can contain text and tool call information.",
+      "x-fern-type-name": "AssistantMessage"
+    },
+    "SystemMessageV2": {
+      "title": "System Message",
+      "required": [
+        "role",
+        "content"
+      ],
+      "type": "object",
+      "properties": {
+        "role": {
+          "$ref": "#/components/schemas/SystemRole"
+        },
+        "content": {
+          "$ref": "#/components/schemas/SystemMessageV2Content"
+        }
+      },
+      "description": "A message from the system.",
+      "x-fern-type-name": "SystemMessageV2"
+    },
+    "DocumentContent": {
+      "required": [
+        "type",
+        "document"
+      ],
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/components/schemas/DocumentType"
+        },
+        "document": {
+          "description": "Relevant information that could be used by the model to generate a more accurate reply.\nThe content of each document are generally short (should be under 300 words). Metadata should be used to provide additional information, both the key name and the value will be\npassed to the model.\n",
+          "$ref": "#/components/schemas/Document"
+        }
+      },
+      "description": "Document content.",
+      "x-fern-type-name": "DocumentContent"
+    },
+    "ToolMessageV2": {
+      "title": "Tool Message",
+      "required": [
+        "role",
+        "tool_call_id",
+        "content"
+      ],
+      "type": "object",
+      "properties": {
+        "role": {
+          "$ref": "#/components/schemas/ToolRole"
+        },
+        "tool_call_id": {
+          "type": "string",
+          "description": "The id of the associated tool call that has provided the given content"
+        },
+        "content": {
+          "$ref": "#/components/schemas/ToolMessageV2Content"
+        }
+      },
+      "description": "A message with Tool outputs.",
+      "x-fern-type-name": "ToolMessageV2"
+    },
+    "ChatMessages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ChatMessageV2"
+      },
+      "description": "A list of chat messages in chronological order, representing a conversation between the user and the model.\n\nMessages can be from \u0060User\u0060, \u0060Assistant\u0060, \u0060Tool\u0060 and \u0060System\u0060 roles. Learn more about messages and roles in [the Chat API guide](https://docs.cohere.com/v2/docs/chat-api).\n",
+      "x-fern-type-name": "ChatMessages"
+    },
+    "TruncationStrategy": {
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      },
+      "description": "Describes the truncation strategy for when the prompt exceeds the context length. Defaults to \u0027none\u0027",
+      "discriminator": {
+        "propertyName": "type"
+      },
+      "x-fern-type-name": "TruncationStrategy"
+    },
+    "ChatStreamEventType": {
+      "required": [
+        "type"
+      ],
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/components/schemas/ChatStreamEventTypeType"
+        }
+      },
+      "description": "The streamed event types",
+      "x-fern-type-name": "ChatStreamEventType"
+    },
+    "PromptResponseV2": {
+      "title": "PromptResponseV2",
+      "required": [
+        "prompt"
+      ],
+      "type": "object",
+      "properties": {
+        "prompt": {
+          "type": "string",
+          "description": "The constructed text prompt that would be sent to the model for this chat request.",
+          "x-fern-audiences": [
+            "public"
+          ]
+        }
+      },
+      "description": "Response from the v2 prompt endpoint \u2014 the constructed text prompt without generation.",
+      "x-fern-audiences": [
+        "public"
+      ]
+    },
+    "ParseTextContentBlock": {
+      "required": [
+        "type",
+        "text"
+      ],
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/components/schemas/TextType"
+        },
+        "text": {
+          "description": "Payload for a text block.",
+          "$ref": "#/components/schemas/ParseTextBlock"
+        }
+      },
+      "description": "A text content block.",
+      "x-fern-type-name": "ParseTextContentBlock"
+    },
+    "ParseImageContentBlock": {
+      "required": [
+        "type",
+        "image"
+      ],
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/components/schemas/ImageType"
+        },
+        "image": {
+          "description": "Payload for an image block.",
+          "$ref": "#/components/schemas/ParseImageBlock"
+        }
+      },
+      "description": "An image content block.",
+      "x-fern-type-name": "ParseImageContentBlock"
+    },
+    "ParseTableContentBlock": {
+      "required": [
+        "type",
+        "table"
+      ],
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/components/schemas/TableType"
+        },
+        "table": {
+          "description": "Payload for a table block.",
+          "$ref": "#/components/schemas/ParseTableBlock"
+        }
+      },
+      "description": "A table content block.",
+      "x-fern-type-name": "ParseTableContentBlock"
+    },
+    "ParseBlocksPageVariant": {
+      "required": [
+        "index",
+        "type",
+        "blocks"
+      ],
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "integer",
+          "description": "Zero-based page index."
+        },
+        "type": {
+          "$ref": "#/components/schemas/BlocksType"
+        },
+        "blocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ParseBlock"
+          },
+          "description": "Ordered content blocks extracted from the page."
+        }
+      },
+      "description": "A parsed page with structured content blocks.",
+      "x-fern-type-name": "ParseBlocksPageVariant"
+    },
+    "ParseMarkdownPageVariant": {
+      "required": [
+        "index",
+        "type",
+        "markdown"
+      ],
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "integer",
+          "description": "Zero-based page index."
+        },
+        "type": {
+          "$ref": "#/components/schemas/MarkdownType"
+        },
+        "markdown": {
+          "description": "Markdown output payload for a parsed page.",
+          "$ref": "#/components/schemas/ParseMarkdownPage"
+        }
+      },
+      "description": "A parsed page with markdown content.",
+      "x-fern-type-name": "ParseMarkdownPageVariant"
+    },
+    "GenerateStreamEvent": {
+      "required": [
+        "event_type"
+      ],
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "$ref": "#/components/schemas/GenerateStreamEventEventType"
+        }
+      },
+      "x-fern-type-name": "GenerateStreamEvent"
+    },
+    "EmbedFloatsResponse": {
+      "required": [
+        "id",
+        "embeddings",
+        "texts",
+        "api_version"
+      ],
+      "type": "object",
+      "properties": {
+        "response_type": {
+          "$ref": "#/components/schemas/EmbedFloatsResponseResponseType"
+        },
+        "id": {
+          "type": "string",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "embeddings": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "x-fern-audiences": [
+                "public"
+              ]
+            },
+            "x-fern-audiences": [
+              "public"
+            ]
+          },
+          "description": "An array of embeddings, where each embedding is an array of floats. The length of the \u0060embeddings\u0060 array will be the same as the length of the original \u0060texts\u0060 array.",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "texts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "x-fern-audiences": [
+              "public"
+            ]
+          },
+          "description": "The text entries for which embeddings were returned.",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "x-fern-audiences": [
+              "public"
+            ],
+            "$ref": "#/components/schemas/Image"
+          },
+          "description": "The image entries for which embeddings were returned.",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "meta": {
+          "x-fern-audiences": [
+            "public"
+          ],
+          "$ref": "#/components/schemas/ApiMeta"
+        }
+      },
+      "x-examples": {
+        "Example": {
+          "value": {
+            "id": "bc57846a-3e56-4327-8acc-588ca1a37b8a",
+            "texts": [
+              "hello world"
+            ],
+            "embeddings": [
+              [
+                -0.039520264,
+                -0.04574585,
+                -0.08807373,
+                -0.084106445,
+                -0.009742737,
+                -0.0090408325,
+                -0.048187256,
+                0.07128906,
+                0.010688782,
+                0.016067505,
+                -0.02822876,
+                0.036224365,
+                0.037994385,
+                -0.041992188,
+                0.052124023,
+                -0.027297974,
+                0.048309326,
+                0.017410278,
+                0.004283905,
+                -0.0058555603,
+                -0.012992859,
+                0.023040771,
+                0.00121212,
+                0.02078247,
+                0.04827881,
+                -0.021530151,
+                0.017807007,
+                0.0075531006,
+                -0.047912598,
+                -0.042633057,
+                0.0016927719,
+                0.04547119,
+                0.0143585205,
+                0.022354126,
+                0.0017910004,
+                0.048614502,
+                -0.02609253,
+                0.007850647,
+                0.00907135,
+                0.0035381317,
+                0.015289307,
+                -0.008132935,
+                0.016296387,
+                -0.02859497,
+                -0.023712158,
+                0.008857727,
+                -0.04309082,
+                -0.025115967,
+                0.032928467,
+                -0.029663086,
+                0.00434494,
+                -0.022338867,
+                -0.004371643,
+                -0.0075035095,
+                -0.009529114,
+                0.0038223267,
+                -0.06048584,
+                -0.018127441,
+                0.010131836,
+                0.08380127,
+                0.03652954,
+                0.0030384064,
+                0.006034851,
+                -0.006286621,
+                0.016784668,
+                -0.00308609,
+                0.01612854,
+                0.011413574,
+                0.022491455,
+                0.02482605,
+                0.0047683716,
+                0.012245178,
+                -0.017593384,
+                -0.023254395,
+                -0.012641907,
+                0.030181885,
+                -0.015365601,
+                0.031021118,
+                0.015144348,
+                0.016708374,
+                0.02180481,
+                0.010765076,
+                -0.015586853,
+                -0.05819702,
+                0.02128601,
+                -0.021713257,
+                -0.013320923,
+                -0.0064849854,
+                -0.001657486,
+                -0.030715942,
+                -0.008666992,
+                0.060668945,
+                -0.0011959076,
+                -0.032104492,
+                -0.057006836,
+                -0.015655518,
+                -0.014015198,
+                0.036987305,
+                0.011016846,
+                0.037475586,
+                -0.015319824,
+                -0.016479492,
+                0.0030403137,
+                -0.028167725,
+                -0.0067825317,
+                -0.00894928,
+                -0.026107788,
+                0.010231018,
+                0.031707764,
+                0.050354004,
+                -0.016220093,
+                0.04345703,
+                -0.008888245,
+                -0.0037784576,
+                -0.034576416,
+                0.002565384,
+                -0.0018634796,
+                0.013954163,
+                0.012062073,
+                0.046813965,
+                0.033081055,
+                0.028778076,
+                0.0051231384,
+                0.022094727,
+                -0.021881104,
+                -0.009788513,
+                -0.04647827,
+                -0.025482178,
+                0.066833496,
+                -0.040863037,
+                -0.019714355,
+                0.06866455,
+                -0.07519531,
+                -0.045532227,
+                -0.020507812,
+                0.021331787,
+                0.036376953,
+                -0.034210205,
+                0.017669678,
+                0.0155181885,
+                0.047698975,
+                -0.010368347,
+                0.010879517,
+                0.016555786,
+                -0.028076172,
+                0.03225708,
+                -0.0056152344,
+                -0.020690918,
+                0.00011438131,
+                -0.021011353,
+                -0.04425049,
+                -0.029922485,
+                -0.0014362335,
+                0.013618469,
+                0.011260986,
+                0.017532349,
+                -0.043426514,
+                0.012557983,
+                0.026748657,
+                0.039154053,
+                -0.030944824,
+                0.024169922,
+                0.06573486,
+                -0.03817749,
+                -0.025314331,
+                -0.039794922,
+                -0.050445557,
+                -0.0020828247,
+                -0.0010194778,
+                0.01725769,
+                0.0017976761,
+                0.029067993,
+                0.0115356445,
+                0.005214691,
+                0.0066604614,
+                -0.014801025,
+                -0.033172607,
+                0.023956299,
+                0.008865356,
+                0.09539795,
+                0.062286377,
+                -0.0076408386,
+                -0.035125732,
+                0.09082031,
+                -0.015350342,
+                -0.015625,
+                -0.0090789795,
+                -0.01876831,
+                0.05239868,
+                -0.010406494,
+                0.05078125,
+                -0.013694763,
+                -0.07244873,
+                0.018539429,
+                -0.016983032,
+                -0.03353882,
+                0.01739502,
+                0.004055023,
+                -0.010147095,
+                -0.0027599335,
+                -0.002714157,
+                -0.0107040405,
+                0.021438599,
+                -0.029525757,
+                0.01902771,
+                -0.025909424,
+                0.0008072853,
+                0.026672363,
+                0.0019044876,
+                0.016937256,
+                -0.018814087,
+                -0.03668213,
+                0.03338623,
+                -0.09240723,
+                -0.024765015,
+                -0.019378662,
+                -0.051757812,
+                0.050109863,
+                0.018859863,
+                0.01687622,
+                0.020111084,
+                -0.041534424,
+                0.009559631,
+                -0.018859863,
+                0.00005853176,
+                0.032684326,
+                -0.04058838,
+                0.015823364,
+                -0.038635254,
+                0.0055656433,
+                -0.021560669,
+                0.012481689,
+                -0.050872803,
+                -0.036071777,
+                -0.046844482,
+                -0.041900635,
+                -0.06561279,
+                0.014785767,
+                0.010124207,
+                0.030426025,
+                0.024261475,
+                0.0057411194,
+                -0.026275635,
+                -0.006919861,
+                0.022750854,
+                -0.015167236,
+                0.022964478,
+                -0.0033664703,
+                0.02734375,
+                0.03201294,
+                0.025939941,
+                0.019104004,
+                0.028030396,
+                -0.014328003,
+                -0.01574707,
+                0.06982422,
+                -0.008026123,
+                0.006816864,
+                -0.0019035339,
+                0.026245117,
+                -0.028945923,
+                0.014968872,
+                0.0054244995,
+                -0.00028896332,
+                -0.02243042,
+                -0.0030822754,
+                -0.02558899,
+                -0.022918701,
+                -0.017089844,
+                -0.0035190582,
+                0.029953003,
+                -0.037078857,
+                -0.02507019,
+                -0.017303467,
+                0.064331055,
+                -0.028533936,
+                -0.07287598,
+                0.028839111,
+                -0.0029792786,
+                -0.02104187,
+                -0.01663208,
+                -0.016571045,
+                -0.015106201,
+                0.0027313232,
+                0.031051636,
+                -0.025680542,
+                0.004722595,
+                0.032348633,
+                0.020019531,
+                0.056365967,
+                0.07208252,
+                0.01235199,
+                0.00084495544,
+                0.035369873,
+                -0.018569946,
+                -0.0063552856,
+                0.03161621,
+                0.064575195,
+                -0.02557373,
+                -0.007232666,
+                -0.017700195,
+                -0.003835678,
+                0.007381439,
+                -0.0385437,
+                -0.0019102097,
+                -0.023223877,
+                -0.0124435425,
+                0.013343811,
+                0.020996094,
+                -0.014022827,
+                -0.01939392,
+                0.044128418,
+                0.0052757263,
+                -0.00068950653,
+                -0.04876709,
+                -0.05609131,
+                -0.020874023,
+                -0.00806427,
+                -0.13391113,
+                -0.06323242,
+                -0.021865845,
+                -0.021072388,
+                0.005832672,
+                -0.015701294,
+                -0.006286621,
+                -0.012954712,
+                -0.017288208,
+                0.0036773682,
+                -0.0084991455,
+                -0.03213501,
+                0.021987915,
+                -0.010322571,
+                -0.029144287,
+                0.003824234,
+                0.02708435,
+                0.0026187897,
+                0.05496216,
+                -0.04916382,
+                0.005466461,
+                -0.0070648193,
+                0.0793457,
+                -0.040863037,
+                0.012641907,
+                0.016448975,
+                0.02041626,
+                -0.029006958,
+                -0.008491516,
+                0.0023422241,
+                0.043640137,
+                0.0121536255,
+                -0.0043525696,
+                -0.030899048,
+                0.0062332153,
+                -0.013038635,
+                0.007904053,
+                -0.03390503,
+                -0.034729004,
+                -0.0647583,
+                -0.0052375793,
+                -0.08154297,
+                0.015960693,
+                0.016235352,
+                -0.012130737,
+                -0.021469116,
+                -0.03253174,
+                -0.014465332,
+                0.016448975,
+                0.004589081,
+                -0.05291748,
+                0.018005371,
+                -0.002981186,
+                -0.01247406,
+                0.023147583,
+                -0.055419922,
+                -0.08526611,
+                0.016723633,
+                0.012939453,
+                -0.039031982,
+                0.016677856,
+                0.016937256,
+                0.023147583,
+                0.034576416,
+                -0.010635376,
+                0.03466797,
+                0.037750244,
+                0.020141602,
+                -0.0046539307,
+                0.0059432983,
+                0.05609131,
+                0.027709961,
+                0.01838684,
+                0.015022278,
+                -0.039215088,
+                -0.0048828125,
+                0.047546387,
+                0.0138549805,
+                -0.046203613,
+                0.036193848,
+                -0.109680176,
+                0.0019550323,
+                -0.03125,
+                0.0084991455,
+                -0.0020256042,
+                -0.001739502,
+                -0.06756592,
+                0.03491211,
+                -0.05633545,
+                -0.008491516,
+                0.0048446655,
+                0.042663574,
+                0.025054932,
+                -0.022247314,
+                -0.0044555664,
+                0.0022335052,
+                -0.0071907043,
+                -0.003982544,
+                -0.073913574,
+                -0.011253357,
+                0.029220581,
+                -0.0047073364,
+                -0.04626465,
+                0.05670166,
+                -0.041503906,
+                0.014579773,
+                -0.016174316,
+                0.021560669,
+                -0.019332886,
+                0.01550293,
+                0.02709961,
+                0.010528564,
+                0.012786865,
+                -0.023849487,
+                -0.016937256,
+                -0.04626465,
+                -0.04397583,
+                0.026245117,
+                -0.017868042,
+                0.021072388,
+                -0.02128601,
+                -0.012161255,
+                -0.004776001,
+                -0.0088272095,
+                0.009246826,
+                -0.012313843,
+                0.0096206665,
+                -0.0047950745,
+                -0.0079956055,
+                0.052520752,
+                -0.06616211,
+                0.0014686584,
+                -0.046081543,
+                0.03289795,
+                -0.03656006,
+                0.055389404,
+                0.009773254,
+                0.0013818741,
+                0.043823242,
+                0.034942627,
+                0.055236816,
+                -0.011833191,
+                -0.024353027,
+                0.011398315,
+                -0.051574707,
+                -0.019882202,
+                0.0018358231,
+                -0.005859375,
+                0.06677246,
+                -0.0009851456,
+                -0.026809692,
+                0.0075798035,
+                -0.021347046,
+                -0.01146698,
+                0.03262329,
+                0.031585693,
+                -0.006729126,
+                0.008659363,
+                -0.025665283,
+                0.02947998,
+                -0.03744507,
+                0.02027893,
+                -0.026062012,
+                0.018585205,
+                -0.004463196,
+                -0.036865234,
+                -0.043670654,
+                0.021392822,
+                -0.062561035,
+                -0.080078125,
+                0.011451721,
+                0.06762695,
+                0.039001465,
+                -0.016799927,
+                0.049072266,
+                0.041412354,
+                -0.03062439,
+                0.011795044,
+                -0.016555786,
+                0.046569824,
+                0.010688782,
+                -0.01902771,
+                -0.031097412,
+                -0.023391724,
+                -0.01651001,
+                0.009399414,
+                0.049041748,
+                -0.025817871,
+                -0.018356323,
+                0.02154541,
+                -0.0029411316,
+                0.074157715,
+                0.017059326,
+                -0.0017595291,
+                0.00390625,
+                0.02645874,
+                -0.0010709763,
+                0.040222168,
+                -0.034423828,
+                0.0231781,
+                -0.016693115,
+                -0.022094727,
+                0.004383087,
+                0.007331848,
+                0.018676758,
+                0.023773193,
+                -0.0069770813,
+                0.0029773712,
+                -0.023712158,
+                -0.0051956177,
+                -0.011810303,
+                -0.0519104,
+                0.07244873,
+                0.032409668,
+                0.016662598,
+                0.015716553,
+                -0.03640747,
+                0.03918457,
+                -0.046722412,
+                -0.0046081543,
+                0.006061554,
+                -0.011940002,
+                -0.0004878044,
+                0.01260376,
+                0.0073280334,
+                0.0015096664,
+                0.005844116,
+                0.029129028,
+                0.047668457,
+                0.05960083,
+                -0.0647583,
+                0.064697266,
+                -0.017440796,
+                -0.01889038,
+                0.037628174,
+                0.0048065186,
+                -0.023101807,
+                -0.048675537,
+                -0.02508545,
+                -0.007965088,
+                0.0015897751,
+                0.06866455,
+                -0.0099487305,
+                -0.0022964478,
+                -0.030014038,
+                -0.007713318,
+                -0.034362793,
+                0.013931274,
+                0.0026836395,
+                -0.0014476776,
+                0.02532959,
+                -0.020584106,
+                -0.039001465,
+                -0.062347412,
+                -0.04736328,
+                -0.024368286,
+                -0.045776367,
+                0.03149414,
+                -0.012825012,
+                0.028076172,
+                0.0058784485,
+                0.08062744,
+                0.0104599,
+                0.014579773,
+                -0.041137695,
+                0.04244995,
+                -0.021011353,
+                0.06390381,
+                0.0010871887,
+                0.04147339,
+                -0.0053138733,
+                0.02268982,
+                -0.028182983,
+                -0.022628784,
+                -0.021408081,
+                -0.006088257,
+                0.028030396,
+                0.025146484,
+                0.00881958,
+                -0.04244995,
+                0.027938843,
+                0.013916016,
+                -0.04647827,
+                0.0072288513,
+                0.017745972,
+                -0.02381897,
+                -0.010147095,
+                0.0096588135,
+                -0.04586792,
+                -0.014480591,
+                -0.0027217865,
+                -0.03111267,
+                0.04522705,
+                -0.02772522,
+                -0.0013189316,
+                0.017807007,
+                -0.0135269165,
+                -0.014175415,
+                -0.00019681454,
+                0.03161621,
+                0.0041007996,
+                -0.024871826,
+                0.0039367676,
+                -0.026916504,
+                0.03237915,
+                0.007068634,
+                0.029647827,
+                -0.0102005005,
+                0.0076675415,
+                0.0051078796,
+                -0.008041382,
+                -0.0062942505,
+                0.0010309219,
+                0.010543823,
+                -0.010101318,
+                -0.013496399,
+                0.00920105,
+                0.0546875,
+                -0.02784729,
+                -0.0056762695,
+                -0.08679199,
+                -0.050048828,
+                0.03378296,
+                0.010124207,
+                0.019058228,
+                -0.037872314,
+                -0.0063323975,
+                0.0014324188,
+                -0.010002136,
+                -0.015731812,
+                -0.036071777,
+                -0.0028915405,
+                -0.0082092285,
+                0.0037841797,
+                -0.020629883,
+                0.01725769,
+                -0.026000977,
+                0.00012862682,
+                0.021621704,
+                0.07086182,
+                -0.008049011,
+                -0.012634277,
+                -0.064941406,
+                -0.0073013306,
+                -0.02760315,
+                -0.040649414,
+                0.02809143,
+                0.009849548,
+                0.0011720657,
+                0.059936523,
+                -0.032806396,
+                0.06311035,
+                0.009536743,
+                0.014801025,
+                0.03390503,
+                -0.002620697,
+                -0.04650879,
+                -0.015365601,
+                0.03741455,
+                -0.0067443848,
+                -0.008888245,
+                -0.0013017654,
+                -0.010154724,
+                0.0027217865,
+                0.016052246,
+                0.025100708,
+                -0.030532837,
+                0.032318115,
+                0.014564514,
+                -0.009109497,
+                0.009628296,
+                -0.021438599,
+                -0.049926758,
+                -0.00088214874,
+                -0.019638062,
+                -0.020126343,
+                0.055847168,
+                -0.006729126,
+                -0.044921875,
+                -0.01890564,
+                -0.0026683807,
+                0.0038547516,
+                0.004600525,
+                -0.013977051,
+                0.018341064,
+                -0.05178833,
+                0.011054993,
+                0.019927979,
+                0.011436462,
+                0.010391235,
+                -0.012680054,
+                -0.017669678,
+                0.01928711,
+                0.025115967,
+                -0.07757568,
+                -0.030960083,
+                0.013137817,
+                -0.066467285,
+                -0.054473877,
+                -0.04244995,
+                -0.027526855,
+                0.02973938,
+                -0.024017334,
+                -0.03918457,
+                0.0154800415,
+                -0.036315918,
+                0.015510559,
+                -0.020385742,
+                -0.0390625,
+                -0.00137043,
+                0.0016002655,
+                -0.010238647,
+                0.014656067,
+                0.029373169,
+                -0.027023315,
+                0.0076141357,
+                -0.001917839,
+                0.03451538,
+                0.004814148,
+                0.024887085,
+                0.036315918,
+                -0.006500244,
+                -0.070495605,
+                -0.0071754456,
+                0.025863647,
+                0.022994995,
+                0.007217407,
+                0.032165527,
+                0.016830444,
+                0.02859497,
+                -0.011123657,
+                0.020126343,
+                -0.0014410019,
+                0.0021781921,
+                0.053619385,
+                0.015625,
+                0.017150879,
+                -0.03326416,
+                -0.04626465,
+                0.034332275,
+                0.07165527,
+                -0.040740967,
+                -0.06628418,
+                -0.024291992,
+                -0.0066871643,
+                0.065979004,
+                0.034851074,
+                0.07678223,
+                0.053009033,
+                0.0317688,
+                -0.04019165,
+                0.030288696,
+                0.062347412,
+                -0.011734009,
+                0.0024604797,
+                0.006095886,
+                -0.0152282715,
+                0.056762695,
+                0.021270752,
+                -0.011154175,
+                -0.0143966675,
+                0.0057754517,
+                -0.0003619194,
+                0.0053367615,
+                -0.030639648,
+                0.0024776459,
+                -0.031799316,
+                -0.012710571,
+                0.048828125,
+                0.029632568,
+                0.013244629,
+                0.087890625,
+                -0.01134491,
+                0.028656006,
+                -0.014778137,
+                0.06695557,
+                0.026275635,
+                -0.016113281,
+                0.018859863,
+                -0.008239746,
+                0.024383545,
+                -0.039154053,
+                -0.006252289,
+                0.049224854,
+                -0.04638672,
+                0.0031967163,
+                -0.04849243,
+                -0.04058838,
+                0.038757324,
+                0.00730896,
+                -0.04345703,
+                0.04296875,
+                -0.0024299622,
+                -0.05670166,
+                0.019119263,
+                -0.011802673,
+                0.038970947,
+                -0.03366089,
+                0.03591919,
+                -0.0009088516,
+                0.013259888,
+                -0.07342529,
+                0.004299164,
+                0.0395813,
+                0.013420105,
+                -0.004459381,
+                -0.0084991455,
+                0.031982422,
+                0.018249512,
+                -0.0038604736,
+                -0.022323608,
+                -0.013031006,
+                0.0513916,
+                -0.007068634,
+                -0.003545761,
+                0.010292053,
+                -0.010322571,
+                -0.0037841797,
+                0.043701172,
+                -0.012672424,
+                0.013725281,
+                0.021575928,
+                -0.03942871,
+                -0.0105896,
+                -0.01878357,
+                -0.017623901,
+                -0.03414917,
+                0.02142334,
+                0.026550293,
+                -0.022903442,
+                0.008598328,
+                0.03100586,
+                0.049957275,
+                0.021438599,
+                0.016204834,
+                -0.014129639,
+                0.0079193115,
+                -0.004535675,
+                0.0010051727,
+                -0.038208008,
+                -0.014923096,
+                -0.01436615,
+                -0.009666443,
+                0.0006933212,
+                0.0132369995,
+                0.01486969,
+                0.028762817,
+                0.011329651,
+                -0.042663574,
+                0.014961243,
+                -0.018127441,
+                -0.007232666,
+                0.008369446,
+                0.027557373,
+                0.006706238,
+                -0.05038452,
+                -0.023666382,
+                -0.0072898865,
+                -0.007865906,
+                -0.008926392,
+                -0.013137817,
+                0.08886719,
+                0.030929565,
+                0.021255493,
+                -0.0020389557,
+                -0.08337402,
+                -0.020385742,
+                0.03866577,
+                -0.020523071,
+                0.021881104,
+                0.005756378,
+                0.022003174,
+                0.021209717,
+                -0.06161499,
+                -0.020309448,
+                -0.0057258606,
+                -0.033813477,
+                0.0017337799,
+                -0.052612305,
+                0.01461792,
+                -0.017944336,
+                0.042816162,
+                -0.053710938,
+                -0.041259766,
+                -0.014549255,
+                0.020843506,
+                -0.019760132,
+                0.004890442,
+                -0.0007162094,
+                -0.009429932,
+                -0.01966858,
+                -0.014320374,
+                0.041259766,
+                0.00075244904,
+                -0.0064430237,
+                0.028961182,
+                -0.01876831,
+                0.0027942657,
+                -0.051116943,
+                0.00093746185,
+                0.0037384033,
+                -0.06982422,
+                -0.0107040405,
+                0.030090332,
+                -0.019104004,
+                -0.016647339,
+                -0.037475586,
+                0.0140686035,
+                -0.051086426,
+                -0.032409668,
+                -0.011131287,
+                -0.023620605,
+                -0.04159546,
+                -0.034851074,
+                -0.064941406,
+                -0.03451538,
+                0.0047416687,
+                -0.04510498,
+                0.020477295,
+                -0.03024292,
+                -0.034179688,
+                0.058410645,
+                0.008514404,
+                0.0049858093,
+                0.02331543,
+                0.03704834,
+                -0.017333984,
+                0.014389038,
+                0.013786316,
+                0.008583069,
+                -0.009643555,
+                0.020095825,
+                0.013496399,
+                -0.01991272,
+                -0.0446167,
+                0.0075149536,
+                0.0071029663,
+                0.0446167,
+                -0.03933716,
+                0.009902954,
+                0.011077881,
+                0.008781433,
+                -0.001701355,
+                0.016235352,
+                0.01802063,
+                -0.010765076,
+                -0.03427124,
+                0.0112838745,
+                -0.023208618,
+                -0.009979248,
+                -0.010696411,
+                -0.023208618,
+                -0.026748657,
+                -0.02923584,
+                0.013801575,
+                -0.050323486,
+                -0.0059661865,
+                -0.004837036,
+                0.01940918,
+                0.00018620491,
+                0.0016450882,
+                0.019012451,
+                -0.048034668,
+                0.034423828,
+                -0.033599854,
+                0.020126343,
+                -0.04949951,
+                0.071899414,
+                -0.06060791,
+                -0.043395996,
+                0.012138367,
+                0.022476196,
+                0.029006958,
+                0.04550171,
+                -0.03564453,
+                -0.015090942,
+                0.055541992,
+                0.014884949,
+                0.020767212,
+                -0.01071167,
+                0.046905518,
+                0.033813477,
+                -0.04260254,
+                -0.00094127655,
+                0.016708374,
+                -0.0011367798,
+                -0.030426025,
+                -0.03427124,
+                0.01763916,
+                -0.012634277,
+                0.030517578,
+                -0.055480957,
+                -0.054992676,
+                0.056274414,
+                -0.0007033348,
+                -0.058624268,
+                0.0061531067,
+                -0.008613586,
+                0.016067505,
+                0.003376007,
+                -0.01586914,
+                -0.025146484,
+                0.008491516,
+                0.053222656,
+                -0.02923584,
+                0.021408081
+              ]
+            ],
+            "meta": {
+              "api_version": {
+                "version": "1"
+              }
+            },
+            "api_version": "v1"
+          }
+        }
+      },
+      "x-fern-type-name": "EmbedFloatsResponse"
+    },
+    "EmbedContentType": {
+      "enum": [
+        "text",
+        "image_url"
+      ],
+      "type": "string",
+      "writeOnly": true,
+      "x-fern-audiences": [
+        "public"
+      ],
+      "x-fern-type-name": "EmbedContentType",
+      "x-ms-enum": {
+        "name": "EmbedContentType",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "text",
+            "name": "Text"
+          },
+          {
+            "value": "image_url",
+            "name": "ImageUrl"
+          }
+        ]
+      }
+    },
+    "EmbedImage": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/components/schemas/EmbedContentType"
+        },
+        "image_url": {
+          "description": "Base64 url of image.",
+          "$ref": "#/components/schemas/EmbedImageUrl"
+        }
+      },
+      "description": "Image content of the input. Supported with Embed v3.0 and newer models.",
+      "x-fern-audiences": [
+        "public"
+      ],
+      "x-fern-type-name": "EmbedImage"
+    },
+    "EmbedText": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/components/schemas/EmbedContentType"
+        },
+        "text": {
+          "type": "string",
+          "x-fern-audiences": [
+            "public"
+          ]
+        }
+      },
+      "description": "Text content of the input.",
+      "x-fern-audiences": [
+        "public"
+      ],
+      "x-fern-type-name": "EmbedText"
+    },
+    "CancelBatchResponse": {
+      "type": "object",
+      "description": "Response to a request to cancel a batch.",
+      "x-fern-sdk-group-name": [
+        "batches"
+      ]
+    },
+    "RetryBatchResponse": {
+      "required": [
+        "batch"
+      ],
+      "type": "object",
+      "properties": {
+        "batch": {
+          "description": "Information about the newly created retry batch.",
+          "$ref": "#/components/schemas/Batch"
+        }
+      },
+      "description": "Response to a request to retry a batch.",
+      "x-fern-sdk-group-name": [
+        "batches"
+      ]
+    },
+    "DeleteConnectorResponse": {
+      "type": "object",
+      "x-fern-type-name": "DeleteConnectorResponse"
+    },
+    "ConnectorLog": {
+      "required": [
+        "id",
+        "connector_id",
+        "request_id",
+        "user_id",
+        "organization_id",
+        "created_at",
+        "status_code",
+        "duration_millis"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the connector log"
+        },
+        "connector_id": {
+          "type": "string",
+          "description": "Unique identifier for the connector"
+        },
+        "request_id": {
+          "type": "string",
+          "description": "Unique identifier for the request"
+        },
+        "user_id": {
+          "type": "string",
+          "description": "Unique identifier for the user"
+        },
+        "organization_id": {
+          "type": "string",
+          "description": "Unique identifier for the organization"
+        },
+        "created_at": {
+          "type": "string",
+          "description": "Time of connector log creation in RFC3339 format",
+          "format": "date-time",
+          "example": "2023-04-28T21:00:56.646257Z"
+        },
+        "status_code": {
+          "type": "integer",
+          "description": "HTTP status code of the request"
+        },
+        "duration_millis": {
+          "type": "integer",
+          "description": "Duration of the request in milliseconds"
+        },
+        "error_message": {
+          "type": "string",
+          "description": "Error message of the request"
+        }
+      },
+      "x-fern-type-name": "ConnectorLog"
+    },
+    "GetConnectorsLogsResponse": {
+      "required": [
+        "connector_logs",
+        "total"
+      ],
+      "type": "object",
+      "properties": {
+        "connector_logs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ConnectorLog"
+          }
+        },
+        "total": {
+          "type": "number",
+          "description": "Total number of connector logs"
+        }
+      },
+      "x-fern-type-name": "GetConnectorsLogsResponse"
+    },
+    "FeedbackResponse": {
+      "type": "object",
+      "x-fern-type-name": "FeedbackResponse"
+    },
+    "TokenLikelihood": {
+      "type": "object",
+      "properties": {
+        "encoded": {
+          "type": "integer",
+          "description": "Tokenized text",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "decoded": {
+          "type": "string",
+          "description": "Detokenized text",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "log_likelihood": {
+          "type": "number",
+          "description": "Non normalized probability of the token",
+          "x-fern-audiences": [
+            "public"
+          ]
+        }
+      },
+      "x-fern-type-name": "TokenLikelihood"
+    },
+    "LogLikelihoodResponse": {
+      "required": [
+        "id",
+        "prompt_tokens",
+        "completion_tokens",
+        "raw_prompt_tokens"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "prompt_tokens": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/TokenLikelihood"
+          },
+          "description": "Probabilities for tokens in the request prompt",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "completion_tokens": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/TokenLikelihood"
+          },
+          "description": "Probabilities for tokens in the request completion",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "raw_prompt_tokens": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/TokenLikelihood"
+          },
+          "description": "Probabilities for tokens in the request raw_prompt",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "meta": {
+          "x-fern-audiences": [
+            "public"
+          ],
+          "$ref": "#/components/schemas/ApiMeta"
+        }
+      },
+      "x-fern-type-name": "LogLikelihoodResponse"
+    },
+    "Cluster": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "x-fern-audiences": [
+              "public"
+            ]
+          },
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "size": {
+          "type": "integer",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "sample_elements": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "x-fern-audiences": [
+              "public"
+            ]
+          },
+          "x-fern-audiences": [
+            "public"
+          ]
+        }
+      },
+      "x-fern-type-name": "Cluster"
+    },
+    "GetClusterJobResponse": {
+      "required": [
+        "job_id"
+      ],
+      "type": "object",
+      "properties": {
+        "job_id": {
+          "type": "string",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "description": "Time of job creation in RFC3339 format",
+          "format": "date-time",
+          "example": "2023-04-28T21:00:56.646257Z",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "embeddings_url": {
+          "type": "string",
+          "description": "The input file URL used for the job",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "input_dataset_id": {
+          "type": "string",
+          "description": "The input dataset ID used for the job",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "min_cluster_size": {
+          "type": "integer",
+          "description": "The parameter used in the job creation. Please refer to the job creation endpoint for more details",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "n_neighbors": {
+          "type": "integer",
+          "description": "The parameter used in the job creation. Please refer to the job creation endpoint for more details",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "is_deterministic": {
+          "type": "boolean",
+          "description": "The parameter used in the job creation. Please refer to the job creation endpoint for more details",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "status": {
+          "$ref": "#/components/schemas/GetClusterJobResponseStatus"
+        },
+        "is_final_state": {
+          "type": "boolean",
+          "description": "A boolean indicating whether the job is in a final state, whether completed or failed",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "output_clusters_url": {
+          "type": "string",
+          "description": "The output file URL for the clusters (signed url that expires)",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "output_outliers_url": {
+          "type": "string",
+          "description": "The output file URL for the outliers (signed url that expires)",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "clusters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Cluster"
+          },
+          "description": "The list of cluster summaries for the job",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "error": {
+          "type": "string",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "meta": {
+          "x-fern-audiences": [
+            "public"
+          ],
+          "$ref": "#/components/schemas/ApiMeta"
+        }
+      },
+      "description": "Response for getting a cluster job.",
+      "x-fern-type-name": "GetClusterJobResponse"
+    },
+    "ListClusterJobsResponse": {
+      "required": [
+        "jobs"
+      ],
+      "type": "object",
+      "properties": {
+        "jobs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/GetClusterJobResponse"
+          },
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "total_count": {
+          "type": "integer",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "meta": {
+          "x-fern-audiences": [
+            "public"
+          ],
+          "$ref": "#/components/schemas/ApiMeta"
+        }
+      },
+      "x-fern-type-name": "ListClusterJobsResponse"
+    },
+    "CreateClusterJobRequest": {
+      "required": [
+        "embeddings_url"
+      ],
+      "type": "object",
+      "properties": {
+        "embeddings_url": {
+          "type": "string",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "input_dataset_id": {
+          "type": "string",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "min_cluster_size": {
+          "minimum": 1,
+          "type": "integer",
+          "description": "Defaults to \u006010\u0060. Parameter for HDBSCAN. Only clusters with this number of elements will be returned with a positive cluster number.",
+          "default": 10,
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "n_neighbors": {
+          "maximum": 100,
+          "minimum": 2,
+          "type": "integer",
+          "description": "Parameter for UMAP. A scalar governing how to balance global vs local structure in the data.",
+          "default": 15,
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "is_deterministic": {
+          "type": "boolean",
+          "description": "Parameter for UMAP. A boolean governing whether the embeddings from UMAP (that will be clustered with HDBSCAN) are deterministic.",
+          "default": true,
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "generate_descriptions": {
+          "type": "boolean",
+          "x-fern-audiences": [
+            "public"
+          ]
+        }
+      },
+      "x-fern-type-name": "CreateClusterJobRequest"
+    },
+    "CreateClusterJobResponse": {
+      "required": [
+        "job_id"
+      ],
+      "type": "object",
+      "properties": {
+        "job_id": {
+          "type": "string",
+          "x-fern-audiences": [
+            "public"
+          ]
+        }
+      },
+      "description": "Response for creating a cluster job.",
+      "x-fern-type-name": "CreateClusterJobResponse"
+    },
+    "UpdateClusterJobRequest": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/components/schemas/UpdateClusterJobRequestStatus"
+        },
+        "clusters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Cluster"
+          },
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "output_clusters_gs_path": {
+          "type": "string",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "output_outliers_gs_path": {
+          "type": "string",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "error": {
+          "type": "string",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "input_tracking_metrics": {
+          "$ref": "#/components/schemas/UpdateClusterJobRequestInputTrackingMetricsProperty"
+        },
+        "output_tracking_metrics": {
+          "$ref": "#/components/schemas/UpdateClusterJobRequestOutputTrackingMetricsProperty"
+        }
+      },
+      "x-fern-type-name": "UpdateClusterJobRequest"
+    },
+    "UpdateClusterJobResponse": {
+      "required": [
+        "job_id"
+      ],
+      "type": "object",
+      "properties": {
+        "job_id": {
+          "type": "string",
+          "x-fern-audiences": [
+            "public"
+          ]
+        }
+      },
+      "description": "Response for updating a cluster job.",
+      "x-fern-type-name": "UpdateClusterJobResponse"
+    },
+    "DeleteFinetunedModelResponse": {
+      "type": "object",
+      "description": "Response to request to delete a fine-tuned model.",
+      "deprecated": true,
+      "x-fern-sdk-group-name": [
+        "finetuning",
+        "finetuning"
+      ]
+    },
+    "ChatStreamStartEventAllOf2": {
+      "required": [
+        "generation_id"
+      ],
+      "type": "object",
+      "properties": {
+        "generation_id": {
+          "minLength": 1,
+          "type": "string",
+          "description": "Unique identifier for the generated reply. Useful for submitting feedback.\n",
+          "format": "uuid",
+          "x-fern-audiences": [
+            "public"
+          ]
+        }
+      },
+      "x-fern-type-name": "ChatStreamStartEvent-5v9jyv"
+    },
+    "ChatSearchQueriesGenerationEventAllOf2": {
+      "required": [
+        "search_queries"
+      ],
+      "type": "object",
+      "properties": {
+        "search_queries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ChatSearchQuery"
+          },
+          "description": "Generated search queries, meant to be used as part of the RAG flow.",
+          "x-fern-audiences": [
+            "public"
+          ]
+        }
+      },
+      "x-fern-type-name": "ChatSearchQueriesGenerationEvent-6evypd"
+    },
+    "ChatSearchResultsEventAllOf2": {
+      "type": "object",
+      "properties": {
+        "search_results": {
+          "minItems": 0,
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ChatSearchResult"
+          },
+          "description": "Conducted searches and the ids of documents retrieved from each of them.\n",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "documents": {
+          "minItems": 0,
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ChatDocument"
+          },
+          "description": "Documents fetched from searches or provided by the user.\n",
+          "x-fern-audiences": [
+            "public"
+          ]
+        }
+      },
+      "x-fern-type-name": "ChatSearchResultsEvent-44axt5"
+    },
+    "ChatTextGenerationEventAllOf2": {
+      "required": [
+        "text"
+      ],
+      "type": "object",
+      "properties": {
+        "text": {
+          "minLength": 1,
+          "type": "string",
+          "description": "The next batch of text generated by the model.\n",
+          "x-fern-audiences": [
+            "public"
+          ]
+        }
+      },
+      "x-fern-type-name": "ChatTextGenerationEvent-8yyj22"
+    },
+    "ChatCitationGenerationEventAllOf2": {
+      "required": [
+        "citations"
+      ],
+      "type": "object",
+      "properties": {
+        "citations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ChatCitation"
+          },
+          "description": "Citations for the generated reply.\n",
+          "x-fern-audiences": [
+            "public"
+          ]
+        }
+      },
+      "x-fern-type-name": "ChatCitationGenerationEvent-lg3v2o"
+    },
+    "ChatToolCallsGenerationEventAllOf2": {
+      "required": [
+        "tool_calls"
+      ],
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "The text generated related to the tool calls generated\n",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "tool_calls": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ToolCall"
+          },
+          "x-fern-audiences": [
+            "public"
+          ]
+        }
+      },
+      "x-fern-type-name": "ChatToolCallsGenerationEvent-nykiww"
+    },
+    "ChatStreamEndEventAllOf2": {
+      "required": [
+        "finish_reason",
+        "response"
+      ],
+      "type": "object",
+      "properties": {
+        "finish_reason": {
+          "$ref": "#/components/schemas/ChatStreamEndEventFinishReason"
+        },
+        "response": {
+          "description": "The consolidated response from the model. Contains the generated reply and all the other information streamed back in the previous events.\n",
+          "x-fern-audiences": [
+            "public"
+          ],
+          "$ref": "#/components/schemas/NonStreamedChatResponse"
+        }
+      },
+      "x-fern-type-name": "ChatStreamEndEvent-y8gq2x"
+    },
+    "ChatToolCallsChunkEventAllOf2": {
+      "required": [
+        "tool_call_delta"
+      ],
+      "type": "object",
+      "properties": {
+        "tool_call_delta": {
+          "description": "Contains the chunk of the tool call generation in the stream.\n",
+          "x-fern-audiences": [
+            "public"
+          ],
+          "$ref": "#/components/schemas/ToolCallDelta"
+        },
+        "text": {
+          "type": "string",
+          "x-fern-audiences": [
+            "public"
+          ]
+        }
+      },
+      "x-fern-type-name": "ChatToolCallsChunkEvent-t7lliu"
+    },
+    "ChatDebugEventAllOf2": {
+      "type": "object",
+      "properties": {
+        "prompt": {
+          "type": "string",
+          "x-fern-audiences": [
+            "public"
+          ]
+        }
+      },
+      "x-fern-type-name": "ChatDebugEvent-352j0t"
+    },
+    "ChatMessageStartEventAllOf2": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the generated reply."
+        },
+        "delta": {
+          "$ref": "#/components/schemas/ChatMessageStartEventAllOf2Delta"
+        }
+      },
+      "x-fern-type-name": "ChatMessageStartEvent-lsegeq"
+    },
+    "ChatContentStartEventAllOf2": {
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "integer"
+        },
+        "delta": {
+          "$ref": "#/components/schemas/ChatContentStartEventAllOf2Delta"
+        }
+      },
+      "x-fern-type-name": "ChatContentStartEvent-6xvlq1"
+    },
+    "ChatContentDeltaEventAllOf2": {
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "integer"
+        },
+        "delta": {
+          "$ref": "#/components/schemas/ChatContentDeltaEventAllOf2Delta"
+        },
+        "logprobs": {
+          "$ref": "#/components/schemas/LogprobItem"
+        }
+      },
+      "x-fern-type-name": "ChatContentDeltaEvent-3m0vqs"
+    },
+    "ChatContentEndEventAllOf2": {
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "integer"
+        }
+      },
+      "x-fern-type-name": "ChatContentEndEvent-ma278i"
+    },
+    "ChatToolPlanDeltaEventAllOf2": {
+      "type": "object",
+      "properties": {
+        "delta": {
+          "$ref": "#/components/schemas/ChatToolPlanDeltaEventAllOf2Delta"
+        }
+      },
+      "x-fern-type-name": "ChatToolPlanDeltaEvent-2obfex"
+    },
+    "ChatToolCallStartEventAllOf2": {
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "integer"
+        },
+        "delta": {
+          "$ref": "#/components/schemas/ChatToolCallStartEventAllOf2Delta"
+        }
+      },
+      "x-fern-type-name": "ChatToolCallStartEvent-lv559x"
+    },
+    "ChatToolCallDeltaEventAllOf2": {
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "integer"
+        },
+        "delta": {
+          "$ref": "#/components/schemas/ChatToolCallDeltaEventAllOf2Delta"
+        }
+      },
+      "x-fern-type-name": "ChatToolCallDeltaEvent-2bxzoc"
+    },
+    "ChatToolCallEndEventAllOf2": {
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "integer"
+        }
+      },
+      "x-fern-type-name": "ChatToolCallEndEvent-t6ph9s"
+    },
+    "CitationStartEventAllOf2": {
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "integer"
+        },
+        "delta": {
+          "$ref": "#/components/schemas/CitationStartEventAllOf2Delta"
+        }
+      },
+      "x-fern-type-name": "CitationStartEvent-t3df62"
+    },
+    "CitationEndEventAllOf2": {
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "integer"
+        }
+      },
+      "x-fern-type-name": "CitationEndEvent-fs3igt"
+    },
+    "ChatMessageEndEventAllOf2": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "delta": {
+          "$ref": "#/components/schemas/ChatMessageEndEventAllOf2Delta"
+        }
+      },
+      "x-fern-type-name": "ChatMessageEndEvent-u3fzny"
+    },
+    "GenerateStreamTextAllOf2": {
+      "required": [
+        "is_finished",
+        "text"
+      ],
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "A segment of text of the generation."
+        },
+        "index": {
+          "type": "integer",
+          "description": "Refers to the nth generation. Only present when \u0060num_generations\u0060 is greater than zero, and only when text responses are being streamed."
+        },
+        "is_finished": {
+          "type": "boolean"
+        }
+      },
+      "x-fern-type-name": "GenerateStreamText-yai5v6"
+    },
+    "GenerateStreamEndAllOf2": {
+      "required": [
+        "is_finished",
+        "finish_response",
+        "response"
+      ],
+      "type": "object",
+      "properties": {
+        "is_finished": {
+          "type": "boolean",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "finish_reason": {
+          "x-fern-audiences": [
+            "public"
+          ],
+          "$ref": "#/components/schemas/FinishReason"
+        },
+        "response": {
+          "$ref": "#/components/schemas/GenerateStreamEndAllOf2Response"
+        }
+      },
+      "x-fern-type-name": "GenerateStreamEnd-ubzr0t"
+    },
+    "GenerateStreamErrorAllOf2": {
+      "required": [
+        "is_finished",
+        "finish_reason",
+        "err"
+      ],
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "integer",
+          "description": "Refers to the nth generation. Only present when \u0060num_generations\u0060 is greater than zero.",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "is_finished": {
+          "type": "boolean",
+          "x-fern-audiences": [
+            "public"
+          ]
+        },
+        "finish_reason": {
+          "x-fern-audiences": [
+            "public"
+          ],
+          "$ref": "#/components/schemas/FinishReason"
+        },
+        "err": {
+          "type": "string",
+          "description": "Error message",
+          "x-fern-audiences": [
+            "public"
+          ]
+        }
+      },
+      "x-fern-type-name": "GenerateStreamError-49d5xw"
+    },
+    "RequestBodyRequestDocumentsItem": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "#/components/schemas/Document"
+        }
+      ]
+    },
+    "ToolCallParameters": {
+      "type": "object",
+      "description": "The name and value of the parameters to use when invoking a tool.",
+      "x-fern-audiences": [
+        "public"
+      ],
+      "x-fern-type-name": "ToolCall-iovxf2"
+    },
+    "ToolResultOutputsItem": {
+      "type": "object",
+      "x-fern-type-name": "ToolResult-68w0tx"
+    },
+    "ChatConnectorOptions": {
+      "type": "object",
+      "description": "Provides the connector with different settings at request time. The key/value pairs of this object are specific to each connector.\n\nFor example, the connector \u0060web-search\u0060 supports the \u0060site\u0060 option, which limits search results to the specified domain.\n",
+      "x-fern-audiences": [
+        "public"
+      ],
+      "x-fern-type-name": "ChatConnector-7ur0eu"
+    },
+    "ToolParameterDefinitions": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/ToolParameterDefinitionsAdditionalProperties"
+      },
+      "description": "The input parameters of the tool. Accepts a dictionary where the key is the name of the parameter and the value is the parameter spec. Valid parameter names contain only the characters \u0060a-z\u0060, \u0060A-Z\u0060, \u00600-9\u0060, \u0060_\u0060 and must not begin with a digit.\n\u0060\u0060\u0060\n{\n  \u0022my_param\u0022: {\n    \u0022description\u0022: \u003Cstring\u003E,\n    \u0022type\u0022: \u003Cstring\u003E, // any python data type, such as \u0027str\u0027, \u0027bool\u0027\n    \u0022required\u0022: \u003Cboolean\u003E\n  }\n}\n\u0060\u0060\u0060\n",
+      "x-fern-type-name": "Tool-luhdwe"
+    },
+    "JsonResponseFormatSchema": {
+      "type": "object",
+      "description": "A JSON schema object that the output will adhere to. There are some restrictions we have on the schema, refer to [our guide](https://docs.cohere.com/docs/structured-outputs-json#schema-constraints) for more information.\nExample (required name and age object):\n\u0060\u0060\u0060json\n{\n  \u0022type\u0022: \u0022object\u0022,\n  \u0022properties\u0022: {\n    \u0022name\u0022: {\u0022type\u0022: \u0022string\u0022},\n    \u0022age\u0022: {\u0022type\u0022: \u0022integer\u0022}\n  },\n  \u0022required\u0022: [\u0022name\u0022, \u0022age\u0022]\n}\n\u0060\u0060\u0060\n\n**Note**: This field must not be specified when the \u0060type\u0060 is set to \u0060\u0022text\u0022\u0060.\n",
+      "x-fern-availability": "beta",
+      "x-fern-type-name": "JSONResponseFormat-g7xopi"
+    },
+    "ChatToolSourceToolOutput": {
+      "type": "object",
+      "x-fern-type-name": "ChatToolSource-z53ra6"
+    },
+    "ChatDocumentSourceDocument": {
+      "type": "object",
+      "x-fern-type-name": "ChatDocumentSource-w70a62"
+    },
+    "DocumentData": {
+      "type": "object",
+      "description": "A relevant document that the model can cite to generate a more accurate reply. Each document is a string-any dictionary.\n",
+      "x-fern-type-name": "Document-qmvpd9"
+    },
+    "JsonResponseFormatV2JsonSchema": {
+      "type": "object",
+      "description": "A [JSON schema](https://json-schema.org/overview/what-is-jsonschema) object that the output will adhere to. There are some restrictions we have on the schema, refer to [our guide](https://docs.cohere.com/docs/structured-outputs-json#schema-constraints) for more information.\nExample (required name and age object):\n\u0060\u0060\u0060json\n{\n  \u0022type\u0022: \u0022object\u0022,\n  \u0022properties\u0022: {\n    \u0022name\u0022: {\u0022type\u0022: \u0022string\u0022},\n    \u0022age\u0022: {\u0022type\u0022: \u0022integer\u0022}\n  },\n  \u0022required\u0022: [\u0022name\u0022, \u0022age\u0022]\n}\n\u0060\u0060\u0060\n\n**Note**: This field must not be specified when the \u0060type\u0060 is set to \u0060\u0022text\u0022\u0060.\n",
+      "x-fern-type-name": "JsonResponseFormatV2-uu9wid"
+    },
+    "UpdateClusterJobRequestInputTrackingMetrics": {
+      "type": "object",
+      "x-fern-audiences": [
+        "public"
+      ],
+      "x-fern-type-name": "UpdateClusterJobRequest-yyd5g8"
+    },
+    "UpdateClusterJobRequestOutputTrackingMetrics": {
+      "type": "object",
+      "x-fern-audiences": [
+        "public"
+      ],
+      "x-fern-type-name": "UpdateClusterJobRequest-6wlqkj"
+    },
+    "TrainingStepMetricsMetrics": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "format": "double"
+      },
+      "description": "Map of names and values for each evaluation metrics."
+    },
+    "ToolV2FunctionParameters": {
+      "type": "object",
+      "description": "The parameters of the function as a JSON schema.",
+      "x-fern-type-name": "ToolV2-6eoehf"
+    },
+    "DeleteDataset200Response": {
+      "type": "object",
+      "x-fern-audiences": [
+        "public"
+      ],
+      "x-fern-type-name": "dataset-id-g4eh6t"
+    },
+    "ExamplePayload": {
+      "type": "object",
+      "description": "Placeholder schema for path example refs"
+    },
+    "UpdateClusterJobRequestInputTrackingMetricsProperty": {
+      "type": "object",
+      "x-fern-audiences": [
+        "public"
+      ],
+      "x-fern-type-name": "UpdateClusterJobRequest-yyd5g8"
+    },
+    "UpdateClusterJobRequestOutputTrackingMetricsProperty": {
+      "type": "object",
+      "x-fern-audiences": [
+        "public"
+      ],
+      "x-fern-type-name": "UpdateClusterJobRequest-6wlqkj"
+    },
+    "EmbedFloatsResponseResponseType": {
+      "enum": [
+        "embeddings_floats",
+        "embeddings_by_type"
+      ],
+      "type": "string",
+      "x-fern-audiences": [
+        "public"
+      ],
+      "x-ms-enum": {
+        "name": "EmbedFloatsResponseResponseType",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "embeddings_floats",
+            "name": "EmbeddingsFloats"
+          },
+          {
+            "value": "embeddings_by_type",
+            "name": "EmbeddingsByType"
+          }
+        ]
+      }
+    },
+    "GetClusterJobResponseStatus": {
+      "enum": [
+        "unknown",
+        "processing",
+        "failed",
+        "complete",
+        "queued"
+      ],
+      "type": "string",
+      "x-fern-audiences": [
+        "public"
+      ],
+      "x-ms-enum": {
+        "name": "GetClusterJobResponseStatus",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "unknown",
+            "name": "Unknown"
+          },
+          {
+            "value": "processing",
+            "name": "Processing"
+          },
+          {
+            "value": "failed",
+            "name": "Failed"
+          },
+          {
+            "value": "complete",
+            "name": "Complete"
+          },
+          {
+            "value": "queued",
+            "name": "Queued"
+          }
+        ]
+      }
+    },
+    "UpdateClusterJobRequestStatus": {
+      "enum": [
+        "unknown",
+        "processing",
+        "failed",
+        "complete",
+        "queued"
+      ],
+      "type": "string",
+      "x-fern-audiences": [
+        "public"
+      ],
+      "x-ms-enum": {
+        "name": "UpdateClusterJobRequestStatus",
+        "modelAsString": false,
+        "values": [
+          {
+            "value": "unknown",
+            "name": "Unknown"
+          },
+          {
+            "value": "processing",
+            "name": "Processing"
+          },
+          {
+            "value": "failed",
+            "name": "Failed"
+          },
+          {
+            "value": "complete",
+            "name": "Complete"
+          },
+          {
+            "value": "queued",
+            "name": "Queued"
+          }
+        ]
+      }
+    }
+  }
 }

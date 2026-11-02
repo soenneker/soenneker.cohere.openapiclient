@@ -138,8 +138,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public global::Soenneker.Cohere.OpenApiClient.Models.Chatv2RequestSafetyMode? SafetyMode { get => _explicitNullValueSafetyMode; set { _explicitNullValueSafetyMode = value; AdditionalData?.Remove("safety_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("safety_mode"); else _explicitNullProperties?.Remove("safety_mode"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.Chatv2RequestSafetyMode? _explicitNullValueSafetyMode = default!;
         /// <summary>If specified, the backend will make a best effort to sample tokensdeterministically, such that repeated requests with the sameseed and parameters should return the same result. However,determinism cannot be totally guaranteed.</summary>
-        public int? Seed { get => _explicitNullValueSeed; set { _explicitNullValueSeed = value; AdditionalData?.Remove("seed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seed"); else _explicitNullProperties?.Remove("seed"); } }
-        private int? _explicitNullValueSeed = default!;
+        public decimal? Seed { get => _explicitNullValueSeed; set { _explicitNullValueSeed = value; AdditionalData?.Remove("seed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seed"); else _explicitNullProperties?.Remove("seed"); } }
+        private decimal? _explicitNullValueSeed = default!;
         /// <summary>A list of up to 5 strings that the model will use to stop generation. If the model generates a string that matches any of the strings in the list, it will stop generating tokens and return the generated text up to that point not including the stop sequence.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -223,7 +223,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
                 { "priority", n => { Priority = n.GetIntValue(); } },
                 { "response_format", n => { ResponseFormat = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ResponseFormatV2>(global::Soenneker.Cohere.OpenApiClient.Models.ResponseFormatV2.CreateFromDiscriminatorValue); } },
                 { "safety_mode", n => { var parsed = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.Chatv2RequestSafetyMode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSafetyMode = default; _explicitNullProperties?.Remove("safety_mode"); AdditionalData["safety_mode"] = unknown; } else { SafetyMode = parsed; AdditionalData.Remove("safety_mode"); } } },
-                { "seed", n => { Seed = n.GetIntValue(); } },
+                { "seed", n => { Seed = n.GetDecimalValue(); } },
                 { "stop_sequences", n => { StopSequences = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "stream", n => { Stream = n.GetBoolValue(); } },
                 { "strict_tools", n => { StrictTools = n.GetBoolValue(); } },
@@ -253,7 +253,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteIntValue("priority", Priority);
             writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ResponseFormatV2>("response_format", ResponseFormat);
             writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.Chatv2RequestSafetyMode>("safety_mode", SafetyMode);
-            writer.WriteIntValue("seed", Seed);
+            writer.WriteDecimalValue("seed", Seed);
             writer.WriteCollectionOfPrimitiveValues<string>("stop_sequences", StopSequences);
             writer.WriteBoolValue("stream", Stream);
             writer.WriteBoolValue("strict_tools", StrictTools);

@@ -120,8 +120,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public global::Soenneker.Cohere.OpenApiClient.Models.GenerateRequestReturnLikelihoods? ReturnLikelihoods { get => _explicitNullValueReturnLikelihoods; set { _explicitNullValueReturnLikelihoods = value; AdditionalData?.Remove("return_likelihoods"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_likelihoods"); else _explicitNullProperties?.Remove("return_likelihoods"); } }
         private global::Soenneker.Cohere.OpenApiClient.Models.GenerateRequestReturnLikelihoods? _explicitNullValueReturnLikelihoods = default!;
         /// <summary>If specified, the backend will make a best effort to sample tokensdeterministically, such that repeated requests with the sameseed and parameters should return the same result. However,determinism cannot be totally guaranteed.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
-        public int? Seed { get => _explicitNullValueSeed; set { _explicitNullValueSeed = value; AdditionalData?.Remove("seed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seed"); else _explicitNullProperties?.Remove("seed"); } }
-        private int? _explicitNullValueSeed = default!;
+        public decimal? Seed { get => _explicitNullValueSeed; set { _explicitNullValueSeed = value; AdditionalData?.Remove("seed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seed"); else _explicitNullProperties?.Remove("seed"); } }
+        private decimal? _explicitNullValueSeed = default!;
         /// <summary>The generated text will be cut at the end of the earliest occurrence of a stop sequence. The sequence will be included the text.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -178,7 +178,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
                 { "raw_prompting", n => { RawPrompting = n.GetBoolValue(); } },
                 { "return_likelihoods", n => { var parsed = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.GenerateRequestReturnLikelihoods>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueReturnLikelihoods = default; _explicitNullProperties?.Remove("return_likelihoods"); AdditionalData["return_likelihoods"] = unknown; } else { ReturnLikelihoods = parsed; AdditionalData.Remove("return_likelihoods"); } } },
-                { "seed", n => { Seed = n.GetIntValue(); } },
+                { "seed", n => { Seed = n.GetDecimalValue(); } },
                 { "stop_sequences", n => { StopSequences = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "stream", n => { Stream = n.GetBoolValue(); } },
                 { "temperature", n => { Temperature = n.GetDoubleValue(); } },
@@ -204,7 +204,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteStringValue("prompt", Prompt);
             writer.WriteBoolValue("raw_prompting", RawPrompting);
             writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.GenerateRequestReturnLikelihoods>("return_likelihoods", ReturnLikelihoods);
-            writer.WriteIntValue("seed", Seed);
+            writer.WriteDecimalValue("seed", Seed);
             writer.WriteCollectionOfPrimitiveValues<string>("stop_sequences", StopSequences);
             writer.WriteBoolValue("stream", Stream);
             writer.WriteDoubleValue("temperature", Temperature);

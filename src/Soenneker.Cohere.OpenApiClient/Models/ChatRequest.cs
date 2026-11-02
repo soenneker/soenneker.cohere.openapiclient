@@ -192,8 +192,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         public bool? SearchQueriesOnly { get => _explicitNullValueSearchQueriesOnly; set { _explicitNullValueSearchQueriesOnly = value; AdditionalData?.Remove("search_queries_only"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search_queries_only"); else _explicitNullProperties?.Remove("search_queries_only"); } }
         private bool? _explicitNullValueSearchQueriesOnly = default!;
         /// <summary>If specified, the backend will make a best effort to sample tokensdeterministically, such that repeated requests with the sameseed and parameters should return the same result. However,determinism cannot be totally guaranteed.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
-        public int? Seed { get => _explicitNullValueSeed; set { _explicitNullValueSeed = value; AdditionalData?.Remove("seed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seed"); else _explicitNullProperties?.Remove("seed"); } }
-        private int? _explicitNullValueSeed = default!;
+        public decimal? Seed { get => _explicitNullValueSeed; set { _explicitNullValueSeed = value; AdditionalData?.Remove("seed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seed"); else _explicitNullProperties?.Remove("seed"); } }
+        private decimal? _explicitNullValueSeed = default!;
         /// <summary>A list of up to 5 strings that the model will use to stop generation. If the model generates a string that matches any of the strings in the list, it will stop generating tokens and return the generated text up to that point not including the stop sequence.Compatible Deployments: Cohere Platform, Azure, AWS Sagemaker/Bedrock, Private Deployments</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -277,7 +277,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
                 { "response_format", n => { ResponseFormat = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ResponseFormat>(global::Soenneker.Cohere.OpenApiClient.Models.ResponseFormat.CreateFromDiscriminatorValue); } },
                 { "safety_mode", n => { var parsed = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatRequestSafetyMode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSafetyMode = default; _explicitNullProperties?.Remove("safety_mode"); AdditionalData["safety_mode"] = unknown; } else { SafetyMode = parsed; AdditionalData.Remove("safety_mode"); } } },
                 { "search_queries_only", n => { SearchQueriesOnly = n.GetBoolValue(); } },
-                { "seed", n => { Seed = n.GetIntValue(); } },
+                { "seed", n => { Seed = n.GetDecimalValue(); } },
                 { "stop_sequences", n => { StopSequences = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "stream", n => { Stream = n.GetBoolValue(); } },
                 { "temperature", n => { Temperature = n.GetFloatValue(); } },
@@ -312,7 +312,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ResponseFormat>("response_format", ResponseFormat);
             writer.WriteEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatRequestSafetyMode>("safety_mode", SafetyMode);
             writer.WriteBoolValue("search_queries_only", SearchQueriesOnly);
-            writer.WriteIntValue("seed", Seed);
+            writer.WriteDecimalValue("seed", Seed);
             writer.WriteCollectionOfPrimitiveValues<string>("stop_sequences", StopSequences);
             writer.WriteBoolValue("stream", Stream);
             writer.WriteFloatValue("temperature", Temperature);

@@ -2,7 +2,7 @@
   "descriptionHash": "378E6827219C26EE14AFF25A36F8B26CAC0B87CE00A239730A032350CF3E4507F3DC85AED75B56FE64921EE7F74EA672B22FC2CA3F754EE57DCEBA14704B798F",
   "descriptionLocation": "../../fixed.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.37.0",
+  "kiotaVersion": "1.38.0",
   "clientClassName": "CohereOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.Cohere.OpenApiClient",

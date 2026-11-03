@@ -23824,6 +23824,13 @@
               "public"
             ]
           },
+          "text_tokens": {
+            "type": "number",
+            "description": "The number of billed text tokens.\n",
+            "x-fern-audiences": [
+              "public"
+            ]
+          },
           "output_tokens": {
             "type": "number",
             "description": "The number of billed output tokens.\n",

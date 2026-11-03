@@ -31,6 +31,8 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             else if (parseNode.GetChildNode("pages") is { } nullNodePages && nullNodePages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pages = null;
             if (parseNode.GetChildNode("search_units") is null) { _explicitNullValueSearchUnits = default!; _explicitNullProperties?.Remove("search_units"); }
             else if (parseNode.GetChildNode("search_units") is { } nullNodeSearchUnits && nullNodeSearchUnits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SearchUnits = null;
+            if (parseNode.GetChildNode("text_tokens") is null) { _explicitNullValueTextTokens = default!; _explicitNullProperties?.Remove("text_tokens"); }
+            else if (parseNode.GetChildNode("text_tokens") is { } nullNodeTextTokens && nullNodeTextTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TextTokens = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -56,6 +58,9 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <summary>The number of billed search units.</summary>
         public double? SearchUnits { get => _explicitNullValueSearchUnits; set { _explicitNullValueSearchUnits = value; AdditionalData?.Remove("search_units"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search_units"); else _explicitNullProperties?.Remove("search_units"); } }
         private double? _explicitNullValueSearchUnits = default!;
+        /// <summary>The number of billed text tokens.</summary>
+        public double? TextTokens { get => _explicitNullValueTextTokens; set { _explicitNullValueTextTokens = value; AdditionalData?.Remove("text_tokens"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("text_tokens"); else _explicitNullProperties?.Remove("text_tokens"); } }
+        private double? _explicitNullValueTextTokens = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Cohere.OpenApiClient.Models.ApiMetaBilledUnits"/> and sets the default values.
         /// </summary>
@@ -88,6 +93,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
                 { "output_tokens", n => { OutputTokens = n.GetDoubleValue(); } },
                 { "pages", n => { Pages = n.GetDoubleValue(); } },
                 { "search_units", n => { SearchUnits = n.GetDoubleValue(); } },
+                { "text_tokens", n => { TextTokens = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -104,6 +110,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
             writer.WriteDoubleValue("output_tokens", OutputTokens);
             writer.WriteDoubleValue("pages", Pages);
             writer.WriteDoubleValue("search_units", SearchUnits);
+            writer.WriteDoubleValue("text_tokens", TextTokens);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

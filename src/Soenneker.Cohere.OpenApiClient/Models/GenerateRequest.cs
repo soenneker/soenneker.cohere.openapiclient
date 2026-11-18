@@ -164,7 +164,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(17)
             {
                 { "end_sequences", n => { EndSequences = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "frequency_penalty", n => { FrequencyPenalty = n.GetDoubleValue(); } },

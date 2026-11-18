@@ -101,7 +101,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(7)
             {
                 { "additional_command", n => { AdditionalCommand = n.GetStringValue(); } },
                 { "extractiveness", n => { var parsed = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.SummarizeRequestExtractiveness>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueExtractiveness = default; _explicitNullProperties?.Remove("extractiveness"); AdditionalData["extractiveness"] = unknown; } else { Extractiveness = parsed; AdditionalData.Remove("extractiveness"); } } },

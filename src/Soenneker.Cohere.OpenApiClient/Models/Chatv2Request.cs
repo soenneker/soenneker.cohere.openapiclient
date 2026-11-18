@@ -208,7 +208,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(21)
             {
                 { "citation_options", n => { CitationOptions = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.CitationOptions>(global::Soenneker.Cohere.OpenApiClient.Models.CitationOptions.CreateFromDiscriminatorValue); } },
                 { "documents", n => { Documents = n.GetCollectionOfObjectValues<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue)?.AsList(); } },

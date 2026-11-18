@@ -110,7 +110,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "bounding_box", n => { BoundingBox = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBox>(global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBox.CreateFromDiscriminatorValue); } },
                 { "bounding_box_normalized", n => { BoundingBoxNormalized = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBoxNormalized>(global::Soenneker.Cohere.OpenApiClient.Models.ParseBoundingBoxNormalized.CreateFromDiscriminatorValue); } },

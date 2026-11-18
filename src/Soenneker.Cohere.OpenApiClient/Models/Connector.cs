@@ -166,7 +166,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(13)
             {
                 { "active", n => { Active = n.GetBoolValue(); } },
                 { "auth_status", n => { var parsed = n.GetEnumValue<global::Soenneker.Cohere.OpenApiClient.Models.ConnectorAuthStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAuthStatus = default; _explicitNullProperties?.Remove("auth_status"); AdditionalData["auth_status"] = unknown; } else { AuthStatus = parsed; AdditionalData.Remove("auth_status"); } } },

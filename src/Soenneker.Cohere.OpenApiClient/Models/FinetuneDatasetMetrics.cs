@@ -110,7 +110,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(9)
             {
                 { "chat_data_metrics", n => { ChatDataMetrics = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ChatDataMetrics>(global::Soenneker.Cohere.OpenApiClient.Models.ChatDataMetrics.CreateFromDiscriminatorValue); } },
                 { "classify_data_metrics", n => { ClassifyDataMetrics = n.GetObjectValue<global::Soenneker.Cohere.OpenApiClient.Models.ClassifyDataMetrics>(global::Soenneker.Cohere.OpenApiClient.Models.ClassifyDataMetrics.CreateFromDiscriminatorValue); } },

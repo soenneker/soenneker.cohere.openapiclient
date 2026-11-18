@@ -132,7 +132,7 @@ namespace Soenneker.Cohere.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(9)
             {
                 { "context_length", n => { ContextLength = n.GetDoubleValue(); } },
                 { "default_endpoints", n => { DefaultEndpoints = n.GetCollectionOfEnumValues<global::Soenneker.Cohere.OpenApiClient.Models.CompatibleEndpoint>()?.AsList(); } },
